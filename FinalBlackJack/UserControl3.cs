@@ -7,6 +7,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using NAudio.CoreAudioApi;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
+
 
 namespace FinalBlackJack
 {
@@ -16,19 +21,31 @@ namespace FinalBlackJack
         {
             InitializeComponent();
             StartForm startForm = new StartForm();
+            
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            mainMenuForm parentForm = this.FindForm() as mainMenuForm;
+            if (parentForm != null)
+            {
+                AccountData.currentAccount = 0;
+                parentForm.signOutPanel();
+            }
 
-            StartForm startForm = new StartForm();
-            startForm.Show();
-            this.Hide();
 
         }
+        
+        
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            if (this.ParentForm is mainMenuForm mainForm)
+            {
+                mainForm.LoadView(new logPassword());
+            }
+
+            this.Visible = false;
 
         }
     }

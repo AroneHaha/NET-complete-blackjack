@@ -40,7 +40,7 @@
             form3Button.BackColor = Color.OrangeRed;
             form3Button.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             form3Button.ForeColor = Color.WhiteSmoke;
-            form3Button.Location = new Point(367, 455);
+            form3Button.Location = new Point(397, 451);
             form3Button.Name = "form3Button";
             form3Button.Size = new Size(179, 56);
             form3Button.TabIndex = 0;
@@ -52,15 +52,15 @@
             // 
             panel1.BackColor = Color.DarkOliveGreen;
             panel1.Controls.Add(adsPictureBox);
-            panel1.Location = new Point(94, 55);
+            panel1.Location = new Point(122, 55);
             panel1.Name = "panel1";
             panel1.Size = new Size(753, 378);
             panel1.TabIndex = 1;
+            panel1.Paint += panel1_Paint;
             // 
             // adsPictureBox
             // 
             adsPictureBox.BackColor = Color.Ivory;
-            adsPictureBox.Dock = DockStyle.Fill;
             adsPictureBox.Location = new Point(0, 0);
             adsPictureBox.Name = "adsPictureBox";
             adsPictureBox.Size = new Size(753, 378);

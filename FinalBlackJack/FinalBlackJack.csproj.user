@@ -22,13 +22,19 @@
     <Compile Update="UserControl4.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControl5.cs">
+    <Compile Update="thirdCity.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControl6.cs">
+    <Compile Update="secondCity.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UserControl7.cs">
+    <Compile Update="firstCity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UserControl8.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="loadingAnimation.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>

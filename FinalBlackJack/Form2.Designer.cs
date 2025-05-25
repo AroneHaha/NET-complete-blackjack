@@ -42,7 +42,30 @@
             userLogin = new TextBox();
             passwordLogin = new TextBox();
             mainMenuPanel = new Panel();
+            walletPanel = new Panel();
+            walletBackBtn = new PictureBox();
+            widthdrawXdepo = new Panel();
+            confirmPanel = new Panel();
+            closeButton = new Button();
+            label15 = new Label();
+            confirmPasswordButton = new Button();
+            textBox2 = new TextBox();
+            confirmButton = new Button();
+            label14 = new Label();
+            textBox1 = new TextBox();
+            depositButton = new Button();
+            widthdrawButton = new Button();
+            label13 = new Label();
+            label12 = new Label();
             profilePanel = new Panel();
+            winningsTxt = new Label();
+            panel5 = new Panel();
+            totalWinningsTxt = new Label();
+            walletButton = new Button();
+            label11 = new Label();
+            matchesTxt = new Label();
+            winsTxt = new Label();
+            bustTxt = new Label();
             sideMenuPanel = new FlowLayoutPanel();
             sideHomePanel = new Panel();
             homeButton = new Button();
@@ -50,6 +73,8 @@
             option2 = new Button();
             panel3 = new Panel();
             option3 = new Button();
+            panel4 = new Panel();
+            aboutButton = new Button();
             panel2 = new Panel();
             option1 = new Button();
             navBarPanel = new Panel();
@@ -62,6 +87,7 @@
             mainDisplayPanel = new Panel();
             form3Button = new Button();
             signupPanel = new Panel();
+            backButton = new Button();
             ageLog = new TextBox();
             verifLog = new TextBox();
             verifBtn = new Button();
@@ -79,10 +105,17 @@
             verificationText = new Label();
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
+            walletPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)walletBackBtn).BeginInit();
+            widthdrawXdepo.SuspendLayout();
+            confirmPanel.SuspendLayout();
+            profilePanel.SuspendLayout();
+            panel5.SuspendLayout();
             sideMenuPanel.SuspendLayout();
             sideHomePanel.SuspendLayout();
             panel1.SuspendLayout();
             panel3.SuspendLayout();
+            panel4.SuspendLayout();
             panel2.SuspendLayout();
             navBarPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -235,6 +268,7 @@
             // mainMenuPanel
             // 
             mainMenuPanel.BackColor = Color.DarkOliveGreen;
+            mainMenuPanel.Controls.Add(walletPanel);
             mainMenuPanel.Controls.Add(profilePanel);
             mainMenuPanel.Controls.Add(sideMenuPanel);
             mainMenuPanel.Controls.Add(navBarPanel);
@@ -246,27 +280,274 @@
             mainMenuPanel.TabIndex = 9;
             mainMenuPanel.Paint += mainMenuPanel_Paint;
             // 
+            // walletPanel
+            // 
+            walletPanel.BackColor = Color.DarkKhaki;
+            walletPanel.Controls.Add(walletBackBtn);
+            walletPanel.Controls.Add(widthdrawXdepo);
+            walletPanel.Controls.Add(depositButton);
+            walletPanel.Controls.Add(widthdrawButton);
+            walletPanel.Controls.Add(label13);
+            walletPanel.Controls.Add(label12);
+            walletPanel.Location = new Point(263, 81);
+            walletPanel.Name = "walletPanel";
+            walletPanel.Size = new Size(490, 508);
+            walletPanel.TabIndex = 5;
+            walletPanel.Paint += walletPanel_Paint;
+            // 
+            // walletBackBtn
+            // 
+            walletBackBtn.Cursor = Cursors.Hand;
+            walletBackBtn.Image = (Image)resources.GetObject("walletBackBtn.Image");
+            walletBackBtn.Location = new Point(25, 25);
+            walletBackBtn.Name = "walletBackBtn";
+            walletBackBtn.Size = new Size(37, 35);
+            walletBackBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            walletBackBtn.TabIndex = 5;
+            walletBackBtn.TabStop = false;
+            walletBackBtn.Click += pictureBox2_Click;
+            // 
+            // widthdrawXdepo
+            // 
+            widthdrawXdepo.BackColor = Color.OldLace;
+            widthdrawXdepo.Controls.Add(confirmPanel);
+            widthdrawXdepo.Controls.Add(confirmButton);
+            widthdrawXdepo.Controls.Add(label14);
+            widthdrawXdepo.Controls.Add(textBox1);
+            widthdrawXdepo.Location = new Point(49, 223);
+            widthdrawXdepo.Name = "widthdrawXdepo";
+            widthdrawXdepo.Size = new Size(394, 271);
+            widthdrawXdepo.TabIndex = 4;
+            // 
+            // confirmPanel
+            // 
+            confirmPanel.Controls.Add(closeButton);
+            confirmPanel.Controls.Add(label15);
+            confirmPanel.Controls.Add(confirmPasswordButton);
+            confirmPanel.Controls.Add(textBox2);
+            confirmPanel.Location = new Point(89, 115);
+            confirmPanel.Name = "confirmPanel";
+            confirmPanel.Size = new Size(237, 126);
+            confirmPanel.TabIndex = 3;
+            // 
+            // closeButton
+            // 
+            closeButton.Location = new Point(20, 67);
+            closeButton.Name = "closeButton";
+            closeButton.Size = new Size(75, 23);
+            closeButton.TabIndex = 6;
+            closeButton.Text = "close";
+            closeButton.UseVisualStyleBackColor = true;
+            closeButton.Click += closeButton_Click;
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(12, 7);
+            label15.Name = "label15";
+            label15.Size = new Size(87, 15);
+            label15.TabIndex = 5;
+            label15.Text = "enter password";
+            // 
+            // confirmPasswordButton
+            // 
+            confirmPasswordButton.Location = new Point(150, 69);
+            confirmPasswordButton.Name = "confirmPasswordButton";
+            confirmPasswordButton.Size = new Size(75, 23);
+            confirmPasswordButton.TabIndex = 4;
+            confirmPasswordButton.Text = "confirm";
+            confirmPasswordButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(30, 39);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(142, 23);
+            textBox2.TabIndex = 0;
+            // 
+            // confirmButton
+            // 
+            confirmButton.Location = new Point(176, 51);
+            confirmButton.Name = "confirmButton";
+            confirmButton.Size = new Size(75, 23);
+            confirmButton.TabIndex = 2;
+            confirmButton.Text = "confirm";
+            confirmButton.UseVisualStyleBackColor = true;
+            confirmButton.Click += confirmButton_Click;
+            // 
+            // label14
+            // 
+            label14.AutoSize = true;
+            label14.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label14.Location = new Point(86, 29);
+            label14.Name = "label14";
+            label14.Size = new Size(51, 15);
+            label14.TabIndex = 1;
+            label14.Text = "Amount";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(143, 22);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(183, 23);
+            textBox1.TabIndex = 0;
+            // 
+            // depositButton
+            // 
+            depositButton.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            depositButton.Location = new Point(118, 186);
+            depositButton.Name = "depositButton";
+            depositButton.Size = new Size(118, 31);
+            depositButton.TabIndex = 3;
+            depositButton.Text = "Deposit";
+            depositButton.UseVisualStyleBackColor = true;
+            depositButton.Click += depositButton_Click;
+            // 
+            // widthdrawButton
+            // 
+            widthdrawButton.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            widthdrawButton.Location = new Point(266, 186);
+            widthdrawButton.Name = "widthdrawButton";
+            widthdrawButton.Size = new Size(118, 31);
+            widthdrawButton.TabIndex = 2;
+            widthdrawButton.Text = "Widthdraw";
+            widthdrawButton.UseVisualStyleBackColor = true;
+            widthdrawButton.Click += widthdrawButton_Click;
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.Font = new Font("Segoe UI", 17F);
+            label13.Location = new Point(38, 116);
+            label13.Name = "label13";
+            label13.Size = new Size(192, 31);
+            label13.TabIndex = 1;
+            label13.Text = "Current Balance : ";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Haettenschweiler", 35F);
+            label12.Location = new Point(170, 51);
+            label12.Name = "label12";
+            label12.Size = new Size(169, 50);
+            label12.TabIndex = 0;
+            label12.Text = "My Wallet";
+            // 
             // profilePanel
             // 
             profilePanel.BackColor = Color.ForestGreen;
+            profilePanel.Controls.Add(winningsTxt);
+            profilePanel.Controls.Add(panel5);
             profilePanel.Dock = DockStyle.Right;
-            profilePanel.Location = new Point(772, 66);
+            profilePanel.Location = new Point(772, 75);
             profilePanel.Name = "profilePanel";
-            profilePanel.Size = new Size(212, 545);
+            profilePanel.Size = new Size(212, 536);
             profilePanel.TabIndex = 4;
             profilePanel.Paint += profilePanel_Paint;
             // 
+            // winningsTxt
+            // 
+            winningsTxt.AutoSize = true;
+            winningsTxt.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            winningsTxt.Location = new Point(46, 233);
+            winningsTxt.Name = "winningsTxt";
+            winningsTxt.Size = new Size(0, 20);
+            winningsTxt.TabIndex = 6;
+            // 
+            // panel5
+            // 
+            panel5.BackColor = Color.LemonChiffon;
+            panel5.Controls.Add(totalWinningsTxt);
+            panel5.Controls.Add(walletButton);
+            panel5.Controls.Add(label11);
+            panel5.Controls.Add(matchesTxt);
+            panel5.Controls.Add(winsTxt);
+            panel5.Controls.Add(bustTxt);
+            panel5.Location = new Point(5, 8);
+            panel5.Name = "panel5";
+            panel5.Size = new Size(200, 525);
+            panel5.TabIndex = 7;
+            panel5.Paint += panel5_Paint;
+            // 
+            // totalWinningsTxt
+            // 
+            totalWinningsTxt.AutoSize = true;
+            totalWinningsTxt.Font = new Font("Segoe UI", 11F);
+            totalWinningsTxt.Location = new Point(6, 211);
+            totalWinningsTxt.Name = "totalWinningsTxt";
+            totalWinningsTxt.Size = new Size(114, 20);
+            totalWinningsTxt.TabIndex = 5;
+            totalWinningsTxt.Text = "Total Winnings :";
+            // 
+            // walletButton
+            // 
+            walletButton.BackColor = Color.SteelBlue;
+            walletButton.Font = new Font("Haettenschweiler", 17F);
+            walletButton.Location = new Point(20, 296);
+            walletButton.Name = "walletButton";
+            walletButton.Size = new Size(160, 55);
+            walletButton.TabIndex = 0;
+            walletButton.Text = "My Wallet";
+            walletButton.UseVisualStyleBackColor = false;
+            walletButton.Click += walletButton_Click;
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Haettenschweiler", 23F);
+            label11.Location = new Point(27, 15);
+            label11.Name = "label11";
+            label11.Size = new Size(151, 33);
+            label11.TabIndex = 3;
+            label11.Text = "Account Stats";
+            // 
+            // matchesTxt
+            // 
+            matchesTxt.AutoSize = true;
+            matchesTxt.FlatStyle = FlatStyle.System;
+            matchesTxt.Font = new Font("Segoe UI", 11F);
+            matchesTxt.Location = new Point(12, 76);
+            matchesTxt.Name = "matchesTxt";
+            matchesTxt.Size = new Size(108, 20);
+            matchesTxt.TabIndex = 4;
+            matchesTxt.Text = "Total Matches :";
+            matchesTxt.Click += matchesTxt_Click;
+            // 
+            // winsTxt
+            // 
+            winsTxt.AutoSize = true;
+            winsTxt.Font = new Font("Segoe UI", 11F);
+            winsTxt.Location = new Point(6, 119);
+            winsTxt.Name = "winsTxt";
+            winsTxt.Size = new Size(48, 20);
+            winsTxt.TabIndex = 1;
+            winsTxt.Text = "Wins :";
+            winsTxt.Click += label11_Click;
+            // 
+            // bustTxt
+            // 
+            bustTxt.AutoSize = true;
+            bustTxt.Font = new Font("Segoe UI", 11F);
+            bustTxt.Location = new Point(6, 166);
+            bustTxt.Name = "bustTxt";
+            bustTxt.Size = new Size(87, 20);
+            bustTxt.TabIndex = 2;
+            bustTxt.Text = "Bust Count :";
+            bustTxt.Click += lossTxt_Click;
+            // 
             // sideMenuPanel
             // 
-            sideMenuPanel.BackColor = Color.Green;
+            sideMenuPanel.BackColor = Color.Black;
             sideMenuPanel.Controls.Add(sideHomePanel);
             sideMenuPanel.Controls.Add(panel1);
             sideMenuPanel.Controls.Add(panel3);
+            sideMenuPanel.Controls.Add(panel4);
             sideMenuPanel.Controls.Add(panel2);
             sideMenuPanel.Dock = DockStyle.Left;
-            sideMenuPanel.Location = new Point(0, 66);
+            sideMenuPanel.Location = new Point(0, 75);
             sideMenuPanel.Name = "sideMenuPanel";
-            sideMenuPanel.Size = new Size(257, 545);
+            sideMenuPanel.Size = new Size(257, 536);
             sideMenuPanel.TabIndex = 1;
             // 
             // sideHomePanel
@@ -338,11 +619,34 @@
             option3.UseVisualStyleBackColor = false;
             option3.Click += option3_Click;
             // 
+            // panel4
+            // 
+            panel4.BackColor = Color.Green;
+            panel4.Controls.Add(aboutButton);
+            panel4.Location = new Point(3, 243);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(248, 72);
+            panel4.TabIndex = 6;
+            // 
+            // aboutButton
+            // 
+            aboutButton.BackColor = Color.DarkOrange;
+            aboutButton.FlatStyle = FlatStyle.Popup;
+            aboutButton.Font = new Font("Haettenschweiler", 20F);
+            aboutButton.ForeColor = Color.WhiteSmoke;
+            aboutButton.Location = new Point(3, 3);
+            aboutButton.Name = "aboutButton";
+            aboutButton.Size = new Size(242, 66);
+            aboutButton.TabIndex = 0;
+            aboutButton.Text = "About";
+            aboutButton.UseVisualStyleBackColor = false;
+            aboutButton.Click += aboutButton_Click;
+            // 
             // panel2
             // 
             panel2.BackColor = Color.Green;
             panel2.Controls.Add(option1);
-            panel2.Location = new Point(3, 243);
+            panel2.Location = new Point(3, 321);
             panel2.Name = "panel2";
             panel2.Size = new Size(248, 75);
             panel2.TabIndex = 3;
@@ -374,8 +678,9 @@
             navBarPanel.ForeColor = Color.Black;
             navBarPanel.Location = new Point(0, 0);
             navBarPanel.Name = "navBarPanel";
-            navBarPanel.Size = new Size(984, 66);
+            navBarPanel.Size = new Size(984, 75);
             navBarPanel.TabIndex = 0;
+            navBarPanel.Paint += navBarPanel_Paint;
             // 
             // pictureBox1
             // 
@@ -404,17 +709,18 @@
             // secondmainMenuPanel
             // 
             secondmainMenuPanel.BackColor = Color.Gray;
-            secondmainMenuPanel.Location = new Point(6, 63);
+            secondmainMenuPanel.Location = new Point(12, 106);
             secondmainMenuPanel.Name = "secondmainMenuPanel";
             secondmainMenuPanel.Size = new Size(984, 548);
             secondmainMenuPanel.TabIndex = 3;
+            secondmainMenuPanel.Paint += secondmainMenuPanel_Paint;
             // 
             // tittleNavBar
             // 
             tittleNavBar.AutoSize = true;
             tittleNavBar.Font = new Font("Haettenschweiler", 28.25F);
             tittleNavBar.ForeColor = Color.Black;
-            tittleNavBar.Location = new Point(75, 9);
+            tittleNavBar.Location = new Point(75, 15);
             tittleNavBar.Name = "tittleNavBar";
             tittleNavBar.Size = new Size(233, 40);
             tittleNavBar.TabIndex = 2;
@@ -430,6 +736,7 @@
             homeUsername.Size = new Size(39, 17);
             homeUsername.TabIndex = 1;
             homeUsername.Text = "User : ";
+            homeUsername.Click += homeUsername_Click;
             // 
             // homeBalance
             // 
@@ -445,7 +752,7 @@
             // mainDisplayPanel
             // 
             mainDisplayPanel.BackColor = Color.PaleGoldenrod;
-            mainDisplayPanel.Location = new Point(441, 252);
+            mainDisplayPanel.Location = new Point(553, 72);
             mainDisplayPanel.Name = "mainDisplayPanel";
             mainDisplayPanel.Size = new Size(200, 100);
             mainDisplayPanel.TabIndex = 0;
@@ -461,6 +768,7 @@
             // signupPanel
             // 
             signupPanel.BackColor = Color.ForestGreen;
+            signupPanel.Controls.Add(backButton);
             signupPanel.Controls.Add(ageLog);
             signupPanel.Controls.Add(verifLog);
             signupPanel.Controls.Add(verifBtn);
@@ -481,6 +789,16 @@
             signupPanel.Name = "signupPanel";
             signupPanel.Size = new Size(456, 612);
             signupPanel.TabIndex = 11;
+            // 
+            // backButton
+            // 
+            backButton.Location = new Point(171, 544);
+            backButton.Name = "backButton";
+            backButton.Size = new Size(108, 34);
+            backButton.TabIndex = 18;
+            backButton.Text = "backButton";
+            backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click;
             // 
             // ageLog
             // 
@@ -650,10 +968,22 @@
             loginPanel.ResumeLayout(false);
             loginPanel.PerformLayout();
             mainMenuPanel.ResumeLayout(false);
+            walletPanel.ResumeLayout(false);
+            walletPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)walletBackBtn).EndInit();
+            widthdrawXdepo.ResumeLayout(false);
+            widthdrawXdepo.PerformLayout();
+            confirmPanel.ResumeLayout(false);
+            confirmPanel.PerformLayout();
+            profilePanel.ResumeLayout(false);
+            profilePanel.PerformLayout();
+            panel5.ResumeLayout(false);
+            panel5.PerformLayout();
             sideMenuPanel.ResumeLayout(false);
             sideHomePanel.ResumeLayout(false);
             panel1.ResumeLayout(false);
             panel3.ResumeLayout(false);
+            panel4.ResumeLayout(false);
             panel2.ResumeLayout(false);
             navBarPanel.ResumeLayout(false);
             navBarPanel.PerformLayout();
@@ -715,5 +1045,31 @@
         private Label label4;
         private TextBox ageLog;
         private PictureBox pictureBox1;
+        private Button backButton;
+        private Panel panel4;
+        private Button aboutButton;
+        private Button walletButton;
+        private Label winsTxt;
+        private Panel walletPanel;
+        private Button depositButton;
+        private Button widthdrawButton;
+        private Label label13;
+        private Label label12;
+        private Panel widthdrawXdepo;
+        private Label label14;
+        private TextBox textBox1;
+        private Panel confirmPanel;
+        private Button confirmButton;
+        private Label label15;
+        private Button confirmPasswordButton;
+        private TextBox textBox2;
+        private Button closeButton;
+        private Label bustTxt;
+        private Label totalWinningsTxt;
+        private Label matchesTxt;
+        private Label label11;
+        private Label winningsTxt;
+        private Panel panel5;
+        private PictureBox walletBackBtn;
     }
 }

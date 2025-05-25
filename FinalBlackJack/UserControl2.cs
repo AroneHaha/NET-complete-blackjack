@@ -16,7 +16,7 @@ namespace FinalBlackJack
         public secondMainMenu()
         {
             InitializeComponent();
-   
+            changeInfo.Hide();
         }
 
         private void secondMainMenu_Load(object sender, EventArgs e)
@@ -29,11 +29,11 @@ namespace FinalBlackJack
 
             if (musicOff.Checked)
             {
-                
+
             }
             else if (musicOn.Checked)
             {
-                
+
             }
         }
 
@@ -48,6 +48,31 @@ namespace FinalBlackJack
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void changeUsernameButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void changePasswordButton_Click(object sender, EventArgs e)
+        {
+            changeInfo.Show();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            changeInfo.Hide();
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            changeInfo.Hide();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }

@@ -20,12 +20,14 @@ namespace FinalBlackJack
         public StartForm()
         {
             InitializeComponent();
+            termsTextPanel.AutoScroll = true;
+            playNowButton.Enabled = false;
 
             mainMenuForm mainMenu = new mainMenuForm();
             this.Load += async (s, e) => await ShowLoadingScreen();
 
         }
-        private bgmusic backgroundMusic;
+        private backgroundmusic backgroundMusic;
         private async Task ShowLoadingScreen()
         {
             loadingPanel.BringToFront();
@@ -46,8 +48,8 @@ namespace FinalBlackJack
             loadingPanel.Visible = false;
             if (backgroundMusic == null)
             {
-                string musicPath = @"C:\BSIT 1\C#\BLACKJACK ASSETS\audios\Audio\bgmusic.wav";
-                backgroundMusic = new bgmusic(musicPath);
+                string musicPath = @"C:\BSIT 1\C#\blackjack\audio\bgmusic.wav";
+                backgroundMusic = new backgroundmusic(musicPath);
                 backgroundMusic.PlayLoop();
             }
 
@@ -90,6 +92,18 @@ namespace FinalBlackJack
         private void form1Panel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void acceptButton_Click(object sender, EventArgs e)
+        {
+            playNowButton.Enabled = true;
+            termsPanel.Visible = false; 
+
+        }
+
+        private void declineButton_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

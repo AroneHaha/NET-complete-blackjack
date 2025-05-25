@@ -19,9 +19,12 @@ namespace FinalBlackJack
         public logPassword()
         {
             InitializeComponent();
-            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\images\imaheAds1.jpg"));
-            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\images\imaheAds2.jpg"));
-            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\images\imaheAds3.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds1.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds2.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds3.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imahesAds4.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imahesAds5.jpg"));
+
 
             adsPictureBox.Image = imahes[0];
             adsPictureBox.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -33,7 +36,7 @@ namespace FinalBlackJack
 
         private void ImageTimer_Tick(object sender, EventArgs e)
         {
-            currentImageIndex = (currentImageIndex + 1) % imahes.Count;  
+            currentImageIndex = (currentImageIndex + 1) % imahes.Count;
             adsPictureBox.Image = imahes[currentImageIndex];
         }
 
@@ -43,8 +46,8 @@ namespace FinalBlackJack
             mainGameForm gameForm = new mainGameForm();
             gameForm.Show();
 
-           
-            Form parentForm = this.FindForm(); 
+
+            Form parentForm = this.FindForm();
             if (parentForm != null)
             {
                 parentForm.Close();
@@ -53,12 +56,17 @@ namespace FinalBlackJack
 
         private void homeUserOption_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void adsPictureBox_Click(object sender, EventArgs e)
         {
-            
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

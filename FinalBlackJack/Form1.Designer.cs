@@ -36,8 +36,16 @@
             loadingText2 = new Label();
             loadingBar = new ProgressBar();
             form1Panel = new Panel();
+            termsPanel = new Panel();
+            label2 = new Label();
+            termsTextPanel = new Panel();
+            label1 = new Label();
+            acceptButton = new Button();
+            declineButton = new Button();
             loadingPanel.SuspendLayout();
             form1Panel.SuspendLayout();
+            termsPanel.SuspendLayout();
+            termsTextPanel.SuspendLayout();
             SuspendLayout();
             // 
             // tittleText
@@ -130,12 +138,73 @@
             form1Panel.Controls.Add(tittleText);
             form1Panel.Controls.Add(playNowButton);
             form1Panel.Controls.Add(exitButton);
+            form1Panel.Controls.Add(termsPanel);
             form1Panel.Dock = DockStyle.Fill;
             form1Panel.Location = new Point(0, 0);
             form1Panel.Name = "form1Panel";
             form1Panel.Size = new Size(984, 611);
             form1Panel.TabIndex = 4;
             form1Panel.Paint += form1Panel_Paint;
+            // 
+            // termsPanel
+            // 
+            termsPanel.Controls.Add(label2);
+            termsPanel.Controls.Add(termsTextPanel);
+            termsPanel.Controls.Add(acceptButton);
+            termsPanel.Controls.Add(declineButton);
+            termsPanel.Location = new Point(355, 137);
+            termsPanel.Name = "termsPanel";
+            termsPanel.Size = new Size(437, 420);
+            termsPanel.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 20F);
+            label2.Location = new Point(73, 8);
+            label2.Name = "label2";
+            label2.Size = new Size(320, 37);
+            label2.TabIndex = 3;
+            label2.Text = "TERMS AND AGREEMENT";
+            // 
+            // termsTextPanel
+            // 
+            termsTextPanel.Controls.Add(label1);
+            termsTextPanel.Location = new Point(3, 48);
+            termsTextPanel.Name = "termsTextPanel";
+            termsTextPanel.Size = new Size(431, 280);
+            termsTextPanel.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(17, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(399, 510);
+            label1.TabIndex = 0;
+            label1.Text = resources.GetString("label1.Text");
+            // 
+            // acceptButton
+            // 
+            acceptButton.ForeColor = SystemColors.ActiveCaptionText;
+            acceptButton.Location = new Point(235, 334);
+            acceptButton.Name = "acceptButton";
+            acceptButton.Size = new Size(158, 60);
+            acceptButton.TabIndex = 1;
+            acceptButton.Text = "Accept";
+            acceptButton.UseVisualStyleBackColor = true;
+            acceptButton.Click += acceptButton_Click;
+            // 
+            // declineButton
+            // 
+            declineButton.ForeColor = SystemColors.ActiveCaptionText;
+            declineButton.Location = new Point(41, 334);
+            declineButton.Name = "declineButton";
+            declineButton.Size = new Size(158, 60);
+            declineButton.TabIndex = 0;
+            declineButton.Text = "Decline";
+            declineButton.UseVisualStyleBackColor = true;
+            declineButton.Click += declineButton_Click;
             // 
             // StartForm
             // 
@@ -154,6 +223,10 @@
             loadingPanel.PerformLayout();
             form1Panel.ResumeLayout(false);
             form1Panel.PerformLayout();
+            termsPanel.ResumeLayout(false);
+            termsPanel.PerformLayout();
+            termsTextPanel.ResumeLayout(false);
+            termsTextPanel.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -166,5 +239,11 @@
         private Label loadingText2;
         private ProgressBar loadingBar;
         private Panel form1Panel;
+        private Panel termsPanel;
+        private Panel termsTextPanel;
+        private Button acceptButton;
+        private Button declineButton;
+        private Label label2;
+        private Label label1;
     }
 }

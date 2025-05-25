@@ -31,11 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainGameForm));
             cityChooserPanel = new Panel();
             cityPanel = new Panel();
+            extMaingameButton = new Button();
             rightButton = new Button();
             leftButton = new Button();
             manilaPicBox = new PictureBox();
             singaporePicBox = new PictureBox();
             hongkongPicBox = new PictureBox();
+            topTextCity = new Label();
             cityChooserPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manilaPicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)singaporePicBox).BeginInit();
@@ -44,13 +46,15 @@
             // 
             // cityChooserPanel
             // 
-            cityChooserPanel.BackColor = Color.Purple;
+            cityChooserPanel.BackColor = SystemColors.ControlLightLight;
             cityChooserPanel.Controls.Add(cityPanel);
+            cityChooserPanel.Controls.Add(extMaingameButton);
             cityChooserPanel.Controls.Add(rightButton);
             cityChooserPanel.Controls.Add(leftButton);
             cityChooserPanel.Controls.Add(manilaPicBox);
             cityChooserPanel.Controls.Add(singaporePicBox);
             cityChooserPanel.Controls.Add(hongkongPicBox);
+            cityChooserPanel.Controls.Add(topTextCity);
             cityChooserPanel.Dock = DockStyle.Fill;
             cityChooserPanel.Location = new Point(0, 0);
             cityChooserPanel.Name = "cityChooserPanel";
@@ -60,13 +64,23 @@
             // 
             // cityPanel
             // 
-            cityPanel.BackColor = Color.Violet;
+            cityPanel.BackColor = SystemColors.ControlLightLight;
             cityPanel.Dock = DockStyle.Fill;
             cityPanel.Location = new Point(0, 0);
             cityPanel.Name = "cityPanel";
             cityPanel.Size = new Size(984, 611);
             cityPanel.TabIndex = 5;
             cityPanel.Paint += cityPanel_Paint;
+            // 
+            // extMaingameButton
+            // 
+            extMaingameButton.Location = new Point(830, 541);
+            extMaingameButton.Name = "extMaingameButton";
+            extMaingameButton.Size = new Size(75, 23);
+            extMaingameButton.TabIndex = 6;
+            extMaingameButton.Text = "Home";
+            extMaingameButton.UseVisualStyleBackColor = true;
+            extMaingameButton.Click += extMaingameButton_Click;
             // 
             // rightButton
             // 
@@ -94,6 +108,7 @@
             manilaPicBox.Location = new Point(261, 141);
             manilaPicBox.Name = "manilaPicBox";
             manilaPicBox.Size = new Size(449, 320);
+            manilaPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             manilaPicBox.TabIndex = 0;
             manilaPicBox.TabStop = false;
             manilaPicBox.Click += manilaPicBox_Click;
@@ -104,6 +119,7 @@
             singaporePicBox.Location = new Point(12, 131);
             singaporePicBox.Name = "singaporePicBox";
             singaporePicBox.Size = new Size(449, 320);
+            singaporePicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             singaporePicBox.TabIndex = 1;
             singaporePicBox.TabStop = false;
             singaporePicBox.Click += singaporePicBox_Click;
@@ -114,9 +130,21 @@
             hongkongPicBox.Location = new Point(523, 130);
             hongkongPicBox.Name = "hongkongPicBox";
             hongkongPicBox.Size = new Size(449, 320);
+            hongkongPicBox.SizeMode = PictureBoxSizeMode.StretchImage;
             hongkongPicBox.TabIndex = 2;
             hongkongPicBox.TabStop = false;
             hongkongPicBox.Click += hongkongPicBox_Click;
+            // 
+            // topTextCity
+            // 
+            topTextCity.AutoSize = true;
+            topTextCity.Font = new Font("Segoe UI", 50F);
+            topTextCity.Location = new Point(100, 9);
+            topTextCity.Name = "topTextCity";
+            topTextCity.Size = new Size(214, 89);
+            topTextCity.TabIndex = 7;
+            topTextCity.Text = "label1";
+            topTextCity.TextAlign = ContentAlignment.TopCenter;
             // 
             // mainGameForm
             // 
@@ -130,6 +158,7 @@
             Text = "Black Jack Deluxe";
             Load += mainGameForm_Load;
             cityChooserPanel.ResumeLayout(false);
+            cityChooserPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)manilaPicBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)singaporePicBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)hongkongPicBox).EndInit();
@@ -145,5 +174,7 @@
         private PictureBox singaporePicBox;
         private PictureBox hongkongPicBox;
         private Panel cityPanel;
+        private Button extMaingameButton;
+        private Label topTextCity;
     }
 }

@@ -18995,6 +18995,42 @@
         QnuB5MorBUPNgf/Z
 </value>
   </data>
+  <data name="label1.Text" xml:space="preserve">
+    <value>Terms and Agreement for BlackJack Deluxe
+
+1. Acceptance of Terms
+By downloading, installing, or playing BlackJack Deluxe, 
+you agree to follow these Terms and Conditions. If you 
+do not agree, please do not use the game.
+
+2. Game Use
+BlackJack Deluxe is meant for entertainment purposes only. 
+No real money or gambling is involved. You must be at least 
+13 years old to play.
+
+3. User Data
+We do not collect personal information. Any game progress 
+or data is stored locally on your device unless stated otherwise.
+
+4. Ownership
+All graphics, sounds, and code in BlackJack Deluxe are the property 
+of the developer. 
+You may not copy, modify, or reuse any part of the game without 
+permission.
+
+5. Gamble Responsibly
+Even though BlackJack Deluxe does not use real money, it is inspired 
+by gambling games. Please play responsibly and understand the risks 
+of real gambling. If you or someone you know has a gambling problem, 
+seek help from a trusted support organization.
+
+6. Limitation of Liability
+We are not responsible for any damage or data loss caused by
+ playing BlackJack Deluxe. Use the game at your own risk.
+
+7. Contact
+If you have any questions about these terms, please contact the developer.</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAAAAAAAAAAAAAAAAAAAA

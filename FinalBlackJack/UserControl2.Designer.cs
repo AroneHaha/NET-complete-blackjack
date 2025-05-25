@@ -33,11 +33,23 @@
             label3 = new Label();
             saveButton = new Button();
             panel1 = new Panel();
+            changeInfo = new Panel();
+            cancelButton = new Button();
+            saveBtn = new Button();
+            changePasswordButton = new Button();
             settingsPassword = new Label();
             settingsUsername = new Label();
             musicOn = new RadioButton();
             musicOff = new RadioButton();
+            codeButton = new Button();
+            confirmPass = new TextBox();
+            currentPass = new TextBox();
+            newPass = new Label();
+            textBox1 = new TextBox();
+            label4 = new Label();
+            label5 = new Label();
             panel1.SuspendLayout();
+            changeInfo.SuspendLayout();
             SuspendLayout();
             // 
             // label1
@@ -84,6 +96,8 @@
             // panel1
             // 
             panel1.BackColor = Color.DarkSeaGreen;
+            panel1.Controls.Add(changeInfo);
+            panel1.Controls.Add(changePasswordButton);
             panel1.Controls.Add(settingsPassword);
             panel1.Controls.Add(settingsUsername);
             panel1.Controls.Add(musicOn);
@@ -98,6 +112,53 @@
             panel1.Size = new Size(849, 488);
             panel1.TabIndex = 5;
             panel1.Paint += panel1_Paint;
+            // 
+            // changeInfo
+            // 
+            changeInfo.BackColor = Color.Olive;
+            changeInfo.Controls.Add(label5);
+            changeInfo.Controls.Add(label4);
+            changeInfo.Controls.Add(textBox1);
+            changeInfo.Controls.Add(newPass);
+            changeInfo.Controls.Add(currentPass);
+            changeInfo.Controls.Add(confirmPass);
+            changeInfo.Controls.Add(codeButton);
+            changeInfo.Controls.Add(cancelButton);
+            changeInfo.Controls.Add(saveBtn);
+            changeInfo.Location = new Point(132, 27);
+            changeInfo.Name = "changeInfo";
+            changeInfo.Size = new Size(579, 426);
+            changeInfo.TabIndex = 8;
+            // 
+            // cancelButton
+            // 
+            cancelButton.Location = new Point(441, 352);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(123, 40);
+            cancelButton.TabIndex = 1;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.Click += cancelButton_Click;
+            // 
+            // saveBtn
+            // 
+            saveBtn.Location = new Point(312, 352);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(123, 40);
+            saveBtn.TabIndex = 0;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.Click += saveBtn_Click;
+            // 
+            // changePasswordButton
+            // 
+            changePasswordButton.Location = new Point(566, 224);
+            changePasswordButton.Name = "changePasswordButton";
+            changePasswordButton.Size = new Size(145, 36);
+            changePasswordButton.TabIndex = 10;
+            changePasswordButton.Text = "cp Button";
+            changePasswordButton.UseVisualStyleBackColor = true;
+            changePasswordButton.Click += changePasswordButton_Click;
             // 
             // settingsPassword
             // 
@@ -144,6 +205,64 @@
             musicOff.Text = "No Music";
             musicOff.UseVisualStyleBackColor = true;
             // 
+            // codeButton
+            // 
+            codeButton.Location = new Point(116, 283);
+            codeButton.Name = "codeButton";
+            codeButton.Size = new Size(129, 41);
+            codeButton.TabIndex = 2;
+            codeButton.Text = "Send Code";
+            codeButton.UseVisualStyleBackColor = true;
+            // 
+            // confirmPass
+            // 
+            confirmPass.Location = new Point(211, 197);
+            confirmPass.Name = "confirmPass";
+            confirmPass.Size = new Size(312, 34);
+            confirmPass.TabIndex = 3;
+            confirmPass.TextChanged += textBox1_TextChanged;
+            // 
+            // currentPass
+            // 
+            currentPass.Location = new Point(211, 140);
+            currentPass.Name = "currentPass";
+            currentPass.Size = new Size(312, 34);
+            currentPass.TabIndex = 4;
+            // 
+            // newPass
+            // 
+            newPass.AutoSize = true;
+            newPass.Location = new Point(48, 143);
+            newPass.Name = "newPass";
+            newPass.Size = new Size(157, 27);
+            newPass.TabIndex = 5;
+            newPass.Text = "New Password :";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(252, 287);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(183, 34);
+            textBox1.TabIndex = 6;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(16, 200);
+            label4.Name = "label4";
+            label4.Size = new Size(189, 27);
+            label4.TabIndex = 7;
+            label4.Text = "Confirm Password :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(176, 77);
+            label5.Name = "label5";
+            label5.Size = new Size(276, 27);
+            label5.TabIndex = 8;
+            label5.Text = "Change Account Information";
+            // 
             // secondMainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -155,6 +274,8 @@
             Load += secondMainMenu_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            changeInfo.ResumeLayout(false);
+            changeInfo.PerformLayout();
             ResumeLayout(false);
         }
 
@@ -169,5 +290,16 @@
         private RadioButton musicOff;
         private Label settingsPassword;
         private Label settingsUsername;
+        private Button changePasswordButton;
+        private Panel changeInfo;
+        private Button cancelButton;
+        private Button saveBtn;
+        private TextBox confirmPass;
+        private Button codeButton;
+        private TextBox textBox1;
+        private Label newPass;
+        private TextBox currentPass;
+        private Label label5;
+        private Label label4;
     }
 }

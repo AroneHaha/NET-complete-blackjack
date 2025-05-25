@@ -15,11 +15,20 @@ namespace FinalBlackJack
 
     public partial class mainMenuForm : Form
     {
+        public int accountIndex;
+        public string usernameHolder;
+        public string passwordHolder;
+        public string emailHolder;
+        public int accountBalanceHolder;
+        public int accountTotalMatches;
+        public int accountBustCount;
+        public int accountWinnings;
+
+        private homesounds clickSound;
 
         public mainMenuForm()
         {
             InitializeComponent();
-
 
             mainDisplayPanel.Dock = DockStyle.Fill;
             mainDisplayPanel.Show();
@@ -31,16 +40,44 @@ namespace FinalBlackJack
             navBarPanel.Hide();
             sideMenuPanel.Hide();
             profilePanel.Hide();
+            walletPanel.Hide();
 
             mainDisplayPanel.Controls.Clear();
         }
 
-        private clicksound clickSound;
-        private void LoadView(UserControl control)
+        public void RefreshAccountData()
         {
+            accountIndex = AccountData.currentAccount;
+            usernameHolder = AccountData.usernames[accountIndex];
+            passwordHolder = AccountData.passwords[accountIndex];
+            emailHolder = AccountData.emails[accountIndex];
+            accountBalanceHolder = AccountData.accountsBalance[accountIndex];
+            accountTotalMatches = AccountData.totalMatches[accountIndex];
+            accountBustCount = AccountData.bustCount[accountIndex];
+            accountWinnings = AccountData.totalWinnings[accountIndex];
+        }
+
+        public void LoadView(UserControl control)
+        {
+
             mainDisplayPanel.Controls.Clear();
             control.Dock = DockStyle.Fill;
             mainDisplayPanel.Controls.Add(control);
+        }
+
+        public void showMainMenuPanel()
+        {
+            navBarPanel.Visible = true;
+            sideMenuPanel.Visible = true;
+        }
+
+        public void signOutPanel()
+        {
+            mainDisplayPanel.Visible = false;
+            mainMenuPanel.Visible = false;
+            navBarPanel.Visible = false;
+            loginPanel.Visible = true;
+            loginPanel.BringToFront();
 
         }
 
@@ -54,49 +91,57 @@ namespace FinalBlackJack
         {
             homeUsername.Text = "Account: " + AccountData.usernames[AccountData.currentAccount];
             homeBalance.Text = "Balance: Php " + AccountData.accountsBalance[AccountData.currentAccount].ToString("C2");
-            //string user = usernameLog.Text.Trim();
-            //string pass = passwordLogin.Text;
+            string user = userLogin.Text.Trim();
+            string pass = passwordLogin.Text;
 
-            //int idx = AccountData.usernames.IndexOf(user);
-            //if (idx == -1)
-            //{
-            //    MessageBox.Show("Username not found.");
-            //    return;
-            //}
+            int idx = AccountData.usernames.IndexOf(user);
+            if (idx == -1)
+            {
+                MessageBox.Show("Username not found.");
+                return;
+            }
 
-            //if (AccountData.passwords[idx] == pass && AccountData.usernames[idx] == user)
-            //{
-            //    AccountData.currentAccount = idx;
-            //    playerBalance = Convert.ToInt32(AccountData.accountsBalance[AccountData.currentAccount]);
-            //    user = "";
-            //    pass = "";
+            if (AccountData.passwords[idx] == pass && AccountData.usernames[idx] == user)
+            {
+                AccountData.currentAccount = idx;
+                playerBalance = Convert.ToInt32(AccountData.accountsBalance[AccountData.currentAccount]);
+                user = "";
+                pass = "";
 
-            //    MessageBox.Show("Login successful!");
+                RefreshAccountData();
 
-            loginPanel.Hide();
-            mainMenuPanel.Show();
-            mainDisplayPanel.Show();
-            navBarPanel.Show();
-            LoadView(new logPassword());
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Invalid password.");
-            //    passwordLogin.Clear();
-            //}
+                MessageBox.Show("Login successful!");
+
+                homeUsername.Text = "User : " + usernameHolder;
+                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
+                bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
+                totalWinningsTxt.Text = "Total Winnings : " + accountWinnings.ToString();
+
+                loginPanel.Hide();
+                mainMenuPanel.Show();
+                mainDisplayPanel.Show();
+                navBarPanel.Show();
+                LoadView(new logPassword());
+            }
+            else
+            {
+                MessageBox.Show("Invalid password.");
+                passwordLogin.Clear();
+            }
         }
 
         private void clicking()
         {
-            string musicPath = @"C:\BSIT 1\C#\BLACKJACK ASSETS\audios\Audio\clicks.wav";
-            clickSound = new clicksound(musicPath);
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
             clickSound.PlayOnce();
         }
 
         private void homenav()
         {
-            string musicPath = @"C:\BSIT 1\C#\BLACKJACK ASSETS\audios\Audio\homenav.wav";
-            clickSound = new clicksound(musicPath);
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\homenav.wav";
+            clickSound = new homesounds(musicPath);
             clickSound.PlayOnce();
         }
         private void switchToSignup_Click(object sender, EventArgs e)
@@ -121,16 +166,22 @@ namespace FinalBlackJack
 
         private void homeButton_Click(object sender, EventArgs e)
         {
-
             clicking();
             LoadView(new logPassword());
             sideMenuPanel.Hide();
+            walletPanel.Hide();
+            profilePanel.Hide();
         }
         private void option1_Click(object sender, EventArgs e)
         {
             clicking();
+
+            AccountData.currentAccount = 0;
+
             LoadView(new thirdmainMenu());
             sideMenuPanel.Hide();
+            walletPanel.Hide();
+            profilePanel.Hide();
         }
 
         private void option2_Click(object sender, EventArgs e)
@@ -138,6 +189,8 @@ namespace FinalBlackJack
             clicking();
             LoadView(new firstMainMenu());
             sideMenuPanel.Hide();
+            walletPanel.Hide();
+            profilePanel.Hide();
         }
 
         private void option3_Click(object sender, EventArgs e)
@@ -145,7 +198,17 @@ namespace FinalBlackJack
             clicking();
             LoadView(new secondMainMenu());
             sideMenuPanel.Hide();
+            walletPanel.Hide();
+            profilePanel.Hide();
 
+        }
+        private void aboutButton_Click(object sender, EventArgs e)
+        {
+            clicking();
+            LoadView(new aboutPanel());
+            sideMenuPanel.Hide();
+            walletPanel.Hide();
+            profilePanel.Hide();
         }
 
         private void userNameLoginTextbox_TextChanged(object sender, EventArgs e)
@@ -197,10 +260,6 @@ namespace FinalBlackJack
         {
 
         }
-
-
-
-
 
         private void firstmainMenuPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -323,12 +382,11 @@ namespace FinalBlackJack
                 return;
             }
 
-
             // ADD THE INFO OF ACCOUNTS WHEN IT PASS THROUGH THE IFS
             AccountData.usernames.Add(newUser);
             AccountData.passwords.Add(newPass);
             AccountData.emails.Add(newEmail);
-            AccountData.accountsBalance.Add(0.00);
+            AccountData.accountsBalance.Add(0);
             verifCode = "";
 
             MessageBox.Show("Registration successful!");
@@ -362,5 +420,94 @@ namespace FinalBlackJack
         {
 
         }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            signupPanel.Hide();
+            loginPanel.Show();
+            loginPanel.BringToFront();
+        }
+
+        private void walletButton_Click(object sender, EventArgs e)
+        {
+            widthdrawXdepo.Hide();
+            confirmPanel.Hide();
+            walletPanel.Visible = !walletPanel.Visible;
+            if (walletPanel.Visible)
+            {
+                walletPanel.BringToFront();
+            }
+        }
+
+        private void depositButton_Click(object sender, EventArgs e)
+        {
+            widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
+        }
+
+        private void widthdrawButton_Click(object sender, EventArgs e)
+        {
+            widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
+        }
+
+        private void confirmButton_Click(object sender, EventArgs e)
+        {
+            confirmPanel.Show();
+        }
+
+        private void closeButton_Click(object sender, EventArgs e)
+        {
+            widthdrawXdepo.Hide();
+        }
+
+        private void closeBtn_Click(object sender, EventArgs e)
+        {
+            walletPanel.Hide();
+        }
+
+        private void walletPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lossTxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void navBarPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void homeUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void matchesTxt_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void secondmainMenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            walletPanel.Hide();
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
+
 }
