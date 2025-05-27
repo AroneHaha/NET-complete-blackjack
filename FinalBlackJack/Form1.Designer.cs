@@ -69,7 +69,7 @@
             playNowButton.FlatStyle = FlatStyle.Flat;
             playNowButton.Font = new Font("Haettenschweiler", 35F);
             playNowButton.ForeColor = Color.White;
-            playNowButton.Location = new Point(73, 266);
+            playNowButton.Location = new Point(97, 282);
             playNowButton.Name = "playNowButton";
             playNowButton.Size = new Size(215, 51);
             playNowButton.TabIndex = 1;
@@ -88,7 +88,7 @@
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exitButton.ForeColor = SystemColors.ControlLight;
-            exitButton.Location = new Point(123, 337);
+            exitButton.Location = new Point(153, 354);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(108, 35);
             exitButton.TabIndex = 2;
@@ -135,10 +135,10 @@
             form1Panel.BackgroundImage = (Image)resources.GetObject("form1Panel.BackgroundImage");
             form1Panel.BackgroundImageLayout = ImageLayout.Stretch;
             form1Panel.Controls.Add(loadingPanel);
-            form1Panel.Controls.Add(tittleText);
-            form1Panel.Controls.Add(playNowButton);
             form1Panel.Controls.Add(exitButton);
             form1Panel.Controls.Add(termsPanel);
+            form1Panel.Controls.Add(tittleText);
+            form1Panel.Controls.Add(playNowButton);
             form1Panel.Dock = DockStyle.Fill;
             form1Panel.Location = new Point(0, 0);
             form1Panel.Name = "form1Panel";
@@ -152,58 +152,63 @@
             termsPanel.Controls.Add(termsTextPanel);
             termsPanel.Controls.Add(acceptButton);
             termsPanel.Controls.Add(declineButton);
-            termsPanel.Location = new Point(355, 137);
+            termsPanel.Location = new Point(269, 89);
             termsPanel.Name = "termsPanel";
-            termsPanel.Size = new Size(437, 420);
+            termsPanel.Size = new Size(456, 434);
             termsPanel.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 20F);
-            label2.Location = new Point(73, 8);
+            label2.Font = new Font("Haettenschweiler", 30F);
+            label2.ForeColor = Color.WhiteSmoke;
+            label2.Location = new Point(83, 18);
             label2.Name = "label2";
-            label2.Size = new Size(320, 37);
+            label2.Size = new Size(305, 42);
             label2.TabIndex = 3;
             label2.Text = "TERMS AND AGREEMENT";
             // 
             // termsTextPanel
             // 
+            termsTextPanel.BackColor = Color.DarkSeaGreen;
             termsTextPanel.Controls.Add(label1);
-            termsTextPanel.Location = new Point(3, 48);
+            termsTextPanel.Location = new Point(49, 77);
             termsTextPanel.Name = "termsTextPanel";
-            termsTextPanel.Size = new Size(431, 280);
+            termsTextPanel.Size = new Size(367, 282);
             termsTextPanel.TabIndex = 2;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(17, 9);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(16, 12);
             label1.Name = "label1";
-            label1.Size = new Size(399, 510);
+            label1.Size = new Size(333, 615);
             label1.TabIndex = 0;
             label1.Text = resources.GetString("label1.Text");
             // 
             // acceptButton
             // 
-            acceptButton.ForeColor = SystemColors.ActiveCaptionText;
-            acceptButton.Location = new Point(235, 334);
+            acceptButton.BackColor = Color.Green;
+            acceptButton.ForeColor = Color.White;
+            acceptButton.Location = new Point(236, 374);
             acceptButton.Name = "acceptButton";
-            acceptButton.Size = new Size(158, 60);
+            acceptButton.Size = new Size(158, 39);
             acceptButton.TabIndex = 1;
             acceptButton.Text = "Accept";
-            acceptButton.UseVisualStyleBackColor = true;
+            acceptButton.UseVisualStyleBackColor = false;
             acceptButton.Click += acceptButton_Click;
             // 
             // declineButton
             // 
-            declineButton.ForeColor = SystemColors.ActiveCaptionText;
-            declineButton.Location = new Point(41, 334);
+            declineButton.BackColor = Color.Red;
+            declineButton.ForeColor = Color.White;
+            declineButton.Location = new Point(72, 374);
             declineButton.Name = "declineButton";
-            declineButton.Size = new Size(158, 60);
+            declineButton.Size = new Size(158, 39);
             declineButton.TabIndex = 0;
             declineButton.Text = "Decline";
-            declineButton.UseVisualStyleBackColor = true;
+            declineButton.UseVisualStyleBackColor = false;
             declineButton.Click += declineButton_Click;
             // 
             // StartForm

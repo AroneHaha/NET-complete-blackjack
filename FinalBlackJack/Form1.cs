@@ -26,6 +26,9 @@ namespace FinalBlackJack
             mainMenuForm mainMenu = new mainMenuForm();
             this.Load += async (s, e) => await ShowLoadingScreen();
 
+            playNowButton.Visible = false;
+            exitButton.Visible = false;
+
         }
         private backgroundmusic backgroundMusic;
         private async Task ShowLoadingScreen()
@@ -97,13 +100,20 @@ namespace FinalBlackJack
         private void acceptButton_Click(object sender, EventArgs e)
         {
             playNowButton.Enabled = true;
-            termsPanel.Visible = false; 
+            playNowButton.Visible = true;
+            exitButton.Visible = true;
+            termsPanel.Visible = false;
 
         }
 
         private void declineButton_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+
         }
     }
 }

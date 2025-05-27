@@ -44,9 +44,6 @@ namespace FinalBlackJack
             UpdateCarouselDisplay();
         }
 
-
-
-
         private void UpdateCarouselDisplay()
         {
             int formWidth = 1000;

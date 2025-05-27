@@ -23,6 +23,10 @@ namespace FinalBlackJack
         public int accountTotalMatches;
         public int accountBustCount;
         public int accountWinnings;
+        public double accountWinrate;
+
+        public string walletChoice = "";
+
 
         private homesounds clickSound;
 
@@ -45,6 +49,54 @@ namespace FinalBlackJack
             mainDisplayPanel.Controls.Clear();
         }
 
+        public void makeDeposit()
+        {
+            try
+            {
+                int amountToAdd = int.Parse(walletAmount.Text);
+                MessageBox.Show("Transaction process is done, please check your account balance update.");
+                AccountData.accountsBalance[AccountData.currentAccount] += amountToAdd;
+                accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
+                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                resetWalletInfo();
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid input. Please enter numeric values only.");
+            }
+        }
+
+        public void makeWithdrawal()
+        {
+            try
+            {
+                int amountToAdd = int.Parse(walletAmount.Text);
+                MessageBox.Show("Transaction process is done, please check your account balance update.");
+                AccountData.accountsBalance[AccountData.currentAccount] -= amountToAdd;
+                accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
+                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                resetWalletInfo();
+
+            }
+            catch (FormatException)
+            {
+                MessageBox.Show("Invalid input. Please enter numeric values only.");
+                walletPassword.Clear();
+            }
+        }
+
+        public void resetWalletInfo()
+        {
+            walletAmount.Clear();
+            walletPassword.Clear();
+            walletChoice = "";
+            widthdrawXdepo.Hide();
+            confirmPanel.Hide();
+        }
+
         public void RefreshAccountData()
         {
             accountIndex = AccountData.currentAccount;
@@ -52,10 +104,21 @@ namespace FinalBlackJack
             passwordHolder = AccountData.passwords[accountIndex];
             emailHolder = AccountData.emails[accountIndex];
             accountBalanceHolder = AccountData.accountsBalance[accountIndex];
-            accountTotalMatches = AccountData.totalMatches[accountIndex];
+
+            int wins = AccountData.totalWins[accountIndex];
+            int losses = AccountData.totalLosses[accountIndex];
+            int totalGames = wins + losses;
+
+            accountTotalMatches = totalGames;
             accountBustCount = AccountData.bustCount[accountIndex];
             accountWinnings = AccountData.totalWinnings[accountIndex];
+
+            if (totalGames > 0)
+                accountWinrate = Math.Round((double)wins / totalGames * 100, 2);
+            else
+                accountWinrate = 0.0;
         }
+
 
         public void LoadView(UserControl control)
         {
@@ -105,6 +168,9 @@ namespace FinalBlackJack
             {
                 AccountData.currentAccount = idx;
                 playerBalance = Convert.ToInt32(AccountData.accountsBalance[AccountData.currentAccount]);
+
+                userLogin.Clear();
+                passwordLogin.Clear();
                 user = "";
                 pass = "";
 
@@ -116,7 +182,9 @@ namespace FinalBlackJack
                 homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
                 matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
                 bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
-                totalWinningsTxt.Text = "Total Winnings : " + accountWinnings.ToString();
+                totalWinningsTxt.Text = "Total Winnings : $" + accountWinnings.ToString();
+                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                winrateTxt.Text = "Winrate : " + accountWinrate.ToString("F2") + "%";
 
                 loginPanel.Hide();
                 mainMenuPanel.Show();
@@ -387,6 +455,10 @@ namespace FinalBlackJack
             AccountData.passwords.Add(newPass);
             AccountData.emails.Add(newEmail);
             AccountData.accountsBalance.Add(0);
+            AccountData.totalWins.Add(0);
+            AccountData.totalLosses.Add(0);
+            AccountData.bustCount.Add(0);
+            AccountData.totalWinnings.Add(0);
             verifCode = "";
 
             MessageBox.Show("Registration successful!");
@@ -441,11 +513,15 @@ namespace FinalBlackJack
 
         private void depositButton_Click(object sender, EventArgs e)
         {
+            walletChoice = "deposit";
+            walletAmount.Text = "";
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
         }
 
         private void widthdrawButton_Click(object sender, EventArgs e)
         {
+            walletChoice = "withdraw";
+            walletAmount.Text = "";
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
         }
 
@@ -505,6 +581,70 @@ namespace FinalBlackJack
         }
 
         private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel7_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click_1(object sender, EventArgs e)
+        {
+            homenav();
+            profilePanel.Visible = !profilePanel.Visible;
+            profilePanel.BringToFront();
+        }
+
+        private void userBox_MouseEnter(object sender, EventArgs e)
+        {
+            userBox.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\user-hovered.png");
+        }
+
+        private void userBox_MouseLeave(object sender, EventArgs e)
+        {
+            userBox.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\user.png");
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            navBar.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\bar-hovered.png");
+        }
+
+        private void navBar_MouseLeave(object sender, EventArgs e)
+        {
+            navBar.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\bar real.png");
+        }
+
+        private void walletAmount_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void walletConfirmPassword_Click(object sender, EventArgs e)
+        {
+            if (walletPassword.Text == passwordHolder)
+            {
+                if (walletChoice == "deposit")
+                {
+                    makeDeposit();
+                }
+                else
+                {
+                    makeWithdrawal();
+                }
+            }
+
+            else
+            {
+                MessageBox.Show("Incorrect password. Please try again.");
+                walletPassword.Clear();
+                return;
+            }
+        }
+
+        private void label2_Click(object sender, EventArgs e)
         {
 
         }

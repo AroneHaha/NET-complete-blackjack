@@ -21,11 +21,12 @@ namespace FinalBlackJack
         {
             InitializeComponent();
             StartForm startForm = new StartForm();
-            
+
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+
             mainMenuForm parentForm = this.FindForm() as mainMenuForm;
             if (parentForm != null)
             {
@@ -35,8 +36,8 @@ namespace FinalBlackJack
 
 
         }
-        
-        
+
+
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
@@ -46,6 +47,11 @@ namespace FinalBlackJack
             }
 
             this.Visible = false;
+
+        }
+
+        private void thirdmainMenu_Load(object sender, EventArgs e)
+        {
 
         }
     }

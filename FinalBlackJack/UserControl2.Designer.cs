@@ -34,6 +34,14 @@
             saveButton = new Button();
             panel1 = new Panel();
             changeInfo = new Panel();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            textBox1 = new TextBox();
+            newPass = new Label();
+            currentPass = new TextBox();
+            confirmPass = new TextBox();
+            codeButton = new Button();
             cancelButton = new Button();
             saveBtn = new Button();
             changePasswordButton = new Button();
@@ -41,13 +49,6 @@
             settingsUsername = new Label();
             musicOn = new RadioButton();
             musicOff = new RadioButton();
-            codeButton = new Button();
-            confirmPass = new TextBox();
-            currentPass = new TextBox();
-            newPass = new Label();
-            textBox1 = new TextBox();
-            label4 = new Label();
-            label5 = new Label();
             panel1.SuspendLayout();
             changeInfo.SuspendLayout();
             SuspendLayout();
@@ -115,7 +116,8 @@
             // 
             // changeInfo
             // 
-            changeInfo.BackColor = Color.Olive;
+            changeInfo.BackColor = Color.DarkSeaGreen;
+            changeInfo.Controls.Add(label6);
             changeInfo.Controls.Add(label5);
             changeInfo.Controls.Add(label4);
             changeInfo.Controls.Add(textBox1);
@@ -127,12 +129,83 @@
             changeInfo.Controls.Add(saveBtn);
             changeInfo.Location = new Point(132, 27);
             changeInfo.Name = "changeInfo";
-            changeInfo.Size = new Size(579, 426);
+            changeInfo.Size = new Size(621, 426);
             changeInfo.TabIndex = 8;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(53, 283);
+            label6.Name = "label6";
+            label6.Size = new Size(183, 27);
+            label6.TabIndex = 9;
+            label6.Text = "Gmail Verification :";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Haettenschweiler", 40F);
+            label5.Location = new Point(79, 32);
+            label5.Name = "label5";
+            label5.Size = new Size(485, 56);
+            label5.TabIndex = 8;
+            label5.Text = "Change Account Information";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(47, 207);
+            label4.Name = "label4";
+            label4.Size = new Size(189, 27);
+            label4.TabIndex = 7;
+            label4.Text = "Confirm Password :";
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(242, 279);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(183, 34);
+            textBox1.TabIndex = 6;
+            // 
+            // newPass
+            // 
+            newPass.AutoSize = true;
+            newPass.Location = new Point(79, 139);
+            newPass.Name = "newPass";
+            newPass.Size = new Size(157, 27);
+            newPass.TabIndex = 5;
+            newPass.Text = "New Password :";
+            // 
+            // currentPass
+            // 
+            currentPass.Location = new Point(242, 136);
+            currentPass.Name = "currentPass";
+            currentPass.Size = new Size(312, 34);
+            currentPass.TabIndex = 4;
+            // 
+            // confirmPass
+            // 
+            confirmPass.Location = new Point(242, 204);
+            confirmPass.Name = "confirmPass";
+            confirmPass.Size = new Size(312, 34);
+            confirmPass.TabIndex = 3;
+            confirmPass.TextChanged += textBox1_TextChanged;
+            // 
+            // codeButton
+            // 
+            codeButton.BackColor = Color.Orange;
+            codeButton.Font = new Font("Corbel", 12F);
+            codeButton.Location = new Point(431, 279);
+            codeButton.Name = "codeButton";
+            codeButton.Size = new Size(107, 37);
+            codeButton.TabIndex = 2;
+            codeButton.Text = "Send Code";
+            codeButton.UseVisualStyleBackColor = false;
+            codeButton.Click += codeButton_Click;
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(441, 352);
+            cancelButton.Location = new Point(186, 367);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(123, 40);
             cancelButton.TabIndex = 1;
@@ -142,7 +215,7 @@
             // 
             // saveBtn
             // 
-            saveBtn.Location = new Point(312, 352);
+            saveBtn.Location = new Point(318, 367);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(123, 40);
             saveBtn.TabIndex = 0;
@@ -205,64 +278,6 @@
             musicOff.Text = "No Music";
             musicOff.UseVisualStyleBackColor = true;
             // 
-            // codeButton
-            // 
-            codeButton.Location = new Point(116, 283);
-            codeButton.Name = "codeButton";
-            codeButton.Size = new Size(129, 41);
-            codeButton.TabIndex = 2;
-            codeButton.Text = "Send Code";
-            codeButton.UseVisualStyleBackColor = true;
-            // 
-            // confirmPass
-            // 
-            confirmPass.Location = new Point(211, 197);
-            confirmPass.Name = "confirmPass";
-            confirmPass.Size = new Size(312, 34);
-            confirmPass.TabIndex = 3;
-            confirmPass.TextChanged += textBox1_TextChanged;
-            // 
-            // currentPass
-            // 
-            currentPass.Location = new Point(211, 140);
-            currentPass.Name = "currentPass";
-            currentPass.Size = new Size(312, 34);
-            currentPass.TabIndex = 4;
-            // 
-            // newPass
-            // 
-            newPass.AutoSize = true;
-            newPass.Location = new Point(48, 143);
-            newPass.Name = "newPass";
-            newPass.Size = new Size(157, 27);
-            newPass.TabIndex = 5;
-            newPass.Text = "New Password :";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(252, 287);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(183, 34);
-            textBox1.TabIndex = 6;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(16, 200);
-            label4.Name = "label4";
-            label4.Size = new Size(189, 27);
-            label4.TabIndex = 7;
-            label4.Text = "Confirm Password :";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(176, 77);
-            label5.Name = "label5";
-            label5.Size = new Size(276, 27);
-            label5.TabIndex = 8;
-            label5.Text = "Change Account Information";
-            // 
             // secondMainMenu
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -301,5 +316,6 @@
         private TextBox currentPass;
         private Label label5;
         private Label label4;
+        private Label label6;
     }
 }

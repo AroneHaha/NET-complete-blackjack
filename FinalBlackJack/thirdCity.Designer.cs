@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(singaporePanel));
             rPlayer1 = new PictureBox();
             rPlayer2 = new PictureBox();
@@ -37,6 +38,19 @@
             rDealer2 = new PictureBox();
             rDealer1 = new PictureBox();
             panel1 = new Panel();
+            returnAllBet = new PictureBox();
+            returnBet = new PictureBox();
+            playerDraw4 = new PictureBox();
+            playerDraw3 = new PictureBox();
+            playerDraw1 = new PictureBox();
+            playerDraw2 = new PictureBox();
+            dealerDraw4 = new PictureBox();
+            dealerDraw3 = new PictureBox();
+            dealerDraw1 = new PictureBox();
+            dealerDraw2 = new PictureBox();
+            dealerDialogue = new Label();
+            playerValue = new Label();
+            botValue = new Label();
             currentRound = new Label();
             backButton = new Button();
             rChip100 = new PictureBox();
@@ -52,11 +66,17 @@
             rBet = new Label();
             rCardFolded = new PictureBox();
             hitBtn = new Button();
-            button2 = new Button();
+            doubleBtn = new Button();
             standBtn = new Button();
             rDealer4 = new PictureBox();
-            botValue = new Label();
-            playerValue = new Label();
+            initialDraw = new System.Windows.Forms.Timer(components);
+            pCardAnimation3 = new System.Windows.Forms.Timer(components);
+            pCardAnimation4 = new System.Windows.Forms.Timer(components);
+            dCardAnimation3 = new System.Windows.Forms.Timer(components);
+            dCardAnimation4 = new System.Windows.Forms.Timer(components);
+            timer1 = new System.Windows.Forms.Timer(components);
+            returnTip = new ToolTip(components);
+            returnAllTip = new ToolTip(components);
             ((System.ComponentModel.ISupportInitialize)rPlayer1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rPlayer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rPlayer3).BeginInit();
@@ -65,6 +85,16 @@
             ((System.ComponentModel.ISupportInitialize)rDealer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rDealer1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)returnAllBet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)returnBet).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw4).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw3).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rChip100).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rChip50).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rChip25).BeginInit();
@@ -78,7 +108,6 @@
             // rPlayer1
             // 
             rPlayer1.BackColor = Color.Transparent;
-            rPlayer1.BorderStyle = BorderStyle.Fixed3D;
             rPlayer1.Location = new Point(334, 416);
             rPlayer1.Name = "rPlayer1";
             rPlayer1.Size = new Size(69, 96);
@@ -90,7 +119,6 @@
             // rPlayer2
             // 
             rPlayer2.BackColor = Color.Transparent;
-            rPlayer2.BorderStyle = BorderStyle.Fixed3D;
             rPlayer2.Location = new Point(409, 416);
             rPlayer2.Name = "rPlayer2";
             rPlayer2.Size = new Size(69, 96);
@@ -101,7 +129,6 @@
             // rPlayer3
             // 
             rPlayer3.BackColor = Color.Transparent;
-            rPlayer3.BorderStyle = BorderStyle.Fixed3D;
             rPlayer3.Location = new Point(484, 416);
             rPlayer3.Name = "rPlayer3";
             rPlayer3.Size = new Size(69, 96);
@@ -113,7 +140,6 @@
             // rPlayer4
             // 
             rPlayer4.BackColor = Color.Transparent;
-            rPlayer4.BorderStyle = BorderStyle.Fixed3D;
             rPlayer4.Location = new Point(559, 416);
             rPlayer4.Name = "rPlayer4";
             rPlayer4.Size = new Size(69, 96);
@@ -124,7 +150,6 @@
             // rDealer3
             // 
             rDealer3.BackColor = Color.Transparent;
-            rDealer3.BorderStyle = BorderStyle.Fixed3D;
             rDealer3.Location = new Point(489, 84);
             rDealer3.Name = "rDealer3";
             rDealer3.Size = new Size(69, 96);
@@ -136,7 +161,6 @@
             // rDealer2
             // 
             rDealer2.BackColor = Color.Transparent;
-            rDealer2.BorderStyle = BorderStyle.Fixed3D;
             rDealer2.Location = new Point(414, 84);
             rDealer2.Name = "rDealer2";
             rDealer2.Size = new Size(69, 96);
@@ -147,7 +171,6 @@
             // rDealer1
             // 
             rDealer1.BackColor = Color.Transparent;
-            rDealer1.BorderStyle = BorderStyle.Fixed3D;
             rDealer1.Location = new Point(339, 84);
             rDealer1.Name = "rDealer1";
             rDealer1.Size = new Size(69, 96);
@@ -160,6 +183,17 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(returnAllBet);
+            panel1.Controls.Add(returnBet);
+            panel1.Controls.Add(playerDraw4);
+            panel1.Controls.Add(playerDraw3);
+            panel1.Controls.Add(playerDraw1);
+            panel1.Controls.Add(playerDraw2);
+            panel1.Controls.Add(dealerDraw4);
+            panel1.Controls.Add(dealerDraw3);
+            panel1.Controls.Add(dealerDraw1);
+            panel1.Controls.Add(dealerDraw2);
+            panel1.Controls.Add(dealerDialogue);
             panel1.Controls.Add(playerValue);
             panel1.Controls.Add(botValue);
             panel1.Controls.Add(currentRound);
@@ -177,7 +211,7 @@
             panel1.Controls.Add(rBet);
             panel1.Controls.Add(rCardFolded);
             panel1.Controls.Add(hitBtn);
-            panel1.Controls.Add(button2);
+            panel1.Controls.Add(doubleBtn);
             panel1.Controls.Add(standBtn);
             panel1.Controls.Add(rDealer4);
             panel1.Controls.Add(rPlayer4);
@@ -193,12 +227,157 @@
             panel1.TabIndex = 8;
             panel1.Paint += panel1_Paint;
             // 
+            // returnAllBet
+            // 
+            returnAllBet.Cursor = Cursors.Hand;
+            returnAllBet.Image = (Image)resources.GetObject("returnAllBet.Image");
+            returnAllBet.Location = new Point(334, 466);
+            returnAllBet.Name = "returnAllBet";
+            returnAllBet.Size = new Size(39, 37);
+            returnAllBet.SizeMode = PictureBoxSizeMode.StretchImage;
+            returnAllBet.TabIndex = 39;
+            returnAllBet.TabStop = false;
+            returnAllBet.Click += returnAllBet_Click;
+            // 
+            // returnBet
+            // 
+            returnBet.Cursor = Cursors.Hand;
+            returnBet.Image = (Image)resources.GetObject("returnBet.Image");
+            returnBet.Location = new Point(334, 418);
+            returnBet.Name = "returnBet";
+            returnBet.Size = new Size(39, 36);
+            returnBet.SizeMode = PictureBoxSizeMode.StretchImage;
+            returnBet.TabIndex = 38;
+            returnBet.TabStop = false;
+            returnBet.Click += returnBet_Click;
+            // 
+            // playerDraw4
+            // 
+            playerDraw4.BackColor = Color.Transparent;
+            playerDraw4.Image = (Image)resources.GetObject("playerDraw4.Image");
+            playerDraw4.Location = new Point(656, 121);
+            playerDraw4.Name = "playerDraw4";
+            playerDraw4.Size = new Size(69, 96);
+            playerDraw4.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerDraw4.TabIndex = 36;
+            playerDraw4.TabStop = false;
+            // 
+            // playerDraw3
+            // 
+            playerDraw3.BackColor = Color.Transparent;
+            playerDraw3.Image = (Image)resources.GetObject("playerDraw3.Image");
+            playerDraw3.Location = new Point(656, 121);
+            playerDraw3.Name = "playerDraw3";
+            playerDraw3.Size = new Size(69, 96);
+            playerDraw3.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerDraw3.TabIndex = 35;
+            playerDraw3.TabStop = false;
+            // 
+            // playerDraw1
+            // 
+            playerDraw1.BackColor = Color.Transparent;
+            playerDraw1.Image = (Image)resources.GetObject("playerDraw1.Image");
+            playerDraw1.Location = new Point(656, 121);
+            playerDraw1.Name = "playerDraw1";
+            playerDraw1.Size = new Size(69, 96);
+            playerDraw1.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerDraw1.TabIndex = 34;
+            playerDraw1.TabStop = false;
+            // 
+            // playerDraw2
+            // 
+            playerDraw2.BackColor = Color.Transparent;
+            playerDraw2.Image = (Image)resources.GetObject("playerDraw2.Image");
+            playerDraw2.Location = new Point(656, 121);
+            playerDraw2.Name = "playerDraw2";
+            playerDraw2.Size = new Size(69, 96);
+            playerDraw2.SizeMode = PictureBoxSizeMode.StretchImage;
+            playerDraw2.TabIndex = 33;
+            playerDraw2.TabStop = false;
+            // 
+            // dealerDraw4
+            // 
+            dealerDraw4.BackColor = Color.Transparent;
+            dealerDraw4.Image = (Image)resources.GetObject("dealerDraw4.Image");
+            dealerDraw4.Location = new Point(656, 121);
+            dealerDraw4.Name = "dealerDraw4";
+            dealerDraw4.Size = new Size(69, 96);
+            dealerDraw4.SizeMode = PictureBoxSizeMode.StretchImage;
+            dealerDraw4.TabIndex = 32;
+            dealerDraw4.TabStop = false;
+            // 
+            // dealerDraw3
+            // 
+            dealerDraw3.BackColor = Color.Transparent;
+            dealerDraw3.Image = (Image)resources.GetObject("dealerDraw3.Image");
+            dealerDraw3.Location = new Point(656, 121);
+            dealerDraw3.Name = "dealerDraw3";
+            dealerDraw3.Size = new Size(69, 96);
+            dealerDraw3.SizeMode = PictureBoxSizeMode.StretchImage;
+            dealerDraw3.TabIndex = 31;
+            dealerDraw3.TabStop = false;
+            // 
+            // dealerDraw1
+            // 
+            dealerDraw1.BackColor = Color.Transparent;
+            dealerDraw1.Image = (Image)resources.GetObject("dealerDraw1.Image");
+            dealerDraw1.Location = new Point(656, 121);
+            dealerDraw1.Name = "dealerDraw1";
+            dealerDraw1.Size = new Size(69, 96);
+            dealerDraw1.SizeMode = PictureBoxSizeMode.StretchImage;
+            dealerDraw1.TabIndex = 30;
+            dealerDraw1.TabStop = false;
+            // 
+            // dealerDraw2
+            // 
+            dealerDraw2.BackColor = Color.Transparent;
+            dealerDraw2.Image = (Image)resources.GetObject("dealerDraw2.Image");
+            dealerDraw2.Location = new Point(656, 121);
+            dealerDraw2.Name = "dealerDraw2";
+            dealerDraw2.Size = new Size(69, 96);
+            dealerDraw2.SizeMode = PictureBoxSizeMode.StretchImage;
+            dealerDraw2.TabIndex = 29;
+            dealerDraw2.TabStop = false;
+            // 
+            // dealerDialogue
+            // 
+            dealerDialogue.AutoSize = true;
+            dealerDialogue.Font = new Font("Corbel", 16F, FontStyle.Bold | FontStyle.Italic);
+            dealerDialogue.ForeColor = Color.Yellow;
+            dealerDialogue.Location = new Point(106, 584);
+            dealerDialogue.Name = "dealerDialogue";
+            dealerDialogue.Size = new Size(92, 27);
+            dealerDialogue.TabIndex = 28;
+            dealerDialogue.Text = "Dealer : ";
+            // 
+            // playerValue
+            // 
+            playerValue.AutoSize = true;
+            playerValue.Font = new Font("Corbel", 16F, FontStyle.Bold);
+            playerValue.ForeColor = Color.White;
+            playerValue.Location = new Point(649, 372);
+            playerValue.Name = "playerValue";
+            playerValue.Size = new Size(76, 27);
+            playerValue.TabIndex = 27;
+            playerValue.Text = "Cards: ";
+            // 
+            // botValue
+            // 
+            botValue.AutoSize = true;
+            botValue.Font = new Font("Corbel", 16F, FontStyle.Bold);
+            botValue.ForeColor = Color.White;
+            botValue.Location = new Point(649, 229);
+            botValue.Name = "botValue";
+            botValue.Size = new Size(76, 27);
+            botValue.TabIndex = 26;
+            botValue.Text = "Cards: ";
+            // 
             // currentRound
             // 
             currentRound.AutoSize = true;
             currentRound.Font = new Font("Corbel", 16F, FontStyle.Bold);
             currentRound.ForeColor = Color.White;
-            currentRound.Location = new Point(176, 594);
+            currentRound.Location = new Point(334, 349);
             currentRound.Name = "currentRound";
             currentRound.Size = new Size(90, 27);
             currentRound.TabIndex = 25;
@@ -309,7 +488,7 @@
             actionLog.AutoSize = true;
             actionLog.Font = new Font("Corbel", 16F, FontStyle.Bold);
             actionLog.ForeColor = Color.White;
-            actionLog.Location = new Point(175, 558);
+            actionLog.Location = new Point(108, 558);
             actionLog.Name = "actionLog";
             actionLog.Size = new Size(130, 27);
             actionLog.TabIndex = 17;
@@ -339,13 +518,14 @@
             // 
             // startRound
             // 
-            startRound.BackColor = Color.Red;
+            startRound.BackColor = Color.DimGray;
             startRound.BackgroundImageLayout = ImageLayout.None;
+            startRound.Enabled = false;
             startRound.FlatAppearance.BorderSize = 0;
             startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
-            startRound.Location = new Point(406, 568);
+            startRound.Location = new Point(407, 568);
             startRound.Name = "startRound";
             startRound.Size = new Size(147, 43);
             startRound.TabIndex = 14;
@@ -360,15 +540,15 @@
             rBet.ForeColor = Color.Yellow;
             rBet.Location = new Point(334, 380);
             rBet.Name = "rBet";
-            rBet.Size = new Size(118, 27);
+            rBet.Size = new Size(134, 27);
             rBet.TabIndex = 13;
-            rBet.Text = "Round Bet:";
+            rBet.Text = "Round Bet: 0";
             // 
             // rCardFolded
             // 
             rCardFolded.BackColor = Color.Transparent;
             rCardFolded.Image = (Image)resources.GetObject("rCardFolded.Image");
-            rCardFolded.Location = new Point(643, 120);
+            rCardFolded.Location = new Point(656, 121);
             rCardFolded.Name = "rCardFolded";
             rCardFolded.Size = new Size(69, 96);
             rCardFolded.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -378,8 +558,9 @@
             // 
             // hitBtn
             // 
-            hitBtn.BackColor = Color.ForestGreen;
+            hitBtn.BackColor = Color.DimGray;
             hitBtn.BackgroundImageLayout = ImageLayout.None;
+            hitBtn.Enabled = false;
             hitBtn.FlatStyle = FlatStyle.Flat;
             hitBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
             hitBtn.Location = new Point(643, 407);
@@ -390,24 +571,26 @@
             hitBtn.UseVisualStyleBackColor = false;
             hitBtn.Click += button3_Click;
             // 
-            // button2
+            // doubleBtn
             // 
-            button2.BackColor = Color.OrangeRed;
-            button2.BackgroundImageLayout = ImageLayout.None;
-            button2.FlatStyle = FlatStyle.Flat;
-            button2.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            button2.Location = new Point(643, 492);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 36);
-            button2.TabIndex = 10;
-            button2.Text = "DOUBLE";
-            button2.UseVisualStyleBackColor = false;
-            button2.Click += button2_Click;
+            doubleBtn.BackColor = Color.DimGray;
+            doubleBtn.BackgroundImageLayout = ImageLayout.None;
+            doubleBtn.Enabled = false;
+            doubleBtn.FlatStyle = FlatStyle.Flat;
+            doubleBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
+            doubleBtn.Location = new Point(643, 492);
+            doubleBtn.Name = "doubleBtn";
+            doubleBtn.Size = new Size(94, 36);
+            doubleBtn.TabIndex = 10;
+            doubleBtn.Text = "DOUBLE";
+            doubleBtn.UseVisualStyleBackColor = false;
+            doubleBtn.Click += button2_Click;
             // 
             // standBtn
             // 
-            standBtn.BackColor = Color.Yellow;
+            standBtn.BackColor = Color.DimGray;
             standBtn.BackgroundImageLayout = ImageLayout.None;
+            standBtn.Enabled = false;
             standBtn.FlatStyle = FlatStyle.Flat;
             standBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
             standBtn.Location = new Point(643, 450);
@@ -421,7 +604,6 @@
             // rDealer4
             // 
             rDealer4.BackColor = Color.Transparent;
-            rDealer4.BorderStyle = BorderStyle.Fixed3D;
             rDealer4.Location = new Point(564, 84);
             rDealer4.Name = "rDealer4";
             rDealer4.Size = new Size(69, 96);
@@ -429,27 +611,43 @@
             rDealer4.TabIndex = 8;
             rDealer4.TabStop = false;
             // 
-            // botValue
+            // initialDraw
             // 
-            botValue.AutoSize = true;
-            botValue.Font = new Font("Corbel", 16F, FontStyle.Bold);
-            botValue.ForeColor = Color.Yellow;
-            botValue.Location = new Point(158, 252);
-            botValue.Name = "botValue";
-            botValue.Size = new Size(76, 27);
-            botValue.TabIndex = 26;
-            botValue.Text = "Cards: ";
+            initialDraw.Interval = 2;
+            initialDraw.Tick += redTimer1_Tick;
             // 
-            // playerValue
+            // pCardAnimation3
             // 
-            playerValue.AutoSize = true;
-            playerValue.Font = new Font("Corbel", 16F, FontStyle.Bold);
-            playerValue.ForeColor = Color.Yellow;
-            playerValue.Location = new Point(158, 279);
-            playerValue.Name = "playerValue";
-            playerValue.Size = new Size(76, 27);
-            playerValue.TabIndex = 27;
-            playerValue.Text = "Cards: ";
+            pCardAnimation3.Interval = 2;
+            pCardAnimation3.Tick += pCardAnimation3_Tick;
+            // 
+            // pCardAnimation4
+            // 
+            pCardAnimation4.Interval = 2;
+            pCardAnimation4.Tick += pCardAnimation4_Tick;
+            // 
+            // dCardAnimation3
+            // 
+            dCardAnimation3.Interval = 2;
+            dCardAnimation3.Tick += dCardAnimation3_Tick;
+            // 
+            // dCardAnimation4
+            // 
+            dCardAnimation4.Interval = 2;
+            dCardAnimation4.Tick += dCardAnimation4_Tick;
+            // 
+            // timer1
+            // 
+            timer1.Interval = 5;
+            timer1.Tick += timer1_Tick;
+            // 
+            // returnTip
+            // 
+            returnTip.Popup += returnTip_Popup;
+            // 
+            // returnAllTip
+            // 
+            returnAllTip.Popup += returnAllTip_Popup;
             // 
             // singaporePanel
             // 
@@ -472,6 +670,16 @@
             ((System.ComponentModel.ISupportInitialize)rDealer1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)returnAllBet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)returnBet).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)playerDraw2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw4).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw3).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dealerDraw2).EndInit();
             ((System.ComponentModel.ISupportInitialize)rChip100).EndInit();
             ((System.ComponentModel.ISupportInitialize)rChip50).EndInit();
             ((System.ComponentModel.ISupportInitialize)rChip25).EndInit();
@@ -495,7 +703,7 @@
         private Panel panel1;
         private PictureBox rDealer4;
         private Button hitBtn;
-        private Button button2;
+        private Button doubleBtn;
         private Button standBtn;
         private PictureBox rCardFolded;
         private Label rBet;
@@ -513,5 +721,27 @@
         private Label currentRound;
         private Label playerValue;
         private Label botValue;
+        private Label dealerDialogue;
+        private PictureBox playerDraw4;
+        private PictureBox playerDraw3;
+        private PictureBox playerDraw1;
+        private PictureBox playerDraw2;
+        private PictureBox dealerDraw4;
+        private PictureBox dealerDraw3;
+        private PictureBox dealerDraw1;
+        private PictureBox dealerDraw2;
+        private System.Windows.Forms.Timer initialDraw;
+        private System.Windows.Forms.Timer pCard1;
+        private System.Windows.Forms.Timer pCard2;
+        private System.Windows.Forms.Timer pCardAnimation3;
+        private System.Windows.Forms.Timer pCardAnimation4;
+        private System.Windows.Forms.Timer dCardAnimation3;
+        private System.Windows.Forms.Timer dCardAnimation4;
+        private System.Windows.Forms.Timer timer1;
+        private Label label1;
+        private PictureBox returnBet;
+        private PictureBox returnAllBet;
+        private ToolTip returnTip;
+        private ToolTip returnAllTip;
     }
 }

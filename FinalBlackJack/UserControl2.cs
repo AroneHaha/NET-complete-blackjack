@@ -76,5 +76,10 @@ namespace FinalBlackJack
         {
 
         }
+
+        private void codeButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

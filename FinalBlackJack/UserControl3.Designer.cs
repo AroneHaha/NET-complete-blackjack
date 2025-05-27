@@ -40,7 +40,7 @@
             text1.AutoSize = true;
             text1.Font = new Font("Haettenschweiler", 30.25F);
             text1.ForeColor = Color.Black;
-            text1.Location = new Point(196, 166);
+            text1.Location = new Point(188, 175);
             text1.Name = "text1";
             text1.Size = new Size(457, 43);
             text1.TabIndex = 1;
@@ -48,11 +48,10 @@
             // 
             // confirmButton
             // 
-            confirmButton.BackColor = Color.Red;
-            confirmButton.FlatStyle = FlatStyle.Popup;
+            confirmButton.BackColor = Color.LimeGreen;
             confirmButton.Font = new Font("Corbel", 14F);
             confirmButton.ForeColor = Color.Black;
-            confirmButton.Location = new Point(438, 255);
+            confirmButton.Location = new Point(420, 235);
             confirmButton.Name = "confirmButton";
             confirmButton.Size = new Size(116, 48);
             confirmButton.TabIndex = 2;
@@ -62,11 +61,10 @@
             // 
             // cancelButton
             // 
-            cancelButton.BackColor = Color.WhiteSmoke;
-            cancelButton.FlatStyle = FlatStyle.Popup;
+            cancelButton.BackColor = Color.Red;
             cancelButton.Font = new Font("Corbel", 14F);
             cancelButton.ForeColor = Color.Black;
-            cancelButton.Location = new Point(287, 255);
+            cancelButton.Location = new Point(290, 235);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(109, 48);
             cancelButton.TabIndex = 3;
@@ -93,6 +91,7 @@
             Controls.Add(panel1);
             Name = "thirdmainMenu";
             Size = new Size(1000, 583);
+            Load += thirdmainMenu_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ResumeLayout(false);
