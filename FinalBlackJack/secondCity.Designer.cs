@@ -160,7 +160,7 @@
             panel1.Controls.Add(rPlayer1);
             panel1.Location = new Point(3, -51);
             panel1.Name = "panel1";
-            panel1.Size = new Size(971, 640);
+            panel1.Size = new Size(971, 642);
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
             // 
@@ -334,7 +334,7 @@
             rChip100.BackColor = Color.Transparent;
             rChip100.Cursor = Cursors.Hand;
             rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(116, 368);
+            rChip100.Location = new Point(124, 387);
             rChip100.Name = "rChip100";
             rChip100.Size = new Size(60, 60);
             rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -347,7 +347,7 @@
             rChip50.BackColor = Color.Transparent;
             rChip50.Cursor = Cursors.Hand;
             rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(186, 392);
+            rChip50.Location = new Point(190, 406);
             rChip50.Name = "rChip50";
             rChip50.Size = new Size(60, 60);
             rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -373,7 +373,7 @@
             rChip10.BackColor = Color.Transparent;
             rChip10.Cursor = Cursors.Hand;
             rChip10.Image = (Image)resources.GetObject("rChip10.Image");
-            rChip10.Location = new Point(116, 437);
+            rChip10.Location = new Point(124, 456);
             rChip10.Name = "rChip10";
             rChip10.Size = new Size(60, 60);
             rChip10.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -399,7 +399,7 @@
             rChip5.BackColor = Color.Transparent;
             rChip5.Cursor = Cursors.Hand;
             rChip5.Image = (Image)resources.GetObject("rChip5.Image");
-            rChip5.Location = new Point(186, 463);
+            rChip5.Location = new Point(190, 477);
             rChip5.Name = "rChip5";
             rChip5.Size = new Size(60, 60);
             rChip5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -423,7 +423,7 @@
             r_totalWinnings.AutoSize = true;
             r_totalWinnings.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_totalWinnings.ForeColor = Color.White;
-            r_totalWinnings.Location = new Point(617, 614);
+            r_totalWinnings.Location = new Point(631, 614);
             r_totalWinnings.Name = "r_totalWinnings";
             r_totalWinnings.Size = new Size(168, 27);
             r_totalWinnings.TabIndex = 16;
@@ -434,7 +434,7 @@
             r_BankRoll.AutoSize = true;
             r_BankRoll.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_BankRoll.ForeColor = Color.White;
-            r_BankRoll.Location = new Point(617, 585);
+            r_BankRoll.Location = new Point(631, 585);
             r_BankRoll.Name = "r_BankRoll";
             r_BankRoll.Size = new Size(108, 27);
             r_BankRoll.TabIndex = 15;
@@ -449,7 +449,7 @@
             startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
-            startRound.Location = new Point(407, 593);
+            startRound.Location = new Point(406, 596);
             startRound.Name = "startRound";
             startRound.Size = new Size(147, 43);
             startRound.TabIndex = 14;
@@ -527,7 +527,7 @@
             // rDealer4
             // 
             rDealer4.BackColor = Color.Transparent;
-            rDealer4.Location = new Point(564, 113);
+            rDealer4.Location = new Point(562, 110);
             rDealer4.Name = "rDealer4";
             rDealer4.Size = new Size(69, 96);
             rDealer4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -547,7 +547,7 @@
             // rDealer3
             // 
             rDealer3.BackColor = Color.Transparent;
-            rDealer3.Location = new Point(489, 113);
+            rDealer3.Location = new Point(487, 110);
             rDealer3.Name = "rDealer3";
             rDealer3.Size = new Size(69, 96);
             rDealer3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -567,7 +567,7 @@
             // rDealer1
             // 
             rDealer1.BackColor = Color.Transparent;
-            rDealer1.Location = new Point(339, 113);
+            rDealer1.Location = new Point(337, 110);
             rDealer1.Name = "rDealer1";
             rDealer1.Size = new Size(69, 96);
             rDealer1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -587,7 +587,7 @@
             // rDealer2
             // 
             rDealer2.BackColor = Color.Transparent;
-            rDealer2.Location = new Point(414, 113);
+            rDealer2.Location = new Point(412, 110);
             rDealer2.Name = "rDealer2";
             rDealer2.Size = new Size(69, 96);
             rDealer2.SizeMode = PictureBoxSizeMode.StretchImage;

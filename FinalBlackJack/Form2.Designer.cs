@@ -90,6 +90,7 @@
             mainDisplayPanel = new Panel();
             form3Button = new Button();
             signupPanel = new Panel();
+            label16 = new Label();
             backButton = new Button();
             ageLog = new TextBox();
             verifLog = new TextBox();
@@ -106,7 +107,6 @@
             usernameLog = new TextBox();
             passwordLog = new TextBox();
             verificationText = new Label();
-            label16 = new Label();
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
             walletPanel.SuspendLayout();
@@ -145,7 +145,7 @@
             loginPanel.ForeColor = Color.Black;
             loginPanel.Location = new Point(0, -4);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(456, 621);
+            loginPanel.Size = new Size(503, 621);
             loginPanel.TabIndex = 0;
             // 
             // switchToSignup
@@ -857,15 +857,25 @@
             signupPanel.ForeColor = Color.Black;
             signupPanel.Location = new Point(0, -1);
             signupPanel.Name = "signupPanel";
-            signupPanel.Size = new Size(456, 612);
+            signupPanel.Size = new Size(503, 612);
             signupPanel.TabIndex = 11;
+            // 
+            // label16
+            // 
+            label16.AutoSize = true;
+            label16.Font = new Font("Segoe UI", 7F);
+            label16.Location = new Point(187, 322);
+            label16.Name = "label16";
+            label16.Size = new Size(135, 12);
+            label16.TabIndex = 19;
+            label16.Text = "*Below 18 is strictly prohibited";
             // 
             // backButton
             // 
             backButton.BackColor = Color.Red;
             backButton.Font = new Font("Segoe UI", 10F);
             backButton.ForeColor = Color.White;
-            backButton.Location = new Point(185, 539);
+            backButton.Location = new Point(182, 531);
             backButton.Name = "backButton";
             backButton.Size = new Size(88, 34);
             backButton.TabIndex = 18;
@@ -952,11 +962,11 @@
             // 
             // createAccountBtn
             // 
-            createAccountBtn.BackColor = Color.FromArgb(33, 136, 56);
+            createAccountBtn.BackColor = Color.DarkGreen;
             createAccountBtn.Cursor = Cursors.Hand;
             createAccountBtn.Font = new Font("Segoe UI", 10F);
             createAccountBtn.ForeColor = Color.White;
-            createAccountBtn.Location = new Point(160, 490);
+            createAccountBtn.Location = new Point(161, 478);
             createAccountBtn.Name = "createAccountBtn";
             createAccountBtn.Size = new Size(137, 43);
             createAccountBtn.TabIndex = 7;
@@ -1023,16 +1033,6 @@
             verificationText.Size = new Size(150, 23);
             verificationText.TabIndex = 16;
             verificationText.Text = "Verification Code :";
-            // 
-            // label16
-            // 
-            label16.AutoSize = true;
-            label16.Font = new Font("Segoe UI", 7F);
-            label16.Location = new Point(187, 322);
-            label16.Name = "label16";
-            label16.Size = new Size(135, 12);
-            label16.TabIndex = 19;
-            label16.Text = "*Below 18 is strictly prohibited";
             // 
             // mainMenuForm
             // 

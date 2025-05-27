@@ -398,7 +398,7 @@
             rChip100.BackColor = Color.Transparent;
             rChip100.Cursor = Cursors.Hand;
             rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(120, 349);
+            rChip100.Location = new Point(135, 363);
             rChip100.Name = "rChip100";
             rChip100.Size = new Size(57, 54);
             rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -413,7 +413,7 @@
             rChip50.BackColor = Color.Transparent;
             rChip50.Cursor = Cursors.Hand;
             rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(191, 372);
+            rChip50.Location = new Point(198, 387);
             rChip50.Name = "rChip50";
             rChip50.Size = new Size(57, 54);
             rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -443,7 +443,7 @@
             rChip10.BackColor = Color.Transparent;
             rChip10.Cursor = Cursors.Hand;
             rChip10.Image = (Image)resources.GetObject("rChip10.Image");
-            rChip10.Location = new Point(120, 418);
+            rChip10.Location = new Point(135, 432);
             rChip10.Name = "rChip10";
             rChip10.Size = new Size(57, 54);
             rChip10.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -473,7 +473,7 @@
             rChip5.BackColor = Color.Transparent;
             rChip5.Cursor = Cursors.Hand;
             rChip5.Image = (Image)resources.GetObject("rChip5.Image");
-            rChip5.Location = new Point(191, 443);
+            rChip5.Location = new Point(198, 458);
             rChip5.Name = "rChip5";
             rChip5.Size = new Size(57, 54);
             rChip5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -499,7 +499,7 @@
             r_totalWinnings.AutoSize = true;
             r_totalWinnings.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_totalWinnings.ForeColor = Color.White;
-            r_totalWinnings.Location = new Point(617, 594);
+            r_totalWinnings.Location = new Point(631, 594);
             r_totalWinnings.Name = "r_totalWinnings";
             r_totalWinnings.Size = new Size(168, 27);
             r_totalWinnings.TabIndex = 16;
@@ -510,7 +510,7 @@
             r_BankRoll.AutoSize = true;
             r_BankRoll.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_BankRoll.ForeColor = Color.White;
-            r_BankRoll.Location = new Point(617, 558);
+            r_BankRoll.Location = new Point(631, 558);
             r_BankRoll.Name = "r_BankRoll";
             r_BankRoll.Size = new Size(108, 27);
             r_BankRoll.TabIndex = 15;
@@ -525,7 +525,7 @@
             startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
-            startRound.Location = new Point(407, 568);
+            startRound.Location = new Point(405, 574);
             startRound.Name = "startRound";
             startRound.Size = new Size(147, 43);
             startRound.TabIndex = 14;

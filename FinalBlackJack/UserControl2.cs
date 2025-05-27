@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -67,8 +68,46 @@ namespace FinalBlackJack
             changeInfo.Hide();
         }
 
+        private bool isVerifSent = false;
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            if (changeOldPass.Text != AccountData.passwords[AccountData.currentAccount])
+            {
+                MessageBox.Show("Your input doesn't match your current password.");
+                return;
+            }
+
+            if (changeNewPass.Text != changeConfirmPass.Text)
+            {
+                MessageBox.Show("Your new password and confirmation password do not match.");
+                return;
+            }
+
+            if ((changeOldPass.Text == changeNewPass.Text) && (changeOldPass.Text == changeOldPass.Text))
+            {
+                MessageBox.Show("Looks like you're using your current password \nfor new one, please use another.");
+                return;
+            }
+
+            if (isVerifSent == false)
+            {
+                MessageBox.Show("Please request for verification code.");
+                return;
+            }
+
+            if(changeVerif.Text != verifCode)
+            {
+                MessageBox.Show("Incorrect verification code. Please try again.");
+                return;
+            }
+
+            AccountData.passwords[AccountData.currentAccount] = changeNewPass.Text;
+            MessageBox.Show("Your password has been successfully changed.");
+
+            changeOldPass.Clear();
+            changeNewPass.Clear();
+            changeConfirmPass.Clear();
+            isVerifSent = false;
             changeInfo.Hide();
         }
 
@@ -77,7 +116,38 @@ namespace FinalBlackJack
 
         }
 
+        string verifCode = "";
         private void codeButton_Click(object sender, EventArgs e)
+        {
+            Random otp = new Random();
+
+            try
+            {
+                verifCode = otp.Next(100000, 1000000).ToString(); // 6-digit OTP
+                string verifLink = "markaronedc@gmail.com"; // NEED PALITAN NG NEW GMAIL
+                string pass = "xogd neyn kdez ovts"; // GMAIL KEYPASS FOR VERIF --- markaronedc@gmail.com keypass    
+                MailMessage mm = new MailMessage();
+                SmtpClient sc = new SmtpClient("smtp.gmail.com");
+
+                mm.From = new MailAddress(verifLink);
+                mm.To.Add(AccountData.emails[AccountData.currentAccount]);
+                mm.Subject = "BlackJack Deluxe: Changing Account Password Verification";
+                mm.Body = "Hi " + AccountData.usernames[AccountData.currentAccount] + ",\r\n\r\nWe noticed a request to change your password for your Blackjack Deluxe account.\r\nTo ensure your account’s security, please use the One-Time Password (OTP) below to complete the process:\r\n\r\n🔐 OTP Code: " + verifCode;
+                sc.Port = 587;
+                sc.Credentials = new System.Net.NetworkCredential(verifLink, pass);
+                sc.EnableSsl = true;
+                sc.Send(mm);
+
+                isVerifSent = true;
+                MessageBox.Show("Code has been sent, please check your email.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void label4_Click(object sender, EventArgs e)
         {
 
         }

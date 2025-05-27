@@ -105,6 +105,7 @@
             // manilaPicBox
             // 
             manilaPicBox.BackColor = Color.Black;
+            manilaPicBox.Image = (Image)resources.GetObject("manilaPicBox.Image");
             manilaPicBox.Location = new Point(261, 141);
             manilaPicBox.Name = "manilaPicBox";
             manilaPicBox.Size = new Size(449, 320);
@@ -116,6 +117,8 @@
             // singaporePicBox
             // 
             singaporePicBox.BackColor = Color.DimGray;
+            singaporePicBox.ErrorImage = null;
+            singaporePicBox.Image = (Image)resources.GetObject("singaporePicBox.Image");
             singaporePicBox.Location = new Point(12, 131);
             singaporePicBox.Name = "singaporePicBox";
             singaporePicBox.Size = new Size(449, 320);
@@ -127,6 +130,7 @@
             // hongkongPicBox
             // 
             hongkongPicBox.BackColor = Color.DarkGray;
+            hongkongPicBox.Image = (Image)resources.GetObject("hongkongPicBox.Image");
             hongkongPicBox.Location = new Point(523, 130);
             hongkongPicBox.Name = "hongkongPicBox";
             hongkongPicBox.Size = new Size(449, 320);

@@ -29,11 +29,11 @@ namespace FinalBlackJack
         private void mainGameForm_Load(object sender, EventArgs e)
         {
             cities = new List<(string, PictureBox)>
-    {
-        ("Sahara Grand Pavilion Resort", manilaPicBox),
-        ("Obi Wan Castle In Shangrila", singaporePicBox),
-        ("Cobact Club of Doom", hongkongPicBox)
-    };
+            {
+                ("Sahara Grand Pavilion Resort", manilaPicBox),
+                ("Obi Wan Castle In Shangrila", singaporePicBox),
+                ("Cobact Club of Doom", hongkongPicBox)
+            };
             
             cityBackgrounds = new Dictionary<string, Image>
 {
@@ -180,9 +180,6 @@ namespace FinalBlackJack
                 LoadView(new hongkongPanel());
             }
         }
-
-
-
 
         private void cityPanel_Paint(object sender, PaintEventArgs e)
         {

@@ -34,13 +34,15 @@
             saveButton = new Button();
             panel1 = new Panel();
             changeInfo = new Panel();
+            label7 = new Label();
+            changeOldPass = new TextBox();
             label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            textBox1 = new TextBox();
+            changeVerif = new TextBox();
             newPass = new Label();
-            currentPass = new TextBox();
-            confirmPass = new TextBox();
+            changeNewPass = new TextBox();
+            changeConfirmPass = new TextBox();
             codeButton = new Button();
             cancelButton = new Button();
             saveBtn = new Button();
@@ -117,85 +119,116 @@
             // changeInfo
             // 
             changeInfo.BackColor = Color.DarkSeaGreen;
+            changeInfo.Controls.Add(label7);
+            changeInfo.Controls.Add(changeOldPass);
             changeInfo.Controls.Add(label6);
             changeInfo.Controls.Add(label5);
             changeInfo.Controls.Add(label4);
-            changeInfo.Controls.Add(textBox1);
+            changeInfo.Controls.Add(changeVerif);
             changeInfo.Controls.Add(newPass);
-            changeInfo.Controls.Add(currentPass);
-            changeInfo.Controls.Add(confirmPass);
+            changeInfo.Controls.Add(changeNewPass);
+            changeInfo.Controls.Add(changeConfirmPass);
             changeInfo.Controls.Add(codeButton);
             changeInfo.Controls.Add(cancelButton);
             changeInfo.Controls.Add(saveBtn);
-            changeInfo.Location = new Point(132, 27);
+            changeInfo.Location = new Point(120, 27);
             changeInfo.Name = "changeInfo";
             changeInfo.Size = new Size(621, 426);
             changeInfo.TabIndex = 8;
             // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Microsoft Sans Serif", 13.25F);
+            label7.Location = new Point(82, 145);
+            label7.Name = "label7";
+            label7.Size = new Size(164, 22);
+            label7.TabIndex = 11;
+            label7.Text = "Current Password :";
+            // 
+            // changeOldPass
+            // 
+            changeOldPass.Font = new Font("Microsoft Sans Serif", 13.25F);
+            changeOldPass.Location = new Point(251, 142);
+            changeOldPass.Name = "changeOldPass";
+            changeOldPass.Size = new Size(273, 27);
+            changeOldPass.TabIndex = 10;
+            changeOldPass.UseSystemPasswordChar = true;
+            // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new Point(53, 283);
+            label6.Font = new Font("Microsoft Sans Serif", 13.25F);
+            label6.Location = new Point(88, 297);
             label6.Name = "label6";
-            label6.Size = new Size(183, 27);
+            label6.Size = new Size(157, 22);
             label6.TabIndex = 9;
-            label6.Text = "Gmail Verification :";
+            label6.Text = "Verification Code :";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Haettenschweiler", 40F);
-            label5.Location = new Point(79, 32);
+            label5.Font = new Font("Haettenschweiler", 45F);
+            label5.Location = new Point(50, 30);
             label5.Name = "label5";
-            label5.Size = new Size(485, 56);
+            label5.Size = new Size(541, 62);
             label5.TabIndex = 8;
             label5.Text = "Change Account Information";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(47, 207);
+            label4.Font = new Font("Microsoft Sans Serif", 13.25F);
+            label4.Location = new Point(80, 249);
             label4.Name = "label4";
-            label4.Size = new Size(189, 27);
+            label4.Size = new Size(166, 22);
             label4.TabIndex = 7;
             label4.Text = "Confirm Password :";
+            label4.Click += label4_Click;
             // 
-            // textBox1
+            // changeVerif
             // 
-            textBox1.Location = new Point(242, 279);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(183, 34);
-            textBox1.TabIndex = 6;
+            changeVerif.Font = new Font("Microsoft Sans Serif", 13.25F);
+            changeVerif.Location = new Point(251, 294);
+            changeVerif.Name = "changeVerif";
+            changeVerif.PlaceholderText = "Check your Gmail Account";
+            changeVerif.Size = new Size(183, 27);
+            changeVerif.TabIndex = 6;
             // 
             // newPass
             // 
             newPass.AutoSize = true;
-            newPass.Location = new Point(79, 139);
+            newPass.Font = new Font("Microsoft Sans Serif", 13.25F);
+            newPass.Location = new Point(106, 193);
             newPass.Name = "newPass";
-            newPass.Size = new Size(157, 27);
+            newPass.Size = new Size(140, 22);
             newPass.TabIndex = 5;
             newPass.Text = "New Password :";
             // 
-            // currentPass
+            // changeNewPass
             // 
-            currentPass.Location = new Point(242, 136);
-            currentPass.Name = "currentPass";
-            currentPass.Size = new Size(312, 34);
-            currentPass.TabIndex = 4;
+            changeNewPass.Font = new Font("Microsoft Sans Serif", 13.25F);
+            changeNewPass.Location = new Point(251, 193);
+            changeNewPass.Name = "changeNewPass";
+            changeNewPass.Size = new Size(273, 27);
+            changeNewPass.TabIndex = 4;
+            changeNewPass.UseSystemPasswordChar = true;
             // 
-            // confirmPass
+            // changeConfirmPass
             // 
-            confirmPass.Location = new Point(242, 204);
-            confirmPass.Name = "confirmPass";
-            confirmPass.Size = new Size(312, 34);
-            confirmPass.TabIndex = 3;
-            confirmPass.TextChanged += textBox1_TextChanged;
+            changeConfirmPass.Font = new Font("Microsoft Sans Serif", 13.25F);
+            changeConfirmPass.Location = new Point(251, 246);
+            changeConfirmPass.Name = "changeConfirmPass";
+            changeConfirmPass.Size = new Size(273, 27);
+            changeConfirmPass.TabIndex = 3;
+            changeConfirmPass.UseSystemPasswordChar = true;
+            changeConfirmPass.TextChanged += textBox1_TextChanged;
             // 
             // codeButton
             // 
             codeButton.BackColor = Color.Orange;
             codeButton.Font = new Font("Corbel", 12F);
-            codeButton.Location = new Point(431, 279);
+            codeButton.Location = new Point(442, 289);
             codeButton.Name = "codeButton";
             codeButton.Size = new Size(107, 37);
             codeButton.TabIndex = 2;
@@ -205,22 +238,26 @@
             // 
             // cancelButton
             // 
-            cancelButton.Location = new Point(186, 367);
+            cancelButton.BackColor = Color.Red;
+            cancelButton.Font = new Font("Segoe UI", 12F);
+            cancelButton.Location = new Point(188, 362);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(123, 40);
             cancelButton.TabIndex = 1;
             cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
+            cancelButton.UseVisualStyleBackColor = false;
             cancelButton.Click += cancelButton_Click;
             // 
             // saveBtn
             // 
-            saveBtn.Location = new Point(318, 367);
+            saveBtn.BackColor = Color.ForestGreen;
+            saveBtn.Font = new Font("Segoe UI", 12F);
+            saveBtn.Location = new Point(320, 362);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(123, 40);
             saveBtn.TabIndex = 0;
             saveBtn.Text = "Save";
-            saveBtn.UseVisualStyleBackColor = true;
+            saveBtn.UseVisualStyleBackColor = false;
             saveBtn.Click += saveBtn_Click;
             // 
             // changePasswordButton
@@ -309,13 +346,15 @@
         private Panel changeInfo;
         private Button cancelButton;
         private Button saveBtn;
-        private TextBox confirmPass;
+        private TextBox changeConfirmPass;
         private Button codeButton;
-        private TextBox textBox1;
+        private TextBox changeVerif;
         private Label newPass;
-        private TextBox currentPass;
+        private TextBox changeNewPass;
         private Label label5;
         private Label label4;
         private Label label6;
+        private Label label7;
+        private TextBox changeOldPass;
     }
 }

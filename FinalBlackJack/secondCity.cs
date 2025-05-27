@@ -632,8 +632,6 @@ namespace FinalBlackJack
 
         private int ingameRound = 1;
 
-
-
         // ----------------------------- BOT IMAGES ------------------------------------------
         public Image bot1;
         public Image bot2;
