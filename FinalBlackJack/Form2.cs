@@ -514,14 +514,16 @@ namespace FinalBlackJack
         private void depositButton_Click(object sender, EventArgs e)
         {
             walletChoice = "deposit";
-            walletAmount.Text = "";
+            walletPassword.Clear();
+            walletAmount.Clear();
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
         }
 
         private void widthdrawButton_Click(object sender, EventArgs e)
         {
             walletChoice = "withdraw";
-            walletAmount.Text = "";
+            walletPassword.Clear();
+            walletAmount.Clear();
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
         }
 
@@ -624,6 +626,20 @@ namespace FinalBlackJack
 
         private void walletConfirmPassword_Click(object sender, EventArgs e)
         {
+            int amount;
+
+            if (!int.TryParse(walletAmount.Text, out amount))
+            {
+                MessageBox.Show("Please enter a valid number for the amount.");
+                return;
+            }
+
+            if ((walletChoice == "withdraw") && (AccountData.accountsBalance[AccountData.currentAccount] < amount))
+            {
+                MessageBox.Show("You have insufficient balance to make the withdrawal.");
+                return;
+            }
+
             if (walletPassword.Text == passwordHolder)
             {
                 if (walletChoice == "deposit")
@@ -635,16 +651,21 @@ namespace FinalBlackJack
                     makeWithdrawal();
                 }
             }
-
             else
             {
                 MessageBox.Show("Incorrect password. Please try again.");
                 walletPassword.Clear();
                 return;
             }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loginPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }
