@@ -232,6 +232,7 @@ namespace FinalBlackJack
 
         private void balanceWinUpdateDouble()
         {
+            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
             ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
             r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
@@ -307,7 +308,7 @@ namespace FinalBlackJack
             roundWinnerSound();
             MessageBox.Show("Dealer BlackJack, Player lost!");
             roundOver = true;
-            balanceWinUpdate();
+            balanceLoseUpdate();
             resetRound();
             return;
         }
@@ -317,7 +318,7 @@ namespace FinalBlackJack
             roundWinnerSound();
             MessageBox.Show("Dealer BlackJack, Player lost!");
             roundOver = true;
-            balanceWinUpdateDouble();
+            balanceLoseUpdateDouble();
             resetRound();
             return;
         }
@@ -375,6 +376,7 @@ namespace FinalBlackJack
                 roundLoserSound();
                 MessageBox.Show("Draw match!, returning cards.");
                 AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+                matchedDouble();
 
             }
             else if ((playerTotal - 21) < (botTotal - 21))
@@ -382,7 +384,7 @@ namespace FinalBlackJack
                 roundWinnerSound();
                 dealerBustDialogue();
                 MessageBox.Show("Player's the nearest to 21, you won!");
-                balanceLoseUpdateDouble();
+                balanceWinUpdateDouble();
             }
             else
             {
@@ -705,7 +707,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
-                addChips(chipValue);        // Only called if user has enough money
+                addChips(chipValue);        
                 startGameEnabled();
             }
             else
@@ -990,6 +992,7 @@ namespace FinalBlackJack
 
             else if (botTotal == 21 && playerTotal == 21)
             {
+                round();
                 dealerBlackJack();
             }
 

@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hongkongPanel));
             exitButton = new Button();
             panel1 = new Panel();
+            dealerDialogue = new Label();
             returnAllBet = new PictureBox();
             returnBet = new PictureBox();
             playerDraw4 = new PictureBox();
@@ -42,7 +43,6 @@
             dealerDraw3 = new PictureBox();
             dealerDraw1 = new PictureBox();
             dealerDraw2 = new PictureBox();
-            dealerDialogue = new Label();
             playerValue = new Label();
             botValue = new Label();
             currentRound = new Label();
@@ -114,13 +114,13 @@
             exitButton.TabIndex = 0;
             exitButton.Text = "button1";
             exitButton.UseVisualStyleBackColor = true;
-            exitButton.Click += exitButton_Click;
             // 
             // panel1
             // 
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(dealerDialogue);
             panel1.Controls.Add(returnAllBet);
             panel1.Controls.Add(returnBet);
             panel1.Controls.Add(playerDraw4);
@@ -131,7 +131,6 @@
             panel1.Controls.Add(dealerDraw3);
             panel1.Controls.Add(dealerDraw1);
             panel1.Controls.Add(dealerDraw2);
-            panel1.Controls.Add(dealerDialogue);
             panel1.Controls.Add(playerValue);
             panel1.Controls.Add(botValue);
             panel1.Controls.Add(currentRound);
@@ -159,11 +158,22 @@
             panel1.Controls.Add(rPlayer2);
             panel1.Controls.Add(rDealer2);
             panel1.Controls.Add(rPlayer1);
-            panel1.Location = new Point(3, -50);
+            panel1.Location = new Point(3, -51);
             panel1.Name = "panel1";
-            panel1.Size = new Size(971, 647);
+            panel1.Size = new Size(971, 640);
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
+            // 
+            // dealerDialogue
+            // 
+            dealerDialogue.AutoSize = true;
+            dealerDialogue.Font = new Font("Corbel", 16F, FontStyle.Bold | FontStyle.Italic);
+            dealerDialogue.ForeColor = Color.Yellow;
+            dealerDialogue.Location = new Point(106, 609);
+            dealerDialogue.Name = "dealerDialogue";
+            dealerDialogue.Size = new Size(92, 27);
+            dealerDialogue.TabIndex = 28;
+            dealerDialogue.Text = "Dealer : ";
             // 
             // returnAllBet
             // 
@@ -175,6 +185,7 @@
             returnAllBet.SizeMode = PictureBoxSizeMode.StretchImage;
             returnAllBet.TabIndex = 39;
             returnAllBet.TabStop = false;
+            returnAllBet.Click += returnAllBet_Click;
             // 
             // returnBet
             // 
@@ -186,6 +197,7 @@
             returnBet.SizeMode = PictureBoxSizeMode.StretchImage;
             returnBet.TabIndex = 38;
             returnBet.TabStop = false;
+            returnBet.Click += returnBet_Click;
             // 
             // playerDraw4
             // 
@@ -275,17 +287,6 @@
             dealerDraw2.TabIndex = 29;
             dealerDraw2.TabStop = false;
             // 
-            // dealerDialogue
-            // 
-            dealerDialogue.AutoSize = true;
-            dealerDialogue.Font = new Font("Corbel", 16F, FontStyle.Bold | FontStyle.Italic);
-            dealerDialogue.ForeColor = Color.Yellow;
-            dealerDialogue.Location = new Point(104, 596);
-            dealerDialogue.Name = "dealerDialogue";
-            dealerDialogue.Size = new Size(92, 27);
-            dealerDialogue.TabIndex = 28;
-            dealerDialogue.Text = "Dealer : ";
-            // 
             // playerValue
             // 
             playerValue.AutoSize = true;
@@ -321,7 +322,7 @@
             // 
             // backButton
             // 
-            backButton.Location = new Point(17, 52);
+            backButton.Location = new Point(14, 67);
             backButton.Name = "backButton";
             backButton.Size = new Size(75, 23);
             backButton.TabIndex = 24;
@@ -333,79 +334,85 @@
             rChip100.BackColor = Color.Transparent;
             rChip100.Cursor = Cursors.Hand;
             rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(115, 370);
+            rChip100.Location = new Point(116, 368);
             rChip100.Name = "rChip100";
             rChip100.Size = new Size(60, 60);
             rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip100.TabIndex = 23;
             rChip100.TabStop = false;
+            rChip100.Click += rChip100_Click;
             // 
             // rChip50
             // 
             rChip50.BackColor = Color.Transparent;
             rChip50.Cursor = Cursors.Hand;
             rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(186, 393);
+            rChip50.Location = new Point(186, 392);
             rChip50.Name = "rChip50";
             rChip50.Size = new Size(60, 60);
             rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip50.TabIndex = 22;
             rChip50.TabStop = false;
+            rChip50.Click += rChip50_Click;
             // 
             // rChip25
             // 
             rChip25.BackColor = Color.Transparent;
             rChip25.Cursor = Cursors.Hand;
             rChip25.Image = (Image)resources.GetObject("rChip25.Image");
-            rChip25.Location = new Point(256, 412);
+            rChip25.Location = new Point(256, 408);
             rChip25.Name = "rChip25";
             rChip25.Size = new Size(60, 60);
             rChip25.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip25.TabIndex = 21;
             rChip25.TabStop = false;
+            rChip25.Click += rChip25_Click;
             // 
             // rChip10
             // 
             rChip10.BackColor = Color.Transparent;
             rChip10.Cursor = Cursors.Hand;
             rChip10.Image = (Image)resources.GetObject("rChip10.Image");
-            rChip10.Location = new Point(115, 439);
+            rChip10.Location = new Point(116, 437);
             rChip10.Name = "rChip10";
             rChip10.Size = new Size(60, 60);
             rChip10.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip10.TabIndex = 20;
             rChip10.TabStop = false;
+            rChip10.Click += rChip10_Click;
             // 
             // rChip1
             // 
             rChip1.BackColor = Color.Transparent;
             rChip1.Cursor = Cursors.Hand;
             rChip1.Image = (Image)resources.GetObject("rChip1.Image");
-            rChip1.Location = new Point(256, 481);
+            rChip1.Location = new Point(256, 477);
             rChip1.Name = "rChip1";
             rChip1.Size = new Size(60, 60);
             rChip1.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip1.TabIndex = 19;
             rChip1.TabStop = false;
+            rChip1.Click += rChip1_Click;
             // 
             // rChip5
             // 
             rChip5.BackColor = Color.Transparent;
             rChip5.Cursor = Cursors.Hand;
             rChip5.Image = (Image)resources.GetObject("rChip5.Image");
-            rChip5.Location = new Point(186, 464);
+            rChip5.Location = new Point(186, 463);
             rChip5.Name = "rChip5";
             rChip5.Size = new Size(60, 60);
             rChip5.SizeMode = PictureBoxSizeMode.StretchImage;
             rChip5.TabIndex = 18;
             rChip5.TabStop = false;
+            rChip5.Click += rChip5_Click;
             // 
             // actionLog
             // 
             actionLog.AutoSize = true;
             actionLog.Font = new Font("Corbel", 16F, FontStyle.Bold);
             actionLog.ForeColor = Color.White;
-            actionLog.Location = new Point(106, 570);
+            actionLog.Location = new Point(106, 582);
             actionLog.Name = "actionLog";
             actionLog.Size = new Size(130, 27);
             actionLog.TabIndex = 17;
@@ -416,7 +423,7 @@
             r_totalWinnings.AutoSize = true;
             r_totalWinnings.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_totalWinnings.ForeColor = Color.White;
-            r_totalWinnings.Location = new Point(626, 617);
+            r_totalWinnings.Location = new Point(617, 614);
             r_totalWinnings.Name = "r_totalWinnings";
             r_totalWinnings.Size = new Size(168, 27);
             r_totalWinnings.TabIndex = 16;
@@ -427,7 +434,7 @@
             r_BankRoll.AutoSize = true;
             r_BankRoll.Font = new Font("Corbel", 16F, FontStyle.Bold);
             r_BankRoll.ForeColor = Color.White;
-            r_BankRoll.Location = new Point(626, 587);
+            r_BankRoll.Location = new Point(617, 585);
             r_BankRoll.Name = "r_BankRoll";
             r_BankRoll.Size = new Size(108, 27);
             r_BankRoll.TabIndex = 15;
@@ -442,12 +449,13 @@
             startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
-            startRound.Location = new Point(407, 598);
+            startRound.Location = new Point(407, 593);
             startRound.Name = "startRound";
             startRound.Size = new Size(147, 43);
             startRound.TabIndex = 14;
             startRound.Text = "Start Round";
             startRound.UseVisualStyleBackColor = false;
+            startRound.Click += startRound_Click;
             // 
             // rBet
             // 
@@ -478,12 +486,13 @@
             hitBtn.Enabled = false;
             hitBtn.FlatStyle = FlatStyle.Flat;
             hitBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            hitBtn.Location = new Point(643, 422);
+            hitBtn.Location = new Point(643, 424);
             hitBtn.Name = "hitBtn";
             hitBtn.Size = new Size(94, 36);
             hitBtn.TabIndex = 11;
             hitBtn.Text = "HIT";
             hitBtn.UseVisualStyleBackColor = false;
+            hitBtn.Click += hitBtn_Click;
             // 
             // doubleBtn
             // 
@@ -492,12 +501,13 @@
             doubleBtn.Enabled = false;
             doubleBtn.FlatStyle = FlatStyle.Flat;
             doubleBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            doubleBtn.Location = new Point(643, 507);
+            doubleBtn.Location = new Point(643, 509);
             doubleBtn.Name = "doubleBtn";
             doubleBtn.Size = new Size(94, 36);
             doubleBtn.TabIndex = 10;
             doubleBtn.Text = "DOUBLE";
             doubleBtn.UseVisualStyleBackColor = false;
+            doubleBtn.Click += doubleBtn_Click;
             // 
             // standBtn
             // 
@@ -506,7 +516,7 @@
             standBtn.Enabled = false;
             standBtn.FlatStyle = FlatStyle.Flat;
             standBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            standBtn.Location = new Point(643, 465);
+            standBtn.Location = new Point(643, 467);
             standBtn.Name = "standBtn";
             standBtn.Size = new Size(94, 36);
             standBtn.TabIndex = 9;
@@ -627,11 +637,16 @@
             // 
             returnTip.Popup += returnTip_Popup;
             // 
+            // returnAllTip
+            // 
+            returnAllTip.Popup += returnAllTip_Popup;
+            // 
             // hongkongPanel
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkBlue;
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Stretch;
             Controls.Add(panel1);
             Controls.Add(exitButton);
@@ -683,7 +698,6 @@
         private PictureBox dealerDraw3;
         private PictureBox dealerDraw1;
         private PictureBox dealerDraw2;
-        private Label dealerDialogue;
         private Label playerValue;
         private Label botValue;
         private Label currentRound;
@@ -719,5 +733,6 @@
         private System.Windows.Forms.Timer timer1;
         private ToolTip returnTip;
         private ToolTip returnAllTip;
+        private Label dealerDialogue;
     }
 }

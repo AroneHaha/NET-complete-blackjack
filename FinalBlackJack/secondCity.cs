@@ -134,14 +134,14 @@ namespace FinalBlackJack
             startRound.Enabled = false;
 
 
-            playerDraw1.Location = new Point(656, 121);
-            playerDraw2.Location = new Point(656, 121);
-            playerDraw3.Location = new Point(656, 121);
-            playerDraw4.Location = new Point(656, 121);
-            dealerDraw1.Location = new Point(656, 121);
-            dealerDraw2.Location = new Point(656, 121);
-            dealerDraw3.Location = new Point(656, 121);
-            dealerDraw4.Location = new Point(656, 121);
+            playerDraw1.Location = new Point(656, 150);
+            playerDraw2.Location = new Point(656, 150);
+            playerDraw3.Location = new Point(656, 150);
+            playerDraw4.Location = new Point(656, 150);
+            dealerDraw1.Location = new Point(656, 150);
+            dealerDraw2.Location = new Point(656, 150);
+            dealerDraw3.Location = new Point(656, 150);
+            dealerDraw4.Location = new Point(656, 150);
 
             initialDraw.Enabled = false;
             pCardAnimation3.Enabled = false;
@@ -230,6 +230,7 @@ namespace FinalBlackJack
         private void balanceWinUpdateDouble()
         {
             ingameWinnings += (currentBet * 2) * 2;
+            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
             r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
@@ -314,7 +315,7 @@ namespace FinalBlackJack
             roundWinnerSound();
             MessageBox.Show("Dealer BlackJack, Player lost!");
             roundOver = true;
-            balanceWinUpdateDouble();
+            balanceLoseUpdateDouble();
             resetRound();
             return;
         }
@@ -372,6 +373,7 @@ namespace FinalBlackJack
                 roundLoserSound();
                 MessageBox.Show("Draw match!, returning cards.");
                 AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+                matchedDouble();
 
             }
             else if ((playerTotal - 21) < (botTotal - 21))
@@ -379,7 +381,7 @@ namespace FinalBlackJack
                 roundWinnerSound();
                 dealerBustDialogue();
                 MessageBox.Show("Player's the nearest to 21, you won!");
-                balanceLoseUpdateDouble();
+                balanceWinUpdateDouble();
             }
             else
             {
@@ -626,6 +628,7 @@ namespace FinalBlackJack
         private bool playerHasStood = false;
         private bool isDrawn = false;
         private bool roundStarted = false;
+        private bool shouldRunDCard4 = false;
 
         private int ingameRound = 1;
 
@@ -643,6 +646,21 @@ namespace FinalBlackJack
         public hongkongPanel()
         {
             InitializeComponent();
+
+            rPlayer1.Visible = false;
+            rPlayer2.Visible = false;
+            rPlayer3.Visible = false;
+            rPlayer4.Visible = false;
+            rDealer1.Visible = false;
+            rDealer2.Visible = false;
+            rDealer3.Visible = false;
+            rDealer4.Visible = false;
+
+            currentRound.Text = "Round : " + ingameRound;
+            actionLog.Visible = false;
+            dealerDialogue.Visible = false;
+            playerValue.Text = "";
+            botValue.Text = "";
         }
 
         private void hongkongPanel_Load(object sender, EventArgs e)
@@ -657,27 +675,172 @@ namespace FinalBlackJack
 
         private void dCardAnimation3_Tick(object sender, EventArgs e)
         {
+            if (dealerDraw3.Visible)
+            {
+                if (dealerDraw3.Location.X > 489 || dealerDraw3.Location.Y < 84)
+                {
+                    dealerDraw3.Location = new Point(
+                        dealerDraw3.Location.X > 489 ? dealerDraw3.Location.X - 10 : dealerDraw3.Location.X,
+                        dealerDraw3.Location.Y < 84 ? dealerDraw3.Location.Y + 10 : dealerDraw3.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    dealerDraw3.Visible = false;
+                    rDealer3.Visible = true;
 
+                    dCardAnimation3.Stop();
+
+                    // Start the second animation ONLY if needed
+                    if (shouldRunDCard4)
+                    {
+                        dCardAnimation4.Start();
+                        shouldRunDCard4 = false; // Reset the flag
+                    }
+                }
+            }
         }
 
         private void dCardAnimation4_Tick(object sender, EventArgs e)
         {
-
+            if (dealerDraw4.Visible)
+            {
+                if (dealerDraw4.Location.X > 564 || dealerDraw4.Location.Y < 84)
+                {
+                    dealerDraw4.Location = new Point(
+                        dealerDraw4.Location.X > 564 ? dealerDraw4.Location.X - 10 : dealerDraw4.Location.X,
+                        dealerDraw4.Location.Y < 84 ? dealerDraw4.Location.Y + 10 : dealerDraw4.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    dealerDraw4.Visible = false;
+                    rDealer4.Visible = true;
+                }
+                dCardAnimation4.Stop();
+            }
         }
 
         private void pCardAnimation4_Tick(object sender, EventArgs e)
         {
+            if (playerDraw4.Visible)
+            {
+                if (playerDraw4.Location.X > 559 || playerDraw4.Location.Y < 416)
+                {
+                    playerDraw4.Location = new Point(
+                        playerDraw4.Location.X > 559 ? playerDraw4.Location.X - 10 : playerDraw4.Location.X,
+                        playerDraw4.Location.Y < 416 ? playerDraw4.Location.Y + 7 : playerDraw4.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    playerDraw4.Visible = false;
+                    rPlayer4.Visible = true;
 
+                }
+                pCardAnimation4.Stop();
+            }
         }
 
         private void pCardAnimation3_Tick(object sender, EventArgs e)
         {
+            if (playerDraw3.Visible)
+            {
+                if (playerDraw3.Location.X > 484 || playerDraw3.Location.Y < 416)
+                {
+                    playerDraw3.Location = new Point(
+                        playerDraw3.Location.X > 484 ? playerDraw3.Location.X - 10 : playerDraw3.Location.X,
+                        playerDraw3.Location.Y < 416 ? playerDraw3.Location.Y + 7 : playerDraw3.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    playerDraw3.Visible = false;
+                    rPlayer3.Visible = true;
 
+                }
+
+                pCardAnimation3.Stop();
+            }
         }
 
         private void initialDraw_Tick(object sender, EventArgs e)
         {
 
+            if (playerDraw1.Visible)
+            {
+                if (playerDraw1.Location.X > 334 || playerDraw1.Location.Y < 417)
+                {
+                    playerDraw1.Location = new Point(
+                        playerDraw1.Location.X > 334 ? playerDraw1.Location.X - 10 : playerDraw1.Location.X,
+                        playerDraw1.Location.Y < 417 ? playerDraw1.Location.Y + 10 : playerDraw1.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    playerDraw1.Visible = false;
+                    rPlayer1.Visible = true;
+                }
+            }
+
+            // -------------------------------------------------------------------------------------------------------------------
+            if (dealerDraw1.Visible)
+            {
+                if (dealerDraw1.Location.X > 339 || dealerDraw1.Location.Y > 84)
+                {
+                    dealerDraw1.Location = new Point(
+                        dealerDraw1.Location.X > 339 ? dealerDraw1.Location.X - 10 : dealerDraw1.Location.X,
+                        dealerDraw1.Location.Y > 84 ? dealerDraw1.Location.Y - 3 : dealerDraw1.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    dealerDraw1.Visible = false;
+                    rDealer1.Visible = true;
+                }
+            }
+
+            if (playerDraw2.Visible)
+            {
+                if (playerDraw2.Location.X > 409 || playerDraw2.Location.Y < 416)
+                {
+                    playerDraw2.Location = new Point(
+                        playerDraw2.Location.X > 409 ? playerDraw2.Location.X - 8 : playerDraw2.Location.X,
+                        playerDraw2.Location.Y < 416 ? playerDraw2.Location.Y + 10 : playerDraw2.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    playerDraw2.Visible = false;
+                    rPlayer2.Visible = true;
+                }
+            }
+
+            if (dealerDraw2.Visible)
+            {
+                if (dealerDraw2.Location.X > 414 || dealerDraw2.Location.Y > 84)
+                {
+                    dealerDraw2.Location = new Point(
+                        dealerDraw2.Location.X > 414 ? dealerDraw2.Location.X - 10 : dealerDraw2.Location.X,
+                        dealerDraw2.Location.Y > 84 ? dealerDraw2.Location.Y - 3 : dealerDraw2.Location.Y
+                    );
+                    return;
+                }
+                else
+                {
+                    dealerDraw2.Visible = false;
+                    rDealer2.Visible = true;
+                }
+            }
+
+            initialDraw.Stop();
         }
 
         private void returnTip_Popup(object sender, PopupEventArgs e)
@@ -686,6 +849,506 @@ namespace FinalBlackJack
         }
 
         private void standBtn_Click(object sender, EventArgs e)
+        {
+            // ----------------------- REVEAL ALL CARDS ASAP TO AVOID ANY CONFLICT DURING COMPILATION OF RESULTS -------------------------------------------
+
+            if (currentBet == 0)
+            {
+                errorSound();
+                MessageBox.Show("You must place a bet first!");
+                return;
+            }
+
+            while (botTotal < 17)
+            {
+                int botIndex = botRandom.Next(rCards.Count);
+                string botCardPath = rCards[botIndex];
+                Image botCardImg = Image.FromFile(botCardPath);
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+
+                if (dealerReveal == 2)
+                {
+                    dealerDraw3.Visible = true;
+                    dCardAnimation3.Start(); // Start first animation
+                    rDealer3.Image = folded;
+                    bot3 = botCardImg;
+                    botHiddenCards[1] = bot3;
+                }
+                else if (dealerReveal == 3)
+                {
+                    // Don't start animation here yet. Wait until animation3 is done.
+                    dealerDraw4.Visible = true;
+                    rDealer4.Image = folded;
+                    bot4 = botCardImg;
+                    botHiddenCards[2] = bot4;
+                    shouldRunDCard4 = true; // <-- this flag triggers animation4 later
+                }
+
+                botTotal += GetCardValue(botCardPath);
+                dealerReveal++;
+
+                if (botTotal >= 17)
+                    break;
+            }
+
+
+            hiddenCards();
+            setValueVisible();
+            displayValues();
+
+            if (botTotal > 21 && playerTotal > 21)
+            {
+                round();
+                checkNearest();
+            }
+
+            else if (botTotal == 21 && playerTotal == 21)
+            {
+                round();
+                dealerBlackJack();
+            }
+
+            else if (playerTotal == 21)
+            {
+                round();
+                playerBlackJack();
+            }
+
+            else if (botTotal == 21)
+            {
+                dealerBlackJack();
+            }
+
+            else if (playerTotal == botTotal)
+            {
+                matched();
+            }
+
+            else if (playerTotal > 21)
+            {
+                playerBustDialogue();
+                round();
+                playerBusted();
+            }
+
+            else if (botTotal > 21)
+            {
+                dealerBustDialogue();
+                round();
+                dealerBusted();
+            }
+
+            else if (playerTotal > botTotal)
+            {
+                standWinDialogue();
+                round();
+                playerWinner();
+            }
+
+            else if (playerTotal < botTotal)
+            {
+                standLoseDialogue();
+                round();
+                dealerWinner();
+            }
+
+            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+        }
+
+        private void hitBtn_Click(object sender, EventArgs e)
+        {
+            if (isDrawn == false)
+            {
+                errorSound();
+                MessageBox.Show("You can't draw cards until the round has started.");
+                return;
+            }
+
+            if (currentBet == 0)
+            {
+                errorSound();
+                MessageBox.Show("You must place a bet first!");
+                return;
+            }
+
+            if (playerReveal == 4)
+            {
+                errorSound();
+                MessageBox.Show("You already drew 4 cards!");
+                return;
+            }
+
+            drawCardsSound();
+            playerHitDialogue();
+
+            int playerIndex = playerRandom.Next(rCards.Count);
+            string playerCardPath = rCards[playerIndex];
+            Image playerCardImg = Image.FromFile(playerCardPath);
+
+            // ------------------------------- PUT CARDS ON PLAYER'S DECK -----------------------------
+
+            if (playerReveal == 2)
+            {
+                pCardAnimation3.Start();
+                rPlayer3.Image = playerCardImg;
+                playerTotal += GetCardValue(playerCardPath);
+            }
+
+            else if (playerReveal == 3)
+            {
+                pCardAnimation4.Start();
+                rPlayer4.Image = playerCardImg;
+                playerTotal += GetCardValue(playerCardPath);
+            }
+
+            playerReveal++;
+
+            displayValues();
+
+            // --------------------------------------- VERIFY THE WINNER -------------------------------------
+            if (playerTotal > 21 && botTotal > 21) // -------------------------------------- IF BOTH BUSTED -------------------------------------------------------
+            {
+                hiddenCards();
+                setValueVisible();
+                round();
+                checkNearest();
+            }
+
+            else if (botTotal > 21) // ------------------------- IF DEALER'S BUSTED ----------------------------------------
+            {
+                hiddenCards();
+                setValueVisible();
+                round();
+                dealerBusted();
+            }
+
+            else if (playerTotal > 21)
+            {
+                hiddenCards();
+                setValueVisible();
+                round();
+                playerBusted();
+            }
+
+        }
+
+        private void doubleBtn_Click(object sender, EventArgs e)
+        {
+            drawCardsSound();
+
+            if (currentBet == 0)
+            {
+                errorSound();
+                MessageBox.Show("You must place a bet first!");
+                return;
+            }
+
+            if (AccountData.accountsBalance[AccountData.currentAccount] < currentBet)
+            {
+                errorSound();
+                MessageBox.Show("You have insufficient balance to double your bet.");
+                return;
+            }
+
+            while (botTotal < 17)
+            {
+                int botIndex = botRandom.Next(rCards.Count);
+                string botCardPath = rCards[botIndex];
+                Image botCardImg = Image.FromFile(botCardPath);
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+
+                if (dealerReveal == 2)
+                {
+                    dCardAnimation3.Enabled = true;
+                    rDealer3.Image = botCardImg;
+                    botHiddenCards[1] = botCardImg;
+
+                }
+
+                else if (dealerReveal == 3)
+                {
+                    dCardAnimation4.Enabled = true;
+                    rDealer4.Image = botCardImg;
+                    botHiddenCards[2] = botCardImg;
+
+                }
+
+                botTotal += GetCardValue(botCardPath);
+                dealerReveal++;
+
+                if (botTotal >= 17)
+                {
+                    break;
+                }
+            }
+
+            int playerIndex = playerRandom.Next(rCards.Count);
+            string playerCardPath = rCards[playerIndex];
+            Image playerCardImg = Image.FromFile(playerCardPath);
+
+
+            setValueVisible();
+
+            // ------------------------------- PUT CARDS ON PLAYER'S DECK -----------------------------
+
+            if (playerReveal == 2)
+            {
+                pCardAnimation3.Enabled = true;
+                rPlayer3.Image = playerCardImg;
+                playerTotal += GetCardValue(playerCardPath);
+            }
+
+            else if (playerReveal == 3)
+            {
+                pCardAnimation4.Enabled = true;
+                rPlayer4.Image = playerCardImg;
+                playerTotal += GetCardValue(playerCardPath);
+            }
+
+            playerReveal++;
+            AccountData.accountsBalance[AccountData.currentAccount] -= currentBet;
+            hiddenCards();
+            displayValues();
+
+            if (botTotal > 21 && playerTotal > 21)
+            {
+                setValueVisible();
+                round();
+                checkNearestDouble();
+            }
+
+            else if (playerTotal == botTotal)
+            {
+                setValueVisible();
+                round();
+                matchedDouble();
+            }
+
+            else if (playerTotal == 21)
+            {
+                setValueVisible();
+                round();
+                playerBlackJackDouble();
+            }
+
+            else if (botTotal == 21)
+            {
+                setValueVisible();
+                round();
+                dealerBlackJackDouble();
+            }
+
+            else if (playerTotal > 21)
+            {
+                setValueVisible();
+                round();
+                playerBustedDouble();
+            }
+
+            else if (botTotal > 21)
+            {
+                setValueVisible();
+                round();
+                dealerBustedDouble();
+            }
+
+            else if (playerTotal > botTotal)
+            {
+                setValueVisible();
+                round();
+                playerWinnerDouble();
+            }
+
+            else if (playerTotal < botTotal)
+            {
+                setValueVisible();
+                round();
+                dealerWinnerDouble();
+            }
+
+            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            resetRound();
+        }
+
+        private void startRound_Click(object sender, EventArgs e)
+        {
+            if (currentBet == 0)
+            {
+                errorSound();
+                MessageBox.Show("You must place a bet first!");
+                return;
+            }
+
+            returnBet.Visible = false;
+            returnAllBet.Visible = false;
+            drawCardsSound();
+            actionsEnabled();
+
+            // Make the moving PictureBoxes visible (if not already)
+            playerDraw1.Visible = true;
+            playerDraw2.Visible = true;
+
+            dealerDraw1.Visible = true;
+            dealerDraw2.Visible = true;
+
+
+            // Start moving
+            initialDraw.Enabled = true;
+
+            botValue.Visible = false;
+            isDrawn = true;
+            startRound.Visible = false;
+            dealerDialogue.Visible = true;
+            actionLog.Visible = true;
+            currentRound.Visible = false;
+            roundStarted = true;
+
+            startGameDialogue();
+
+
+            while (playerReveal != 2 && dealerReveal != 2)
+            {
+                int botIndex = botRandom.Next(rCards.Count);
+                string botCardPath = rCards[botIndex];
+                Image botCardImg = Image.FromFile(botCardPath);
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+
+                int playerIndex = playerRandom.Next(rCards.Count);
+                string playerCardPath = rCards[playerIndex];
+                Image playerCardImg = Image.FromFile(playerCardPath);
+
+                if (playerReveal == 0)
+                {
+                    rDealer1.Image = botCardImg;
+                    rPlayer1.Image = playerCardImg;
+                    botTotal += GetCardValue(botCardPath);
+                    playerTotal += GetCardValue(playerCardPath);
+
+                }
+                else if (playerReveal == 1)
+                {
+                    rDealer2.Image = folded;
+                    rPlayer2.Image = playerCardImg;
+                    bot2 = botCardImg;
+                    botHiddenCards[0] = bot2;
+                    playerTotal += GetCardValue(playerCardPath);
+                    botTotal += GetCardValue(botCardPath);
+
+                }
+
+                playerReveal++;
+                dealerReveal++;
+                displayValues();
+            }
+        }
+
+        private void rChip100_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rChip50_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rChip10_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rChip5_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rChip25_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void rChip1_Click(object sender, EventArgs e)
+        {
+            int chipValue = 100;
+            if (checkBalance(chipValue))
+            {
+                latestBet = chipValue;
+                addChips(chipValue);
+                startGameEnabled();
+            }
+            else
+            {
+                MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void returnBet_Click(object sender, EventArgs e)
+        {
+            AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
+            currentBet -= latestBet;
+            rBet.Text = "Round Bet: " + currentBet.ToString();
+            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+        }
+
+        private void returnAllBet_Click(object sender, EventArgs e)
+        {
+            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            currentBet = 0;
+            rBet.Text = "Round Bet: 0";
+            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+        }
+
+        private void returnAllTip_Popup(object sender, PopupEventArgs e)
         {
 
         }
