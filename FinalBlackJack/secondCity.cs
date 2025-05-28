@@ -213,41 +213,41 @@ namespace FinalBlackJack
 
             else
             {
-                r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+                r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             }
         }
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet * 2;
+            ingameWinnings += currentBet;
             AccountData.accountsBalance[AccountData.currentAccount] += currentBet * 2;
             dealerBalance -= currentBet;
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
 
         private void balanceWinUpdateDouble()
         {
-            ingameWinnings += (currentBet * 2) * 2;
+            ingameWinnings += (currentBet * 2);
             AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdate()
         {
             dealerBalance += currentBet;
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdateDouble()
         {
             dealerBalance += (currentBet * 2);
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void displayValues()
@@ -305,7 +305,7 @@ namespace FinalBlackJack
             roundWinnerSound();
             MessageBox.Show("Dealer BlackJack, Player lost!");
             roundOver = true;
-            balanceWinUpdate();
+            balanceLoseUpdate();
             resetRound();
             return;
         }
@@ -346,7 +346,7 @@ namespace FinalBlackJack
             {
                 roundLoserSound();
                 MessageBox.Show("Draw match!");
-                r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+                r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
             }
             else if ((playerTotal - 21) < (botTotal - 21))
             {
@@ -661,7 +661,7 @@ namespace FinalBlackJack
             botValue.Text = "";
 
 
-            r_BankRoll.Text = "Balance : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             returnTip.SetToolTip(returnBet, "Undo");
             returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
@@ -1339,7 +1339,7 @@ namespace FinalBlackJack
         {
             AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
             currentBet -= latestBet;
-            rBet.Text = "Round Bet: " + currentBet.ToString();
+            rBet.Text = "Round Bet : " + currentBet.ToString();
             r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
         }
 
@@ -1347,7 +1347,7 @@ namespace FinalBlackJack
         {
             AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
             currentBet = 0;
-            rBet.Text = "Round Bet: 0";
+            rBet.Text = "Round Bet : 0";
             r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
         }
 

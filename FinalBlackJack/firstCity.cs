@@ -32,7 +32,7 @@ namespace FinalBlackJack
             botValue.Text = "";
 
 
-            r_BankRoll.Text = "Balance : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             returnTip.SetToolTip(returnBet, "Undo");
             returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
@@ -236,41 +236,41 @@ namespace FinalBlackJack
 
             else
             {
-                r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+                r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             }
         }
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet * 2;
+            ingameWinnings += currentBet;
             AccountData.accountsBalance[AccountData.currentAccount] += currentBet * 2;
             dealerBalance -= currentBet;
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
 
         private void balanceWinUpdateDouble()
         {
+            ingameWinnings += (currentBet * 2);
             AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
-            ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdate()
         {
             dealerBalance += currentBet;
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdateDouble()
         {
             dealerBalance += (currentBet * 2);
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void displayValues()
@@ -358,7 +358,7 @@ namespace FinalBlackJack
             roundLoserSound();
             MessageBox.Show("Draw matched, returning cards.");
             roundOver = true;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2);
             resetRound();
             return;
         }
@@ -647,6 +647,7 @@ namespace FinalBlackJack
         public int currentBet = 0;
         public int ingameWinnings = 0;
 
+
         private bool roundOver = false;
         private bool playerHasStood = false;
         private bool isDrawn = false;
@@ -865,7 +866,7 @@ namespace FinalBlackJack
                 dealerWinner();
             }
 
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
         }
 
         private void doubleBtn_Click(object sender, EventArgs e)
@@ -1002,7 +1003,7 @@ namespace FinalBlackJack
                 dealerWinnerDouble();
             }
 
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             resetRound();
         }
 
@@ -1218,7 +1219,7 @@ namespace FinalBlackJack
                 dealerWinnerDouble();
             }
 
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "BankRoll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             resetRound();
         }
 
@@ -1226,16 +1227,16 @@ namespace FinalBlackJack
         {
             AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
             currentBet -= latestBet;
-            rBet.Text = "Round Bet: " + currentBet.ToString();
-            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            rBet.Text = "Round Bet : " + currentBet.ToString();
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
         }
 
         private void returnAllBet_Click(object sender, EventArgs e)
         {
             AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
             currentBet = 0;
-            rBet.Text = "Round Bet: 0";
-            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            rBet.Text = "Round Bet : 0";
+            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
         }
 
         private void rChip25_Click(object sender, EventArgs e)
@@ -1243,6 +1244,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1257,6 +1259,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1271,6 +1274,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1285,6 +1289,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1299,6 +1304,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1313,6 +1319,7 @@ namespace FinalBlackJack
             int chipValue = 25;
             if (checkBalance(chipValue))
             {
+                latestBet = chipValue;
                 addChips(chipValue);
                 startGameEnabled();
             }
@@ -1411,11 +1418,11 @@ namespace FinalBlackJack
         {
             if (playerDraw3.Visible)
             {
-                if (playerDraw3.Location.X > 448 || playerDraw3.Location.Y < 441)
+                if (playerDraw3.Location.X > 488 || playerDraw3.Location.Y < 441)
                 {
                     playerDraw3.Location = new Point(
-                        playerDraw3.Location.X > 484 ? playerDraw3.Location.X - 10 : playerDraw3.Location.X,
-                        playerDraw3.Location.Y < 441 ? playerDraw3.Location.Y + 7 : playerDraw3.Location.Y
+                        playerDraw3.Location.X > 488 ? playerDraw3.Location.X - 10 : playerDraw3.Location.X,
+                        playerDraw3.Location.Y < 441 ? playerDraw3.Location.Y + 8 : playerDraw3.Location.Y
                     );
                     return;
                 }
@@ -1423,10 +1430,10 @@ namespace FinalBlackJack
                 {
                     playerDraw3.Visible = false;
                     rPlayer3.Visible = true;
-
+                    rPlayer3.BringToFront();
+                    rPlayer3.Refresh();
+                    pCardAnimation3.Stop();
                 }
-
-                pCardAnimation3.Stop();
             }
         }
 
@@ -1438,7 +1445,7 @@ namespace FinalBlackJack
                 {
                     playerDraw4.Location = new Point(
                         playerDraw4.Location.X > 563 ? playerDraw4.Location.X - 10 : playerDraw4.Location.X,
-                        playerDraw4.Location.Y < 441 ? playerDraw4.Location.Y + 7 : playerDraw4.Location.Y
+                        playerDraw4.Location.Y < 441 ? playerDraw4.Location.Y + 8 : playerDraw4.Location.Y
                     );
                     return;
                 }
@@ -1446,6 +1453,7 @@ namespace FinalBlackJack
                 {
                     playerDraw4.Visible = false;
                     rPlayer4.Visible = true;
+                    rPlayer3.BringToFront();
 
                 }
                 pCardAnimation4.Stop();
@@ -1480,7 +1488,6 @@ namespace FinalBlackJack
                 }
             }
         }
-
         private void dCardAnimation4_Tick(object sender, EventArgs e)
         {
             if (dealerDraw4.Visible)
@@ -1513,6 +1520,11 @@ namespace FinalBlackJack
         }
 
         private void returnAllTip_Popup_2(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void firstCity_Load_1(object sender, EventArgs e)
         {
 
         }

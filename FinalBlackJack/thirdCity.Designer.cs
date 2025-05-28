@@ -167,6 +167,7 @@
             rDealer2.SizeMode = PictureBoxSizeMode.StretchImage;
             rDealer2.TabIndex = 6;
             rDealer2.TabStop = false;
+            rDealer2.Click += rDealer2_Click;
             // 
             // rDealer1
             // 
