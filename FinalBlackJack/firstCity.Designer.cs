@@ -74,6 +74,8 @@
             pCardAnimation4 = new System.Windows.Forms.Timer(components);
             dCardAnimation3 = new System.Windows.Forms.Timer(components);
             dCardAnimation4 = new System.Windows.Forms.Timer(components);
+            returnTip = new ToolTip(components);
+            returnAllTip = new ToolTip(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)returnAllBet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)returnBet).BeginInit();
@@ -598,19 +600,31 @@
             // 
             // pCardAnimation3
             // 
+            pCardAnimation3.Interval = 2;
             pCardAnimation3.Tick += pCardAnimation3_Tick;
             // 
             // pCardAnimation4
             // 
+            pCardAnimation4.Interval = 2;
             pCardAnimation4.Tick += pCardAnimation4_Tick;
             // 
             // dCardAnimation3
             // 
+            dCardAnimation3.Interval = 2;
             dCardAnimation3.Tick += dCardAnimation3_Tick;
             // 
             // dCardAnimation4
             // 
+            dCardAnimation4.Interval = 2;
             dCardAnimation4.Tick += dCardAnimation4_Tick;
+            // 
+            // returnTip
+            // 
+            returnTip.Popup += returnTip_Popup;
+            // 
+            // returnAllTip
+            // 
+            returnAllTip.Popup += returnAllTip_Popup_2;
             // 
             // firstCity
             // 
@@ -699,5 +713,7 @@
         private System.Windows.Forms.Timer pCardAnimation4;
         private System.Windows.Forms.Timer dCardAnimation3;
         private System.Windows.Forms.Timer dCardAnimation4;
+        private ToolTip returnTip;
+        private ToolTip returnAllTip;
     }
 }

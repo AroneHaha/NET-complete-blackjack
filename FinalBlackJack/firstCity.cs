@@ -15,6 +15,26 @@ namespace FinalBlackJack
         public firstCity()
         {
             InitializeComponent();
+
+            rPlayer1.Visible = false;
+            rPlayer2.Visible = false;
+            rPlayer3.Visible = false;
+            rPlayer4.Visible = false;
+            rDealer1.Visible = false;
+            rDealer2.Visible = false;
+            rDealer3.Visible = false;
+            rDealer4.Visible = false;
+
+            currentRound.Text = "Round : " + ingameRound;
+            actionLog.Visible = false;
+            dealerDialogue.Visible = false;
+            playerValue.Text = "";
+            botValue.Text = "";
+
+
+            r_BankRoll.Text = "Balance : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            returnTip.SetToolTip(returnBet, "Undo");
+            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
 
         List<string> rCards = new List<string>()
@@ -90,7 +110,6 @@ namespace FinalBlackJack
             else if (fileName.StartsWith("queen")) return 10;
             else if (fileName.StartsWith("king")) return 10;
 
-
             return 0;
         }
 
@@ -138,15 +157,14 @@ namespace FinalBlackJack
             doubleBtn.Enabled = false;
             startRound.Enabled = false;
 
-
-            playerDraw1.Location = new Point(656, 121);
-            playerDraw2.Location = new Point(656, 121);
-            playerDraw3.Location = new Point(656, 121);
-            playerDraw4.Location = new Point(656, 121);
-            dealerDraw1.Location = new Point(656, 121);
-            dealerDraw2.Location = new Point(656, 121);
-            dealerDraw3.Location = new Point(656, 121);
-            dealerDraw4.Location = new Point(656, 121);
+            playerDraw1.Location = new Point(658, 121);
+            playerDraw2.Location = new Point(658, 121);
+            playerDraw3.Location = new Point(658, 121);
+            playerDraw4.Location = new Point(658, 121);
+            dealerDraw1.Location = new Point(658, 121);
+            dealerDraw2.Location = new Point(658, 121);
+            dealerDraw3.Location = new Point(658, 121);
+            dealerDraw4.Location = new Point(658, 121);
 
             initialDraw.Enabled = false;
             pCardAnimation3.Enabled = false;
@@ -644,6 +662,8 @@ namespace FinalBlackJack
         public Image bot4;
         public Image[] botHiddenCards = new Image[3];
 
+        string currentUser = AccountData.usernames[AccountData.currentAccount];
+
 
         private void backButton_Click(object sender, EventArgs e)
         {
@@ -757,7 +777,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\red_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -803,6 +823,7 @@ namespace FinalBlackJack
 
             else if (playerTotal == 21)
             {
+                round();
                 playerBlackJack();
             }
 
@@ -870,7 +891,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\red_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -1026,7 +1047,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\red_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 int playerIndex = playerRandom.Next(rCards.Count);
                 string playerCardPath = rCards[playerIndex];
@@ -1086,7 +1107,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\red_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -1316,11 +1337,11 @@ namespace FinalBlackJack
 
             if (playerDraw1.Visible)
             {
-                if (playerDraw1.Location.X > 334 || playerDraw1.Location.Y < 417)
+                if (playerDraw1.Location.X > 338 || playerDraw1.Location.Y < 441)
                 {
                     playerDraw1.Location = new Point(
-                        playerDraw1.Location.X > 334 ? playerDraw1.Location.X - 10 : playerDraw1.Location.X,
-                        playerDraw1.Location.Y < 417 ? playerDraw1.Location.Y + 10 : playerDraw1.Location.Y
+                        playerDraw1.Location.X > 338 ? playerDraw1.Location.X - 10 : playerDraw1.Location.X,
+                        playerDraw1.Location.Y < 441 ? playerDraw1.Location.Y + 10 : playerDraw1.Location.Y
                     );
                     return;
                 }
@@ -1334,10 +1355,10 @@ namespace FinalBlackJack
             // -------------------------------------------------------------------------------------------------------------------
             if (dealerDraw1.Visible)
             {
-                if (dealerDraw1.Location.X > 339 || dealerDraw1.Location.Y > 84)
+                if (dealerDraw1.Location.X > 341 || dealerDraw1.Location.Y > 84)
                 {
                     dealerDraw1.Location = new Point(
-                        dealerDraw1.Location.X > 339 ? dealerDraw1.Location.X - 10 : dealerDraw1.Location.X,
+                        dealerDraw1.Location.X > 341 ? dealerDraw1.Location.X - 10 : dealerDraw1.Location.X,
                         dealerDraw1.Location.Y > 84 ? dealerDraw1.Location.Y - 3 : dealerDraw1.Location.Y
                     );
                     return;
@@ -1351,11 +1372,11 @@ namespace FinalBlackJack
 
             if (playerDraw2.Visible)
             {
-                if (playerDraw2.Location.X > 409 || playerDraw2.Location.Y < 416)
+                if (playerDraw2.Location.X > 413 || playerDraw2.Location.Y < 441)
                 {
                     playerDraw2.Location = new Point(
-                        playerDraw2.Location.X > 409 ? playerDraw2.Location.X - 8 : playerDraw2.Location.X,
-                        playerDraw2.Location.Y < 416 ? playerDraw2.Location.Y + 10 : playerDraw2.Location.Y
+                        playerDraw2.Location.X > 413 ? playerDraw2.Location.X - 8 : playerDraw2.Location.X,
+                        playerDraw2.Location.Y < 441 ? playerDraw2.Location.Y + 10 : playerDraw2.Location.Y
                     );
                     return;
                 }
@@ -1368,10 +1389,10 @@ namespace FinalBlackJack
 
             if (dealerDraw2.Visible)
             {
-                if (dealerDraw2.Location.X > 414 || dealerDraw2.Location.Y > 84)
+                if (dealerDraw2.Location.X > 416 || dealerDraw2.Location.Y > 84)
                 {
                     dealerDraw2.Location = new Point(
-                        dealerDraw2.Location.X > 414 ? dealerDraw2.Location.X - 10 : dealerDraw2.Location.X,
+                        dealerDraw2.Location.X > 416 ? dealerDraw2.Location.X - 10 : dealerDraw2.Location.X,
                         dealerDraw2.Location.Y > 84 ? dealerDraw2.Location.Y - 3 : dealerDraw2.Location.Y
                     );
                     return;
@@ -1390,11 +1411,11 @@ namespace FinalBlackJack
         {
             if (playerDraw3.Visible)
             {
-                if (playerDraw3.Location.X > 484 || playerDraw3.Location.Y < 416)
+                if (playerDraw3.Location.X > 448 || playerDraw3.Location.Y < 441)
                 {
                     playerDraw3.Location = new Point(
                         playerDraw3.Location.X > 484 ? playerDraw3.Location.X - 10 : playerDraw3.Location.X,
-                        playerDraw3.Location.Y < 416 ? playerDraw3.Location.Y + 7 : playerDraw3.Location.Y
+                        playerDraw3.Location.Y < 441 ? playerDraw3.Location.Y + 7 : playerDraw3.Location.Y
                     );
                     return;
                 }
@@ -1413,11 +1434,11 @@ namespace FinalBlackJack
         {
             if (playerDraw4.Visible)
             {
-                if (playerDraw4.Location.X > 559 || playerDraw4.Location.Y < 416)
+                if (playerDraw4.Location.X > 563 || playerDraw4.Location.Y < 441)
                 {
                     playerDraw4.Location = new Point(
-                        playerDraw4.Location.X > 559 ? playerDraw4.Location.X - 10 : playerDraw4.Location.X,
-                        playerDraw4.Location.Y < 416 ? playerDraw4.Location.Y + 7 : playerDraw4.Location.Y
+                        playerDraw4.Location.X > 563 ? playerDraw4.Location.X - 10 : playerDraw4.Location.X,
+                        playerDraw4.Location.Y < 441 ? playerDraw4.Location.Y + 7 : playerDraw4.Location.Y
                     );
                     return;
                 }
@@ -1435,10 +1456,10 @@ namespace FinalBlackJack
         {
             if (dealerDraw3.Visible)
             {
-                if (dealerDraw3.Location.X > 489 || dealerDraw3.Location.Y < 84)
+                if (dealerDraw3.Location.X > 491 || dealerDraw3.Location.Y < 84)
                 {
                     dealerDraw3.Location = new Point(
-                        dealerDraw3.Location.X > 489 ? dealerDraw3.Location.X - 10 : dealerDraw3.Location.X,
+                        dealerDraw3.Location.X > 491 ? dealerDraw3.Location.X - 10 : dealerDraw3.Location.X,
                         dealerDraw3.Location.Y < 84 ? dealerDraw3.Location.Y + 10 : dealerDraw3.Location.Y
                     );
                     return;
@@ -1464,10 +1485,10 @@ namespace FinalBlackJack
         {
             if (dealerDraw4.Visible)
             {
-                if (dealerDraw4.Location.X > 564 || dealerDraw4.Location.Y < 84)
+                if (dealerDraw4.Location.X > 566 || dealerDraw4.Location.Y < 84)
                 {
                     dealerDraw4.Location = new Point(
-                        dealerDraw4.Location.X > 564 ? dealerDraw4.Location.X - 10 : dealerDraw4.Location.X,
+                        dealerDraw4.Location.X > 566 ? dealerDraw4.Location.X - 10 : dealerDraw4.Location.X,
                         dealerDraw4.Location.Y < 84 ? dealerDraw4.Location.Y + 10 : dealerDraw4.Location.Y
                     );
                     return;
@@ -1479,6 +1500,21 @@ namespace FinalBlackJack
                 }
                 dCardAnimation4.Stop();
             }
+        }
+
+        private void returnTip_Popup(object sender, PopupEventArgs e)
+        {
+
+        }
+
+        private void firstCity_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void returnAllTip_Popup_2(object sender, PopupEventArgs e)
+        {
+
         }
     }
 }

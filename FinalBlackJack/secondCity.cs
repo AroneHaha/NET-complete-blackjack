@@ -659,6 +659,11 @@ namespace FinalBlackJack
             dealerDialogue.Visible = false;
             playerValue.Text = "";
             botValue.Text = "";
+
+
+            r_BankRoll.Text = "Balance : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            returnTip.SetToolTip(returnBet, "Undo");
+            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
 
         private void hongkongPanel_Load(object sender, EventArgs e)
