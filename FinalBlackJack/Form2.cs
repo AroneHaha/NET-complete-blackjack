@@ -47,9 +47,6 @@ namespace FinalBlackJack
             profilePanel.Hide();
             walletPanel.Hide();
 
-
-
-
             mainDisplayPanel.Controls.Clear();
         }
 
@@ -219,6 +216,8 @@ namespace FinalBlackJack
         }
         private void switchToSignup_Click(object sender, EventArgs e)
         {
+            userLogin.Clear();
+            passwordLogin.Clear();
             loginPanel.Hide();
             signupPanel.Show();
         }
@@ -422,6 +421,14 @@ namespace FinalBlackJack
                 return;
             }
 
+            if (AccountData.passwords[AccountData.currentAccount].Length < 8)
+            {
+                MessageBox.Show("Your password must be at least 8 characters.");
+                passwordLog.Text = "";
+                confPasswordLog.Text = "";
+                return;
+            }
+
             if (int.TryParse(ageLog.Text, out int age)) // CHECK AGE IF BELOW 18
             {
                 if (age < 18)
@@ -509,6 +516,12 @@ namespace FinalBlackJack
 
         private void backButton_Click(object sender, EventArgs e)
         {
+            usernameLog.Clear();
+            passwordLog.Clear();
+            emailLog.Clear();
+            ageLog.Clear();
+            confPasswordLog.Clear();
+            verifLog.Clear();
             signupPanel.Hide();
             loginPanel.Show();
             loginPanel.BringToFront();
@@ -700,6 +713,8 @@ namespace FinalBlackJack
 
         private void fogotPassowrdButton_Click(object sender, EventArgs e)
         {
+            userLogin.Clear();
+            passwordLogin.Clear();
             changePassPanel.Hide();
             forgotPassPanel.Visible = true;
             loginPanel.Visible = false;
@@ -736,6 +751,164 @@ namespace FinalBlackJack
         private void exitProgram_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void changePassPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label21_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void saveBtn_Click(object sender, EventArgs e)
+        {
+            if (changeConfPw.Text != changePw.Text)
+            {
+                MessageBox.Show("Password confirmation does not match.");
+                changeConfPw.Clear();
+                changePw.Clear();
+                return;
+            }
+
+            if (changePw.Text.Length < 8)
+            {
+                MessageBox.Show("Your password must be at least 8 characters.");
+                changeConfPw.Clear();
+                changePw.Clear();
+                return;
+            }
+
+            MessageBox.Show("Your account has been successfully retrieved.");
+            loginPanel.Show();
+            forgotPassPanel.Visible = false;
+            loginPanel.Visible = true;
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            loginPanel.Show();
+            forgotPassPanel.Visible = false;
+        }
+
+        private void sendCodeButton_Click(object sender, EventArgs e)
+        {
+
+        }
+        string forgotPasswordCode = "";
+        Boolean isForgotCodeSent = false;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if(!AccountData.usernames.Contains(forgotUsername.Text))
+            {
+                MessageBox.Show("No matching account was found.");
+                forgotUsername.Clear();
+                forgotCode.Clear();
+                return;
+            }
+
+            Random otp = new Random();
+
+            try
+            {
+                forgotPasswordCode = otp.Next(100000, 1000000).ToString(); // 6-digit OTP
+                string verifLink = "markaronedc@gmail.com"; // NEED PALITAN NG NEW GMAIL
+                string pass = "xogd neyn kdez ovts"; // GMAIL KEYPASS FOR VERIF --- markaronedc@gmail.com keypass    
+                MailMessage mm = new MailMessage();
+                SmtpClient sc = new SmtpClient("smtp.gmail.com");
+
+                mm.From = new MailAddress(verifLink);
+                mm.To.Add(AccountData.emails[AccountData.currentAccount]);
+                mm.Subject = "BlackJack Deluxe: Lost Account Password";
+                mm.Body = "Hi " + AccountData.usernames[AccountData.currentAccount] + ",\r\n\r\nIt seems like you're having a trouble with logging in your account and requested for Account Recovery.\r\nTo proceed with resolving the issue, please use the One-Time Password (OTP) below to complete the process:\r\n\r\n🔐 OTP Code: " + forgotPasswordCode;
+
+                sc.Port = 587;
+                sc.Credentials = new System.Net.NetworkCredential(verifLink, pass);
+                sc.EnableSsl = true;
+                sc.Send(mm);
+
+                isForgotCodeSent = true;
+                MessageBox.Show("Code has been sent to registered email of this account.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(forgotUsername.Text) || string.IsNullOrWhiteSpace(forgotCode.Text))
+            {
+                MessageBox.Show("Please fill in all requirements.");
+                return;
+            }
+
+            if (!AccountData.usernames.Contains(forgotUsername.Text))
+            {
+                MessageBox.Show("No matching account was found.");
+                forgotUsername.Clear();
+                forgotCode.Clear();
+                return;
+            }
+
+            if (isForgotCodeSent == false)
+            {
+                MessageBox.Show("Please request for Password Reset code.");
+                forgotCode.Clear();
+                return;
+            }
+
+            if (forgotCode.Text != forgotPasswordCode)
+            {
+                MessageBox.Show("Incorrect verification code. Please try again.");
+                forgotCode.Clear();
+                return;
+            }
+
+            isForgotCodeSent = false;
+            forgotCode.Clear();
+            forgotUsername.Clear();
+           
+            MessageBox.Show("Your credentials are validated, proceed to change your password.");
+            changePassPanel.Visible = true;
+            forgotPassPanel.Visible = true;
+        }
+
+        private void pictureBox1_Click_1(object sender, EventArgs e)
+        {
+            isForgotCodeSent = false;
+            forgotCode.Clear();
+            forgotUsername.Clear();
+            loginPanel.Visible = true;
+            forgotPassPanel.Visible = false;
+        }
+
+        private void pictureBox1_MouseEnter_1(object sender, EventArgs e)
+        {
+            forgotBack.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\back-hover.png");
+        }
+
+        private void forgotBack_MouseLeave(object sender, EventArgs e)
+        {
+            forgotBack.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\back.png");
+        }
+
+        private void forgotPassPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void changePw_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sideMenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 

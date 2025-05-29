@@ -30,20 +30,23 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMenuForm));
             forgotPassPanel = new Panel();
-            changePassPanel = new Panel();
-            cancelChangePassButton = new Button();
-            confirmChangePass = new Button();
-            textBox4 = new TextBox();
-            textBox3 = new TextBox();
-            label19 = new Label();
-            exitForgotPassButton = new Button();
-            textBox1 = new TextBox();
-            confirmButton = new Button();
-            textBox2 = new TextBox();
+            forgotBack = new PictureBox();
+            button2 = new Button();
+            button1 = new Button();
+            label24 = new Label();
+            label22 = new Label();
+            forgotUsername = new TextBox();
             Descipt = new Label();
-            CodeTextBox = new TextBox();
-            sendCodeButton = new Button();
+            forgotCode = new TextBox();
             label18 = new Label();
+            changePassPanel = new Panel();
+            cancelButton = new Button();
+            saveBtn = new Button();
+            label21 = new Label();
+            label20 = new Label();
+            changeConfPw = new TextBox();
+            changePw = new TextBox();
+            label19 = new Label();
             loginPanel = new Panel();
             fogotPassowrdButton = new Button();
             switchToSignup = new Button();
@@ -110,6 +113,7 @@
             mainDisplayPanel = new Panel();
             form3Button = new Button();
             signupPanel = new Panel();
+            label25 = new Label();
             label16 = new Label();
             backButton = new Button();
             ageLog = new TextBox();
@@ -128,6 +132,7 @@
             passwordLog = new TextBox();
             verificationText = new Label();
             forgotPassPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)forgotBack).BeginInit();
             changePassPanel.SuspendLayout();
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
@@ -153,147 +158,211 @@
             // 
             // forgotPassPanel
             // 
-            forgotPassPanel.BackColor = Color.Black;
-            forgotPassPanel.Controls.Add(changePassPanel);
-            forgotPassPanel.Controls.Add(exitForgotPassButton);
-            forgotPassPanel.Controls.Add(textBox1);
-            forgotPassPanel.Controls.Add(confirmButton);
-            forgotPassPanel.Controls.Add(textBox2);
+            forgotPassPanel.BackColor = Color.DarkSeaGreen;
+            forgotPassPanel.Controls.Add(forgotBack);
+            forgotPassPanel.Controls.Add(button2);
+            forgotPassPanel.Controls.Add(button1);
+            forgotPassPanel.Controls.Add(label24);
+            forgotPassPanel.Controls.Add(label22);
+            forgotPassPanel.Controls.Add(forgotUsername);
             forgotPassPanel.Controls.Add(Descipt);
-            forgotPassPanel.Controls.Add(CodeTextBox);
-            forgotPassPanel.Controls.Add(sendCodeButton);
+            forgotPassPanel.Controls.Add(forgotCode);
             forgotPassPanel.Controls.Add(label18);
-            forgotPassPanel.Location = new Point(274, 74);
+            forgotPassPanel.Location = new Point(276, 124);
             forgotPassPanel.Name = "forgotPassPanel";
-            forgotPassPanel.Size = new Size(456, 401);
+            forgotPassPanel.Size = new Size(456, 390);
             forgotPassPanel.TabIndex = 12;
             forgotPassPanel.Visible = false;
+            forgotPassPanel.Paint += forgotPassPanel_Paint;
             // 
-            // changePassPanel
+            // forgotBack
             // 
-            changePassPanel.Controls.Add(cancelChangePassButton);
-            changePassPanel.Controls.Add(confirmChangePass);
-            changePassPanel.Controls.Add(textBox4);
-            changePassPanel.Controls.Add(textBox3);
-            changePassPanel.Controls.Add(label19);
-            changePassPanel.Location = new Point(8, 10);
-            changePassPanel.Name = "changePassPanel";
-            changePassPanel.Size = new Size(414, 356);
-            changePassPanel.TabIndex = 7;
+            forgotBack.Cursor = Cursors.Hand;
+            forgotBack.Image = (Image)resources.GetObject("forgotBack.Image");
+            forgotBack.Location = new Point(22, 22);
+            forgotBack.Name = "forgotBack";
+            forgotBack.Size = new Size(35, 34);
+            forgotBack.SizeMode = PictureBoxSizeMode.StretchImage;
+            forgotBack.TabIndex = 12;
+            forgotBack.TabStop = false;
+            forgotBack.Click += pictureBox1_Click_1;
+            forgotBack.MouseEnter += pictureBox1_MouseEnter_1;
+            forgotBack.MouseLeave += forgotBack_MouseLeave;
             // 
-            // cancelChangePassButton
+            // button2
             // 
-            cancelChangePassButton.Location = new Point(113, 192);
-            cancelChangePassButton.Name = "cancelChangePassButton";
-            cancelChangePassButton.Size = new Size(75, 23);
-            cancelChangePassButton.TabIndex = 5;
-            cancelChangePassButton.Text = "cancelButton";
-            cancelChangePassButton.UseVisualStyleBackColor = true;
-            cancelChangePassButton.Click += cancelChangePassButton_Click;
+            button2.BackColor = Color.ForestGreen;
+            button2.Font = new Font("Segoe UI", 12F);
+            button2.ForeColor = Color.White;
+            button2.Location = new Point(170, 328);
+            button2.Name = "button2";
+            button2.Size = new Size(123, 40);
+            button2.TabIndex = 10;
+            button2.Text = "Save";
+            button2.UseVisualStyleBackColor = false;
+            button2.Click += button2_Click;
             // 
-            // confirmChangePass
+            // button1
             // 
-            confirmChangePass.Location = new Point(219, 192);
-            confirmChangePass.Name = "confirmChangePass";
-            confirmChangePass.Size = new Size(75, 23);
-            confirmChangePass.TabIndex = 4;
-            confirmChangePass.Text = "COnfirm";
-            confirmChangePass.UseVisualStyleBackColor = true;
-            confirmChangePass.Click += confirmChangePass_Click;
+            button1.BackColor = Color.Red;
+            button1.Font = new Font("Segoe UI", 9F);
+            button1.ForeColor = Color.White;
+            button1.Location = new Point(325, 267);
+            button1.Name = "button1";
+            button1.Size = new Size(63, 28);
+            button1.TabIndex = 10;
+            button1.Text = "Send";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
             // 
-            // textBox4
+            // label24
             // 
-            textBox4.Location = new Point(138, 127);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(198, 23);
-            textBox4.TabIndex = 2;
+            label24.AutoSize = true;
+            label24.Font = new Font("Microsoft Sans Serif", 12F);
+            label24.Location = new Point(79, 238);
+            label24.Name = "label24";
+            label24.Size = new Size(138, 20);
+            label24.TabIndex = 11;
+            label24.Text = "Verification Code :";
             // 
-            // textBox3
+            // label22
             // 
-            textBox3.Location = new Point(139, 79);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(197, 23);
-            textBox3.TabIndex = 1;
+            label22.AutoSize = true;
+            label22.Font = new Font("Microsoft Sans Serif", 12F);
+            label22.Location = new Point(62, 201);
+            label22.Name = "label22";
+            label22.Size = new Size(154, 20);
+            label22.TabIndex = 9;
+            label22.Text = "Account Username :";
             // 
-            // label19
+            // forgotUsername
             // 
-            label19.AutoSize = true;
-            label19.ForeColor = SystemColors.ButtonFace;
-            label19.Location = new Point(155, 30);
-            label19.Name = "label19";
-            label19.Size = new Size(72, 15);
-            label19.TabIndex = 0;
-            label19.Text = "change pass";
-            // 
-            // exitForgotPassButton
-            // 
-            exitForgotPassButton.Location = new Point(324, 31);
-            exitForgotPassButton.Name = "exitForgotPassButton";
-            exitForgotPassButton.Size = new Size(75, 23);
-            exitForgotPassButton.TabIndex = 8;
-            exitForgotPassButton.Text = "exit";
-            exitForgotPassButton.UseVisualStyleBackColor = true;
-            exitForgotPassButton.Click += exitForgotPassButton_Click;
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(155, 92);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(134, 23);
-            textBox1.TabIndex = 6;
-            // 
-            // confirmButton
-            // 
-            confirmButton.Location = new Point(230, 216);
-            confirmButton.Name = "confirmButton";
-            confirmButton.Size = new Size(98, 50);
-            confirmButton.TabIndex = 5;
-            confirmButton.Text = "confirmButton";
-            confirmButton.UseVisualStyleBackColor = true;
-            confirmButton.Click += confirmButton_Click_1;
-            // 
-            // textBox2
-            // 
-            textBox2.Location = new Point(154, 129);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(135, 23);
-            textBox2.TabIndex = 4;
+            forgotUsername.Location = new Point(220, 200);
+            forgotUsername.Name = "forgotUsername";
+            forgotUsername.Size = new Size(167, 23);
+            forgotUsername.TabIndex = 6;
             // 
             // Descipt
             // 
             Descipt.AutoSize = true;
-            Descipt.ForeColor = SystemColors.ButtonFace;
-            Descipt.Location = new Point(203, 59);
+            Descipt.Font = new Font("Segoe UI", 7F, FontStyle.Italic);
+            Descipt.ForeColor = Color.Black;
+            Descipt.Location = new Point(75, 146);
             Descipt.Name = "Descipt";
-            Descipt.Size = new Size(25, 15);
+            Descipt.Size = new Size(317, 12);
             Descipt.TabIndex = 3;
-            Descipt.Text = "des";
+            Descipt.Text = "Please fill the following requirements in order to retrieve your account.\r\n";
             // 
-            // CodeTextBox
+            // forgotCode
             // 
-            CodeTextBox.Location = new Point(154, 166);
-            CodeTextBox.Name = "CodeTextBox";
-            CodeTextBox.Size = new Size(135, 23);
-            CodeTextBox.TabIndex = 2;
-            // 
-            // sendCodeButton
-            // 
-            sendCodeButton.Location = new Point(96, 217);
-            sendCodeButton.Name = "sendCodeButton";
-            sendCodeButton.Size = new Size(103, 50);
-            sendCodeButton.TabIndex = 1;
-            sendCodeButton.Text = "Send Code";
-            sendCodeButton.UseVisualStyleBackColor = true;
+            forgotCode.Location = new Point(220, 238);
+            forgotCode.Name = "forgotCode";
+            forgotCode.Size = new Size(168, 23);
+            forgotCode.TabIndex = 2;
             // 
             // label18
             // 
             label18.AutoSize = true;
-            label18.ForeColor = SystemColors.ButtonFace;
-            label18.Location = new Point(166, 31);
+            label18.Font = new Font("Haettenschweiler", 45F);
+            label18.ForeColor = Color.Black;
+            label18.Location = new Point(63, 74);
             label18.Name = "label18";
-            label18.Size = new Size(95, 15);
+            label18.Size = new Size(345, 62);
             label18.TabIndex = 0;
             label18.Text = "Forgot Password";
+            // 
+            // changePassPanel
+            // 
+            changePassPanel.BackColor = Color.DarkSeaGreen;
+            changePassPanel.Controls.Add(cancelButton);
+            changePassPanel.Controls.Add(saveBtn);
+            changePassPanel.Controls.Add(label21);
+            changePassPanel.Controls.Add(label20);
+            changePassPanel.Controls.Add(changeConfPw);
+            changePassPanel.Controls.Add(changePw);
+            changePassPanel.Controls.Add(label19);
+            changePassPanel.Enabled = false;
+            changePassPanel.Location = new Point(276, 124);
+            changePassPanel.Name = "changePassPanel";
+            changePassPanel.Size = new Size(456, 390);
+            changePassPanel.TabIndex = 7;
+            changePassPanel.Visible = false;
+            changePassPanel.Paint += changePassPanel_Paint;
+            // 
+            // cancelButton
+            // 
+            cancelButton.BackColor = Color.Red;
+            cancelButton.Font = new Font("Segoe UI", 12F);
+            cancelButton.ForeColor = Color.White;
+            cancelButton.Location = new Point(108, 314);
+            cancelButton.Name = "cancelButton";
+            cancelButton.Size = new Size(123, 40);
+            cancelButton.TabIndex = 9;
+            cancelButton.Text = "Cancel";
+            cancelButton.UseVisualStyleBackColor = false;
+            cancelButton.Click += cancelButton_Click;
+            // 
+            // saveBtn
+            // 
+            saveBtn.BackColor = Color.ForestGreen;
+            saveBtn.Font = new Font("Segoe UI", 12F);
+            saveBtn.ForeColor = Color.White;
+            saveBtn.Location = new Point(237, 314);
+            saveBtn.Name = "saveBtn";
+            saveBtn.Size = new Size(123, 40);
+            saveBtn.TabIndex = 8;
+            saveBtn.Text = "Save";
+            saveBtn.UseVisualStyleBackColor = false;
+            saveBtn.Click += saveBtn_Click;
+            // 
+            // label21
+            // 
+            label21.AutoSize = true;
+            label21.Font = new Font("Microsoft Sans Serif", 12F);
+            label21.Location = new Point(56, 228);
+            label21.Name = "label21";
+            label21.Size = new Size(145, 20);
+            label21.TabIndex = 7;
+            label21.Text = "Confirm Password :";
+            label21.Click += label21_Click;
+            // 
+            // label20
+            // 
+            label20.AutoSize = true;
+            label20.Font = new Font("Microsoft Sans Serif", 12F);
+            label20.Location = new Point(82, 170);
+            label20.Name = "label20";
+            label20.Size = new Size(121, 20);
+            label20.TabIndex = 6;
+            label20.Text = "New Password :";
+            // 
+            // changeConfPw
+            // 
+            changeConfPw.Font = new Font("Microsoft Sans Serif", 14F);
+            changeConfPw.Location = new Point(209, 226);
+            changeConfPw.Name = "changeConfPw";
+            changeConfPw.Size = new Size(198, 29);
+            changeConfPw.TabIndex = 2;
+            // 
+            // changePw
+            // 
+            changePw.Font = new Font("Microsoft Sans Serif", 14F);
+            changePw.Location = new Point(209, 167);
+            changePw.Name = "changePw";
+            changePw.Size = new Size(197, 29);
+            changePw.TabIndex = 1;
+            changePw.TextChanged += changePw_TextChanged;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.Font = new Font("Haettenschweiler", 47F);
+            label19.ForeColor = Color.Black;
+            label19.Location = new Point(56, 59);
+            label19.Name = "label19";
+            label19.Size = new Size(369, 66);
+            label19.TabIndex = 0;
+            label19.Text = "Change Password";
             // 
             // loginPanel
             // 
@@ -311,20 +380,24 @@
             loginPanel.Controls.Add(userLogin);
             loginPanel.Controls.Add(passwordLogin);
             loginPanel.ForeColor = Color.Black;
-            loginPanel.Location = new Point(0, -4);
+            loginPanel.Location = new Point(0, 0);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(503, 640);
+            loginPanel.Size = new Size(497, 636);
             loginPanel.TabIndex = 0;
             loginPanel.Paint += loginPanel_Paint;
             // 
             // fogotPassowrdButton
             // 
-            fogotPassowrdButton.Location = new Point(192, 361);
+            fogotPassowrdButton.BackColor = Color.Transparent;
+            fogotPassowrdButton.FlatAppearance.BorderSize = 0;
+            fogotPassowrdButton.FlatStyle = FlatStyle.Flat;
+            fogotPassowrdButton.ForeColor = Color.Red;
+            fogotPassowrdButton.Location = new Point(187, 466);
             fogotPassowrdButton.Name = "fogotPassowrdButton";
             fogotPassowrdButton.Size = new Size(132, 28);
             fogotPassowrdButton.TabIndex = 10;
-            fogotPassowrdButton.Text = "forgot password";
-            fogotPassowrdButton.UseVisualStyleBackColor = true;
+            fogotPassowrdButton.Text = "Forgot password";
+            fogotPassowrdButton.UseVisualStyleBackColor = false;
             fogotPassowrdButton.Click += fogotPassowrdButton_Click;
             // 
             // switchToSignup
@@ -479,7 +552,7 @@
             walletPanel.Controls.Add(label12);
             walletPanel.Location = new Point(269, 81);
             walletPanel.Name = "walletPanel";
-            walletPanel.Size = new Size(490, 508);
+            walletPanel.Size = new Size(490, 543);
             walletPanel.TabIndex = 5;
             walletPanel.Paint += walletPanel_Paint;
             // 
@@ -488,7 +561,7 @@
             historyPanel.BackColor = Color.LightBlue;
             historyPanel.Controls.Add(closeHistory);
             historyPanel.Controls.Add(label17);
-            historyPanel.Location = new Point(51, 177);
+            historyPanel.Location = new Point(56, 108);
             historyPanel.Name = "historyPanel";
             historyPanel.Size = new Size(395, 291);
             historyPanel.TabIndex = 7;
@@ -544,7 +617,7 @@
             widthdrawXdepo.Controls.Add(walletAmount);
             widthdrawXdepo.Location = new Point(52, 207);
             widthdrawXdepo.Name = "widthdrawXdepo";
-            widthdrawXdepo.Size = new Size(394, 289);
+            widthdrawXdepo.Size = new Size(394, 311);
             widthdrawXdepo.TabIndex = 4;
             // 
             // label13
@@ -563,7 +636,7 @@
             confirmPanel.Controls.Add(label15);
             confirmPanel.Controls.Add(walletConfirmPassword);
             confirmPanel.Controls.Add(walletPassword);
-            confirmPanel.Location = new Point(66, 148);
+            confirmPanel.Location = new Point(64, 174);
             confirmPanel.Name = "confirmPanel";
             confirmPanel.Size = new Size(272, 126);
             confirmPanel.TabIndex = 3;
@@ -809,6 +882,7 @@
             sideMenuPanel.Name = "sideMenuPanel";
             sideMenuPanel.Size = new Size(257, 561);
             sideMenuPanel.TabIndex = 1;
+            sideMenuPanel.Paint += sideMenuPanel_Paint;
             // 
             // panel7
             // 
@@ -1058,6 +1132,7 @@
             // signupPanel
             // 
             signupPanel.BackColor = Color.ForestGreen;
+            signupPanel.Controls.Add(label25);
             signupPanel.Controls.Add(label16);
             signupPanel.Controls.Add(backButton);
             signupPanel.Controls.Add(ageLog);
@@ -1076,16 +1151,26 @@
             signupPanel.Controls.Add(passwordLog);
             signupPanel.Controls.Add(verificationText);
             signupPanel.ForeColor = Color.Black;
-            signupPanel.Location = new Point(0, -1);
+            signupPanel.Location = new Point(0, 0);
             signupPanel.Name = "signupPanel";
-            signupPanel.Size = new Size(497, 637);
+            signupPanel.Size = new Size(497, 636);
             signupPanel.TabIndex = 11;
+            // 
+            // label25
+            // 
+            label25.AutoSize = true;
+            label25.Font = new Font("Segoe UI", 7F);
+            label25.Location = new Point(362, 228);
+            label25.Name = "label25";
+            label25.Size = new Size(107, 12);
+            label25.TabIndex = 20;
+            label25.Text = "*Minimum 8 characters";
             // 
             // label16
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 7F);
-            label16.Location = new Point(211, 321);
+            label16.Location = new Point(197, 324);
             label16.Name = "label16";
             label16.Size = new Size(135, 12);
             label16.TabIndex = 19;
@@ -1096,7 +1181,7 @@
             backButton.BackColor = Color.Red;
             backButton.Font = new Font("Segoe UI", 10F);
             backButton.ForeColor = Color.White;
-            backButton.Location = new Point(206, 530);
+            backButton.Location = new Point(198, 538);
             backButton.Name = "backButton";
             backButton.Size = new Size(88, 34);
             backButton.TabIndex = 18;
@@ -1106,14 +1191,14 @@
             // 
             // ageLog
             // 
-            ageLog.Location = new Point(133, 316);
+            ageLog.Location = new Point(119, 319);
             ageLog.Name = "ageLog";
             ageLog.Size = new Size(73, 23);
             ageLog.TabIndex = 17;
             // 
             // verifLog
             // 
-            verifLog.Location = new Point(230, 411);
+            verifLog.Location = new Point(216, 414);
             verifLog.Name = "verifLog";
             verifLog.Size = new Size(147, 23);
             verifLog.TabIndex = 15;
@@ -1125,7 +1210,7 @@
             verifBtn.Cursor = Cursors.Hand;
             verifBtn.Font = new Font("Segoe UI", 10F);
             verifBtn.ForeColor = Color.White;
-            verifBtn.Location = new Point(382, 409);
+            verifBtn.Location = new Point(368, 412);
             verifBtn.Name = "verifBtn";
             verifBtn.Size = new Size(68, 26);
             verifBtn.TabIndex = 14;
@@ -1135,7 +1220,7 @@
             // 
             // emailLog
             // 
-            emailLog.Location = new Point(207, 366);
+            emailLog.Location = new Point(193, 369);
             emailLog.Name = "emailLog";
             emailLog.Size = new Size(170, 23);
             emailLog.TabIndex = 13;
@@ -1145,7 +1230,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Corbel", 14F);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(76, 366);
+            label9.Location = new Point(62, 369);
             label9.Name = "label9";
             label9.Size = new Size(132, 23);
             label9.TabIndex = 12;
@@ -1156,7 +1241,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Corbel", 14F);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(76, 316);
+            label8.Location = new Point(62, 319);
             label8.Name = "label8";
             label8.Size = new Size(50, 23);
             label8.TabIndex = 11;
@@ -1164,7 +1249,7 @@
             // 
             // confPasswordLog
             // 
-            confPasswordLog.Location = new Point(242, 267);
+            confPasswordLog.Location = new Point(228, 270);
             confPasswordLog.Name = "confPasswordLog";
             confPasswordLog.Size = new Size(166, 23);
             confPasswordLog.TabIndex = 10;
@@ -1175,7 +1260,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Corbel", 14F);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(76, 267);
+            label7.Location = new Point(62, 270);
             label7.Name = "label7";
             label7.Size = new Size(166, 23);
             label7.TabIndex = 9;
@@ -1187,7 +1272,7 @@
             createAccountBtn.Cursor = Cursors.Hand;
             createAccountBtn.Font = new Font("Segoe UI", 10F);
             createAccountBtn.ForeColor = Color.White;
-            createAccountBtn.Location = new Point(185, 477);
+            createAccountBtn.Location = new Point(176, 486);
             createAccountBtn.Name = "createAccountBtn";
             createAccountBtn.Size = new Size(137, 43);
             createAccountBtn.TabIndex = 7;
@@ -1199,11 +1284,11 @@
             // 
             label3.AutoSize = true;
             label3.BackColor = Color.Transparent;
-            label3.Font = new Font("Haettenschweiler", 45F);
+            label3.Font = new Font("Haettenschweiler", 50F);
             label3.ForeColor = Color.Orange;
-            label3.Location = new Point(58, 65);
+            label3.Location = new Point(32, 58);
             label3.Name = "label3";
-            label3.Size = new Size(398, 62);
+            label3.Size = new Size(447, 70);
             label3.TabIndex = 5;
             label3.Text = "Register an Account";
             // 
@@ -1212,7 +1297,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Corbel", 14F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(76, 167);
+            label5.Location = new Point(62, 170);
             label5.Name = "label5";
             label5.Size = new Size(103, 23);
             label5.TabIndex = 3;
@@ -1223,7 +1308,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Corbel", 14F);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(76, 217);
+            label6.Location = new Point(62, 220);
             label6.Name = "label6";
             label6.Size = new Size(99, 23);
             label6.TabIndex = 2;
@@ -1231,14 +1316,14 @@
             // 
             // usernameLog
             // 
-            usernameLog.Location = new Point(185, 167);
+            usernameLog.Location = new Point(171, 170);
             usernameLog.Name = "usernameLog";
             usernameLog.Size = new Size(185, 23);
             usernameLog.TabIndex = 1;
             // 
             // passwordLog
             // 
-            passwordLog.Location = new Point(185, 220);
+            passwordLog.Location = new Point(171, 223);
             passwordLog.Name = "passwordLog";
             passwordLog.Size = new Size(185, 23);
             passwordLog.TabIndex = 0;
@@ -1249,7 +1334,7 @@
             verificationText.AutoSize = true;
             verificationText.Font = new Font("Corbel", 14F);
             verificationText.ForeColor = Color.Black;
-            verificationText.Location = new Point(76, 411);
+            verificationText.Location = new Point(62, 414);
             verificationText.Name = "verificationText";
             verificationText.Size = new Size(150, 23);
             verificationText.TabIndex = 16;
@@ -1259,13 +1344,14 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackColor = Color.FromArgb(224, 224, 224);
+            BackColor = Color.Green;
             BackgroundImageLayout = ImageLayout.Stretch;
             ClientSize = new Size(984, 636);
             Controls.Add(mainMenuPanel);
             Controls.Add(signupPanel);
             Controls.Add(loginPanel);
             Controls.Add(forgotPassPanel);
+            Controls.Add(changePassPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainMenuForm";
@@ -1273,6 +1359,7 @@
             Text = "Black Jack Deluxe";
             forgotPassPanel.ResumeLayout(false);
             forgotPassPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)forgotBack).EndInit();
             changePassPanel.ResumeLayout(false);
             changePassPanel.PerformLayout();
             loginPanel.ResumeLayout(false);
@@ -1395,19 +1482,23 @@
         private Label label17;
         private Button fogotPassowrdButton;
         private Panel forgotPassPanel;
-        private TextBox CodeTextBox;
-        private Button sendCodeButton;
+        private TextBox forgotCode;
         private Label label18;
-        private TextBox textBox2;
         private Label Descipt;
-        private Button confirmButton;
         private Panel changePassPanel;
-        private Button cancelChangePassButton;
-        private Button confirmChangePass;
-        private TextBox textBox4;
-        private TextBox textBox3;
+        private TextBox changeConfPw;
+        private TextBox changePw;
         private Label label19;
-        private Button exitForgotPassButton;
-        private TextBox textBox1;
+        private TextBox forgotUsername;
+        private Label label20;
+        private Label label21;
+        private Button saveBtn;
+        private Button cancelButton;
+        private Label label22;
+        private Label label24;
+        private Button button1;
+        private Button button2;
+        private PictureBox forgotBack;
+        private Label label25;
     }
 }

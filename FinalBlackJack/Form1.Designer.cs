@@ -75,6 +75,8 @@
             playNowButton.BackColor = Color.Transparent;
             playNowButton.Cursor = Cursors.Hand;
             playNowButton.FlatAppearance.BorderSize = 0;
+            playNowButton.FlatAppearance.MouseDownBackColor = Color.PaleGreen;
+            playNowButton.FlatAppearance.MouseOverBackColor = Color.PaleGreen;
             playNowButton.FlatStyle = FlatStyle.Flat;
             playNowButton.Font = new Font("Haettenschweiler", 35F);
             playNowButton.ForeColor = Color.White;
@@ -92,8 +94,8 @@
             exitButton.Cursor = Cursors.Hand;
             exitButton.FlatAppearance.BorderColor = SystemColors.ActiveBorder;
             exitButton.FlatAppearance.BorderSize = 0;
-            exitButton.FlatAppearance.MouseDownBackColor = Color.DarkGreen;
-            exitButton.FlatAppearance.MouseOverBackColor = Color.DarkGreen;
+            exitButton.FlatAppearance.MouseDownBackColor = Color.Red;
+            exitButton.FlatAppearance.MouseOverBackColor = Color.Red;
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exitButton.ForeColor = SystemColors.ControlLight;
@@ -161,19 +163,19 @@
             termsPanel.Controls.Add(termsTextPanel);
             termsPanel.Controls.Add(acceptButton);
             termsPanel.Controls.Add(declineButton);
-            termsPanel.Location = new Point(269, 89);
+            termsPanel.Location = new Point(269, 87);
             termsPanel.Name = "termsPanel";
-            termsPanel.Size = new Size(456, 481);
+            termsPanel.Size = new Size(456, 483);
             termsPanel.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Haettenschweiler", 30F);
+            label2.Font = new Font("Haettenschweiler", 35F);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(83, 18);
+            label2.Location = new Point(54, 16);
             label2.Name = "label2";
-            label2.Size = new Size(305, 42);
+            label2.Size = new Size(357, 50);
             label2.TabIndex = 3;
             label2.Text = "TERMS AND AGREEMENT";
             // 
@@ -191,7 +193,7 @@
             termsTextPanel.Controls.Add(label4);
             termsTextPanel.Controls.Add(label3);
             termsTextPanel.Controls.Add(label1);
-            termsTextPanel.Location = new Point(38, 63);
+            termsTextPanel.Location = new Point(38, 77);
             termsTextPanel.Name = "termsTextPanel";
             termsTextPanel.Size = new Size(390, 336);
             termsTextPanel.TabIndex = 2;
@@ -310,7 +312,7 @@
             // 
             acceptButton.BackColor = Color.Green;
             acceptButton.ForeColor = Color.White;
-            acceptButton.Location = new Point(230, 427);
+            acceptButton.Location = new Point(239, 427);
             acceptButton.Name = "acceptButton";
             acceptButton.Size = new Size(158, 39);
             acceptButton.TabIndex = 1;
@@ -322,7 +324,7 @@
             // 
             declineButton.BackColor = Color.Red;
             declineButton.ForeColor = Color.White;
-            declineButton.Location = new Point(59, 427);
+            declineButton.Location = new Point(67, 427);
             declineButton.Name = "declineButton";
             declineButton.Size = new Size(158, 39);
             declineButton.TabIndex = 0;
