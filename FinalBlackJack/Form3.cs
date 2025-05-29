@@ -29,7 +29,7 @@ namespace FinalBlackJack
         private int blueMax = 250000;
 
         private int redMin = 500000;
-        private int redMax = 999999999;
+        private int redMax = 100000000;
 
         public mainGameForm(mainMenuForm menu)
         {

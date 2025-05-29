@@ -23,6 +23,7 @@ namespace FinalBlackJack
         private void secondMainMenu_Load(object sender, EventArgs e)
         {
             settingsUsername.Text = "Username : " + AccountData.usernames[AccountData.currentAccount];
+            settingsEmail.Text = "Email : " + AccountData.emails[AccountData.currentAccount];
         }
 
         private void saveButton_Click(object sender, EventArgs e)

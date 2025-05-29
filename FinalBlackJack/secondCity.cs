@@ -196,6 +196,8 @@ namespace FinalBlackJack
             if (buyinBalance == 0 || buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
+                AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
+                AccountData.totalLosses[AccountData.currentAccount]++;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -205,6 +207,8 @@ namespace FinalBlackJack
             else if (dealerBalance == 0 || dealerBalance < minBet)
             {
                 MessageBox.Show("Dealer have no more balance left! You won!.");
+                AccountData.accountsBalance[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
+                AccountData.totalWinnings[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -650,6 +654,7 @@ namespace FinalBlackJack
 
             this.Load += hongkongPanel_Load;
 
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
             dealerBalance = buyinBalance;
 
             rPlayer1.Visible = false;
@@ -1250,7 +1255,7 @@ namespace FinalBlackJack
 
         private void rChip100_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 25000000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1265,7 +1270,7 @@ namespace FinalBlackJack
 
         private void rChip50_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 10000000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1280,7 +1285,7 @@ namespace FinalBlackJack
 
         private void rChip10_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 1000000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1295,7 +1300,7 @@ namespace FinalBlackJack
 
         private void rChip5_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 500000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1310,7 +1315,7 @@ namespace FinalBlackJack
 
         private void rChip25_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 5000000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1325,7 +1330,7 @@ namespace FinalBlackJack
 
         private void rChip1_Click(object sender, EventArgs e)
         {
-            int chipValue = 100;
+            int chipValue = 250000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1376,6 +1381,66 @@ namespace FinalBlackJack
             {
                 mainForm.ReturnToCarousel();
             }
+        }
+
+        private void rChip1_MouseEnter(object sender, EventArgs e)
+        {
+            r250k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\250kh.png");
+        }
+
+        private void rChip1k_MouseLeave(object sender, EventArgs e)
+        {
+            r250k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\250k.png");
+        }
+
+        private void rChip10k_MouseEnter(object sender, EventArgs e)
+        {
+            r5m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\5mh.png");
+        }
+
+        private void rChip10k_MouseLeave(object sender, EventArgs e)
+        {
+            r5m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\5m.png");
+        }
+
+        private void rChip2p5_MouseEnter(object sender, EventArgs e)
+        {
+            r500k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\500kh.png");
+        }
+
+        private void rChip2p5_MouseLeave(object sender, EventArgs e)
+        {
+            r500k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\500k.png");
+        }
+
+        private void rChip20k_MouseEnter(object sender, EventArgs e)
+        {
+            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10mh.png");
+        }
+
+        private void rChip20k_MouseLeave(object sender, EventArgs e)
+        {
+            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10m.png");
+        }
+
+        private void rChip5k_MouseEnter(object sender, EventArgs e)
+        {
+            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\1mh.png");
+        }
+
+        private void rChip5k_MouseLeave(object sender, EventArgs e)
+        {
+            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\1m.png");
+        }
+
+        private void rChip30k_MouseEnter(object sender, EventArgs e)
+        {
+            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\25mh.png");
+        }
+
+        private void rChip30k_MouseLeave(object sender, EventArgs e)
+        {
+            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\25m.png");
         }
     }
 }

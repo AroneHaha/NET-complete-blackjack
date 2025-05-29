@@ -12,33 +12,6 @@ namespace FinalBlackJack
 {
     public partial class firstCity : UserControl
     {
-        public firstCity()
-        {
-            InitializeComponent();
-
-            surrenderPanel.Visible = false;
-
-            rPlayer1.Visible = false;
-            rPlayer2.Visible = false;
-            rPlayer3.Visible = false;
-            rPlayer4.Visible = false;
-            rDealer1.Visible = false;
-            rDealer2.Visible = false;
-            rDealer3.Visible = false;
-            rDealer4.Visible = false;
-
-            currentRound.Text = "Round : " + ingameRound;
-            actionLog.Visible = false;
-            dealerDialogue.Visible = false;
-            playerValue.Text = "";
-            botValue.Text = "";
-
-
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            returnTip.SetToolTip(returnBet, "Undo");
-            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
-        }
-
         List<string> rCards = new List<string>()
         {
             @"C:\BSIT 1\C#\blackjack\cards\2_of_clubs.png",
@@ -112,6 +85,7 @@ namespace FinalBlackJack
             else if (fileName.StartsWith("queen")) return 10;
             else if (fileName.StartsWith("king")) return 10;
 
+
             return 0;
         }
 
@@ -158,6 +132,7 @@ namespace FinalBlackJack
             standBtn.Enabled = false;
             doubleBtn.Enabled = false;
             startRound.Enabled = false;
+
 
             playerDraw1.Location = new Point(658, 121);
             playerDraw2.Location = new Point(658, 121);
@@ -213,14 +188,16 @@ namespace FinalBlackJack
 
         private bool checkBalance(int chipAmount)
         {
-            return AccountData.accountsBalance[AccountData.currentAccount] >= chipAmount;
+            return buyinBalance >= chipAmount;
         }
 
         private void checkGameWinner()
         {
-            if (AccountData.accountsBalance[AccountData.currentAccount] == 0 || AccountData.accountsBalance[AccountData.currentAccount] < minBet)
+            if (buyinBalance == 0 || buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
+                AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
+                AccountData.totalLosses[AccountData.currentAccount]++;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -230,6 +207,8 @@ namespace FinalBlackJack
             else if (dealerBalance == 0 || dealerBalance < minBet)
             {
                 MessageBox.Show("Dealer have no more balance left! You won!.");
+                AccountData.accountsBalance[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
+                AccountData.totalWinnings[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -238,41 +217,41 @@ namespace FinalBlackJack
 
             else
             {
-                r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+                r_BankRoll.Text = "Bankroll: " + buyinBalance.ToString();
             }
         }
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet * 2;
+            ingameWinnings += currentBet * 2;
+            buyinBalance += currentBet * 2;
             dealerBalance -= currentBet;
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
 
         private void balanceWinUpdateDouble()
         {
-            ingameWinnings += (currentBet * 2);
-            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
+            buyinBalance += (currentBet * 2) * 2;
+            ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
             r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdate()
         {
             dealerBalance += currentBet;
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdateDouble()
         {
             dealerBalance += (currentBet * 2);
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
         private void displayValues()
@@ -348,9 +327,9 @@ namespace FinalBlackJack
         private void matched()
         {
             roundLoserSound();
-            MessageBox.Show("Draw matched, returning cards.");
+            MessageBox.Show("Draw match, returning cards.");
             roundOver = true;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            buyinBalance += currentBet;
             resetRound();
             return;
         }
@@ -358,9 +337,9 @@ namespace FinalBlackJack
         private void matchedDouble()
         {
             roundLoserSound();
-            MessageBox.Show("Draw matched, returning cards.");
+            MessageBox.Show("Draw match, returning cards.");
             roundOver = true;
-            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2);
+            buyinBalance += currentBet;
             resetRound();
             return;
         }
@@ -371,7 +350,9 @@ namespace FinalBlackJack
             {
                 roundLoserSound();
                 MessageBox.Show("Draw match!");
-                r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
+                r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+                buyinBalance += currentBet;
+                matched();
             }
             else if ((playerTotal - 21) < (botTotal - 21))
             {
@@ -396,8 +377,8 @@ namespace FinalBlackJack
             if (playerTotal == botTotal)
             {
                 roundLoserSound();
-                MessageBox.Show("Draw match!, returning cards.");
-                AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+                MessageBox.Show("Draw match, returning cards.");
+                buyinBalance += currentBet;
                 matchedDouble();
 
             }
@@ -523,16 +504,12 @@ namespace FinalBlackJack
 
             else
             {
-                int tempBalance = AccountData.accountsBalance[AccountData.currentAccount];
-
                 chipsSound();
                 currentBet += bet;
-                tempBalance -= bet;
+                buyinBalance -= bet;
 
                 rBet.Text = "Round Bet : " + currentBet.ToString();
-                r_BankRoll.Text = "Bankroll : " + (AccountData.accountsBalance[AccountData.currentAccount] -= bet);
-
-                AccountData.accountsBalance[AccountData.currentAccount] = tempBalance;
+                r_BankRoll.Text = "Bankroll : " + buyinBalance;
             }
         }
 
@@ -645,18 +622,21 @@ namespace FinalBlackJack
         public int minBet = 1;
 
         public int playerBalance = 0;
-        public int dealerBalance = (AccountData.accountsBalance[AccountData.currentAccount] + 500);
+        public int dealerBalance = 0;
         public int currentBet = 0;
         public int ingameWinnings = 0;
 
+        public bool roundOver = false;
+        public bool playerHasStood = false;
+        public bool isDrawn = false;
+        public bool roundStarted = false;
 
-        private bool roundOver = false;
-        private bool playerHasStood = false;
-        private bool isDrawn = false;
-        private bool roundStarted = false;
+        public int ingameRound = 1;
+
+        public int balanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
+        public int buyinBalance = buyinHolder.buyIn[0];
         private bool shouldRunDCard4 = false;
 
-        private int ingameRound = 1;
 
         // ----------------------------- BOT IMAGES ------------------------------------------
         public Image bot1;
@@ -664,9 +644,6 @@ namespace FinalBlackJack
         public Image bot3;
         public Image bot4;
         public Image[] botHiddenCards = new Image[3];
-
-        string currentUser = AccountData.usernames[AccountData.currentAccount];
-
 
         private void backButton_Click(object sender, EventArgs e)
         {
@@ -685,7 +662,7 @@ namespace FinalBlackJack
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
+            
         }
 
         private void hitBtn_Click(object sender, EventArgs e)
@@ -780,7 +757,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -826,7 +803,6 @@ namespace FinalBlackJack
 
             else if (playerTotal == 21)
             {
-                round();
                 playerBlackJack();
             }
 
@@ -868,13 +844,11 @@ namespace FinalBlackJack
                 dealerWinner();
             }
 
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
         }
 
         private void doubleBtn_Click(object sender, EventArgs e)
         {
-            drawCardsSound();
-
             if (currentBet == 0)
             {
                 errorSound();
@@ -882,13 +856,14 @@ namespace FinalBlackJack
                 return;
             }
 
-            if (AccountData.accountsBalance[AccountData.currentAccount] < currentBet)
+            if (buyinBalance < currentBet)
             {
                 errorSound();
                 MessageBox.Show("You have insufficient balance to double your bet.");
                 return;
             }
 
+            drawCardsSound();
             while (botTotal < 17)
             {
                 int botIndex = botRandom.Next(rCards.Count);
@@ -945,7 +920,7 @@ namespace FinalBlackJack
             }
 
             playerReveal++;
-            AccountData.accountsBalance[AccountData.currentAccount] -= currentBet;
+            buyinBalance -= currentBet;
             hiddenCards();
             displayValues();
 
@@ -1005,7 +980,7 @@ namespace FinalBlackJack
                 dealerWinnerDouble();
             }
 
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll: " + buyinBalance;
             resetRound();
         }
 
@@ -1098,7 +1073,7 @@ namespace FinalBlackJack
                 return;
             }
 
-            if (AccountData.accountsBalance[AccountData.currentAccount] < currentBet)
+            if (buyinBalance < currentBet)
             {
                 errorSound();
                 MessageBox.Show("You have insufficient balance to double your bet.");
@@ -1161,7 +1136,7 @@ namespace FinalBlackJack
             }
 
             playerReveal++;
-            AccountData.accountsBalance[AccountData.currentAccount] -= currentBet;
+            buyinBalance -= currentBet;
             hiddenCards();
             displayValues();
 
@@ -1221,7 +1196,7 @@ namespace FinalBlackJack
                 dealerWinnerDouble();
             }
 
-            r_BankRoll.Text = "BankRoll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "BankRoll : " + buyinBalance; ;
             resetRound();
         }
 
@@ -1234,23 +1209,23 @@ namespace FinalBlackJack
                 return;
             }
 
-            AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
+            buyinBalance += latestBet;
             currentBet -= latestBet;
             rBet.Text = "Round Bet : " + currentBet.ToString();
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
         }
 
         private void returnAllBet_Click(object sender, EventArgs e)
         {
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            buyinBalance += currentBet;
             currentBet = 0;
             rBet.Text = "Round Bet : 0";
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
         }
 
         private void rChip25_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 500;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1265,7 +1240,7 @@ namespace FinalBlackJack
 
         private void rChip1_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 50;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1280,7 +1255,7 @@ namespace FinalBlackJack
 
         private void rChip5_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 100;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1295,7 +1270,7 @@ namespace FinalBlackJack
 
         private void rChip50_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 1000;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1310,7 +1285,7 @@ namespace FinalBlackJack
 
         private void rChip100_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 2500;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1325,7 +1300,7 @@ namespace FinalBlackJack
 
         private void rChip10_Click(object sender, EventArgs e)
         {
-            int chipValue = 25;
+            int chipValue = 250;
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
@@ -1525,7 +1500,9 @@ namespace FinalBlackJack
 
         private void firstCity_Load(object sender, EventArgs e)
         {
-
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
+            returnTip.SetToolTip(returnBet, "Undo");
+            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
 
         private void returnAllTip_Popup_2(object sender, PopupEventArgs e)
@@ -1560,6 +1537,103 @@ namespace FinalBlackJack
         private void surrenderPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void firstCity_Load_2(object sender, EventArgs e)
+        {
+
+        }
+
+        public firstCity()
+        {
+            InitializeComponent();
+            surrenderPanel.Hide();
+
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
+            dealerBalance = buyinBalance;
+
+            rPlayer1.Visible = false;
+            rPlayer2.Visible = false;
+            rPlayer3.Visible = false;
+            rPlayer4.Visible = false;
+            rDealer1.Visible = false;
+            rDealer2.Visible = false;
+            rDealer3.Visible = false;
+            rDealer4.Visible = false;
+
+            currentRound.Text = "Round : " + ingameRound;
+            actionLog.Visible = false;
+            dealerDialogue.Visible = false;
+            playerValue.Text = "";
+            botValue.Text = "";
+
+            returnTip.SetToolTip(returnBet, "Undo");
+            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
+        }
+
+        private void rChip25_MouseEnter(object sender, EventArgs e)
+        {
+            rChip500.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\500ChipHover.png");
+        }
+
+        private void rChip1_MouseEnter(object sender, EventArgs e)
+        {
+            rChip50.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\50ChipHover.png");
+        }
+
+        private void rChip1_MouseMove(object sender, MouseEventArgs e)
+        {
+
+        }
+
+        private void rChip25_MouseLeave(object sender, EventArgs e)
+        {
+            rChip500.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\500Chip.png");
+        }
+
+        private void rChip5_MouseEnter(object sender, EventArgs e)
+        {
+            rChip100.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\100ChipHover.png");
+        }
+
+        private void rChip5_MouseLeave(object sender, EventArgs e)
+        {
+            rChip100.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\100Chip.png");
+        }
+
+        private void rChip1k_MouseEnter(object sender, EventArgs e)
+        {
+            rChip1k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\1000ChipHover.png");
+        }
+
+        private void rChip1k_MouseLeave(object sender, EventArgs e)
+        {
+            rChip1k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\1000Chip.png");
+        }
+
+        private void rChip2p5k_MouseEnter(object sender, EventArgs e)
+        {
+            rChip2p5k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\2500ChipHover.png");
+        }
+
+        private void rChip2p5k_MouseLeave(object sender, EventArgs e)
+        {
+            rChip2p5k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\2500Chip.png");
+        }
+
+        private void rChip250_MouseEnter(object sender, EventArgs e)
+        {
+            rChip250.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\250ChipHover.png");
+        }
+
+        private void rChip250_MouseLeave(object sender, EventArgs e)
+        {
+            rChip250.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\250Chip.png");
+        }
+
+        private void rChip50_MouseLeave(object sender, EventArgs e)
+        {
+            rChip50.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\50Chip.png");
         }
     }
 }

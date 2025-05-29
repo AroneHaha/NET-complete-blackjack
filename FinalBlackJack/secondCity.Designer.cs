@@ -51,12 +51,12 @@
             botValue = new Label();
             currentRound = new Label();
             backButton = new Button();
-            rChip100 = new PictureBox();
-            rChip50 = new PictureBox();
-            rChip25 = new PictureBox();
-            rChip10 = new PictureBox();
-            rChip1 = new PictureBox();
-            rChip5 = new PictureBox();
+            r25m = new PictureBox();
+            r10m = new PictureBox();
+            r5m = new PictureBox();
+            r1m = new PictureBox();
+            r250k = new PictureBox();
+            r500k = new PictureBox();
             actionLog = new Label();
             r_totalWinnings = new Label();
             r_BankRoll = new Label();
@@ -94,12 +94,12 @@
             ((System.ComponentModel.ISupportInitialize)dealerDraw3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dealerDraw1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dealerDraw2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip100).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip50).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip25).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip10).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)rChip5).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r25m).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r10m).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r5m).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r1m).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r250k).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)r500k).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rCardFolded).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rDealer4).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rPlayer4).BeginInit();
@@ -141,12 +141,12 @@
             panel1.Controls.Add(botValue);
             panel1.Controls.Add(currentRound);
             panel1.Controls.Add(backButton);
-            panel1.Controls.Add(rChip100);
-            panel1.Controls.Add(rChip50);
-            panel1.Controls.Add(rChip25);
-            panel1.Controls.Add(rChip10);
-            panel1.Controls.Add(rChip1);
-            panel1.Controls.Add(rChip5);
+            panel1.Controls.Add(r25m);
+            panel1.Controls.Add(r10m);
+            panel1.Controls.Add(r5m);
+            panel1.Controls.Add(r1m);
+            panel1.Controls.Add(r250k);
+            panel1.Controls.Add(r500k);
             panel1.Controls.Add(actionLog);
             panel1.Controls.Add(r_totalWinnings);
             panel1.Controls.Add(r_BankRoll);
@@ -172,7 +172,7 @@
             // 
             // surrenderPanel
             // 
-            surrenderPanel.BackColor = Color.Black;
+            surrenderPanel.BackColor = Color.DodgerBlue;
             surrenderPanel.Controls.Add(yesButton);
             surrenderPanel.Controls.Add(CancelButton);
             surrenderPanel.Controls.Add(label1);
@@ -377,83 +377,95 @@
             backButton.UseVisualStyleBackColor = true;
             backButton.Click += backButton_Click;
             // 
-            // rChip100
+            // r25m
             // 
-            rChip100.BackColor = Color.Transparent;
-            rChip100.Cursor = Cursors.Hand;
-            rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(124, 387);
-            rChip100.Name = "rChip100";
-            rChip100.Size = new Size(60, 60);
-            rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip100.TabIndex = 23;
-            rChip100.TabStop = false;
-            rChip100.Click += rChip100_Click;
+            r25m.BackColor = Color.Transparent;
+            r25m.Cursor = Cursors.Hand;
+            r25m.Image = (Image)resources.GetObject("r25m.Image");
+            r25m.Location = new Point(124, 387);
+            r25m.Name = "r25m";
+            r25m.Size = new Size(60, 60);
+            r25m.SizeMode = PictureBoxSizeMode.StretchImage;
+            r25m.TabIndex = 23;
+            r25m.TabStop = false;
+            r25m.Click += rChip100_Click;
+            r25m.MouseEnter += rChip30k_MouseEnter;
+            r25m.MouseLeave += rChip30k_MouseLeave;
             // 
-            // rChip50
+            // r10m
             // 
-            rChip50.BackColor = Color.Transparent;
-            rChip50.Cursor = Cursors.Hand;
-            rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(190, 406);
-            rChip50.Name = "rChip50";
-            rChip50.Size = new Size(60, 60);
-            rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip50.TabIndex = 22;
-            rChip50.TabStop = false;
-            rChip50.Click += rChip50_Click;
+            r10m.BackColor = Color.Transparent;
+            r10m.Cursor = Cursors.Hand;
+            r10m.Image = (Image)resources.GetObject("r10m.Image");
+            r10m.Location = new Point(190, 406);
+            r10m.Name = "r10m";
+            r10m.Size = new Size(60, 60);
+            r10m.SizeMode = PictureBoxSizeMode.StretchImage;
+            r10m.TabIndex = 22;
+            r10m.TabStop = false;
+            r10m.Click += rChip50_Click;
+            r10m.MouseEnter += rChip20k_MouseEnter;
+            r10m.MouseLeave += rChip20k_MouseLeave;
             // 
-            // rChip25
+            // r5m
             // 
-            rChip25.BackColor = Color.Transparent;
-            rChip25.Cursor = Cursors.Hand;
-            rChip25.Image = (Image)resources.GetObject("rChip25.Image");
-            rChip25.Location = new Point(256, 408);
-            rChip25.Name = "rChip25";
-            rChip25.Size = new Size(60, 60);
-            rChip25.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip25.TabIndex = 21;
-            rChip25.TabStop = false;
-            rChip25.Click += rChip25_Click;
+            r5m.BackColor = Color.Transparent;
+            r5m.Cursor = Cursors.Hand;
+            r5m.Image = (Image)resources.GetObject("r5m.Image");
+            r5m.Location = new Point(256, 408);
+            r5m.Name = "r5m";
+            r5m.Size = new Size(60, 60);
+            r5m.SizeMode = PictureBoxSizeMode.StretchImage;
+            r5m.TabIndex = 21;
+            r5m.TabStop = false;
+            r5m.Click += rChip25_Click;
+            r5m.MouseEnter += rChip10k_MouseEnter;
+            r5m.MouseLeave += rChip10k_MouseLeave;
             // 
-            // rChip10
+            // r1m
             // 
-            rChip10.BackColor = Color.Transparent;
-            rChip10.Cursor = Cursors.Hand;
-            rChip10.Image = (Image)resources.GetObject("rChip10.Image");
-            rChip10.Location = new Point(124, 456);
-            rChip10.Name = "rChip10";
-            rChip10.Size = new Size(60, 60);
-            rChip10.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip10.TabIndex = 20;
-            rChip10.TabStop = false;
-            rChip10.Click += rChip10_Click;
+            r1m.BackColor = Color.Transparent;
+            r1m.Cursor = Cursors.Hand;
+            r1m.Image = (Image)resources.GetObject("r1m.Image");
+            r1m.Location = new Point(124, 456);
+            r1m.Name = "r1m";
+            r1m.Size = new Size(60, 60);
+            r1m.SizeMode = PictureBoxSizeMode.StretchImage;
+            r1m.TabIndex = 20;
+            r1m.TabStop = false;
+            r1m.Click += rChip10_Click;
+            r1m.MouseEnter += rChip5k_MouseEnter;
+            r1m.MouseLeave += rChip5k_MouseLeave;
             // 
-            // rChip1
+            // r250k
             // 
-            rChip1.BackColor = Color.Transparent;
-            rChip1.Cursor = Cursors.Hand;
-            rChip1.Image = (Image)resources.GetObject("rChip1.Image");
-            rChip1.Location = new Point(256, 477);
-            rChip1.Name = "rChip1";
-            rChip1.Size = new Size(60, 60);
-            rChip1.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip1.TabIndex = 19;
-            rChip1.TabStop = false;
-            rChip1.Click += rChip1_Click;
+            r250k.BackColor = Color.Transparent;
+            r250k.Cursor = Cursors.Hand;
+            r250k.Image = (Image)resources.GetObject("r250k.Image");
+            r250k.Location = new Point(256, 477);
+            r250k.Name = "r250k";
+            r250k.Size = new Size(60, 60);
+            r250k.SizeMode = PictureBoxSizeMode.StretchImage;
+            r250k.TabIndex = 19;
+            r250k.TabStop = false;
+            r250k.Click += rChip1_Click;
+            r250k.MouseEnter += rChip1_MouseEnter;
+            r250k.MouseLeave += rChip1k_MouseLeave;
             // 
-            // rChip5
+            // r500k
             // 
-            rChip5.BackColor = Color.Transparent;
-            rChip5.Cursor = Cursors.Hand;
-            rChip5.Image = (Image)resources.GetObject("rChip5.Image");
-            rChip5.Location = new Point(190, 477);
-            rChip5.Name = "rChip5";
-            rChip5.Size = new Size(60, 60);
-            rChip5.SizeMode = PictureBoxSizeMode.StretchImage;
-            rChip5.TabIndex = 18;
-            rChip5.TabStop = false;
-            rChip5.Click += rChip5_Click;
+            r500k.BackColor = Color.Transparent;
+            r500k.Cursor = Cursors.Hand;
+            r500k.Image = (Image)resources.GetObject("r500k.Image");
+            r500k.Location = new Point(190, 477);
+            r500k.Name = "r500k";
+            r500k.Size = new Size(60, 60);
+            r500k.SizeMode = PictureBoxSizeMode.StretchImage;
+            r500k.TabIndex = 18;
+            r500k.TabStop = false;
+            r500k.Click += rChip5_Click;
+            r500k.MouseEnter += rChip2p5_MouseEnter;
+            r500k.MouseLeave += rChip2p5_MouseLeave;
             // 
             // actionLog
             // 
@@ -716,12 +728,12 @@
             ((System.ComponentModel.ISupportInitialize)dealerDraw3).EndInit();
             ((System.ComponentModel.ISupportInitialize)dealerDraw1).EndInit();
             ((System.ComponentModel.ISupportInitialize)dealerDraw2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip100).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip50).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip25).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip10).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)rChip5).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r25m).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r10m).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r5m).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r1m).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r250k).EndInit();
+            ((System.ComponentModel.ISupportInitialize)r500k).EndInit();
             ((System.ComponentModel.ISupportInitialize)rCardFolded).EndInit();
             ((System.ComponentModel.ISupportInitialize)rDealer4).EndInit();
             ((System.ComponentModel.ISupportInitialize)rPlayer4).EndInit();
@@ -752,12 +764,12 @@
         private Label botValue;
         private Label currentRound;
         private Button backButton;
-        private PictureBox rChip100;
-        private PictureBox rChip50;
-        private PictureBox rChip25;
-        private PictureBox rChip10;
-        private PictureBox rChip1;
-        private PictureBox rChip5;
+        private PictureBox r25m;
+        private PictureBox r10m;
+        private PictureBox r5m;
+        private PictureBox r1m;
+        private PictureBox r250k;
+        private PictureBox r500k;
         private Label actionLog;
         private Label r_totalWinnings;
         private Label r_BankRoll;

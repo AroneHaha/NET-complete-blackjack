@@ -62,12 +62,15 @@
             passwordLogin = new TextBox();
             mainMenuPanel = new Panel();
             walletPanel = new Panel();
-            historyPanel = new Panel();
-            closeHistory = new Button();
-            label17 = new Label();
-            historyButton = new Button();
+            historyBtn = new PictureBox();
             walletBackBtn = new PictureBox();
             widthdrawXdepo = new Panel();
+            historyPanel = new Panel();
+            TransacAmount = new Label();
+            TransacTime = new Label();
+            transacAct = new Label();
+            label23 = new Label();
+            closeHistory = new Button();
             label13 = new Label();
             confirmPanel = new Panel();
             closeButton = new Button();
@@ -137,9 +140,10 @@
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
             walletPanel.SuspendLayout();
-            historyPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)historyBtn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).BeginInit();
             widthdrawXdepo.SuspendLayout();
+            historyPanel.SuspendLayout();
             confirmPanel.SuspendLayout();
             profilePanel.SuspendLayout();
             panel5.SuspendLayout();
@@ -542,8 +546,7 @@
             // walletPanel
             // 
             walletPanel.BackColor = Color.RoyalBlue;
-            walletPanel.Controls.Add(historyPanel);
-            walletPanel.Controls.Add(historyButton);
+            walletPanel.Controls.Add(historyBtn);
             walletPanel.Controls.Add(walletBackBtn);
             walletPanel.Controls.Add(widthdrawXdepo);
             walletPanel.Controls.Add(depositButton);
@@ -556,44 +559,18 @@
             walletPanel.TabIndex = 5;
             walletPanel.Paint += walletPanel_Paint;
             // 
-            // historyPanel
+            // historyBtn
             // 
-            historyPanel.BackColor = Color.LightBlue;
-            historyPanel.Controls.Add(closeHistory);
-            historyPanel.Controls.Add(label17);
-            historyPanel.Location = new Point(312, 13);
-            historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(146, 291);
-            historyPanel.TabIndex = 7;
-            // 
-            // closeHistory
-            // 
-            closeHistory.Location = new Point(281, 259);
-            closeHistory.Name = "closeHistory";
-            closeHistory.Size = new Size(75, 23);
-            closeHistory.TabIndex = 1;
-            closeHistory.Text = "EXIT ";
-            closeHistory.UseVisualStyleBackColor = true;
-            closeHistory.Click += closeHistory_Click;
-            // 
-            // label17
-            // 
-            label17.AutoSize = true;
-            label17.Location = new Point(175, 30);
-            label17.Name = "label17";
-            label17.Size = new Size(54, 15);
-            label17.TabIndex = 0;
-            label17.Text = "HISTORY";
-            // 
-            // historyButton
-            // 
-            historyButton.Location = new Point(294, 98);
-            historyButton.Name = "historyButton";
-            historyButton.Size = new Size(152, 46);
-            historyButton.TabIndex = 6;
-            historyButton.Text = "History";
-            historyButton.UseVisualStyleBackColor = true;
-            historyButton.Click += historyButton_Click;
+            historyBtn.Image = (Image)resources.GetObject("historyBtn.Image");
+            historyBtn.Location = new Point(421, 23);
+            historyBtn.Name = "historyBtn";
+            historyBtn.Size = new Size(42, 37);
+            historyBtn.SizeMode = PictureBoxSizeMode.StretchImage;
+            historyBtn.TabIndex = 6;
+            historyBtn.TabStop = false;
+            historyBtn.Click += historyBtn_Click;
+            historyBtn.MouseEnter += historyBtn_MouseEnter;
+            historyBtn.MouseLeave += historyBtn_MouseLeave;
             // 
             // walletBackBtn
             // 
@@ -610,6 +587,7 @@
             // widthdrawXdepo
             // 
             widthdrawXdepo.BackColor = Color.WhiteSmoke;
+            widthdrawXdepo.Controls.Add(historyPanel);
             widthdrawXdepo.Controls.Add(label13);
             widthdrawXdepo.Controls.Add(confirmPanel);
             widthdrawXdepo.Controls.Add(asdasd);
@@ -619,6 +597,71 @@
             widthdrawXdepo.Name = "widthdrawXdepo";
             widthdrawXdepo.Size = new Size(394, 311);
             widthdrawXdepo.TabIndex = 4;
+            // 
+            // historyPanel
+            // 
+            historyPanel.BackColor = Color.LightBlue;
+            historyPanel.Controls.Add(TransacAmount);
+            historyPanel.Controls.Add(TransacTime);
+            historyPanel.Controls.Add(transacAct);
+            historyPanel.Controls.Add(label23);
+            historyPanel.Controls.Add(closeHistory);
+            historyPanel.Location = new Point(0, -2);
+            historyPanel.Name = "historyPanel";
+            historyPanel.Size = new Size(394, 313);
+            historyPanel.TabIndex = 7;
+            historyPanel.Visible = false;
+            // 
+            // TransacAmount
+            // 
+            TransacAmount.AutoSize = true;
+            TransacAmount.Font = new Font("Segoe UI", 14F);
+            TransacAmount.Location = new Point(63, 177);
+            TransacAmount.Name = "TransacAmount";
+            TransacAmount.Size = new Size(88, 25);
+            TransacAmount.TabIndex = 10;
+            TransacAmount.Text = "Amount :";
+            // 
+            // TransacTime
+            // 
+            TransacTime.AutoSize = true;
+            TransacTime.Font = new Font("Segoe UI", 14F);
+            TransacTime.Location = new Point(63, 143);
+            TransacTime.Name = "TransacTime";
+            TransacTime.Size = new Size(143, 25);
+            TransacTime.TabIndex = 9;
+            TransacTime.Text = "Time and Date :";
+            // 
+            // transacAct
+            // 
+            transacAct.AutoSize = true;
+            transacAct.Font = new Font("Segoe UI", 14F);
+            transacAct.Location = new Point(63, 109);
+            transacAct.Name = "transacAct";
+            transacAct.Size = new Size(82, 25);
+            transacAct.TabIndex = 8;
+            transacAct.Text = "Activity :";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Haettenschweiler", 35F);
+            label23.ForeColor = Color.Black;
+            label23.Location = new Point(37, 31);
+            label23.Name = "label23";
+            label23.Size = new Size(333, 50);
+            label23.TabIndex = 7;
+            label23.Text = "Previous Transaction";
+            // 
+            // closeHistory
+            // 
+            closeHistory.Location = new Point(141, 253);
+            closeHistory.Name = "closeHistory";
+            closeHistory.Size = new Size(75, 23);
+            closeHistory.TabIndex = 1;
+            closeHistory.Text = "EXIT ";
+            closeHistory.UseVisualStyleBackColor = true;
+            closeHistory.Click += closeHistory_Click;
             // 
             // label13
             // 
@@ -759,7 +802,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Haettenschweiler", 40F);
             label12.ForeColor = Color.White;
-            label12.Location = new Point(157, 25);
+            label12.Location = new Point(156, 33);
             label12.Name = "label12";
             label12.Size = new Size(191, 56);
             label12.TabIndex = 0;
@@ -1367,11 +1410,12 @@
             mainMenuPanel.ResumeLayout(false);
             walletPanel.ResumeLayout(false);
             walletPanel.PerformLayout();
-            historyPanel.ResumeLayout(false);
-            historyPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)historyBtn).EndInit();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).EndInit();
             widthdrawXdepo.ResumeLayout(false);
             widthdrawXdepo.PerformLayout();
+            historyPanel.ResumeLayout(false);
+            historyPanel.PerformLayout();
             confirmPanel.ResumeLayout(false);
             confirmPanel.PerformLayout();
             profilePanel.ResumeLayout(false);
@@ -1476,10 +1520,8 @@
         private PictureBox userBox;
         private Label label13;
         private Label label16;
-        private Button historyButton;
         private Panel historyPanel;
         private Button closeHistory;
-        private Label label17;
         private Button fogotPassowrdButton;
         private Panel forgotPassPanel;
         private TextBox forgotCode;
@@ -1500,5 +1542,10 @@
         private Button button2;
         private PictureBox forgotBack;
         private Label label25;
+        private PictureBox historyBtn;
+        private Label label23;
+        private Label TransacTime;
+        private Label transacAct;
+        private Label TransacAmount;
     }
 }

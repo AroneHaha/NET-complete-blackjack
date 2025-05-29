@@ -26,6 +26,7 @@ namespace FinalBlackJack
         public double accountWinrate;
 
         public string walletChoice = "";
+        public string historyAct = "";
 
 
         private homesounds clickSound;
@@ -50,16 +51,18 @@ namespace FinalBlackJack
             mainDisplayPanel.Controls.Clear();
         }
 
+
         public void makeDeposit()
         {
             try
             {
+                historyAct = "Deposit";
                 int amountToAdd = int.Parse(walletAmount.Text);
                 MessageBox.Show("Transaction process is done, please check your account balance update.");
                 AccountData.accountsBalance[AccountData.currentAccount] += amountToAdd;
                 accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
-                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
-                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
                 resetWalletInfo();
 
             }
@@ -73,12 +76,13 @@ namespace FinalBlackJack
         {
             try
             {
+                historyAct = "Withdrawal";
                 int amountToAdd = int.Parse(walletAmount.Text);
                 MessageBox.Show("Transaction process is done, please check your account balance update.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= amountToAdd;
                 accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
-                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
-                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : Php" + accountBalanceHolder.ToString();
                 resetWalletInfo();
 
             }
@@ -180,11 +184,11 @@ namespace FinalBlackJack
                 MessageBox.Show("Login successful!");
 
                 homeUsername.Text = "User : " + usernameHolder;
-                homeBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
                 matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
                 bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
-                totalWinningsTxt.Text = "Total Winnings : $" + accountWinnings.ToString();
-                walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
+                totalWinningsTxt.Text = "Winnings : Php " + accountWinnings.ToString();
+                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
                 winrateTxt.Text = "Winrate : " + accountWinrate.ToString("F2") + "%";
 
                 signupPanel.Hide();
@@ -655,6 +659,7 @@ namespace FinalBlackJack
 
         }
 
+
         private void walletConfirmPassword_Click(object sender, EventArgs e)
         {
             int amount;
@@ -684,10 +689,16 @@ namespace FinalBlackJack
             {
                 if (walletChoice == "deposit")
                 {
+                    AccountData.transacActivity.Add("Deposit");
+                    AccountData.transacTime.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    AccountData.transacAmount.Add(walletAmount.ToString());
                     makeDeposit();
                 }
                 else
                 {
+                    AccountData.transacActivity.Add("Withdrawal");
+                    AccountData.transacTime.Add(DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    AccountData.transacAmount.Add(walletAmount.ToString());
                     makeWithdrawal();
                 }
             }
@@ -816,7 +827,7 @@ namespace FinalBlackJack
         Boolean isForgotCodeSent = false;
         private void button1_Click(object sender, EventArgs e)
         {
-            if(!AccountData.usernames.Contains(forgotUsername.Text))
+            if (!AccountData.usernames.Contains(forgotUsername.Text))
             {
                 MessageBox.Show("No matching account was found.");
                 forgotUsername.Clear();
@@ -886,7 +897,7 @@ namespace FinalBlackJack
             isForgotCodeSent = false;
             forgotCode.Clear();
             forgotUsername.Clear();
-           
+
             MessageBox.Show("Your credentials are validated, proceed to change your password.");
             changePassPanel.Visible = true;
             forgotPassPanel.Visible = false;
@@ -925,6 +936,25 @@ namespace FinalBlackJack
         private void sideMenuPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void historyBtn_Click(object sender, EventArgs e)
+        {
+            transacAct.Text = "Activity : " + AccountData.transacActivity[AccountData.currentAccount];
+            TransacTime.Text = "Time and Date : " + AccountData.transacTime[AccountData.currentAccount];
+            TransacAmount.Text = "Amount : Php " + AccountData.transacAmount[AccountData.currentAccount];
+            historyPanel.Visible = !historyPanel.Visible;
+            historyPanel.BringToFront();
+        }
+
+        private void historyBtn_MouseEnter(object sender, EventArgs e)
+        {
+            historyBtn.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\history-hover.png");
+        }
+
+        private void historyBtn_MouseLeave(object sender, EventArgs e)
+        {
+            historyBtn.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\history.png");
         }
     }
 

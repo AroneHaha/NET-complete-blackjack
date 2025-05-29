@@ -12,12 +12,16 @@ namespace FinalBlackJack
         public static List<string> usernames = new List<string> { "123", "a" };
         public static List<string> passwords = new List<string> { "123", "a" };
         public static List<string> emails = new List<string> { "aronefbs@gmail.com", "a@gmail.com" };
-        public static List<int> accountsBalance = new List<int> { 50000, 6969 };
+        public static List<int> accountsBalance = new List<int> { 5000000, 6969 };
         public static List<int> totalWins = new List<int> { 50, 26};
         public static List<int> totalLosses = new List<int> { 25, 56 };
         public static List<int> bustCount = new List<int> { 81, 96 };
         public static List<int> totalWinnings = new List<int> { 15993, 321334 };
         public static int currentAccount = 0;
+
+        public static List<string> transacActivity = new List<string> { "Deposit", "Withdrawal" };
+        public static List<string> transacTime = new List<string> { "1", "2" };
+        public static List<string> transacAmount = new List<string> { "0", "0" };
 
     }
 }
