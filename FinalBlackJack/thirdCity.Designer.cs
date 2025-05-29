@@ -38,6 +38,10 @@
             rDealer2 = new PictureBox();
             rDealer1 = new PictureBox();
             panel1 = new Panel();
+            surrenderPanel = new Panel();
+            label2 = new Label();
+            yesButton = new Button();
+            CancelButton = new Button();
             returnAllBet = new PictureBox();
             returnBet = new PictureBox();
             playerDraw4 = new PictureBox();
@@ -85,6 +89,7 @@
             ((System.ComponentModel.ISupportInitialize)rDealer2).BeginInit();
             ((System.ComponentModel.ISupportInitialize)rDealer1).BeginInit();
             panel1.SuspendLayout();
+            surrenderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)returnAllBet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)returnBet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playerDraw4).BeginInit();
@@ -184,6 +189,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(surrenderPanel);
             panel1.Controls.Add(returnAllBet);
             panel1.Controls.Add(returnBet);
             panel1.Controls.Add(playerDraw4);
@@ -227,6 +233,47 @@
             panel1.Size = new Size(971, 635);
             panel1.TabIndex = 8;
             panel1.Paint += panel1_Paint;
+            // 
+            // surrenderPanel
+            // 
+            surrenderPanel.BackColor = Color.Black;
+            surrenderPanel.Controls.Add(label2);
+            surrenderPanel.Controls.Add(yesButton);
+            surrenderPanel.Controls.Add(CancelButton);
+            surrenderPanel.Location = new Point(322, 186);
+            surrenderPanel.Name = "surrenderPanel";
+            surrenderPanel.Size = new Size(328, 195);
+            surrenderPanel.TabIndex = 42;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.ForeColor = SystemColors.ButtonFace;
+            label2.Location = new Point(129, 26);
+            label2.Name = "label2";
+            label2.Size = new Size(73, 15);
+            label2.TabIndex = 3;
+            label2.Text = "Are you sure";
+            // 
+            // yesButton
+            // 
+            yesButton.Location = new Point(183, 115);
+            yesButton.Name = "yesButton";
+            yesButton.Size = new Size(75, 23);
+            yesButton.TabIndex = 2;
+            yesButton.Text = "YES";
+            yesButton.UseVisualStyleBackColor = true;
+            yesButton.Click += yesButton_Click;
+            // 
+            // CancelButton
+            // 
+            CancelButton.Location = new Point(65, 115);
+            CancelButton.Name = "CancelButton";
+            CancelButton.Size = new Size(75, 23);
+            CancelButton.TabIndex = 1;
+            CancelButton.Text = "Cancel";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
             // 
             // returnAllBet
             // 
@@ -671,6 +718,8 @@
             ((System.ComponentModel.ISupportInitialize)rDealer1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            surrenderPanel.ResumeLayout(false);
+            surrenderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)returnAllBet).EndInit();
             ((System.ComponentModel.ISupportInitialize)returnBet).EndInit();
             ((System.ComponentModel.ISupportInitialize)playerDraw4).EndInit();
@@ -744,5 +793,9 @@
         private PictureBox returnAllBet;
         private ToolTip returnTip;
         private ToolTip returnAllTip;
+        private Panel surrenderPanel;
+        private Label label2;
+        private Button yesButton;
+        private Button CancelButton;
     }
 }

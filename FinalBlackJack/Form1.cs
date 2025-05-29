@@ -69,7 +69,7 @@ namespace FinalBlackJack
 
         private void exitButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit();
         }
 
         private void loadingPanel_Paint(object sender, PaintEventArgs e)
@@ -108,7 +108,7 @@ namespace FinalBlackJack
 
         private void declineButton_Click(object sender, EventArgs e)
         {
-            this.Close();
+            Application.Exit(); 
         }
 
         private void timer1_Tick(object sender, EventArgs e)

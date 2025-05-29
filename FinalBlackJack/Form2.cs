@@ -38,6 +38,7 @@ namespace FinalBlackJack
             mainDisplayPanel.Show();
             mainDisplayPanel.BringToFront();
 
+
             loginPanel.Show();
             signupPanel.Hide();
             mainMenuPanel.Hide();
@@ -45,6 +46,9 @@ namespace FinalBlackJack
             sideMenuPanel.Hide();
             profilePanel.Hide();
             walletPanel.Hide();
+
+
+
 
             mainDisplayPanel.Controls.Clear();
         }
@@ -131,7 +135,7 @@ namespace FinalBlackJack
         public void showMainMenuPanel()
         {
             navBarPanel.Visible = true;
-            sideMenuPanel.Visible = true;
+            sideMenuPanel.Visible = false;
         }
 
         public void signOutPanel()
@@ -186,6 +190,7 @@ namespace FinalBlackJack
                 walletBalance.Text = "Balance : " + accountBalanceHolder.ToString();
                 winrateTxt.Text = "Winrate : " + accountWinrate.ToString("F2") + "%";
 
+                signupPanel.Hide();
                 loginPanel.Hide();
                 mainMenuPanel.Show();
                 mainDisplayPanel.Show();
@@ -349,9 +354,18 @@ namespace FinalBlackJack
 
         private void form3Button_Click(object sender, EventArgs e)
         {
-            mainGameForm mainGameForm1 = new mainGameForm();
-            mainGameForm1.Show();
-            this.Close();
+            mainMenuForm parentMenuForm = this.FindForm() as mainMenuForm;
+
+            if (parentMenuForm != null)
+            {
+                mainGameForm gameForm = new mainGameForm(parentMenuForm);
+                gameForm.Show();
+                parentMenuForm.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Parent form not found.");
+            }
         }
 
         private void verificationButton_Click_1(object sender, EventArgs e)
@@ -504,6 +518,8 @@ namespace FinalBlackJack
         {
             widthdrawXdepo.Hide();
             confirmPanel.Hide();
+            historyPanel.Hide();
+
             walletPanel.Visible = !walletPanel.Visible;
             if (walletPanel.Visible)
             {
@@ -517,6 +533,7 @@ namespace FinalBlackJack
             walletPassword.Clear();
             walletAmount.Clear();
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
+
         }
 
         private void widthdrawButton_Click(object sender, EventArgs e)
@@ -525,6 +542,7 @@ namespace FinalBlackJack
             walletPassword.Clear();
             walletAmount.Clear();
             widthdrawXdepo.Visible = !widthdrawXdepo.Visible;
+
         }
 
         private void confirmButton_Click(object sender, EventArgs e)
@@ -668,6 +686,56 @@ namespace FinalBlackJack
         private void loginPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void historyButton_Click(object sender, EventArgs e)
+        {
+            historyPanel.Visible = !historyPanel.Visible;
+        }
+
+        private void closeHistory_Click(object sender, EventArgs e)
+        {
+            historyPanel.Hide();
+        }
+
+        private void fogotPassowrdButton_Click(object sender, EventArgs e)
+        {
+            changePassPanel.Hide();
+            forgotPassPanel.Visible = true;
+            loginPanel.Visible = false;
+            signupPanel.Visible = false;
+
+        }
+
+        private void exitForgotPassButton_Click(object sender, EventArgs e)
+        {
+            loginPanel.Visible = true;
+            forgotPassPanel.Visible = false;
+        }
+
+        private void confirmButton_Click_1(object sender, EventArgs e)
+        {
+            changePassPanel.Visible = true;
+            forgotPassPanel.Visible = true;
+
+        }
+
+        private void cancelChangePassButton_Click(object sender, EventArgs e)
+        {
+            loginPanel.Show();
+            forgotPassPanel.Visible = false;
+        }
+
+        private void confirmChangePass_Click(object sender, EventArgs e)
+        {
+            loginPanel.Show();
+            forgotPassPanel.Visible = false;
+            loginPanel.Visible = true;
+        }
+
+        private void exitProgram_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 

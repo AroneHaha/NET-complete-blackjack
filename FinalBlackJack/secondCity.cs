@@ -645,6 +645,9 @@ namespace FinalBlackJack
         {
             InitializeComponent();
 
+            surrenderPanel.Hide();
+
+
             rPlayer1.Visible = false;
             rPlayer2.Visible = false;
             rPlayer3.Visible = false;
@@ -1354,6 +1357,25 @@ namespace FinalBlackJack
         private void returnAllTip_Popup(object sender, PopupEventArgs e)
         {
 
+        }
+
+        private void backButton_Click(object sender, EventArgs e)
+        {
+            surrenderPanel.Visible = !surrenderPanel.Visible;
+
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            surrenderPanel.Hide();
+        }
+
+        private void yesButton_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is mainGameForm mainForm)
+            {
+                mainForm.ReturnToCarousel();
+            }
         }
     }
 }

@@ -31,6 +31,10 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(firstCity));
             panel1 = new Panel();
+            surrenderPanel = new Panel();
+            button2 = new Button();
+            CancelButton = new Button();
+            label1 = new Label();
             returnAllBet = new PictureBox();
             returnBet = new PictureBox();
             playerDraw4 = new PictureBox();
@@ -77,6 +81,7 @@
             returnTip = new ToolTip(components);
             returnAllTip = new ToolTip(components);
             panel1.SuspendLayout();
+            surrenderPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)returnAllBet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)returnBet).BeginInit();
             ((System.ComponentModel.ISupportInitialize)playerDraw4).BeginInit();
@@ -109,6 +114,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(surrenderPanel);
             panel1.Controls.Add(returnAllBet);
             panel1.Controls.Add(returnBet);
             panel1.Controls.Add(playerDraw4);
@@ -152,6 +158,48 @@
             panel1.Size = new Size(971, 631);
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
+            // 
+            // surrenderPanel
+            // 
+            surrenderPanel.BackColor = Color.Black;
+            surrenderPanel.Controls.Add(button2);
+            surrenderPanel.Controls.Add(CancelButton);
+            surrenderPanel.Controls.Add(label1);
+            surrenderPanel.Location = new Point(317, 209);
+            surrenderPanel.Name = "surrenderPanel";
+            surrenderPanel.Size = new Size(328, 195);
+            surrenderPanel.TabIndex = 40;
+            surrenderPanel.Paint += surrenderPanel_Paint;
+            // 
+            // button2
+            // 
+            button2.Location = new Point(183, 115);
+            button2.Name = "button2";
+            button2.Size = new Size(75, 23);
+            button2.TabIndex = 2;
+            button2.Text = "YES";
+            button2.UseVisualStyleBackColor = true;
+            button2.Click += button2_Click_1;
+            // 
+            // CancelButton
+            // 
+            CancelButton.Location = new Point(65, 115);
+            CancelButton.Name = "CancelButton";
+            CancelButton.Size = new Size(75, 23);
+            CancelButton.TabIndex = 1;
+            CancelButton.Text = "Cancel";
+            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.Click += CancelButton_Click;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.ForeColor = SystemColors.ButtonHighlight;
+            label1.Location = new Point(120, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(76, 15);
+            label1.TabIndex = 0;
+            label1.Text = "are you sure?";
             // 
             // returnAllBet
             // 
@@ -315,8 +363,9 @@
             backButton.Name = "backButton";
             backButton.Size = new Size(75, 23);
             backButton.TabIndex = 24;
-            backButton.Text = "button1";
+            backButton.Text = " ";
             backButton.UseVisualStyleBackColor = true;
+            backButton.Click += backButton_Click_1;
             // 
             // rChip100
             // 
@@ -639,6 +688,8 @@
             Size = new Size(922, 613);
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            surrenderPanel.ResumeLayout(false);
+            surrenderPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)returnAllBet).EndInit();
             ((System.ComponentModel.ISupportInitialize)returnBet).EndInit();
             ((System.ComponentModel.ISupportInitialize)playerDraw4).EndInit();
@@ -715,5 +766,9 @@
         private System.Windows.Forms.Timer dCardAnimation4;
         private ToolTip returnTip;
         private ToolTip returnAllTip;
+        private Panel surrenderPanel;
+        private Button button2;
+        private Button CancelButton;
+        private Label label1;
     }
 }

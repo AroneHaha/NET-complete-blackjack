@@ -43,15 +43,19 @@ namespace FinalBlackJack
         private void form3Button_Click(object sender, EventArgs e)
         {
 
-            mainGameForm gameForm = new mainGameForm();
-            gameForm.Show();
+            mainMenuForm parentMenuForm = this.FindForm() as mainMenuForm;
 
-
-            Form parentForm = this.FindForm();
-            if (parentForm != null)
+            if (parentMenuForm != null)
             {
-                parentForm.Close();
+                mainGameForm gameForm = new mainGameForm(parentMenuForm);
+                gameForm.Show();
+                parentMenuForm.Hide();
             }
+            else
+            {
+                MessageBox.Show("Parent form not found.");
+            }
+
         }
 
         private void homeUserOption_Load(object sender, EventArgs e)

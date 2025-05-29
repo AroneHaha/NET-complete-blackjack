@@ -29,7 +29,23 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(mainMenuForm));
+            forgotPassPanel = new Panel();
+            changePassPanel = new Panel();
+            cancelChangePassButton = new Button();
+            confirmChangePass = new Button();
+            textBox4 = new TextBox();
+            textBox3 = new TextBox();
+            label19 = new Label();
+            exitForgotPassButton = new Button();
+            textBox1 = new TextBox();
+            confirmButton = new Button();
+            textBox2 = new TextBox();
+            Descipt = new Label();
+            CodeTextBox = new TextBox();
+            sendCodeButton = new Button();
+            label18 = new Label();
             loginPanel = new Panel();
+            fogotPassowrdButton = new Button();
             switchToSignup = new Button();
             registerText = new Label();
             loginButton = new Button();
@@ -43,6 +59,10 @@
             passwordLogin = new TextBox();
             mainMenuPanel = new Panel();
             walletPanel = new Panel();
+            historyPanel = new Panel();
+            closeHistory = new Button();
+            label17 = new Label();
+            historyButton = new Button();
             walletBackBtn = new PictureBox();
             widthdrawXdepo = new Panel();
             label13 = new Label();
@@ -107,9 +127,12 @@
             usernameLog = new TextBox();
             passwordLog = new TextBox();
             verificationText = new Label();
+            forgotPassPanel.SuspendLayout();
+            changePassPanel.SuspendLayout();
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
             walletPanel.SuspendLayout();
+            historyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).BeginInit();
             widthdrawXdepo.SuspendLayout();
             confirmPanel.SuspendLayout();
@@ -128,9 +151,154 @@
             signupPanel.SuspendLayout();
             SuspendLayout();
             // 
+            // forgotPassPanel
+            // 
+            forgotPassPanel.BackColor = Color.Black;
+            forgotPassPanel.Controls.Add(changePassPanel);
+            forgotPassPanel.Controls.Add(exitForgotPassButton);
+            forgotPassPanel.Controls.Add(textBox1);
+            forgotPassPanel.Controls.Add(confirmButton);
+            forgotPassPanel.Controls.Add(textBox2);
+            forgotPassPanel.Controls.Add(Descipt);
+            forgotPassPanel.Controls.Add(CodeTextBox);
+            forgotPassPanel.Controls.Add(sendCodeButton);
+            forgotPassPanel.Controls.Add(label18);
+            forgotPassPanel.Location = new Point(274, 74);
+            forgotPassPanel.Name = "forgotPassPanel";
+            forgotPassPanel.Size = new Size(456, 401);
+            forgotPassPanel.TabIndex = 12;
+            forgotPassPanel.Visible = false;
+            // 
+            // changePassPanel
+            // 
+            changePassPanel.Controls.Add(cancelChangePassButton);
+            changePassPanel.Controls.Add(confirmChangePass);
+            changePassPanel.Controls.Add(textBox4);
+            changePassPanel.Controls.Add(textBox3);
+            changePassPanel.Controls.Add(label19);
+            changePassPanel.Location = new Point(8, 10);
+            changePassPanel.Name = "changePassPanel";
+            changePassPanel.Size = new Size(414, 356);
+            changePassPanel.TabIndex = 7;
+            // 
+            // cancelChangePassButton
+            // 
+            cancelChangePassButton.Location = new Point(113, 192);
+            cancelChangePassButton.Name = "cancelChangePassButton";
+            cancelChangePassButton.Size = new Size(75, 23);
+            cancelChangePassButton.TabIndex = 5;
+            cancelChangePassButton.Text = "cancelButton";
+            cancelChangePassButton.UseVisualStyleBackColor = true;
+            cancelChangePassButton.Click += cancelChangePassButton_Click;
+            // 
+            // confirmChangePass
+            // 
+            confirmChangePass.Location = new Point(219, 192);
+            confirmChangePass.Name = "confirmChangePass";
+            confirmChangePass.Size = new Size(75, 23);
+            confirmChangePass.TabIndex = 4;
+            confirmChangePass.Text = "COnfirm";
+            confirmChangePass.UseVisualStyleBackColor = true;
+            confirmChangePass.Click += confirmChangePass_Click;
+            // 
+            // textBox4
+            // 
+            textBox4.Location = new Point(138, 127);
+            textBox4.Name = "textBox4";
+            textBox4.Size = new Size(198, 23);
+            textBox4.TabIndex = 2;
+            // 
+            // textBox3
+            // 
+            textBox3.Location = new Point(139, 79);
+            textBox3.Name = "textBox3";
+            textBox3.Size = new Size(197, 23);
+            textBox3.TabIndex = 1;
+            // 
+            // label19
+            // 
+            label19.AutoSize = true;
+            label19.ForeColor = SystemColors.ButtonFace;
+            label19.Location = new Point(155, 30);
+            label19.Name = "label19";
+            label19.Size = new Size(72, 15);
+            label19.TabIndex = 0;
+            label19.Text = "change pass";
+            // 
+            // exitForgotPassButton
+            // 
+            exitForgotPassButton.Location = new Point(324, 31);
+            exitForgotPassButton.Name = "exitForgotPassButton";
+            exitForgotPassButton.Size = new Size(75, 23);
+            exitForgotPassButton.TabIndex = 8;
+            exitForgotPassButton.Text = "exit";
+            exitForgotPassButton.UseVisualStyleBackColor = true;
+            exitForgotPassButton.Click += exitForgotPassButton_Click;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(155, 92);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(134, 23);
+            textBox1.TabIndex = 6;
+            // 
+            // confirmButton
+            // 
+            confirmButton.Location = new Point(230, 216);
+            confirmButton.Name = "confirmButton";
+            confirmButton.Size = new Size(98, 50);
+            confirmButton.TabIndex = 5;
+            confirmButton.Text = "confirmButton";
+            confirmButton.UseVisualStyleBackColor = true;
+            confirmButton.Click += confirmButton_Click_1;
+            // 
+            // textBox2
+            // 
+            textBox2.Location = new Point(154, 129);
+            textBox2.Name = "textBox2";
+            textBox2.Size = new Size(135, 23);
+            textBox2.TabIndex = 4;
+            // 
+            // Descipt
+            // 
+            Descipt.AutoSize = true;
+            Descipt.ForeColor = SystemColors.ButtonFace;
+            Descipt.Location = new Point(203, 59);
+            Descipt.Name = "Descipt";
+            Descipt.Size = new Size(25, 15);
+            Descipt.TabIndex = 3;
+            Descipt.Text = "des";
+            // 
+            // CodeTextBox
+            // 
+            CodeTextBox.Location = new Point(154, 166);
+            CodeTextBox.Name = "CodeTextBox";
+            CodeTextBox.Size = new Size(135, 23);
+            CodeTextBox.TabIndex = 2;
+            // 
+            // sendCodeButton
+            // 
+            sendCodeButton.Location = new Point(96, 217);
+            sendCodeButton.Name = "sendCodeButton";
+            sendCodeButton.Size = new Size(103, 50);
+            sendCodeButton.TabIndex = 1;
+            sendCodeButton.Text = "Send Code";
+            sendCodeButton.UseVisualStyleBackColor = true;
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.ForeColor = SystemColors.ButtonFace;
+            label18.Location = new Point(166, 31);
+            label18.Name = "label18";
+            label18.Size = new Size(95, 15);
+            label18.TabIndex = 0;
+            label18.Text = "Forgot Password";
+            // 
             // loginPanel
             // 
             loginPanel.BackColor = Color.ForestGreen;
+            loginPanel.Controls.Add(fogotPassowrdButton);
             loginPanel.Controls.Add(switchToSignup);
             loginPanel.Controls.Add(registerText);
             loginPanel.Controls.Add(loginButton);
@@ -145,9 +313,19 @@
             loginPanel.ForeColor = Color.Black;
             loginPanel.Location = new Point(0, -4);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(503, 621);
+            loginPanel.Size = new Size(503, 640);
             loginPanel.TabIndex = 0;
             loginPanel.Paint += loginPanel_Paint;
+            // 
+            // fogotPassowrdButton
+            // 
+            fogotPassowrdButton.Location = new Point(192, 361);
+            fogotPassowrdButton.Name = "fogotPassowrdButton";
+            fogotPassowrdButton.Size = new Size(132, 28);
+            fogotPassowrdButton.TabIndex = 10;
+            fogotPassowrdButton.Text = "forgot password";
+            fogotPassowrdButton.UseVisualStyleBackColor = true;
+            fogotPassowrdButton.Click += fogotPassowrdButton_Click;
             // 
             // switchToSignup
             // 
@@ -284,13 +462,15 @@
             mainMenuPanel.Dock = DockStyle.Fill;
             mainMenuPanel.Location = new Point(0, 0);
             mainMenuPanel.Name = "mainMenuPanel";
-            mainMenuPanel.Size = new Size(984, 611);
+            mainMenuPanel.Size = new Size(984, 636);
             mainMenuPanel.TabIndex = 9;
             mainMenuPanel.Paint += mainMenuPanel_Paint;
             // 
             // walletPanel
             // 
             walletPanel.BackColor = Color.RoyalBlue;
+            walletPanel.Controls.Add(historyPanel);
+            walletPanel.Controls.Add(historyButton);
             walletPanel.Controls.Add(walletBackBtn);
             walletPanel.Controls.Add(widthdrawXdepo);
             walletPanel.Controls.Add(depositButton);
@@ -302,6 +482,45 @@
             walletPanel.Size = new Size(490, 508);
             walletPanel.TabIndex = 5;
             walletPanel.Paint += walletPanel_Paint;
+            // 
+            // historyPanel
+            // 
+            historyPanel.BackColor = Color.LightBlue;
+            historyPanel.Controls.Add(closeHistory);
+            historyPanel.Controls.Add(label17);
+            historyPanel.Location = new Point(51, 177);
+            historyPanel.Name = "historyPanel";
+            historyPanel.Size = new Size(395, 291);
+            historyPanel.TabIndex = 7;
+            // 
+            // closeHistory
+            // 
+            closeHistory.Location = new Point(281, 259);
+            closeHistory.Name = "closeHistory";
+            closeHistory.Size = new Size(75, 23);
+            closeHistory.TabIndex = 1;
+            closeHistory.Text = "EXIT ";
+            closeHistory.UseVisualStyleBackColor = true;
+            closeHistory.Click += closeHistory_Click;
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(175, 30);
+            label17.Name = "label17";
+            label17.Size = new Size(54, 15);
+            label17.TabIndex = 0;
+            label17.Text = "HISTORY";
+            // 
+            // historyButton
+            // 
+            historyButton.Location = new Point(294, 98);
+            historyButton.Name = "historyButton";
+            historyButton.Size = new Size(152, 46);
+            historyButton.TabIndex = 6;
+            historyButton.Text = "History";
+            historyButton.UseVisualStyleBackColor = true;
+            historyButton.Click += historyButton_Click;
             // 
             // walletBackBtn
             // 
@@ -481,7 +700,7 @@
             profilePanel.Dock = DockStyle.Right;
             profilePanel.Location = new Point(772, 75);
             profilePanel.Name = "profilePanel";
-            profilePanel.Size = new Size(212, 536);
+            profilePanel.Size = new Size(212, 561);
             profilePanel.TabIndex = 4;
             profilePanel.Paint += profilePanel_Paint;
             // 
@@ -588,7 +807,7 @@
             sideMenuPanel.Dock = DockStyle.Left;
             sideMenuPanel.Location = new Point(0, 75);
             sideMenuPanel.Name = "sideMenuPanel";
-            sideMenuPanel.Size = new Size(257, 536);
+            sideMenuPanel.Size = new Size(257, 561);
             sideMenuPanel.TabIndex = 1;
             // 
             // panel7
@@ -728,6 +947,7 @@
             exitProgram.TabIndex = 1;
             exitProgram.Text = "Exit Program";
             exitProgram.UseVisualStyleBackColor = false;
+            exitProgram.Click += exitProgram_Click;
             // 
             // navBarPanel
             // 
@@ -858,7 +1078,7 @@
             signupPanel.ForeColor = Color.Black;
             signupPanel.Location = new Point(0, -1);
             signupPanel.Name = "signupPanel";
-            signupPanel.Size = new Size(503, 612);
+            signupPanel.Size = new Size(497, 637);
             signupPanel.TabIndex = 11;
             // 
             // label16
@@ -1041,19 +1261,27 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.FromArgb(224, 224, 224);
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(984, 611);
+            ClientSize = new Size(984, 636);
             Controls.Add(mainMenuPanel);
             Controls.Add(signupPanel);
             Controls.Add(loginPanel);
+            Controls.Add(forgotPassPanel);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "mainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Black Jack Deluxe";
+            forgotPassPanel.ResumeLayout(false);
+            forgotPassPanel.PerformLayout();
+            changePassPanel.ResumeLayout(false);
+            changePassPanel.PerformLayout();
             loginPanel.ResumeLayout(false);
             loginPanel.PerformLayout();
             mainMenuPanel.ResumeLayout(false);
             walletPanel.ResumeLayout(false);
             walletPanel.PerformLayout();
+            historyPanel.ResumeLayout(false);
+            historyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).EndInit();
             widthdrawXdepo.ResumeLayout(false);
             widthdrawXdepo.PerformLayout();
@@ -1161,5 +1389,25 @@
         private PictureBox userBox;
         private Label label13;
         private Label label16;
+        private Button historyButton;
+        private Panel historyPanel;
+        private Button closeHistory;
+        private Label label17;
+        private Button fogotPassowrdButton;
+        private Panel forgotPassPanel;
+        private TextBox CodeTextBox;
+        private Button sendCodeButton;
+        private Label label18;
+        private TextBox textBox2;
+        private Label Descipt;
+        private Button confirmButton;
+        private Panel changePassPanel;
+        private Button cancelChangePassButton;
+        private Button confirmChangePass;
+        private TextBox textBox4;
+        private TextBox textBox3;
+        private Label label19;
+        private Button exitForgotPassButton;
+        private TextBox textBox1;
     }
 }

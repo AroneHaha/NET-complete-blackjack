@@ -39,18 +39,18 @@
             termsPanel = new Panel();
             label2 = new Label();
             termsTextPanel = new Panel();
+            label11 = new Label();
+            label10 = new Label();
+            label9 = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            label6 = new Label();
+            label5 = new Label();
+            label4 = new Label();
+            label3 = new Label();
+            label1 = new Label();
             acceptButton = new Button();
             declineButton = new Button();
-            label1 = new Label();
-            label3 = new Label();
-            label4 = new Label();
-            label5 = new Label();
-            label6 = new Label();
-            label7 = new Label();
-            label8 = new Label();
-            label9 = new Label();
-            label10 = new Label();
-            label11 = new Label();
             loadingPanel.SuspendLayout();
             form1Panel.SuspendLayout();
             termsPanel.SuspendLayout();
@@ -114,7 +114,7 @@
             loadingPanel.Dock = DockStyle.Fill;
             loadingPanel.Location = new Point(0, 0);
             loadingPanel.Name = "loadingPanel";
-            loadingPanel.Size = new Size(984, 611);
+            loadingPanel.Size = new Size(984, 636);
             loadingPanel.TabIndex = 3;
             loadingPanel.Paint += loadingPanel_Paint;
             // 
@@ -151,7 +151,7 @@
             form1Panel.Dock = DockStyle.Fill;
             form1Panel.Location = new Point(0, 0);
             form1Panel.Name = "form1Panel";
-            form1Panel.Size = new Size(984, 611);
+            form1Panel.Size = new Size(984, 636);
             form1Panel.TabIndex = 4;
             form1Panel.Paint += form1Panel_Paint;
             // 
@@ -196,6 +196,116 @@
             termsTextPanel.Size = new Size(390, 336);
             termsTextPanel.TabIndex = 2;
             // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label11.ForeColor = Color.Black;
+            label11.Location = new Point(24, 736);
+            label11.Name = "label11";
+            label11.Size = new Size(321, 42);
+            label11.TabIndex = 9;
+            label11.Text = "If you have any questions about these terms, \r\nplease contact, the developer.";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label10.ForeColor = Color.Black;
+            label10.Location = new Point(24, 700);
+            label10.Name = "label10";
+            label10.Size = new Size(94, 30);
+            label10.TabIndex = 8;
+            label10.Text = "Contact";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label9.ForeColor = Color.Black;
+            label9.Location = new Point(24, 525);
+            label9.Name = "label9";
+            label9.Size = new Size(339, 147);
+            label9.TabIndex = 7;
+            label9.Text = resources.GetString("label9.Text");
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(24, 483);
+            label8.Name = "label8";
+            label8.Size = new Size(233, 30);
+            label8.TabIndex = 6;
+            label8.Text = "Limitation of Liability";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(24, 333);
+            label7.Name = "label7";
+            label7.Size = new Size(332, 126);
+            label7.TabIndex = 5;
+            label7.Text = resources.GetString("label7.Text");
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label6.ForeColor = Color.Black;
+            label6.Location = new Point(24, 291);
+            label6.Name = "label6";
+            label6.Size = new Size(186, 30);
+            label6.TabIndex = 4;
+            label6.Text = "Play Responsibly";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label5.ForeColor = Color.Black;
+            label5.Location = new Point(24, 183);
+            label5.Name = "label5";
+            label5.Size = new Size(324, 84);
+            label5.TabIndex = 3;
+            label5.Text = "BlackJack Deluxe is meant for entertainment \r\npurposes only.,No real money or gambling is \r\ninvolved. You must be at least 13 years old \r\nto play.";
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label4.ForeColor = Color.Black;
+            label4.Location = new Point(24, 146);
+            label4.Name = "label4";
+            label4.Size = new Size(117, 30);
+            label4.TabIndex = 2;
+            label4.Text = "Game Use";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
+            label3.ForeColor = Color.Black;
+            label3.Location = new Point(24, 61);
+            label3.Name = "label3";
+            label3.Size = new Size(304, 63);
+            label3.TabIndex = 1;
+            label3.Text = "By playing BlackJack Deluxe, you agree to \r\nfollow,these Terms and Conditions. If you \r\ndo not agree, please do not use the game.\r\n";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            label1.ForeColor = Color.Black;
+            label1.Location = new Point(24, 22);
+            label1.Name = "label1";
+            label1.Size = new Size(228, 30);
+            label1.TabIndex = 0;
+            label1.Text = "Acceptance of Terms";
+            // 
             // acceptButton
             // 
             acceptButton.BackColor = Color.Green;
@@ -220,124 +330,15 @@
             declineButton.UseVisualStyleBackColor = false;
             declineButton.Click += declineButton_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label1.ForeColor = Color.Black;
-            label1.Location = new Point(24, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(228, 30);
-            label1.TabIndex = 0;
-            label1.Text = "Acceptance of Terms";
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label3.ForeColor = Color.Black;
-            label3.Location = new Point(24, 61);
-            label3.Name = "label3";
-            label3.Size = new Size(304, 63);
-            label3.TabIndex = 1;
-            label3.Text = "By playing BlackJack Deluxe, you agree to \r\nfollow,these Terms and Conditions. If you \r\ndo not agree, please do not use the game.\r\n";
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label4.ForeColor = Color.Black;
-            label4.Location = new Point(24, 146);
-            label4.Name = "label4";
-            label4.Size = new Size(117, 30);
-            label4.TabIndex = 2;
-            label4.Text = "Game Use";
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label5.ForeColor = Color.Black;
-            label5.Location = new Point(24, 183);
-            label5.Name = "label5";
-            label5.Size = new Size(324, 84);
-            label5.TabIndex = 3;
-            label5.Text = "BlackJack Deluxe is meant for entertainment \r\npurposes only.,No real money or gambling is \r\ninvolved. You must be at least 13 years old \r\nto play.";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label6.ForeColor = Color.Black;
-            label6.Location = new Point(24, 291);
-            label6.Name = "label6";
-            label6.Size = new Size(186, 30);
-            label6.TabIndex = 4;
-            label6.Text = "Play Responsibly";
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(24, 333);
-            label7.Name = "label7";
-            label7.Size = new Size(332, 126);
-            label7.TabIndex = 5;
-            label7.Text = resources.GetString("label7.Text");
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(24, 483);
-            label8.Name = "label8";
-            label8.Size = new Size(233, 30);
-            label8.TabIndex = 6;
-            label8.Text = "Limitation of Liability";
-            // 
-            // label9
-            // 
-            label9.AutoSize = true;
-            label9.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label9.ForeColor = Color.Black;
-            label9.Location = new Point(24, 525);
-            label9.Name = "label9";
-            label9.Size = new Size(339, 147);
-            label9.TabIndex = 7;
-            label9.Text = resources.GetString("label9.Text");
-            // 
-            // label10
-            // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(24, 700);
-            label10.Name = "label10";
-            label10.Size = new Size(94, 30);
-            label10.TabIndex = 8;
-            label10.Text = "Contact";
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(24, 736);
-            label11.Name = "label11";
-            label11.Size = new Size(321, 42);
-            label11.TabIndex = 9;
-            label11.Text = "If you have any questions about these terms, \r\nplease contact, the developer.";
-            // 
             // StartForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = Color.DarkOliveGreen;
-            ClientSize = new Size(984, 611);
+            ClientSize = new Size(984, 636);
             Controls.Add(form1Panel);
             ForeColor = SystemColors.ControlLight;
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Icon = (Icon)resources.GetObject("$this.Icon");
             Name = "StartForm";
             StartPosition = FormStartPosition.CenterScreen;

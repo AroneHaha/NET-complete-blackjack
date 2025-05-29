@@ -54,7 +54,7 @@
             form3Button.BackColor = Color.OrangeRed;
             form3Button.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             form3Button.ForeColor = Color.WhiteSmoke;
-            form3Button.Location = new Point(410, 451);
+            form3Button.Location = new Point(410, 448);
             form3Button.Name = "form3Button";
             form3Button.Size = new Size(179, 56);
             form3Button.TabIndex = 0;
@@ -66,9 +66,9 @@
             // 
             panel1.BackColor = Color.DarkOliveGreen;
             panel1.Controls.Add(adsPictureBox);
-            panel1.Location = new Point(122, 55);
+            panel1.Location = new Point(98, 40);
             panel1.Name = "panel1";
-            panel1.Size = new Size(753, 378);
+            panel1.Size = new Size(777, 402);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
@@ -77,7 +77,7 @@
             adsPictureBox.BackColor = Color.Ivory;
             adsPictureBox.Location = new Point(0, 0);
             adsPictureBox.Name = "adsPictureBox";
-            adsPictureBox.Size = new Size(753, 378);
+            adsPictureBox.Size = new Size(777, 402);
             adsPictureBox.TabIndex = 0;
             adsPictureBox.TabStop = false;
             adsPictureBox.Click += adsPictureBox_Click;
@@ -85,7 +85,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(148, 688);
+            pictureBox1.Location = new Point(43, 152);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(342, 412);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -131,6 +131,7 @@
             // panel2
             // 
             panel2.BackColor = Color.LightGoldenrodYellow;
+            panel2.Controls.Add(pictureBox1);
             panel2.Controls.Add(pictureBox3);
             panel2.Controls.Add(pictureBox2);
             panel2.Controls.Add(label5);
@@ -138,9 +139,9 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(122, 535);
+            panel2.Location = new Point(98, 530);
             panel2.Name = "panel2";
-            panel2.Size = new Size(753, 620);
+            panel2.Size = new Size(777, 625);
             panel2.TabIndex = 7;
             // 
             // pictureBox3
@@ -192,7 +193,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.DarkSeaGreen;
-            Controls.Add(pictureBox1);
             Controls.Add(panel1);
             Controls.Add(form3Button);
             Controls.Add(panel2);

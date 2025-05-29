@@ -16,6 +16,8 @@ namespace FinalBlackJack
         {
             InitializeComponent();
 
+            surrenderPanel.Visible = false;
+
             rPlayer1.Visible = false;
             rPlayer2.Visible = false;
             rPlayer3.Visible = false;
@@ -1525,6 +1527,30 @@ namespace FinalBlackJack
         }
 
         private void firstCity_Load_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void backButton_Click_1(object sender, EventArgs e)
+        {
+            surrenderPanel.Visible = !surrenderPanel.Visible;
+
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            surrenderPanel.Hide();
+        }
+
+        private void button2_Click_1(object sender, EventArgs e)
+        {
+            if (this.ParentForm is mainGameForm mainForm)
+            {
+                mainForm.ReturnToCarousel();
+            }
+        }
+
+        private void surrenderPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

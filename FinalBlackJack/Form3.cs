@@ -17,15 +17,24 @@ namespace FinalBlackJack
         private Dictionary<string, Image> cityBackgrounds;
         private loadingAnimation loadingAnimation = new loadingAnimation();
         private int centerIndex = 0;
-        
+        private mainMenuForm menuForm;
+        private string selectedCity = "";
 
-        public mainGameForm()
+
+        public mainGameForm(mainMenuForm menu)
         {
             InitializeComponent();
             cityPanel.Hide();
+            menuForm = menu;
+            transactionPanel.Hide();
+            
+
 
 
         }
+
+
+
         private void mainGameForm_Load(object sender, EventArgs e)
         {
             cities = new List<(string, PictureBox)>
@@ -34,7 +43,7 @@ namespace FinalBlackJack
                 ("Obi Wan Castle In Shangrila", singaporePicBox),
                 ("Cobact Club of Doom", hongkongPicBox)
             };
-            
+
             cityBackgrounds = new Dictionary<string, Image>
 {
         { "Sahara Grand Pavilion Resort", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city1.jpg") },
@@ -106,7 +115,7 @@ namespace FinalBlackJack
             cityPanel.Controls.Clear();
             control.Dock = DockStyle.Fill;
             cityPanel.Controls.Add(control);
-            
+
 
         }
         public void ReturnToCarousel()
@@ -127,12 +136,14 @@ namespace FinalBlackJack
         {
             centerIndex = (centerIndex + 1) % cities.Count;
             UpdateCarouselDisplay();
+            transactionPanel.Hide();
         }
 
         private void leftButton_Click(object sender, EventArgs e)
         {
             centerIndex = (centerIndex - 1 + cities.Count) % cities.Count;
             UpdateCarouselDisplay();
+            transactionPanel.Hide();
         }
         private async Task ShowLoadingAnimation()
         {
@@ -141,20 +152,25 @@ namespace FinalBlackJack
             loadingAnimation.BringToFront();
             loadingAnimation.Visible = true;
 
-            await Task.Delay(4000);
+            await Task.Delay(2000);
 
             loadingAnimation.Visible = false;
             this.Controls.Remove(loadingAnimation);
+        }
+
+        private void showTransactionPanel()
+        {
+            transactionPanel.Visible = true;
+            transactionPanel.BringToFront();
         }
         private async void manilaPicBox_Click(object sender, EventArgs e)
         {
             if (cities[centerIndex].Name == "Sahara Grand Pavilion Resort")
             {
-                await ShowLoadingAnimation();
-                cityPanel.Show();
-                cityPanel.BringToFront();
-                LoadView(new firstCity());
-                
+                selectedCity = "Sahara Grand Pavilion Resort";
+                showTransactionPanel();
+
+
 
             }
         }
@@ -163,10 +179,11 @@ namespace FinalBlackJack
         {
             if (cities[centerIndex].Name == "Obi Wan Castle In Shangrila")
             {
-                await ShowLoadingAnimation();
-                cityPanel.Show();
-                cityPanel.BringToFront();
-                LoadView(new singaporePanel());
+                selectedCity = "Obi Wan Castle In Shangrila";
+                showTransactionPanel();
+
+
+
             }
         }
 
@@ -174,10 +191,10 @@ namespace FinalBlackJack
         {
             if (cities[centerIndex].Name == "Cobact Club of Doom")
             {
-                await ShowLoadingAnimation();
-                cityPanel.Show();
-                cityPanel.BringToFront();
-                LoadView(new hongkongPanel());
+                selectedCity = "Cobact Club of Doom";
+                showTransactionPanel();
+
+
             }
         }
 
@@ -188,11 +205,47 @@ namespace FinalBlackJack
 
         private void extMaingameButton_Click(object sender, EventArgs e)
         {
-            mainMenuForm mainGameForm = new mainMenuForm();
-            mainGameForm.showMainMenuPanel();
-            
-            mainGameForm.Show();
+            menuForm.showMainMenuPanel();
+            menuForm.Show();
             this.Close();
+        }
+
+        private void cancelButton_Click(object sender, EventArgs e)
+        {
+            transactionPanel.Hide();
+        }
+
+        private async void confirmButton_Click(object sender, EventArgs e)
+        {
+            switch (selectedCity)
+            {
+                case "Sahara Grand Pavilion Resort":
+                    await ShowLoadingAnimation();
+                    cityPanel.Show();
+                    cityPanel.BringToFront();
+                    LoadView(new firstCity());
+                    break;
+
+                case "Obi Wan Castle In Shangrila":
+                    await ShowLoadingAnimation();
+                    cityPanel.Show();
+                    cityPanel.BringToFront();
+                    LoadView(new singaporePanel());
+                    break;
+
+                case "Cobact Club of Doom":
+                    await ShowLoadingAnimation();
+                    cityPanel.Show();
+                    cityPanel.BringToFront();
+                    LoadView(new hongkongPanel());
+                    break;
+
+                default:
+                    MessageBox.Show("No city selected.", "Error");
+                    break;
+            }
+
+            transactionPanel.Hide();
         }
     }
 }

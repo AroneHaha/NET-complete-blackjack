@@ -649,6 +649,7 @@ namespace FinalBlackJack
         public singaporePanel()
         {
             InitializeComponent();
+            surrenderPanel.Hide();
             this.Load += singaporePanel_Load;
 
             rPlayer1.Visible = false;
@@ -1122,10 +1123,7 @@ namespace FinalBlackJack
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            if (this.ParentForm is mainGameForm mainForm)
-            {
-                mainForm.ReturnToCarousel();
-            }
+            surrenderPanel.Visible = !surrenderPanel.Visible;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -1575,6 +1573,19 @@ namespace FinalBlackJack
         private void rDealer2_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void CancelButton_Click(object sender, EventArgs e)
+        {
+            surrenderPanel.Hide();
+        }
+
+        private void yesButton_Click(object sender, EventArgs e)
+        {
+            if (this.ParentForm is mainGameForm mainForm)
+            {
+                mainForm.ReturnToCarousel();
+            }
         }
     }
 }
