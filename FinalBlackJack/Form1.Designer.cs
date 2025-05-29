@@ -163,19 +163,19 @@
             termsPanel.Controls.Add(termsTextPanel);
             termsPanel.Controls.Add(acceptButton);
             termsPanel.Controls.Add(declineButton);
-            termsPanel.Location = new Point(269, 87);
+            termsPanel.Location = new Point(269, 61);
             termsPanel.Name = "termsPanel";
-            termsPanel.Size = new Size(456, 483);
+            termsPanel.Size = new Size(456, 509);
             termsPanel.TabIndex = 4;
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Haettenschweiler", 35F);
+            label2.Font = new Font("Haettenschweiler", 33F);
             label2.ForeColor = Color.WhiteSmoke;
-            label2.Location = new Point(54, 16);
+            label2.Location = new Point(60, 17);
             label2.Name = "label2";
-            label2.Size = new Size(357, 50);
+            label2.Size = new Size(334, 45);
             label2.TabIndex = 3;
             label2.Text = "TERMS AND AGREEMENT";
             // 
@@ -195,7 +195,7 @@
             termsTextPanel.Controls.Add(label1);
             termsTextPanel.Location = new Point(38, 77);
             termsTextPanel.Name = "termsTextPanel";
-            termsTextPanel.Size = new Size(390, 336);
+            termsTextPanel.Size = new Size(390, 357);
             termsTextPanel.TabIndex = 2;
             // 
             // label11
@@ -203,7 +203,7 @@
             label11.AutoSize = true;
             label11.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label11.ForeColor = Color.Black;
-            label11.Location = new Point(24, 736);
+            label11.Location = new Point(24, 717);
             label11.Name = "label11";
             label11.Size = new Size(321, 42);
             label11.TabIndex = 9;
@@ -214,7 +214,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(24, 700);
+            label10.Location = new Point(24, 681);
             label10.Name = "label10";
             label10.Size = new Size(94, 30);
             label10.TabIndex = 8;
@@ -225,7 +225,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(24, 525);
+            label9.Location = new Point(24, 513);
             label9.Name = "label9";
             label9.Size = new Size(339, 147);
             label9.TabIndex = 7;
@@ -236,7 +236,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(24, 483);
+            label8.Location = new Point(24, 471);
             label8.Name = "label8";
             label8.Size = new Size(233, 30);
             label8.TabIndex = 6;
@@ -247,7 +247,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(24, 333);
+            label7.Location = new Point(24, 321);
             label7.Name = "label7";
             label7.Size = new Size(332, 126);
             label7.TabIndex = 5;
@@ -258,7 +258,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(24, 291);
+            label6.Location = new Point(24, 279);
             label6.Name = "label6";
             label6.Size = new Size(186, 30);
             label6.TabIndex = 4;
@@ -269,7 +269,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(24, 183);
+            label5.Location = new Point(24, 176);
             label5.Name = "label5";
             label5.Size = new Size(324, 84);
             label5.TabIndex = 3;
@@ -280,7 +280,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(24, 146);
+            label4.Location = new Point(24, 139);
             label4.Name = "label4";
             label4.Size = new Size(117, 30);
             label4.TabIndex = 2;
@@ -291,7 +291,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 12F, FontStyle.Italic, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Black;
-            label3.Location = new Point(24, 61);
+            label3.Location = new Point(24, 54);
             label3.Name = "label3";
             label3.Size = new Size(304, 63);
             label3.TabIndex = 1;
@@ -302,7 +302,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(24, 22);
+            label1.Location = new Point(24, 15);
             label1.Name = "label1";
             label1.Size = new Size(228, 30);
             label1.TabIndex = 0;
@@ -312,7 +312,7 @@
             // 
             acceptButton.BackColor = Color.Green;
             acceptButton.ForeColor = Color.White;
-            acceptButton.Location = new Point(239, 427);
+            acceptButton.Location = new Point(243, 452);
             acceptButton.Name = "acceptButton";
             acceptButton.Size = new Size(158, 39);
             acceptButton.TabIndex = 1;
@@ -324,7 +324,7 @@
             // 
             declineButton.BackColor = Color.Red;
             declineButton.ForeColor = Color.White;
-            declineButton.Location = new Point(67, 427);
+            declineButton.Location = new Point(71, 452);
             declineButton.Name = "declineButton";
             declineButton.Size = new Size(158, 39);
             declineButton.TabIndex = 0;

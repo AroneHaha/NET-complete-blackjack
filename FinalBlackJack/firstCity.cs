@@ -1227,6 +1227,13 @@ namespace FinalBlackJack
 
         private void returnBet_Click(object sender, EventArgs e)
         {
+
+            if (currentBet == 0)
+            {
+                MessageBox.Show("No active bet at the moment.");
+                return;
+            }
+
             AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
             currentBet -= latestBet;
             rBet.Text = "Round Bet : " + currentBet.ToString();

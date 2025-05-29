@@ -117,4 +117,16 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="label12.Text" xml:space="preserve">
+    <value>Whether you're just learning how to hit or stand, or you're 
+counting cards in your head, BlackJack Deluxe is designed 
+to be both accessible and challenging. Practice strategies,
+test your luck, or just relax and enjoy a few hands. There's
+always a seat open at the Deluxe table.</value>
+  </data>
+  <data name="label3.Text" xml:space="preserve">
+    <value>Welcome to BlackJack Deluxe, the ultimate card game experience that brings the thrill of the 
+casino right to your screen! Whether you're a seasoned player or new to the game, BlackJack 
+Deluxe offers a sleek, easy-to-play interface with smooth gameplay and smart features.</value>
+  </data>
 </root>

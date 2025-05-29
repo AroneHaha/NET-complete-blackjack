@@ -188,12 +188,12 @@ namespace FinalBlackJack
 
         private bool checkBalance(int chipAmount)
         {
-            return AccountData.accountsBalance[AccountData.currentAccount] >= chipAmount;
+            return buyinBalance >= chipAmount;
         }
 
         private void checkGameWinner()
         {
-            if (AccountData.accountsBalance[AccountData.currentAccount] == 0 || AccountData.accountsBalance[AccountData.currentAccount] < minBet)
+            if (buyinBalance == 0 || buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
                 if (this.ParentForm is mainGameForm mainForm)
@@ -213,41 +213,41 @@ namespace FinalBlackJack
 
             else
             {
-                r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+                r_BankRoll.Text = "Balance: " + buyinBalance.ToString();
             }
         }
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet * 2;
+            ingameWinnings += currentBet * 2;
+            buyinBalance += currentBet * 2;
             dealerBalance -= currentBet;
-            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
 
         private void balanceWinUpdateDouble()
         {
-            ingameWinnings += (currentBet * 2);
-            AccountData.accountsBalance[AccountData.currentAccount] += (currentBet * 2) * 2;
+            buyinBalance += (currentBet * 2) * 2;
+            ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
             r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdate()
         {
             dealerBalance += currentBet;
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
         private void balanceLoseUpdateDouble()
         {
             dealerBalance += (currentBet * 2);
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
-            r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+            r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
+            r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
         private void displayValues()
@@ -325,7 +325,7 @@ namespace FinalBlackJack
             roundLoserSound();
             MessageBox.Show("Draw matched, returning cards.");
             roundOver = true;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            buyinBalance += currentBet;
             resetRound();
             return;
         }
@@ -335,7 +335,7 @@ namespace FinalBlackJack
             roundLoserSound();
             MessageBox.Show("Draw matched, returning cards.");
             roundOver = true;
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            buyinBalance += currentBet;
             resetRound();
             return;
         }
@@ -347,6 +347,7 @@ namespace FinalBlackJack
                 roundLoserSound();
                 MessageBox.Show("Draw match!");
                 r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
+                matched();
             }
             else if ((playerTotal - 21) < (botTotal - 21))
             {
@@ -372,7 +373,7 @@ namespace FinalBlackJack
             {
                 roundLoserSound();
                 MessageBox.Show("Draw match!, returning cards.");
-                AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+                buyinBalance += currentBet;
                 matchedDouble();
 
             }
@@ -498,16 +499,12 @@ namespace FinalBlackJack
 
             else
             {
-                int tempBalance = AccountData.accountsBalance[AccountData.currentAccount];
-
                 chipsSound();
                 currentBet += bet;
-                tempBalance -= bet;
+                buyinBalance -= bet;
 
                 rBet.Text = "Round Bet : " + currentBet.ToString();
-                r_BankRoll.Text = "Bankroll : " + (AccountData.accountsBalance[AccountData.currentAccount] -= bet);
-
-                AccountData.accountsBalance[AccountData.currentAccount] = tempBalance;
+                r_BankRoll.Text = "Bankroll : " + buyinBalance;
             }
         }
 
@@ -608,6 +605,8 @@ namespace FinalBlackJack
             cardsound.PlayOnce();
         }
 
+
+
         Random playerRandom = new Random();
         Random botRandom = new Random();
 
@@ -620,17 +619,21 @@ namespace FinalBlackJack
         public int minBet = 1;
 
         public int playerBalance = 0;
-        public int dealerBalance = (AccountData.accountsBalance[AccountData.currentAccount] + 500);
+        public int dealerBalance = 0;
         public int currentBet = 0;
         public int ingameWinnings = 0;
 
-        private bool roundOver = false;
-        private bool playerHasStood = false;
-        private bool isDrawn = false;
-        private bool roundStarted = false;
+        public bool roundOver = false;
+        public bool playerHasStood = false;
+        public bool isDrawn = false;
+        public bool roundStarted = false;
+
+        public int ingameRound = 1;
+
+        public int balanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
+        public int buyinBalance = buyinHolder.buyIn[0];
         private bool shouldRunDCard4 = false;
 
-        private int ingameRound = 1;
 
         // ----------------------------- BOT IMAGES ------------------------------------------
         public Image bot1;
@@ -639,14 +642,15 @@ namespace FinalBlackJack
         public Image bot4;
         public Image[] botHiddenCards = new Image[3];
 
-        string currentUser = AccountData.usernames[AccountData.currentAccount];
-
         public hongkongPanel()
         {
             InitializeComponent();
 
             surrenderPanel.Hide();
 
+            this.Load += hongkongPanel_Load;
+
+            dealerBalance = buyinBalance;
 
             rPlayer1.Visible = false;
             rPlayer2.Visible = false;
@@ -663,15 +667,15 @@ namespace FinalBlackJack
             playerValue.Text = "";
             botValue.Text = "";
 
-
-            r_BankRoll.Text = "Bankroll : " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
             returnTip.SetToolTip(returnBet, "Undo");
             returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
 
         private void hongkongPanel_Load(object sender, EventArgs e)
         {
-
+            r_BankRoll.Text = "Bankroll : " + buyinBalance;
+            returnTip.SetToolTip(returnBet, "Undo");
+            returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
@@ -856,8 +860,6 @@ namespace FinalBlackJack
 
         private void standBtn_Click(object sender, EventArgs e)
         {
-            // ----------------------- REVEAL ALL CARDS ASAP TO AVOID ANY CONFLICT DURING COMPILATION OF RESULTS -------------------------------------------
-
             if (currentBet == 0)
             {
                 errorSound();
@@ -916,7 +918,6 @@ namespace FinalBlackJack
 
             else if (playerTotal == 21)
             {
-                round();
                 playerBlackJack();
             }
 
@@ -958,7 +959,7 @@ namespace FinalBlackJack
                 dealerWinner();
             }
 
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Balance: " + buyinBalance;
         }
 
         private void hitBtn_Click(object sender, EventArgs e)
@@ -1040,8 +1041,6 @@ namespace FinalBlackJack
 
         private void doubleBtn_Click(object sender, EventArgs e)
         {
-            drawCardsSound();
-
             if (currentBet == 0)
             {
                 errorSound();
@@ -1049,13 +1048,14 @@ namespace FinalBlackJack
                 return;
             }
 
-            if (AccountData.accountsBalance[AccountData.currentAccount] < currentBet)
+            if (buyinBalance < currentBet)
             {
                 errorSound();
                 MessageBox.Show("You have insufficient balance to double your bet.");
                 return;
             }
 
+            drawCardsSound();
             while (botTotal < 17)
             {
                 int botIndex = botRandom.Next(rCards.Count);
@@ -1112,7 +1112,7 @@ namespace FinalBlackJack
             }
 
             playerReveal++;
-            AccountData.accountsBalance[AccountData.currentAccount] -= currentBet;
+            buyinBalance -= currentBet;
             hiddenCards();
             displayValues();
 
@@ -1172,7 +1172,7 @@ namespace FinalBlackJack
                 dealerWinnerDouble();
             }
 
-            r_BankRoll.Text = "Balance: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Balance: " + buyinBalance;
             resetRound();
         }
 
@@ -1340,18 +1340,18 @@ namespace FinalBlackJack
 
         private void returnBet_Click(object sender, EventArgs e)
         {
-            AccountData.accountsBalance[AccountData.currentAccount] += latestBet;
+            buyinBalance += latestBet;
             currentBet -= latestBet;
             rBet.Text = "Round Bet : " + currentBet.ToString();
-            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll: " + buyinBalance;
         }
 
         private void returnAllBet_Click(object sender, EventArgs e)
         {
-            AccountData.accountsBalance[AccountData.currentAccount] += currentBet;
+            buyinBalance += currentBet;
             currentBet = 0;
             rBet.Text = "Round Bet : 0";
-            r_BankRoll.Text = "Bankroll: " + AccountData.accountsBalance[AccountData.currentAccount].ToString();
+            r_BankRoll.Text = "Bankroll: " + buyinBalance;
         }
 
         private void returnAllTip_Popup(object sender, PopupEventArgs e)

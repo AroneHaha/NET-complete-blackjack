@@ -32,10 +32,13 @@
             cityChooserPanel = new Panel();
             cityPanel = new Panel();
             transactionPanel = new Panel();
-            textBox1 = new TextBox();
+            cancelBuyinButton = new Button();
+            buyinTotalBalance = new Label();
+            label2 = new Label();
+            walletBalance = new Label();
+            playTableButton = new Button();
+            buyinAmount = new TextBox();
             label1 = new Label();
-            confirmButton = new Button();
-            cancelButton = new Button();
             extMaingameButton = new Button();
             rightButton = new Button();
             leftButton = new Button();
@@ -81,51 +84,96 @@
             // 
             // transactionPanel
             // 
-            transactionPanel.BackColor = Color.IndianRed;
-            transactionPanel.Controls.Add(textBox1);
+            transactionPanel.BackColor = Color.RoyalBlue;
+            transactionPanel.Controls.Add(cancelBuyinButton);
+            transactionPanel.Controls.Add(buyinTotalBalance);
+            transactionPanel.Controls.Add(label2);
+            transactionPanel.Controls.Add(walletBalance);
+            transactionPanel.Controls.Add(playTableButton);
+            transactionPanel.Controls.Add(buyinAmount);
             transactionPanel.Controls.Add(label1);
-            transactionPanel.Controls.Add(confirmButton);
-            transactionPanel.Controls.Add(cancelButton);
             transactionPanel.Location = new Point(245, 162);
             transactionPanel.Name = "transactionPanel";
             transactionPanel.Size = new Size(511, 327);
             transactionPanel.TabIndex = 8;
             // 
-            // textBox1
+            // cancelBuyinButton
             // 
-            textBox1.Location = new Point(162, 140);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(186, 23);
-            textBox1.TabIndex = 3;
+            cancelBuyinButton.BackColor = Color.Red;
+            cancelBuyinButton.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            cancelBuyinButton.ForeColor = Color.White;
+            cancelBuyinButton.Location = new Point(141, 261);
+            cancelBuyinButton.Name = "cancelBuyinButton";
+            cancelBuyinButton.Size = new Size(118, 38);
+            cancelBuyinButton.TabIndex = 8;
+            cancelBuyinButton.Text = "Cancel";
+            cancelBuyinButton.UseVisualStyleBackColor = false;
+            cancelBuyinButton.Click += button1_Click_1;
+            // 
+            // buyinTotalBalance
+            // 
+            buyinTotalBalance.AutoSize = true;
+            buyinTotalBalance.Font = new Font("Segoe UI", 17F);
+            buyinTotalBalance.ForeColor = Color.White;
+            buyinTotalBalance.Location = new Point(231, 138);
+            buyinTotalBalance.Name = "buyinTotalBalance";
+            buyinTotalBalance.Size = new Size(72, 31);
+            buyinTotalBalance.TabIndex = 7;
+            buyinTotalBalance.Text = "Php 0";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 15F);
+            label2.ForeColor = Color.White;
+            label2.Location = new Point(76, 187);
+            label2.Name = "label2";
+            label2.Size = new Size(153, 28);
+            label2.TabIndex = 6;
+            label2.Text = "Buy-in Amount :";
+            // 
+            // walletBalance
+            // 
+            walletBalance.AutoSize = true;
+            walletBalance.Font = new Font("Segoe UI", 17F);
+            walletBalance.ForeColor = Color.White;
+            walletBalance.Location = new Point(76, 138);
+            walletBalance.Name = "walletBalance";
+            walletBalance.Size = new Size(165, 31);
+            walletBalance.TabIndex = 5;
+            walletBalance.Text = "Total Balance : ";
+            // 
+            // playTableButton
+            // 
+            playTableButton.BackColor = Color.MidnightBlue;
+            playTableButton.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            playTableButton.ForeColor = Color.White;
+            playTableButton.Location = new Point(265, 261);
+            playTableButton.Name = "playTableButton";
+            playTableButton.Size = new Size(118, 38);
+            playTableButton.TabIndex = 4;
+            playTableButton.Text = "Confirm";
+            playTableButton.UseVisualStyleBackColor = false;
+            playTableButton.Click += depositButton_Click;
+            // 
+            // buyinAmount
+            // 
+            buyinAmount.Location = new Point(231, 193);
+            buyinAmount.Name = "buyinAmount";
+            buyinAmount.Size = new Size(212, 23);
+            buyinAmount.TabIndex = 3;
+            buyinAmount.TextChanged += buyinAmount_TextChanged;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(202, 59);
+            label1.Font = new Font("Haettenschweiler", 45F);
+            label1.ForeColor = Color.WhiteSmoke;
+            label1.Location = new Point(157, 28);
             label1.Name = "label1";
-            label1.Size = new Size(105, 15);
+            label1.Size = new Size(214, 62);
             label1.TabIndex = 2;
-            label1.Text = "Enter Buy IN Chips";
-            // 
-            // confirmButton
-            // 
-            confirmButton.Location = new Point(285, 263);
-            confirmButton.Name = "confirmButton";
-            confirmButton.Size = new Size(75, 23);
-            confirmButton.TabIndex = 1;
-            confirmButton.Text = "Confirm";
-            confirmButton.UseVisualStyleBackColor = true;
-            confirmButton.Click += confirmButton_Click;
-            // 
-            // cancelButton
-            // 
-            cancelButton.Location = new Point(148, 263);
-            cancelButton.Name = "cancelButton";
-            cancelButton.Size = new Size(75, 23);
-            cancelButton.TabIndex = 0;
-            cancelButton.Text = "Cancel";
-            cancelButton.UseVisualStyleBackColor = true;
-            cancelButton.Click += cancelButton_Click;
+            label1.Text = "My Wallet";
             // 
             // extMaingameButton
             // 
@@ -240,8 +288,11 @@
         private Label topTextCity;
         private Panel transactionPanel;
         private Label label1;
-        private Button confirmButton;
-        private Button cancelButton;
-        private TextBox textBox1;
+        private Button playTableButton;
+        private Label label2;
+        private Label walletBalance;
+        private Label buyinTotalBalance;
+        private Button cancelBuyinButton;
+        public TextBox buyinAmount;
     }
 }

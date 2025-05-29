@@ -54,7 +54,7 @@
             form3Button.BackColor = Color.OrangeRed;
             form3Button.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             form3Button.ForeColor = Color.WhiteSmoke;
-            form3Button.Location = new Point(410, 448);
+            form3Button.Location = new Point(402, 498);
             form3Button.Name = "form3Button";
             form3Button.Size = new Size(179, 56);
             form3Button.TabIndex = 0;
@@ -68,7 +68,7 @@
             panel1.Controls.Add(adsPictureBox);
             panel1.Location = new Point(98, 40);
             panel1.Name = "panel1";
-            panel1.Size = new Size(777, 402);
+            panel1.Size = new Size(777, 442);
             panel1.TabIndex = 1;
             panel1.Paint += panel1_Paint;
             // 
@@ -77,7 +77,7 @@
             adsPictureBox.BackColor = Color.Ivory;
             adsPictureBox.Location = new Point(0, 0);
             adsPictureBox.Name = "adsPictureBox";
-            adsPictureBox.Size = new Size(777, 402);
+            adsPictureBox.Size = new Size(777, 442);
             adsPictureBox.TabIndex = 0;
             adsPictureBox.TabStop = false;
             adsPictureBox.Click += adsPictureBox_Click;
@@ -85,7 +85,7 @@
             // pictureBox1
             // 
             pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
-            pictureBox1.Location = new Point(43, 152);
+            pictureBox1.Location = new Point(44, 172);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(342, 412);
             pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -110,7 +110,7 @@
             label3.AutoSize = true;
             label3.Font = new Font("Haettenschweiler", 39.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label3.ForeColor = Color.Red;
-            label3.Location = new Point(382, 170);
+            label3.Location = new Point(405, 189);
             label3.Name = "label3";
             label3.Size = new Size(288, 54);
             label3.TabIndex = 5;
@@ -122,7 +122,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 14F);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(406, 233);
+            label4.Location = new Point(429, 252);
             label4.Name = "label4";
             label4.Size = new Size(314, 150);
             label4.TabIndex = 6;
@@ -139,15 +139,16 @@
             panel2.Controls.Add(label4);
             panel2.Controls.Add(label2);
             panel2.Controls.Add(label3);
-            panel2.Location = new Point(98, 530);
+            panel2.Location = new Point(98, 574);
             panel2.Name = "panel2";
             panel2.Size = new Size(777, 625);
             panel2.TabIndex = 7;
+            panel2.Paint += panel2_Paint;
             // 
             // pictureBox3
             // 
             pictureBox3.Image = (Image)resources.GetObject("pictureBox3.Image");
-            pictureBox3.Location = new Point(402, 512);
+            pictureBox3.Location = new Point(429, 532);
             pictureBox3.Name = "pictureBox3";
             pictureBox3.Size = new Size(29, 29);
             pictureBox3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -157,7 +158,7 @@
             // pictureBox2
             // 
             pictureBox2.Image = (Image)resources.GetObject("pictureBox2.Image");
-            pictureBox2.Location = new Point(402, 464);
+            pictureBox2.Location = new Point(429, 484);
             pictureBox2.Name = "pictureBox2";
             pictureBox2.Size = new Size(30, 28);
             pictureBox2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -169,7 +170,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(435, 464);
+            label5.Location = new Point(462, 484);
             label5.Name = "label5";
             label5.Size = new Size(258, 100);
             label5.TabIndex = 8;
@@ -180,7 +181,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Haettenschweiler", 26F);
             label1.ForeColor = Color.Red;
-            label1.Location = new Point(391, 418);
+            label1.Location = new Point(418, 438);
             label1.Name = "label1";
             label1.Size = new Size(227, 37);
             label1.TabIndex = 7;

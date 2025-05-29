@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FinalBlackJack
 {
@@ -19,21 +20,25 @@ namespace FinalBlackJack
         private int centerIndex = 0;
         private mainMenuForm menuForm;
         private string selectedCity = "";
+        public string tableChoice = "";
 
+        private int greenMin = 1000;
+        private int greenMax = 15000;
+
+        private int blueMin = 30000;
+        private int blueMax = 250000;
+
+        private int redMin = 500000;
+        private int redMax = 999999999;
 
         public mainGameForm(mainMenuForm menu)
         {
             InitializeComponent();
+            buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             cityPanel.Hide();
             menuForm = menu;
             transactionPanel.Hide();
-            
-
-
-
         }
-
-
 
         private void mainGameForm_Load(object sender, EventArgs e)
         {
@@ -45,11 +50,11 @@ namespace FinalBlackJack
             };
 
             cityBackgrounds = new Dictionary<string, Image>
-{
-        { "Sahara Grand Pavilion Resort", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city1.jpg") },
-        { "Obi Wan Castle In Shangrila", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city3.jpg") },
-        { "Cobact Club of Doom", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city2.jpg") }
-};
+            {
+                { "Sahara Grand Pavilion Resort", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city1.jpg") },
+                { "Obi Wan Castle In Shangrila", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city3.jpg") },
+                { "Cobact Club of Doom", Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\city2.jpg") }
+            };
             UpdateCarouselDisplay();
         }
 
@@ -108,24 +113,18 @@ namespace FinalBlackJack
 
         }
 
-
-
         private void LoadView(UserControl control)
         {
             cityPanel.Controls.Clear();
             control.Dock = DockStyle.Fill;
             cityPanel.Controls.Add(control);
-
-
         }
+
         public void ReturnToCarousel()
         {
             cityPanel.Hide();
             UpdateCarouselDisplay();
-
         }
-
-
 
         private void cityChooserPanel_Paint(object sender, PaintEventArgs e)
         {
@@ -165,30 +164,31 @@ namespace FinalBlackJack
         }
         private async void manilaPicBox_Click(object sender, EventArgs e)
         {
+            tableChoice = "green";
+            buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Sahara Grand Pavilion Resort")
             {
                 selectedCity = "Sahara Grand Pavilion Resort";
                 showTransactionPanel();
-
-
 
             }
         }
 
         private async void singaporePicBox_Click(object sender, EventArgs e)
         {
+            tableChoice = "blue";
+            buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Obi Wan Castle In Shangrila")
             {
                 selectedCity = "Obi Wan Castle In Shangrila";
                 showTransactionPanel();
-
-
-
             }
         }
 
         private async void hongkongPicBox_Click(object sender, EventArgs e)
         {
+            tableChoice = "red";
+            buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Cobact Club of Doom")
             {
                 selectedCity = "Cobact Club of Doom";
@@ -217,9 +217,51 @@ namespace FinalBlackJack
 
         private async void confirmButton_Click(object sender, EventArgs e)
         {
+
+        }
+        private bool buyinExceptions(int min, int max)
+        {
+            if (string.IsNullOrWhiteSpace(buyinAmount.Text))
+            {
+                MessageBox.Show("Please enter a buy-in amount.");
+                return false;
+            }
+            if (!int.TryParse(buyinAmount.Text, out int buyin) || buyin <= 0)
+            {
+                MessageBox.Show("Please enter a valid positive integer for the buy-in amount.");
+                return false;
+            }
+            if (buyin > AccountData.accountsBalance[AccountData.currentAccount])
+            {
+                MessageBox.Show("Insufficient balance for the buy-in amount.");
+                return false;
+            }
+            if (buyin < min || buyin > max)
+            {
+                MessageBox.Show($"Buy-in amount must be between {min} and {max}.");
+                return false;
+            }
+
+            return true;
+        }
+
+        private void buyinHold()
+        {
+            if (int.TryParse(buyinAmount.Text, out int buyin))
+            {
+                buyinHolder.buyIn[0] = buyin;
+            }
+        }
+
+
+        private async void depositButton_Click(object sender, EventArgs e)
+        {
+
             switch (selectedCity)
             {
                 case "Sahara Grand Pavilion Resort":
+                    if (!buyinExceptions(greenMin, greenMax)) return;
+                    buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();
@@ -227,6 +269,8 @@ namespace FinalBlackJack
                     break;
 
                 case "Obi Wan Castle In Shangrila":
+                    if (!buyinExceptions(blueMin, blueMax)) return;
+                    buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();
@@ -234,6 +278,8 @@ namespace FinalBlackJack
                     break;
 
                 case "Cobact Club of Doom":
+                    if (!buyinExceptions(redMin, redMax)) return;
+                    buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();
@@ -242,10 +288,26 @@ namespace FinalBlackJack
 
                 default:
                     MessageBox.Show("No city selected.", "Error");
-                    break;
+                    return;
             }
 
             transactionPanel.Hide();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            tableChoice = "";
+            transactionPanel.Hide();
+        }
+
+        private void buyinAmount_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

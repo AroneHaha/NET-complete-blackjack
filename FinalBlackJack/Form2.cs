@@ -662,12 +662,21 @@ namespace FinalBlackJack
             if (!int.TryParse(walletAmount.Text, out amount))
             {
                 MessageBox.Show("Please enter a valid number for the amount.");
+                walletAmount.Clear();
+                return;
+            }
+
+            if (amount <= 0)
+            {
+                MessageBox.Show("Amount must be greater than zero.");
+                walletAmount.Clear();
                 return;
             }
 
             if ((walletChoice == "withdraw") && (AccountData.accountsBalance[AccountData.currentAccount] < amount))
             {
                 MessageBox.Show("You have insufficient balance to make the withdrawal.");
+                walletAmount.Clear();
                 return;
             }
 
@@ -782,8 +791,14 @@ namespace FinalBlackJack
             }
 
             MessageBox.Show("Your account has been successfully retrieved.");
+            AccountData.passwords[AccountData.currentAccount] = changePw.Text;
+
+
+            changePw.Clear();
+            changeConfPw.Clear();
             loginPanel.Show();
             forgotPassPanel.Visible = false;
+            changePassPanel.Visible = false;
             loginPanel.Visible = true;
         }
 
@@ -874,7 +889,8 @@ namespace FinalBlackJack
            
             MessageBox.Show("Your credentials are validated, proceed to change your password.");
             changePassPanel.Visible = true;
-            forgotPassPanel.Visible = true;
+            forgotPassPanel.Visible = false;
+            changePassPanel.Enabled = true;
         }
 
         private void pictureBox1_Click_1(object sender, EventArgs e)

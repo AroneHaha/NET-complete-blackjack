@@ -561,9 +561,9 @@
             historyPanel.BackColor = Color.LightBlue;
             historyPanel.Controls.Add(closeHistory);
             historyPanel.Controls.Add(label17);
-            historyPanel.Location = new Point(56, 108);
+            historyPanel.Location = new Point(312, 13);
             historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(395, 291);
+            historyPanel.Size = new Size(146, 291);
             historyPanel.TabIndex = 7;
             // 
             // closeHistory
@@ -797,7 +797,7 @@
             panel5.Controls.Add(bustTxt);
             panel5.Location = new Point(6, 8);
             panel5.Name = "panel5";
-            panel5.Size = new Size(200, 516);
+            panel5.Size = new Size(200, 541);
             panel5.TabIndex = 7;
             panel5.Paint += panel5_Paint;
             // 

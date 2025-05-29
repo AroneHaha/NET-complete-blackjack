@@ -51,6 +51,7 @@
             settingsUsername = new Label();
             musicOn = new RadioButton();
             musicOff = new RadioButton();
+            settingsEmail = new Label();
             panel1.SuspendLayout();
             changeInfo.SuspendLayout();
             SuspendLayout();
@@ -59,7 +60,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Haettenschweiler", 40F);
-            label1.Location = new Point(290, 27);
+            label1.Location = new Point(314, 40);
             label1.Name = "label1";
             label1.Size = new Size(277, 56);
             label1.TabIndex = 0;
@@ -69,7 +70,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Haettenschweiler", 21F);
-            label2.Location = new Point(214, 131);
+            label2.Location = new Point(256, 130);
             label2.Name = "label2";
             label2.Size = new Size(254, 29);
             label2.TabIndex = 1;
@@ -80,7 +81,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Haettenschweiler", 21F);
-            label3.Location = new Point(214, 292);
+            label3.Location = new Point(256, 320);
             label3.Name = "label3";
             label3.Size = new Size(227, 29);
             label3.TabIndex = 2;
@@ -88,7 +89,7 @@
             // 
             // saveButton
             // 
-            saveButton.Location = new Point(349, 414);
+            saveButton.Location = new Point(391, 428);
             saveButton.Name = "saveButton";
             saveButton.Size = new Size(119, 39);
             saveButton.TabIndex = 3;
@@ -109,10 +110,11 @@
             panel1.Controls.Add(label2);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(label3);
+            panel1.Controls.Add(settingsEmail);
             panel1.Font = new Font("Corbel", 16F);
-            panel1.Location = new Point(58, 18);
+            panel1.Location = new Point(66, 21);
             panel1.Name = "panel1";
-            panel1.Size = new Size(849, 488);
+            panel1.Size = new Size(851, 488);
             panel1.TabIndex = 5;
             panel1.Paint += panel1_Paint;
             // 
@@ -131,7 +133,7 @@
             changeInfo.Controls.Add(codeButton);
             changeInfo.Controls.Add(cancelButton);
             changeInfo.Controls.Add(saveBtn);
-            changeInfo.Location = new Point(120, 27);
+            changeInfo.Location = new Point(129, 40);
             changeInfo.Name = "changeInfo";
             changeInfo.Size = new Size(622, 426);
             changeInfo.TabIndex = 8;
@@ -191,7 +193,6 @@
             changeVerif.Font = new Font("Microsoft Sans Serif", 13.25F);
             changeVerif.Location = new Point(251, 294);
             changeVerif.Name = "changeVerif";
-            changeVerif.PlaceholderText = "Check your Gmail Account";
             changeVerif.Size = new Size(183, 27);
             changeVerif.TabIndex = 6;
             // 
@@ -262,31 +263,33 @@
             // 
             // changePasswordButton
             // 
-            changePasswordButton.Location = new Point(566, 224);
+            changePasswordButton.BackColor = Color.Red;
+            changePasswordButton.Font = new Font("Microsoft Sans Serif", 10F);
+            changePasswordButton.Location = new Point(556, 213);
             changePasswordButton.Name = "changePasswordButton";
-            changePasswordButton.Size = new Size(145, 36);
+            changePasswordButton.Size = new Size(92, 27);
             changePasswordButton.TabIndex = 10;
-            changePasswordButton.Text = "cp Button";
-            changePasswordButton.UseVisualStyleBackColor = true;
+            changePasswordButton.Text = "Change";
+            changePasswordButton.UseVisualStyleBackColor = false;
             changePasswordButton.Click += changePasswordButton_Click;
             // 
             // settingsPassword
             // 
             settingsPassword.AutoSize = true;
-            settingsPassword.Font = new Font("Corbel", 14F);
-            settingsPassword.Location = new Point(290, 231);
+            settingsPassword.Font = new Font("Segoe UI", 14.25F);
+            settingsPassword.Location = new Point(314, 218);
             settingsPassword.Name = "settingsPassword";
-            settingsPassword.Size = new Size(259, 23);
+            settingsPassword.Size = new Size(233, 25);
             settingsPassword.TabIndex = 7;
             settingsPassword.Text = "Password : ****************";
             // 
             // settingsUsername
             // 
             settingsUsername.AutoSize = true;
-            settingsUsername.Font = new Font("Corbel", 14F);
-            settingsUsername.Location = new Point(290, 178);
+            settingsUsername.Font = new Font("Segoe UI", 14.25F);
+            settingsUsername.Location = new Point(314, 177);
             settingsUsername.Name = "settingsUsername";
-            settingsUsername.Size = new Size(99, 23);
+            settingsUsername.Size = new Size(106, 25);
             settingsUsername.TabIndex = 6;
             settingsUsername.Text = "Username :";
             settingsUsername.Click += settingsUsername_Click;
@@ -295,10 +298,10 @@
             // 
             musicOn.AutoSize = true;
             musicOn.Checked = true;
-            musicOn.Font = new Font("Corbel", 14F);
-            musicOn.Location = new Point(450, 346);
+            musicOn.Font = new Font("Segoe UI", 14.25F);
+            musicOn.Location = new Point(474, 365);
             musicOn.Name = "musicOn";
-            musicOn.Size = new Size(52, 27);
+            musicOn.Size = new Size(55, 29);
             musicOn.TabIndex = 5;
             musicOn.TabStop = true;
             musicOn.Text = "On";
@@ -307,13 +310,23 @@
             // musicOff
             // 
             musicOff.AutoSize = true;
-            musicOff.Font = new Font("Corbel", 14F);
-            musicOff.Location = new Point(330, 346);
+            musicOff.Font = new Font("Segoe UI", 14.25F);
+            musicOff.Location = new Point(354, 365);
             musicOff.Name = "musicOff";
-            musicOff.Size = new Size(101, 27);
+            musicOff.Size = new Size(110, 29);
             musicOff.TabIndex = 4;
             musicOff.Text = "No Music";
             musicOff.UseVisualStyleBackColor = true;
+            // 
+            // settingsEmail
+            // 
+            settingsEmail.AutoSize = true;
+            settingsEmail.Font = new Font("Segoe UI", 14.25F);
+            settingsEmail.Location = new Point(314, 260);
+            settingsEmail.Name = "settingsEmail";
+            settingsEmail.Size = new Size(72, 25);
+            settingsEmail.TabIndex = 12;
+            settingsEmail.Text = "Email : ";
             // 
             // secondMainMenu
             // 
@@ -356,5 +369,7 @@
         private Label label6;
         private Label label7;
         private TextBox changeOldPass;
+        private Label settingsEmail;
+        private Label label8;
     }
 }

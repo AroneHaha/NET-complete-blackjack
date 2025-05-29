@@ -39,7 +39,7 @@
             rDealer1 = new PictureBox();
             panel1 = new Panel();
             surrenderPanel = new Panel();
-            label2 = new Label();
+            label12 = new Label();
             yesButton = new Button();
             CancelButton = new Button();
             returnAllBet = new PictureBox();
@@ -113,7 +113,7 @@
             // rPlayer1
             // 
             rPlayer1.BackColor = Color.Transparent;
-            rPlayer1.Location = new Point(334, 416);
+            rPlayer1.Location = new Point(340, 416);
             rPlayer1.Name = "rPlayer1";
             rPlayer1.Size = new Size(69, 96);
             rPlayer1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -124,7 +124,7 @@
             // rPlayer2
             // 
             rPlayer2.BackColor = Color.Transparent;
-            rPlayer2.Location = new Point(409, 416);
+            rPlayer2.Location = new Point(415, 416);
             rPlayer2.Name = "rPlayer2";
             rPlayer2.Size = new Size(69, 96);
             rPlayer2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -134,7 +134,7 @@
             // rPlayer3
             // 
             rPlayer3.BackColor = Color.Transparent;
-            rPlayer3.Location = new Point(484, 416);
+            rPlayer3.Location = new Point(490, 416);
             rPlayer3.Name = "rPlayer3";
             rPlayer3.Size = new Size(69, 96);
             rPlayer3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -145,7 +145,7 @@
             // rPlayer4
             // 
             rPlayer4.BackColor = Color.Transparent;
-            rPlayer4.Location = new Point(559, 416);
+            rPlayer4.Location = new Point(565, 416);
             rPlayer4.Name = "rPlayer4";
             rPlayer4.Size = new Size(69, 96);
             rPlayer4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -236,40 +236,53 @@
             // 
             // surrenderPanel
             // 
-            surrenderPanel.BackColor = Color.Black;
-            surrenderPanel.Controls.Add(label2);
+            surrenderPanel.BackColor = Color.Red;
+            surrenderPanel.BorderStyle = BorderStyle.FixedSingle;
+            surrenderPanel.Controls.Add(label12);
             surrenderPanel.Controls.Add(yesButton);
             surrenderPanel.Controls.Add(CancelButton);
-            surrenderPanel.Location = new Point(322, 186);
+            surrenderPanel.ForeColor = SystemColors.ControlDarkDark;
+            surrenderPanel.Location = new Point(322, 202);
             surrenderPanel.Name = "surrenderPanel";
             surrenderPanel.Size = new Size(328, 195);
             surrenderPanel.TabIndex = 42;
             // 
-            // label2
+            // label12
             // 
-            label2.AutoSize = true;
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(129, 26);
-            label2.Name = "label2";
-            label2.Size = new Size(73, 15);
-            label2.TabIndex = 3;
-            label2.Text = "Are you sure";
+            label12.AutoSize = true;
+            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.ForeColor = Color.WhiteSmoke;
+            label12.Location = new Point(47, 42);
+            label12.Name = "label12";
+            label12.Size = new Size(239, 62);
+            label12.TabIndex = 4;
+            label12.Text = "Surrender?";
             // 
             // yesButton
             // 
-            yesButton.Location = new Point(183, 115);
+            yesButton.FlatAppearance.BorderColor = Color.Black;
+            yesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            yesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            yesButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            yesButton.ForeColor = Color.Black;
+            yesButton.Location = new Point(167, 137);
             yesButton.Name = "yesButton";
-            yesButton.Size = new Size(75, 23);
+            yesButton.Size = new Size(75, 26);
             yesButton.TabIndex = 2;
-            yesButton.Text = "YES";
+            yesButton.Text = "Concede";
             yesButton.UseVisualStyleBackColor = true;
             yesButton.Click += yesButton_Click;
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(65, 115);
+            CancelButton.FlatAppearance.BorderColor = Color.Black;
+            CancelButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            CancelButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
+            CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            CancelButton.ForeColor = Color.Black;
+            CancelButton.Location = new Point(81, 137);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(75, 23);
+            CancelButton.Size = new Size(75, 26);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
@@ -279,7 +292,7 @@
             // 
             returnAllBet.Cursor = Cursors.Hand;
             returnAllBet.Image = (Image)resources.GetObject("returnAllBet.Image");
-            returnAllBet.Location = new Point(334, 466);
+            returnAllBet.Location = new Point(340, 466);
             returnAllBet.Name = "returnAllBet";
             returnAllBet.Size = new Size(39, 37);
             returnAllBet.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -291,7 +304,7 @@
             // 
             returnBet.Cursor = Cursors.Hand;
             returnBet.Image = (Image)resources.GetObject("returnBet.Image");
-            returnBet.Location = new Point(334, 418);
+            returnBet.Location = new Point(340, 418);
             returnBet.Name = "returnBet";
             returnBet.Size = new Size(39, 36);
             returnBet.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -309,6 +322,7 @@
             playerDraw4.SizeMode = PictureBoxSizeMode.StretchImage;
             playerDraw4.TabIndex = 36;
             playerDraw4.TabStop = false;
+            playerDraw4.Click += playerDraw4_Click;
             // 
             // playerDraw3
             // 
@@ -403,7 +417,7 @@
             playerValue.AutoSize = true;
             playerValue.Font = new Font("Corbel", 16F, FontStyle.Bold);
             playerValue.ForeColor = Color.White;
-            playerValue.Location = new Point(649, 372);
+            playerValue.Location = new Point(651, 372);
             playerValue.Name = "playerValue";
             playerValue.Size = new Size(76, 27);
             playerValue.TabIndex = 27;
@@ -433,12 +447,14 @@
             // 
             // backButton
             // 
-            backButton.Location = new Point(17, 52);
+            backButton.BackColor = Color.Red;
+            backButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            backButton.Location = new Point(8, 45);
             backButton.Name = "backButton";
-            backButton.Size = new Size(75, 23);
+            backButton.Size = new Size(97, 34);
             backButton.TabIndex = 24;
-            backButton.Text = "button1";
-            backButton.UseVisualStyleBackColor = true;
+            backButton.Text = "Leave";
+            backButton.UseVisualStyleBackColor = false;
             backButton.Click += backButton_Click;
             // 
             // rChip100
@@ -446,7 +462,7 @@
             rChip100.BackColor = Color.Transparent;
             rChip100.Cursor = Cursors.Hand;
             rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(135, 363);
+            rChip100.Location = new Point(141, 363);
             rChip100.Name = "rChip100";
             rChip100.Size = new Size(57, 54);
             rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -461,7 +477,7 @@
             rChip50.BackColor = Color.Transparent;
             rChip50.Cursor = Cursors.Hand;
             rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(198, 387);
+            rChip50.Location = new Point(204, 387);
             rChip50.Name = "rChip50";
             rChip50.Size = new Size(57, 54);
             rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -476,7 +492,7 @@
             rChip25.BackColor = Color.Transparent;
             rChip25.Cursor = Cursors.Hand;
             rChip25.Image = (Image)resources.GetObject("rChip25.Image");
-            rChip25.Location = new Point(261, 391);
+            rChip25.Location = new Point(267, 391);
             rChip25.Name = "rChip25";
             rChip25.Size = new Size(57, 54);
             rChip25.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -491,7 +507,7 @@
             rChip10.BackColor = Color.Transparent;
             rChip10.Cursor = Cursors.Hand;
             rChip10.Image = (Image)resources.GetObject("rChip10.Image");
-            rChip10.Location = new Point(135, 432);
+            rChip10.Location = new Point(141, 432);
             rChip10.Name = "rChip10";
             rChip10.Size = new Size(57, 54);
             rChip10.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -506,7 +522,7 @@
             rChip1.BackColor = Color.Transparent;
             rChip1.Cursor = Cursors.Hand;
             rChip1.Image = (Image)resources.GetObject("rChip1.Image");
-            rChip1.Location = new Point(261, 460);
+            rChip1.Location = new Point(267, 460);
             rChip1.Name = "rChip1";
             rChip1.Size = new Size(57, 54);
             rChip1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -521,7 +537,7 @@
             rChip5.BackColor = Color.Transparent;
             rChip5.Cursor = Cursors.Hand;
             rChip5.Image = (Image)resources.GetObject("rChip5.Image");
-            rChip5.Location = new Point(198, 458);
+            rChip5.Location = new Point(204, 458);
             rChip5.Name = "rChip5";
             rChip5.Size = new Size(57, 54);
             rChip5.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -570,7 +586,6 @@
             startRound.BackgroundImageLayout = ImageLayout.None;
             startRound.Enabled = false;
             startRound.FlatAppearance.BorderSize = 0;
-            startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
             startRound.Location = new Point(405, 574);
@@ -586,7 +601,7 @@
             rBet.AutoSize = true;
             rBet.Font = new Font("Corbel", 16F, FontStyle.Bold);
             rBet.ForeColor = Color.Yellow;
-            rBet.Location = new Point(334, 380);
+            rBet.Location = new Point(340, 380);
             rBet.Name = "rBet";
             rBet.Size = new Size(134, 27);
             rBet.TabIndex = 13;
@@ -609,9 +624,8 @@
             hitBtn.BackColor = Color.DimGray;
             hitBtn.BackgroundImageLayout = ImageLayout.None;
             hitBtn.Enabled = false;
-            hitBtn.FlatStyle = FlatStyle.Flat;
             hitBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            hitBtn.Location = new Point(643, 407);
+            hitBtn.Location = new Point(649, 407);
             hitBtn.Name = "hitBtn";
             hitBtn.Size = new Size(94, 36);
             hitBtn.TabIndex = 11;
@@ -624,9 +638,8 @@
             doubleBtn.BackColor = Color.DimGray;
             doubleBtn.BackgroundImageLayout = ImageLayout.None;
             doubleBtn.Enabled = false;
-            doubleBtn.FlatStyle = FlatStyle.Flat;
             doubleBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            doubleBtn.Location = new Point(643, 492);
+            doubleBtn.Location = new Point(649, 492);
             doubleBtn.Name = "doubleBtn";
             doubleBtn.Size = new Size(94, 36);
             doubleBtn.TabIndex = 10;
@@ -639,9 +652,8 @@
             standBtn.BackColor = Color.DimGray;
             standBtn.BackgroundImageLayout = ImageLayout.None;
             standBtn.Enabled = false;
-            standBtn.FlatStyle = FlatStyle.Flat;
             standBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            standBtn.Location = new Point(643, 450);
+            standBtn.Location = new Point(649, 450);
             standBtn.Name = "standBtn";
             standBtn.Size = new Size(94, 36);
             standBtn.TabIndex = 9;
@@ -794,8 +806,8 @@
         private ToolTip returnTip;
         private ToolTip returnAllTip;
         private Panel surrenderPanel;
-        private Label label2;
         private Button yesButton;
         private Button CancelButton;
+        private Label label12;
     }
 }
