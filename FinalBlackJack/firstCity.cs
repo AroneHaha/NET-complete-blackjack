@@ -209,6 +209,7 @@ namespace FinalBlackJack
                 MessageBox.Show("Dealer have no more balance left! You won!.");
                 AccountData.accountsBalance[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
                 AccountData.totalWinnings[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
+                AccountData.totalWins[AccountData.currentAccount]++;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -367,9 +368,10 @@ namespace FinalBlackJack
                 playerBustDialogue();
                 MessageBox.Show("Dealer's the nearest to 21, Dealer won!");
                 balanceLoseUpdate();
+                AccountData.bustCount[AccountData.currentAccount]++;
+                resetRound();
+                return;
             }
-            resetRound();
-            return;
         }
 
         private void checkNearestDouble()
@@ -453,6 +455,7 @@ namespace FinalBlackJack
 
             MessageBox.Show("Player's busted, Dealer won!");
             balanceLoseUpdate();
+            AccountData.bustCount[AccountData.currentAccount]++;
             resetRound();
             return;
         }
@@ -466,6 +469,7 @@ namespace FinalBlackJack
             roundOver = true;
             MessageBox.Show("Player's busted, Dealer won!");
             balanceLoseUpdateDouble();
+            AccountData.bustCount[AccountData.currentAccount]++;
             resetRound();
             return;
         }

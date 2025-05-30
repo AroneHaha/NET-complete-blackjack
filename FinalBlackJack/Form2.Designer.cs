@@ -608,7 +608,7 @@
             historyPanel.Controls.Add(closeHistory);
             historyPanel.Location = new Point(0, -2);
             historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(394, 313);
+            historyPanel.Size = new Size(394, 185);
             historyPanel.TabIndex = 7;
             historyPanel.Visible = false;
             // 
@@ -616,7 +616,7 @@
             // 
             TransacAmount.AutoSize = true;
             TransacAmount.Font = new Font("Segoe UI", 14F);
-            TransacAmount.Location = new Point(63, 177);
+            TransacAmount.Location = new Point(63, 186);
             TransacAmount.Name = "TransacAmount";
             TransacAmount.Size = new Size(88, 25);
             TransacAmount.TabIndex = 10;
@@ -626,7 +626,7 @@
             // 
             TransacTime.AutoSize = true;
             TransacTime.Font = new Font("Segoe UI", 14F);
-            TransacTime.Location = new Point(63, 143);
+            TransacTime.Location = new Point(61, 148);
             TransacTime.Name = "TransacTime";
             TransacTime.Size = new Size(143, 25);
             TransacTime.TabIndex = 9;
