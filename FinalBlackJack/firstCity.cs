@@ -12,7 +12,6 @@ namespace FinalBlackJack
 {
     public partial class firstCity : UserControl
     {
-        private mainMenuForm parentMenuForm;
         List<string> rCards = new List<string>()
         {
             @"C:\BSIT 1\C#\blackjack\cards\2_of_clubs.png",
@@ -203,7 +202,6 @@ namespace FinalBlackJack
                 
                 if (this.ParentForm is mainGameForm mainForm)
                 {
-                    parentMenuForm.UpdateStatsAfterGame();
                     mainForm.ReturnToCarousel();
                 }
             }
@@ -216,7 +214,6 @@ namespace FinalBlackJack
                 AccountData.totalWins[AccountData.currentAccount]++;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
-                    parentMenuForm.UpdateStatsAfterGame();
                     mainForm.ReturnToCarousel();
                 }
             }
@@ -1555,7 +1552,6 @@ namespace FinalBlackJack
         public firstCity()
         {
             InitializeComponent();
-            parentMenuForm = menuForm;
             surrenderPanel.Hide();
 
             r_BankRoll.Text = "Bankroll : " + buyinBalance;
