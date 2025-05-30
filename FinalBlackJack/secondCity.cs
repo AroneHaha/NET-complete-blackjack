@@ -85,7 +85,6 @@ namespace FinalBlackJack
             else if (fileName.StartsWith("queen")) return 10;
             else if (fileName.StartsWith("king")) return 10;
 
-
             return 0;
         }
 
@@ -198,7 +197,7 @@ namespace FinalBlackJack
                 MessageBox.Show("You have no more balance left! Game Over.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
                 AccountData.totalLosses[AccountData.currentAccount]++;
-;
+
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -226,7 +225,7 @@ namespace FinalBlackJack
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet * 2;
+            ingameWinnings += currentBet;
             buyinBalance += currentBet * 2;
             dealerBalance -= currentBet;
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
@@ -236,7 +235,7 @@ namespace FinalBlackJack
 
         private void balanceWinUpdateDouble()
         {
-            buyinBalance += (currentBet * 2) * 2;
+            buyinBalance += (currentBet * 2);
             ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
@@ -1396,7 +1395,7 @@ namespace FinalBlackJack
 
         private void rChip1k_MouseLeave(object sender, EventArgs e)
         {
-            r250k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\250k.png");
+            r250k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\250k.png");
         }
 
         private void rChip10k_MouseEnter(object sender, EventArgs e)
@@ -1421,32 +1420,32 @@ namespace FinalBlackJack
 
         private void rChip20k_MouseEnter(object sender, EventArgs e)
         {
-            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10mh.png");
+            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\10mh.png");
         }
 
         private void rChip20k_MouseLeave(object sender, EventArgs e)
         {
-            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10m.png");
+            r10m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\10m.png");
         }
 
         private void rChip5k_MouseEnter(object sender, EventArgs e)
         {
-            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\1mh.png");
+            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\1mh.png");
         }
 
         private void rChip5k_MouseLeave(object sender, EventArgs e)
         {
-            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\1m.png");
+            r1m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\1m.png");
         }
 
         private void rChip30k_MouseEnter(object sender, EventArgs e)
         {
-            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\25mh.png");
+            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\25mh.png");
         }
 
         private void rChip30k_MouseLeave(object sender, EventArgs e)
         {
-            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\25m.png");
+            r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\25m.png");
         }
     }
 }

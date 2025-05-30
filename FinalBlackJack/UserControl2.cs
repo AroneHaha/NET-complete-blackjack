@@ -17,6 +17,8 @@ namespace FinalBlackJack
         public secondMainMenu()
         {
             InitializeComponent();
+            string maskedPassword = new string('*', AccountData.passwords[AccountData.currentAccount].Length);
+            settingsPassword.Text = "Password : " + maskedPassword;
             changeInfo.Hide();
         }
 

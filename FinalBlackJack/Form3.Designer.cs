@@ -40,17 +40,19 @@
             buyinAmount = new TextBox();
             label1 = new Label();
             extMaingameButton = new Button();
-            rightButton = new Button();
-            leftButton = new Button();
             manilaPicBox = new PictureBox();
             singaporePicBox = new PictureBox();
             hongkongPicBox = new PictureBox();
             topTextCity = new Label();
+            left = new PictureBox();
+            right = new PictureBox();
             cityChooserPanel.SuspendLayout();
             transactionPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)manilaPicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)singaporePicBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)hongkongPicBox).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)left).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)right).BeginInit();
             SuspendLayout();
             // 
             // cityChooserPanel
@@ -59,12 +61,12 @@
             cityChooserPanel.Controls.Add(cityPanel);
             cityChooserPanel.Controls.Add(transactionPanel);
             cityChooserPanel.Controls.Add(extMaingameButton);
-            cityChooserPanel.Controls.Add(rightButton);
-            cityChooserPanel.Controls.Add(leftButton);
             cityChooserPanel.Controls.Add(manilaPicBox);
             cityChooserPanel.Controls.Add(singaporePicBox);
             cityChooserPanel.Controls.Add(hongkongPicBox);
             cityChooserPanel.Controls.Add(topTextCity);
+            cityChooserPanel.Controls.Add(left);
+            cityChooserPanel.Controls.Add(right);
             cityChooserPanel.Dock = DockStyle.Fill;
             cityChooserPanel.Location = new Point(0, 0);
             cityChooserPanel.Name = "cityChooserPanel";
@@ -185,26 +187,6 @@
             extMaingameButton.UseVisualStyleBackColor = true;
             extMaingameButton.Click += extMaingameButton_Click;
             // 
-            // rightButton
-            // 
-            rightButton.Location = new Point(523, 504);
-            rightButton.Name = "rightButton";
-            rightButton.Size = new Size(127, 46);
-            rightButton.TabIndex = 4;
-            rightButton.Text = ">";
-            rightButton.UseVisualStyleBackColor = true;
-            rightButton.Click += rightButton_Click;
-            // 
-            // leftButton
-            // 
-            leftButton.Location = new Point(334, 504);
-            leftButton.Name = "leftButton";
-            leftButton.Size = new Size(127, 46);
-            leftButton.TabIndex = 3;
-            leftButton.Text = "<";
-            leftButton.UseVisualStyleBackColor = true;
-            leftButton.Click += leftButton_Click;
-            // 
             // manilaPicBox
             // 
             manilaPicBox.BackColor = Color.Black;
@@ -253,6 +235,34 @@
             topTextCity.Text = "label1";
             topTextCity.TextAlign = ContentAlignment.TopCenter;
             // 
+            // left
+            // 
+            left.BackColor = Color.Transparent;
+            left.Image = (Image)resources.GetObject("left.Image");
+            left.Location = new Point(383, 509);
+            left.Name = "left";
+            left.Size = new Size(78, 74);
+            left.SizeMode = PictureBoxSizeMode.StretchImage;
+            left.TabIndex = 9;
+            left.TabStop = false;
+            left.Click += pictureBox1_Click;
+            left.MouseEnter += pictureBox1_MouseEnter;
+            left.MouseLeave += left_MouseLeave;
+            // 
+            // right
+            // 
+            right.BackColor = Color.Transparent;
+            right.Image = (Image)resources.GetObject("right.Image");
+            right.Location = new Point(523, 509);
+            right.Name = "right";
+            right.Size = new Size(78, 74);
+            right.SizeMode = PictureBoxSizeMode.StretchImage;
+            right.TabIndex = 10;
+            right.TabStop = false;
+            right.Click += pictureBox2_Click;
+            right.MouseEnter += right_MouseEnter;
+            right.MouseLeave += right_MouseLeave;
+            // 
             // mainGameForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -272,14 +282,14 @@
             ((System.ComponentModel.ISupportInitialize)manilaPicBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)singaporePicBox).EndInit();
             ((System.ComponentModel.ISupportInitialize)hongkongPicBox).EndInit();
+            ((System.ComponentModel.ISupportInitialize)left).EndInit();
+            ((System.ComponentModel.ISupportInitialize)right).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
 
         private Panel cityChooserPanel;
-        private Button rightButton;
-        private Button leftButton;
         private PictureBox manilaPicBox;
         private PictureBox singaporePicBox;
         private PictureBox hongkongPicBox;
@@ -294,5 +304,7 @@
         private Label buyinTotalBalance;
         private Button cancelBuyinButton;
         public TextBox buyinAmount;
+        private PictureBox right;
+        private PictureBox left;
     }
 }

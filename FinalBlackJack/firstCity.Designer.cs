@@ -32,9 +32,9 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(firstCity));
             panel1 = new Panel();
             surrenderPanel = new Panel();
+            label12 = new Label();
             button2 = new Button();
             CancelButton = new Button();
-            label1 = new Label();
             returnAllBet = new PictureBox();
             returnBet = new PictureBox();
             playerDraw4 = new PictureBox();
@@ -161,45 +161,48 @@
             // 
             // surrenderPanel
             // 
-            surrenderPanel.BackColor = Color.Black;
+            surrenderPanel.BackColor = Color.DarkGreen;
+            surrenderPanel.Controls.Add(label12);
             surrenderPanel.Controls.Add(button2);
             surrenderPanel.Controls.Add(CancelButton);
-            surrenderPanel.Controls.Add(label1);
-            surrenderPanel.Location = new Point(317, 209);
+            surrenderPanel.Location = new Point(321, 209);
             surrenderPanel.Name = "surrenderPanel";
             surrenderPanel.Size = new Size(328, 195);
             surrenderPanel.TabIndex = 40;
             surrenderPanel.Paint += surrenderPanel_Paint;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.ForeColor = Color.WhiteSmoke;
+            label12.Location = new Point(46, 50);
+            label12.Name = "label12";
+            label12.Size = new Size(239, 62);
+            label12.TabIndex = 6;
+            label12.Text = "Surrender?";
+            // 
             // button2
             // 
-            button2.Location = new Point(183, 115);
+            button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            button2.Location = new Point(165, 131);
             button2.Name = "button2";
             button2.Size = new Size(75, 23);
             button2.TabIndex = 2;
-            button2.Text = "YES";
+            button2.Text = "Concede";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click_1;
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(65, 115);
+            CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            CancelButton.Location = new Point(86, 131);
             CancelButton.Name = "CancelButton";
             CancelButton.Size = new Size(75, 23);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
             CancelButton.Click += CancelButton_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(120, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 15);
-            label1.TabIndex = 0;
-            label1.Text = "are you sure?";
             // 
             // returnAllBet
             // 
@@ -497,7 +500,6 @@
             startRound.BackgroundImageLayout = ImageLayout.None;
             startRound.Enabled = false;
             startRound.FlatAppearance.BorderSize = 0;
-            startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
             startRound.Location = new Point(411, 585);
@@ -535,7 +537,6 @@
             hitBtn.BackColor = Color.DimGray;
             hitBtn.BackgroundImageLayout = ImageLayout.None;
             hitBtn.Enabled = false;
-            hitBtn.FlatStyle = FlatStyle.Flat;
             hitBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
             hitBtn.Location = new Point(647, 432);
             hitBtn.Name = "hitBtn";
@@ -550,7 +551,6 @@
             doubleBtn.BackColor = Color.DimGray;
             doubleBtn.BackgroundImageLayout = ImageLayout.None;
             doubleBtn.Enabled = false;
-            doubleBtn.FlatStyle = FlatStyle.Flat;
             doubleBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
             doubleBtn.Location = new Point(647, 517);
             doubleBtn.Name = "doubleBtn";
@@ -565,7 +565,6 @@
             standBtn.BackColor = Color.DimGray;
             standBtn.BackgroundImageLayout = ImageLayout.None;
             standBtn.Enabled = false;
-            standBtn.FlatStyle = FlatStyle.Flat;
             standBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
             standBtn.Location = new Point(647, 475);
             standBtn.Name = "standBtn";
@@ -783,6 +782,6 @@
         private Panel surrenderPanel;
         private Button button2;
         private Button CancelButton;
-        private Label label1;
+        private Label label12;
     }
 }

@@ -12,12 +12,8 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace FinalBlackJack
 {
-  
-
     public partial class singaporePanel : UserControl
     {
-        
-
         List<string> rCards = new List<string>()
         {
             @"C:\BSIT 1\C#\blackjack\cards\2_of_clubs.png",
@@ -73,10 +69,9 @@ namespace FinalBlackJack
             @"C:\BSIT 1\C#\blackjack\cards\king_of_spades2.png"
         };
 
-        private int GetCardValue(string cardPath) // ----------------------------- GET CARD VALUES ------------------------------------------
+        private int GetCardValue(string cardPath)
         {
             string fileName = Path.GetFileNameWithoutExtension(cardPath).ToLower();
-
             if (fileName.StartsWith("ace")) return 1;
             else if (fileName.StartsWith("2")) return 2;
             else if (fileName.StartsWith("3")) return 3;
@@ -90,12 +85,10 @@ namespace FinalBlackJack
             else if (fileName.StartsWith("jack")) return 10;
             else if (fileName.StartsWith("queen")) return 10;
             else if (fileName.StartsWith("king")) return 10;
-
-
             return 0;
         }
 
-        private void hiddenCards() // -------------------------------------- HIDDEN CARDS FOR LATER REVEAL EVERY ROUND -----------------------------------------------
+        private void hiddenCards()
         {
             rDealer2.Image = botHiddenCards[0];
             rDealer3.Image = botHiddenCards[1];
@@ -104,7 +97,7 @@ namespace FinalBlackJack
 
         int botCard = 0;
         int playerCard = 0;
-        private void resetRound() // -------------------------------------------- RESET VARIABLES ---------------------------------------------------------
+        private void resetRound()
         {
             botCard = 0;
             playerCard = 0;
@@ -139,7 +132,6 @@ namespace FinalBlackJack
             doubleBtn.Enabled = false;
             startRound.Enabled = false;
 
-
             playerDraw1.Location = new Point(656, 121);
             playerDraw2.Location = new Point(656, 121);
             playerDraw3.Location = new Point(656, 121);
@@ -164,7 +156,6 @@ namespace FinalBlackJack
             rDealer3.Visible = false;
             rDealer4.Visible = false;
 
-            // Make the moving PictureBoxes visible (if not already)
             playerDraw1.Visible = true;
             playerDraw2.Visible = true;
             playerDraw3.Visible = true;
@@ -176,7 +167,6 @@ namespace FinalBlackJack
 
             returnBet.Visible = true;
             returnAllBet.Visible = true;
-
 
             hitBtn.BackColor = Color.DimGray;
             standBtn.BackColor = Color.DimGray;
@@ -209,7 +199,6 @@ namespace FinalBlackJack
                     mainForm.ReturnToCarousel();
                 }
             }
-
             else if (dealerBalance == 0 || dealerBalance < minBet)
             {
                 MessageBox.Show("Dealer have no more balance left! You won!.");
@@ -221,7 +210,6 @@ namespace FinalBlackJack
                     mainForm.ReturnToCarousel();
                 }
             }
-
             else
             {
                 r_BankRoll.Text = "Balance: " + buyinBalance.ToString();
@@ -230,18 +218,17 @@ namespace FinalBlackJack
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet * 2;
+            ingameWinnings += currentBet;
             buyinBalance += currentBet * 2;
             dealerBalance -= currentBet;
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
             r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
-
         private void balanceWinUpdateDouble()
         {
             buyinBalance += (currentBet * 2) * 2;
-            ingameWinnings += (currentBet * 2) * 2;
+            ingameWinnings += (currentBet * 2);
             dealerBalance -= (currentBet * 2);
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
             r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
@@ -266,6 +253,7 @@ namespace FinalBlackJack
             botValue.Text = botTotal.ToString();
             playerValue.Text = playerTotal.ToString();
         }
+
         private void setValueVisible()
         {
             botValue.Visible = true;
@@ -387,7 +375,6 @@ namespace FinalBlackJack
                 MessageBox.Show("Draw match!, returning cards.");
                 buyinBalance += currentBet;
                 matchedDouble();
-
             }
             else if ((playerTotal - 21) < (botTotal - 21))
             {
@@ -457,7 +444,6 @@ namespace FinalBlackJack
             playerBustDialogue();
             hiddenCards();
             roundOver = true;
-
             MessageBox.Show("Player's busted, Dealer won!");
             balanceLoseUpdate();
             AccountData.bustCount[AccountData.currentAccount]++;
@@ -470,7 +456,6 @@ namespace FinalBlackJack
             roundLoserSound();
             playerBustDialogue();
             hiddenCards();
-
             roundOver = true;
             MessageBox.Show("Player's busted, Dealer won!");
             balanceLoseUpdateDouble();
@@ -485,19 +470,18 @@ namespace FinalBlackJack
             dealerBustDialogue();
             hiddenCards();
             roundOver = true;
-
             MessageBox.Show("Dealer's busted, Player won!");
             balanceWinUpdate();
             resetRound();
             return;
         }
+
         private void dealerBustedDouble()
         {
             roundWinnerSound();
             dealerBustDialogue();
             hiddenCards();
             roundOver = true;
-
             MessageBox.Show("Dealer's busted, Player won!");
             balanceWinUpdateDouble();
             resetRound();
@@ -510,13 +494,11 @@ namespace FinalBlackJack
             {
                 MessageBox.Show("You are not allowed to add chips while the round has started.");
             }
-
             else
             {
                 chipsSound();
                 currentBet += bet;
                 buyinBalance -= bet;
-
                 rBet.Text = "Round Bet : " + currentBet.ToString();
                 r_BankRoll.Text = "Bankroll : " + buyinBalance;
             }
@@ -528,12 +510,10 @@ namespace FinalBlackJack
             currentRound.Text = "Round : " + ingameRound.ToString();
         }
 
-
         private void startGameDialogue()
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.startGame.Count);
-
             string selectedDialogue = dialogues.startGame[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -542,7 +522,6 @@ namespace FinalBlackJack
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.bustDialoguesWin.Count);
-
             string selectedDialogue = dialogues.bustDialoguesWin[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -551,7 +530,6 @@ namespace FinalBlackJack
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.bustDialoguesLose.Count);
-
             string selectedDialogue = dialogues.bustDialoguesLose[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -560,7 +538,6 @@ namespace FinalBlackJack
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.hitDialogues.Count);
-
             string selectedDialogue = dialogues.hitDialogues[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -569,7 +546,6 @@ namespace FinalBlackJack
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.standWinDialogues.Count);
-
             string selectedDialogue = dialogues.standWinDialogues[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -578,7 +554,6 @@ namespace FinalBlackJack
         {
             Random randDialogue = new Random();
             int index = randDialogue.Next(dialogues.standLoseDialogues.Count);
-
             string selectedDialogue = dialogues.standLoseDialogues[index];
             dealerDialogue.Text = "Dealer: " + selectedDialogue;
         }
@@ -619,36 +594,27 @@ namespace FinalBlackJack
             cardsound.PlayOnce();
         }
 
-
-
         Random playerRandom = new Random();
         Random botRandom = new Random();
 
-        // ----------------------------- DEALER/PLAYER CARDS/BET VARS ------------------------------------------
         public int playerReveal = 0;
         public int dealerReveal = 0;
         public int playerTotal = 0;
         public int botTotal = 0;
         public int latestBet = 0;
         public int minBet = 1;
-
         public int playerBalance = 0;
         public int dealerBalance = 0;
         public int currentBet = 0;
         public int ingameWinnings = 0;
-
         public bool roundOver = false;
         public bool playerHasStood = false;
         public bool isDrawn = false;
         public bool roundStarted = false;
-
         public int ingameRound = 1;
-
         public int balanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
         public int buyinBalance = buyinHolder.buyIn[0];
-        
 
-        // ----------------------------- BOT IMAGES ------------------------------------------
         public Image bot1;
         public Image bot2;
         public Image bot3;
@@ -658,11 +624,9 @@ namespace FinalBlackJack
         public singaporePanel()
         {
             InitializeComponent();
-
             dealerBalance = buyinBalance;
             surrenderPanel.Hide();
             this.Load += singaporePanel_Load;
-
             r_BankRoll.Text = "Bankroll : " + buyinBalance;
             rPlayer1.Visible = false;
             rPlayer2.Visible = false;
@@ -672,13 +636,11 @@ namespace FinalBlackJack
             rDealer2.Visible = false;
             rDealer3.Visible = false;
             rDealer4.Visible = false;
-
             currentRound.Text = "Round : " + ingameRound;
             actionLog.Visible = false;
             dealerDialogue.Visible = false;
             playerValue.Text = "";
             botValue.Text = "";
-
             returnTip.SetToolTip(returnBet, "Undo");
             returnAllTip.SetToolTip(returnAllBet, "Reset Bet");
         }
@@ -700,22 +662,19 @@ namespace FinalBlackJack
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox5_Click(object sender, EventArgs e)
         {
-
         }
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-
         }
 
         private void rChip25_MouseEnter(object sender, EventArgs e)
         {
-            r10k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\25ChipHover.png");
+            r10k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10kchiphover.png");
         }
 
         private void rChip25_Click(object sender, EventArgs e)
@@ -735,14 +694,11 @@ namespace FinalBlackJack
 
         private void rChip25_MouseLeave(object sender, EventArgs e)
         {
-            r10k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\25Chip.png");
+            r10k.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 2\10kchip.png");
         }
-
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
-
         }
 
         private void rChip1_MouseEnter(object sender, EventArgs e)
@@ -797,12 +753,10 @@ namespace FinalBlackJack
 
         private void rCardFolded_Click(object sender, EventArgs e)
         {
-
         }
 
-        private void button3_Click(object sender, EventArgs e) // ----------------------------- HIT BUTTON ------------------------------------------
+        private void button3_Click(object sender, EventArgs e)
         {
-
             if (isDrawn == false)
             {
                 errorSound();
@@ -831,15 +785,12 @@ namespace FinalBlackJack
             string playerCardPath = rCards[playerIndex];
             Image playerCardImg = Image.FromFile(playerCardPath);
 
-            // ------------------------------- PUT CARDS ON PLAYER'S DECK -----------------------------
-
             if (playerReveal == 2)
             {
                 pCardAnimation3.Start();
                 rPlayer3.Image = playerCardImg;
                 playerTotal += GetCardValue(playerCardPath);
             }
-
             else if (playerReveal == 3)
             {
                 pCardAnimation4.Start();
@@ -851,23 +802,20 @@ namespace FinalBlackJack
 
             displayValues();
 
-            // --------------------------------------- VERIFY THE WINNER -------------------------------------
-            if (playerTotal > 21 && botTotal > 21) // -------------------------------------- IF BOTH BUSTED -------------------------------------------------------
+            if (playerTotal > 21 && botTotal > 21)
             {
                 hiddenCards();
                 setValueVisible();
                 round();
                 checkNearest();
             }
-
-            else if (botTotal > 21) // ------------------------- IF DEALER'S BUSTED ----------------------------------------
+            else if (botTotal > 21)
             {
                 hiddenCards();
                 setValueVisible();
                 round();
                 dealerBusted();
             }
-
             else if (playerTotal > 21)
             {
                 hiddenCards();
@@ -875,7 +823,6 @@ namespace FinalBlackJack
                 round();
                 playerBusted();
             }
-
         }
 
         private void rChip1_Click(object sender, EventArgs e)
@@ -883,8 +830,8 @@ namespace FinalBlackJack
             int chipValue = 1000;
             if (checkBalance(chipValue))
             {
-                latestBet = chipValue; // Store the latest bet value
-                addChips(chipValue);        // Only called if user has enough money
+                latestBet = chipValue;
+                addChips(chipValue);
                 startGameEnabled();
             }
             else
@@ -899,7 +846,7 @@ namespace FinalBlackJack
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
-                addChips(chipValue);        // Only called if user has enough money
+                addChips(chipValue);
                 startGameEnabled();
             }
             else
@@ -914,7 +861,7 @@ namespace FinalBlackJack
             if (checkBalance(chipValue))
             {
                 latestBet = chipValue;
-                addChips(chipValue);        // Only called if user has enough money
+                addChips(chipValue);
                 startGameEnabled();
             }
             else
@@ -922,7 +869,6 @@ namespace FinalBlackJack
                 MessageBox.Show("Insufficient balance for this chip!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
-
 
         private void rChip10_Click(object sender, EventArgs e)
         {
@@ -956,8 +902,6 @@ namespace FinalBlackJack
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // ----------------------- REVEAL ALL CARDS ASAP TO AVOID ANY CONFLICT DURING COMPILATION OF RESULTS -------------------------------------------
-
             if (currentBet == 0)
             {
                 errorSound();
@@ -975,19 +919,18 @@ namespace FinalBlackJack
                 if (dealerReveal == 2)
                 {
                     dealerDraw3.Visible = true;
-                    dCardAnimation3.Start(); // Start first animation
+                    dCardAnimation3.Start();
                     rDealer3.Image = folded;
                     bot3 = botCardImg;
                     botHiddenCards[1] = bot3;
                 }
                 else if (dealerReveal == 3)
                 {
-                    // Don't start animation here yet. Wait until animation3 is done.
                     dealerDraw4.Visible = true;
                     rDealer4.Image = folded;
                     bot4 = botCardImg;
                     botHiddenCards[2] = bot4;
-                    shouldRunDCard4 = true; // <-- this flag triggers animation4 later
+                    shouldRunDCard4 = true;
                 }
 
                 botTotal += GetCardValue(botCardPath);
@@ -996,7 +939,6 @@ namespace FinalBlackJack
                 if (botTotal >= 17)
                     break;
             }
-
 
             hiddenCards();
             setValueVisible();
@@ -1007,49 +949,41 @@ namespace FinalBlackJack
                 round();
                 checkNearest();
             }
-
             else if (botTotal == 21 && playerTotal == 21)
             {
                 round();
                 dealerBlackJack();
             }
-
             else if (playerTotal == 21)
             {
                 playerBlackJack();
             }
-
             else if (botTotal == 21)
             {
                 dealerBlackJack();
             }
-
             else if (playerTotal == botTotal)
             {
                 matched();
             }
-
             else if (playerTotal > 21)
             {
                 playerBustDialogue();
                 round();
                 playerBusted();
             }
-
             else if (botTotal > 21)
             {
                 dealerBustDialogue();
                 round();
                 dealerBusted();
             }
-
             else if (playerTotal > botTotal)
             {
                 standWinDialogue();
                 round();
                 playerWinner();
             }
-
             else if (playerTotal < botTotal)
             {
                 standLoseDialogue();
@@ -1074,15 +1008,11 @@ namespace FinalBlackJack
             drawCardsSound();
             actionsEnabled();
 
-            // Make the moving PictureBoxes visible (if not already)
             playerDraw1.Visible = true;
             playerDraw2.Visible = true;
-
             dealerDraw1.Visible = true;
             dealerDraw2.Visible = true;
 
-
-            // Start moving
             initialDraw.Enabled = true;
 
             botValue.Visible = false;
@@ -1094,7 +1024,6 @@ namespace FinalBlackJack
             roundStarted = true;
 
             startGameDialogue();
-
 
             while (playerReveal != 2 && dealerReveal != 2)
             {
@@ -1113,7 +1042,6 @@ namespace FinalBlackJack
                     rPlayer1.Image = playerCardImg;
                     botTotal += GetCardValue(botCardPath);
                     playerTotal += GetCardValue(playerCardPath);
-
                 }
                 else if (playerReveal == 1)
                 {
@@ -1123,7 +1051,6 @@ namespace FinalBlackJack
                     botHiddenCards[0] = bot2;
                     playerTotal += GetCardValue(playerCardPath);
                     botTotal += GetCardValue(botCardPath);
-
                 }
 
                 playerReveal++;
@@ -1134,7 +1061,6 @@ namespace FinalBlackJack
 
         private void rPlayer1_Click(object sender, EventArgs e)
         {
-
         }
 
         private void backButton_Click(object sender, EventArgs e)
@@ -1144,8 +1070,6 @@ namespace FinalBlackJack
 
         private void button2_Click(object sender, EventArgs e)
         {
-            
-
             if (currentBet == 0)
             {
                 errorSound();
@@ -1173,15 +1097,12 @@ namespace FinalBlackJack
                     dCardAnimation3.Enabled = true;
                     rDealer3.Image = botCardImg;
                     botHiddenCards[1] = botCardImg;
-
                 }
-
                 else if (dealerReveal == 3)
                 {
                     dCardAnimation4.Enabled = true;
                     rDealer4.Image = botCardImg;
                     botHiddenCards[2] = botCardImg;
-
                 }
 
                 botTotal += GetCardValue(botCardPath);
@@ -1197,10 +1118,7 @@ namespace FinalBlackJack
             string playerCardPath = rCards[playerIndex];
             Image playerCardImg = Image.FromFile(playerCardPath);
 
-
             setValueVisible();
-
-            // ------------------------------- PUT CARDS ON PLAYER'S DECK -----------------------------
 
             if (playerReveal == 2)
             {
@@ -1208,7 +1126,6 @@ namespace FinalBlackJack
                 rPlayer3.Image = playerCardImg;
                 playerTotal += GetCardValue(playerCardPath);
             }
-
             else if (playerReveal == 3)
             {
                 pCardAnimation4.Enabled = true;
@@ -1227,49 +1144,42 @@ namespace FinalBlackJack
                 round();
                 checkNearestDouble();
             }
-
             else if (playerTotal == botTotal)
             {
                 setValueVisible();
                 round();
                 matchedDouble();
             }
-
             else if (playerTotal == 21)
             {
                 setValueVisible();
                 round();
                 playerBlackJackDouble();
             }
-
             else if (botTotal == 21)
             {
                 setValueVisible();
                 round();
                 dealerBlackJackDouble();
             }
-
             else if (playerTotal > 21)
             {
                 setValueVisible();
                 round();
                 playerBustedDouble();
             }
-
             else if (botTotal > 21)
             {
                 setValueVisible();
                 round();
                 dealerBustedDouble();
             }
-
             else if (playerTotal > botTotal)
             {
                 setValueVisible();
                 round();
                 playerWinnerDouble();
             }
-
             else if (playerTotal < botTotal)
             {
                 setValueVisible();
@@ -1283,12 +1193,10 @@ namespace FinalBlackJack
 
         private void dealerDialogue_Click(object sender, EventArgs e)
         {
-
         }
 
         private void redTimer1_Tick(object sender, EventArgs e)
         {
-
             if (playerDraw1.Visible)
             {
                 if (playerDraw1.Location.X > 334 || playerDraw1.Location.Y < 417)
@@ -1306,7 +1214,6 @@ namespace FinalBlackJack
                 }
             }
 
-            // -------------------------------------------------------------------------------------------------------------------
             if (dealerDraw1.Visible)
             {
                 if (dealerDraw1.Location.X > 339 || dealerDraw1.Location.Y > 84)
@@ -1361,7 +1268,6 @@ namespace FinalBlackJack
             initialDraw.Stop();
         }
 
-
         private void hit1_Tick(object sender, EventArgs e)
         {
             if (playerDraw3.Visible)
@@ -1378,7 +1284,6 @@ namespace FinalBlackJack
                 {
                     playerDraw3.Visible = false;
                     rPlayer3.Visible = true;
-
                 }
 
                 initialDraw.Stop();
@@ -1401,7 +1306,6 @@ namespace FinalBlackJack
                 {
                     playerDraw4.Visible = false;
                     rPlayer4.Visible = true;
-
                 }
 
                 initialDraw.Stop();
@@ -1424,11 +1328,9 @@ namespace FinalBlackJack
                 {
                     dealerDraw3.Visible = false;
                     rDealer3.Visible = true;
-
                 }
             }
         }
-
 
         private void dCard4_Tick(object sender, EventArgs e)
         {
@@ -1466,7 +1368,6 @@ namespace FinalBlackJack
                 {
                     playerDraw3.Visible = false;
                     rPlayer3.Visible = true;
-
                 }
 
                 pCardAnimation3.Stop();
@@ -1489,14 +1390,12 @@ namespace FinalBlackJack
                 {
                     playerDraw4.Visible = false;
                     rPlayer4.Visible = true;
-
                 }
                 pCardAnimation4.Stop();
             }
         }
 
         private bool shouldRunDCard4 = false;
-
 
         private void dCardAnimation3_Tick(object sender, EventArgs e)
         {
@@ -1514,19 +1413,15 @@ namespace FinalBlackJack
                 {
                     dealerDraw3.Visible = false;
                     rDealer3.Visible = true;
-
                     dCardAnimation3.Stop();
-
-                    // Start the second animation ONLY if needed
                     if (shouldRunDCard4)
                     {
                         dCardAnimation4.Start();
-                        shouldRunDCard4 = false; // Reset the flag
+                        shouldRunDCard4 = false;
                     }
                 }
             }
         }
-
 
         private void dCardAnimation4_Tick(object sender, EventArgs e)
         {
@@ -1579,17 +1474,14 @@ namespace FinalBlackJack
 
         private void returnTip_Popup(object sender, PopupEventArgs e)
         {
-
         }
 
         private void returnAllTip_Popup(object sender, PopupEventArgs e)
         {
-
         }
 
         private void rDealer2_Click(object sender, EventArgs e)
         {
-
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
@@ -1607,7 +1499,6 @@ namespace FinalBlackJack
 
         private void playerDraw4_Click(object sender, EventArgs e)
         {
-
         }
     }
 }

@@ -33,9 +33,9 @@
             exitButton = new Button();
             panel1 = new Panel();
             surrenderPanel = new Panel();
+            label12 = new Label();
             yesButton = new Button();
             CancelButton = new Button();
-            label1 = new Label();
             dealerDialogue = new Label();
             returnAllBet = new PictureBox();
             returnBet = new PictureBox();
@@ -164,7 +164,7 @@
             panel1.Controls.Add(rPlayer2);
             panel1.Controls.Add(rDealer2);
             panel1.Controls.Add(rPlayer1);
-            panel1.Location = new Point(3, -51);
+            panel1.Location = new Point(5, -51);
             panel1.Name = "panel1";
             panel1.Size = new Size(971, 642);
             panel1.TabIndex = 9;
@@ -173,43 +173,48 @@
             // surrenderPanel
             // 
             surrenderPanel.BackColor = Color.DodgerBlue;
+            surrenderPanel.BorderStyle = BorderStyle.FixedSingle;
+            surrenderPanel.Controls.Add(label12);
             surrenderPanel.Controls.Add(yesButton);
             surrenderPanel.Controls.Add(CancelButton);
-            surrenderPanel.Controls.Add(label1);
-            surrenderPanel.Location = new Point(321, 224);
+            surrenderPanel.Location = new Point(320, 221);
             surrenderPanel.Name = "surrenderPanel";
             surrenderPanel.Size = new Size(328, 195);
             surrenderPanel.TabIndex = 41;
             // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.FlatStyle = FlatStyle.Popup;
+            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.ForeColor = Color.WhiteSmoke;
+            label12.Location = new Point(46, 44);
+            label12.Name = "label12";
+            label12.Size = new Size(239, 62);
+            label12.TabIndex = 5;
+            label12.Text = "Surrender?";
+            // 
             // yesButton
             // 
-            yesButton.Location = new Point(183, 115);
+            yesButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            yesButton.Location = new Point(164, 139);
             yesButton.Name = "yesButton";
-            yesButton.Size = new Size(75, 23);
+            yesButton.Size = new Size(87, 28);
             yesButton.TabIndex = 2;
-            yesButton.Text = "YES";
+            yesButton.Text = "Concede";
             yesButton.UseVisualStyleBackColor = true;
             yesButton.Click += yesButton_Click;
             // 
             // CancelButton
             // 
-            CancelButton.Location = new Point(65, 115);
+            CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            CancelButton.Location = new Point(71, 139);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(75, 23);
+            CancelButton.Size = new Size(87, 28);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
             CancelButton.UseVisualStyleBackColor = true;
             CancelButton.Click += CancelButton_Click;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.ForeColor = SystemColors.ButtonHighlight;
-            label1.Location = new Point(120, 22);
-            label1.Name = "label1";
-            label1.Size = new Size(76, 15);
-            label1.TabIndex = 0;
-            label1.Text = "are you sure?";
             // 
             // dealerDialogue
             // 
@@ -226,7 +231,7 @@
             // 
             returnAllBet.Cursor = Cursors.Hand;
             returnAllBet.Image = (Image)resources.GetObject("returnAllBet.Image");
-            returnAllBet.Location = new Point(333, 490);
+            returnAllBet.Location = new Point(335, 490);
             returnAllBet.Name = "returnAllBet";
             returnAllBet.Size = new Size(39, 37);
             returnAllBet.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -238,7 +243,7 @@
             // 
             returnBet.Cursor = Cursors.Hand;
             returnBet.Image = (Image)resources.GetObject("returnBet.Image");
-            returnBet.Location = new Point(333, 445);
+            returnBet.Location = new Point(335, 445);
             returnBet.Name = "returnBet";
             returnBet.Size = new Size(39, 36);
             returnBet.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -382,7 +387,7 @@
             r25m.BackColor = Color.Transparent;
             r25m.Cursor = Cursors.Hand;
             r25m.Image = (Image)resources.GetObject("r25m.Image");
-            r25m.Location = new Point(124, 387);
+            r25m.Location = new Point(126, 387);
             r25m.Name = "r25m";
             r25m.Size = new Size(60, 60);
             r25m.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -397,7 +402,7 @@
             r10m.BackColor = Color.Transparent;
             r10m.Cursor = Cursors.Hand;
             r10m.Image = (Image)resources.GetObject("r10m.Image");
-            r10m.Location = new Point(190, 406);
+            r10m.Location = new Point(192, 406);
             r10m.Name = "r10m";
             r10m.Size = new Size(60, 60);
             r10m.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -412,7 +417,7 @@
             r5m.BackColor = Color.Transparent;
             r5m.Cursor = Cursors.Hand;
             r5m.Image = (Image)resources.GetObject("r5m.Image");
-            r5m.Location = new Point(256, 408);
+            r5m.Location = new Point(258, 408);
             r5m.Name = "r5m";
             r5m.Size = new Size(60, 60);
             r5m.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -427,7 +432,7 @@
             r1m.BackColor = Color.Transparent;
             r1m.Cursor = Cursors.Hand;
             r1m.Image = (Image)resources.GetObject("r1m.Image");
-            r1m.Location = new Point(124, 456);
+            r1m.Location = new Point(126, 456);
             r1m.Name = "r1m";
             r1m.Size = new Size(60, 60);
             r1m.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -442,7 +447,7 @@
             r250k.BackColor = Color.Transparent;
             r250k.Cursor = Cursors.Hand;
             r250k.Image = (Image)resources.GetObject("r250k.Image");
-            r250k.Location = new Point(256, 477);
+            r250k.Location = new Point(258, 477);
             r250k.Name = "r250k";
             r250k.Size = new Size(60, 60);
             r250k.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -457,7 +462,7 @@
             r500k.BackColor = Color.Transparent;
             r500k.Cursor = Cursors.Hand;
             r500k.Image = (Image)resources.GetObject("r500k.Image");
-            r500k.Location = new Point(190, 477);
+            r500k.Location = new Point(192, 477);
             r500k.Name = "r500k";
             r500k.Size = new Size(60, 60);
             r500k.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -506,7 +511,6 @@
             startRound.BackgroundImageLayout = ImageLayout.None;
             startRound.Enabled = false;
             startRound.FlatAppearance.BorderSize = 0;
-            startRound.FlatStyle = FlatStyle.Flat;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
             startRound.Location = new Point(406, 596);
@@ -544,9 +548,8 @@
             hitBtn.BackColor = Color.DimGray;
             hitBtn.BackgroundImageLayout = ImageLayout.None;
             hitBtn.Enabled = false;
-            hitBtn.FlatStyle = FlatStyle.Flat;
             hitBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            hitBtn.Location = new Point(643, 424);
+            hitBtn.Location = new Point(645, 424);
             hitBtn.Name = "hitBtn";
             hitBtn.Size = new Size(94, 36);
             hitBtn.TabIndex = 11;
@@ -559,9 +562,8 @@
             doubleBtn.BackColor = Color.DimGray;
             doubleBtn.BackgroundImageLayout = ImageLayout.None;
             doubleBtn.Enabled = false;
-            doubleBtn.FlatStyle = FlatStyle.Flat;
             doubleBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            doubleBtn.Location = new Point(643, 509);
+            doubleBtn.Location = new Point(645, 509);
             doubleBtn.Name = "doubleBtn";
             doubleBtn.Size = new Size(94, 36);
             doubleBtn.TabIndex = 10;
@@ -574,9 +576,8 @@
             standBtn.BackColor = Color.DimGray;
             standBtn.BackgroundImageLayout = ImageLayout.None;
             standBtn.Enabled = false;
-            standBtn.FlatStyle = FlatStyle.Flat;
             standBtn.Font = new Font("Corbel", 10F, FontStyle.Bold);
-            standBtn.Location = new Point(643, 467);
+            standBtn.Location = new Point(645, 467);
             standBtn.Name = "standBtn";
             standBtn.Size = new Size(94, 36);
             standBtn.TabIndex = 9;
@@ -597,7 +598,7 @@
             // rPlayer4
             // 
             rPlayer4.BackColor = Color.Transparent;
-            rPlayer4.Location = new Point(559, 437);
+            rPlayer4.Location = new Point(561, 437);
             rPlayer4.Name = "rPlayer4";
             rPlayer4.Size = new Size(69, 96);
             rPlayer4.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -617,7 +618,7 @@
             // rPlayer3
             // 
             rPlayer3.BackColor = Color.Transparent;
-            rPlayer3.Location = new Point(484, 437);
+            rPlayer3.Location = new Point(486, 437);
             rPlayer3.Name = "rPlayer3";
             rPlayer3.Size = new Size(69, 96);
             rPlayer3.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -637,7 +638,7 @@
             // rPlayer2
             // 
             rPlayer2.BackColor = Color.Transparent;
-            rPlayer2.Location = new Point(409, 437);
+            rPlayer2.Location = new Point(411, 437);
             rPlayer2.Name = "rPlayer2";
             rPlayer2.Size = new Size(69, 96);
             rPlayer2.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -657,7 +658,7 @@
             // rPlayer1
             // 
             rPlayer1.BackColor = Color.Transparent;
-            rPlayer1.Location = new Point(334, 437);
+            rPlayer1.Location = new Point(336, 437);
             rPlayer1.Name = "rPlayer1";
             rPlayer1.Size = new Size(69, 96);
             rPlayer1.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -799,6 +800,6 @@
         private Panel surrenderPanel;
         private Button yesButton;
         private Button CancelButton;
-        private Label label1;
+        private Label label12;
     }
 }

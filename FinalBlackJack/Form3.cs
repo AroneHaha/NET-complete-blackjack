@@ -309,5 +309,39 @@ namespace FinalBlackJack
         {
 
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            centerIndex = (centerIndex - 1 + cities.Count) % cities.Count;
+            UpdateCarouselDisplay();
+            transactionPanel.Hide();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            centerIndex = (centerIndex + 1) % cities.Count;
+            UpdateCarouselDisplay();
+            transactionPanel.Hide();
+        }
+
+        private void pictureBox1_MouseEnter(object sender, EventArgs e)
+        {
+            left.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\lefth.png");
+        }
+
+        private void left_MouseLeave(object sender, EventArgs e)
+        {
+            left.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\left.png");
+        }
+
+        private void right_MouseEnter(object sender, EventArgs e)
+        {
+            right.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\righth.png");
+        }
+
+        private void right_MouseLeave(object sender, EventArgs e)
+        {
+            right.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\right.png");
+        }
     }
 }

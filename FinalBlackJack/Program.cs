@@ -13,7 +13,6 @@ namespace FinalBlackJack
 
             ApplicationConfiguration.Initialize();
             Application.Run(new StartForm());
-
         }
     }
 }

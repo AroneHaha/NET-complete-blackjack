@@ -26,7 +26,7 @@ namespace FinalBlackJack
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
-
+            
             mainMenuForm parentForm = this.FindForm() as mainMenuForm;
             if (parentForm != null)
             {

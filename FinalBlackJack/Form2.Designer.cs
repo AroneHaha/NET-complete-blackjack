@@ -62,15 +62,15 @@
             passwordLogin = new TextBox();
             mainMenuPanel = new Panel();
             walletPanel = new Panel();
-            historyBtn = new PictureBox();
-            walletBackBtn = new PictureBox();
-            widthdrawXdepo = new Panel();
             historyPanel = new Panel();
             TransacAmount = new Label();
             TransacTime = new Label();
             transacAct = new Label();
             label23 = new Label();
             closeHistory = new Button();
+            historyBtn = new PictureBox();
+            walletBackBtn = new PictureBox();
+            widthdrawXdepo = new Panel();
             label13 = new Label();
             confirmPanel = new Panel();
             closeButton = new Button();
@@ -140,10 +140,10 @@
             loginPanel.SuspendLayout();
             mainMenuPanel.SuspendLayout();
             walletPanel.SuspendLayout();
+            historyPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)historyBtn).BeginInit();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).BeginInit();
             widthdrawXdepo.SuspendLayout();
-            historyPanel.SuspendLayout();
             confirmPanel.SuspendLayout();
             profilePanel.SuspendLayout();
             panel5.SuspendLayout();
@@ -546,6 +546,7 @@
             // walletPanel
             // 
             walletPanel.BackColor = Color.RoyalBlue;
+            walletPanel.Controls.Add(historyPanel);
             walletPanel.Controls.Add(historyBtn);
             walletPanel.Controls.Add(walletBackBtn);
             walletPanel.Controls.Add(widthdrawXdepo);
@@ -558,6 +559,71 @@
             walletPanel.Size = new Size(490, 543);
             walletPanel.TabIndex = 5;
             walletPanel.Paint += walletPanel_Paint;
+            // 
+            // historyPanel
+            // 
+            historyPanel.BackColor = Color.LightBlue;
+            historyPanel.Controls.Add(TransacAmount);
+            historyPanel.Controls.Add(TransacTime);
+            historyPanel.Controls.Add(transacAct);
+            historyPanel.Controls.Add(label23);
+            historyPanel.Controls.Add(closeHistory);
+            historyPanel.Location = new Point(50, 105);
+            historyPanel.Name = "historyPanel";
+            historyPanel.Size = new Size(396, 311);
+            historyPanel.TabIndex = 7;
+            historyPanel.Visible = false;
+            // 
+            // TransacAmount
+            // 
+            TransacAmount.AutoSize = true;
+            TransacAmount.Font = new Font("Segoe UI", 14F);
+            TransacAmount.Location = new Point(45, 193);
+            TransacAmount.Name = "TransacAmount";
+            TransacAmount.Size = new Size(88, 25);
+            TransacAmount.TabIndex = 10;
+            TransacAmount.Text = "Amount :";
+            // 
+            // TransacTime
+            // 
+            TransacTime.AutoSize = true;
+            TransacTime.Font = new Font("Segoe UI", 14F);
+            TransacTime.Location = new Point(43, 155);
+            TransacTime.Name = "TransacTime";
+            TransacTime.Size = new Size(143, 25);
+            TransacTime.TabIndex = 9;
+            TransacTime.Text = "Time and Date :";
+            // 
+            // transacAct
+            // 
+            transacAct.AutoSize = true;
+            transacAct.Font = new Font("Segoe UI", 14F);
+            transacAct.Location = new Point(45, 116);
+            transacAct.Name = "transacAct";
+            transacAct.Size = new Size(82, 25);
+            transacAct.TabIndex = 8;
+            transacAct.Text = "Activity :";
+            // 
+            // label23
+            // 
+            label23.AutoSize = true;
+            label23.Font = new Font("Haettenschweiler", 35F);
+            label23.ForeColor = Color.Black;
+            label23.Location = new Point(37, 31);
+            label23.Name = "label23";
+            label23.Size = new Size(333, 50);
+            label23.TabIndex = 7;
+            label23.Text = "Previous Transaction";
+            // 
+            // closeHistory
+            // 
+            closeHistory.Location = new Point(155, 269);
+            closeHistory.Name = "closeHistory";
+            closeHistory.Size = new Size(75, 23);
+            closeHistory.TabIndex = 1;
+            closeHistory.Text = "EXIT ";
+            closeHistory.UseVisualStyleBackColor = true;
+            closeHistory.Click += closeHistory_Click;
             // 
             // historyBtn
             // 
@@ -587,7 +653,6 @@
             // widthdrawXdepo
             // 
             widthdrawXdepo.BackColor = Color.WhiteSmoke;
-            widthdrawXdepo.Controls.Add(historyPanel);
             widthdrawXdepo.Controls.Add(label13);
             widthdrawXdepo.Controls.Add(confirmPanel);
             widthdrawXdepo.Controls.Add(asdasd);
@@ -597,71 +662,6 @@
             widthdrawXdepo.Name = "widthdrawXdepo";
             widthdrawXdepo.Size = new Size(394, 311);
             widthdrawXdepo.TabIndex = 4;
-            // 
-            // historyPanel
-            // 
-            historyPanel.BackColor = Color.LightBlue;
-            historyPanel.Controls.Add(TransacAmount);
-            historyPanel.Controls.Add(TransacTime);
-            historyPanel.Controls.Add(transacAct);
-            historyPanel.Controls.Add(label23);
-            historyPanel.Controls.Add(closeHistory);
-            historyPanel.Location = new Point(0, -2);
-            historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(394, 185);
-            historyPanel.TabIndex = 7;
-            historyPanel.Visible = false;
-            // 
-            // TransacAmount
-            // 
-            TransacAmount.AutoSize = true;
-            TransacAmount.Font = new Font("Segoe UI", 14F);
-            TransacAmount.Location = new Point(63, 186);
-            TransacAmount.Name = "TransacAmount";
-            TransacAmount.Size = new Size(88, 25);
-            TransacAmount.TabIndex = 10;
-            TransacAmount.Text = "Amount :";
-            // 
-            // TransacTime
-            // 
-            TransacTime.AutoSize = true;
-            TransacTime.Font = new Font("Segoe UI", 14F);
-            TransacTime.Location = new Point(61, 148);
-            TransacTime.Name = "TransacTime";
-            TransacTime.Size = new Size(143, 25);
-            TransacTime.TabIndex = 9;
-            TransacTime.Text = "Time and Date :";
-            // 
-            // transacAct
-            // 
-            transacAct.AutoSize = true;
-            transacAct.Font = new Font("Segoe UI", 14F);
-            transacAct.Location = new Point(63, 109);
-            transacAct.Name = "transacAct";
-            transacAct.Size = new Size(82, 25);
-            transacAct.TabIndex = 8;
-            transacAct.Text = "Activity :";
-            // 
-            // label23
-            // 
-            label23.AutoSize = true;
-            label23.Font = new Font("Haettenschweiler", 35F);
-            label23.ForeColor = Color.Black;
-            label23.Location = new Point(37, 31);
-            label23.Name = "label23";
-            label23.Size = new Size(333, 50);
-            label23.TabIndex = 7;
-            label23.Text = "Previous Transaction";
-            // 
-            // closeHistory
-            // 
-            closeHistory.Location = new Point(141, 253);
-            closeHistory.Name = "closeHistory";
-            closeHistory.Size = new Size(75, 23);
-            closeHistory.TabIndex = 1;
-            closeHistory.Text = "EXIT ";
-            closeHistory.UseVisualStyleBackColor = true;
-            closeHistory.Click += closeHistory_Click;
             // 
             // label13
             // 
@@ -859,7 +859,7 @@
             walletButton.BackColor = Color.MediumBlue;
             walletButton.Font = new Font("Haettenschweiler", 17F);
             walletButton.ForeColor = SystemColors.ButtonFace;
-            walletButton.Location = new Point(20, 296);
+            walletButton.Location = new Point(21, 331);
             walletButton.Name = "walletButton";
             walletButton.Size = new Size(160, 55);
             walletButton.TabIndex = 0;
@@ -1410,12 +1410,12 @@
             mainMenuPanel.ResumeLayout(false);
             walletPanel.ResumeLayout(false);
             walletPanel.PerformLayout();
+            historyPanel.ResumeLayout(false);
+            historyPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)historyBtn).EndInit();
             ((System.ComponentModel.ISupportInitialize)walletBackBtn).EndInit();
             widthdrawXdepo.ResumeLayout(false);
             widthdrawXdepo.PerformLayout();
-            historyPanel.ResumeLayout(false);
-            historyPanel.PerformLayout();
             confirmPanel.ResumeLayout(false);
             confirmPanel.PerformLayout();
             profilePanel.ResumeLayout(false);

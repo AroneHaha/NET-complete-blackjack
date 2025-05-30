@@ -12,6 +12,7 @@ namespace FinalBlackJack
 {
     public partial class firstCity : UserControl
     {
+        private mainMenuForm parentMenuForm;
         List<string> rCards = new List<string>()
         {
             @"C:\BSIT 1\C#\blackjack\cards\2_of_clubs.png",
@@ -193,13 +194,16 @@ namespace FinalBlackJack
 
         private void checkGameWinner()
         {
+            
             if (buyinBalance == 0 || buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
                 AccountData.totalLosses[AccountData.currentAccount]++;
+                
                 if (this.ParentForm is mainGameForm mainForm)
                 {
+                    parentMenuForm.UpdateStatsAfterGame();
                     mainForm.ReturnToCarousel();
                 }
             }
@@ -212,6 +216,7 @@ namespace FinalBlackJack
                 AccountData.totalWins[AccountData.currentAccount]++;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
+                    parentMenuForm.UpdateStatsAfterGame();
                     mainForm.ReturnToCarousel();
                 }
             }
@@ -224,17 +229,16 @@ namespace FinalBlackJack
 
         private void balanceWinUpdate()
         {
-            ingameWinnings += currentBet * 2;
+            ingameWinnings += currentBet;
             buyinBalance += currentBet * 2;
             dealerBalance -= currentBet;
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
             r_totalWinnings.Text = "Winnings: " + ingameWinnings.ToString();
         }
 
-
         private void balanceWinUpdateDouble()
         {
-            buyinBalance += (currentBet * 2) * 2;
+            buyinBalance += (currentBet * 2);
             ingameWinnings += (currentBet * 2) * 2;
             dealerBalance -= (currentBet * 2);
             r_BankRoll.Text = "Bankroll : " + buyinBalance.ToString();
@@ -1551,6 +1555,7 @@ namespace FinalBlackJack
         public firstCity()
         {
             InitializeComponent();
+            parentMenuForm = menuForm;
             surrenderPanel.Hide();
 
             r_BankRoll.Text = "Bankroll : " + buyinBalance;

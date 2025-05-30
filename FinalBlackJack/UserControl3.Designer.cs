@@ -40,7 +40,7 @@
             text1.AutoSize = true;
             text1.Font = new Font("Haettenschweiler", 30.25F);
             text1.ForeColor = Color.Black;
-            text1.Location = new Point(193, 175);
+            text1.Location = new Point(199, 180);
             text1.Name = "text1";
             text1.Size = new Size(457, 43);
             text1.TabIndex = 1;
