@@ -8,6 +8,7 @@ using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static FinalBlackJack.Program;
 
 namespace FinalBlackJack
 {
@@ -17,8 +18,6 @@ namespace FinalBlackJack
         public secondMainMenu()
         {
             InitializeComponent();
-            string maskedPassword = new string('*', AccountData.passwords[AccountData.currentAccount].Length);
-            settingsPassword.Text = "Password : " + maskedPassword;
             changeInfo.Hide();
         }
 
@@ -30,14 +29,13 @@ namespace FinalBlackJack
 
         private void saveButton_Click(object sender, EventArgs e)
         {
-
             if (musicOff.Checked)
             {
-
+                AudioManager.BackgroundMusic?.Pause();
             }
             else if (musicOn.Checked)
             {
-
+                AudioManager.BackgroundMusic?.Resume();
             }
         }
 

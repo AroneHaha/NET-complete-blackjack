@@ -124,9 +124,9 @@
             label10.Font = new Font("Segoe UI", 11F, FontStyle.Italic);
             label10.Location = new Point(80, 428);
             label10.Name = "label10";
-            label10.Size = new Size(317, 20);
+            label10.Size = new Size(315, 20);
             label10.TabIndex = 18;
-            label10.Text = "> Feel the pressure without spending real money";
+            label10.Text = "> Experience the thrill in a risk-free environment";
             // 
             // label9
             // 

@@ -256,7 +256,26 @@ namespace FinalBlackJack
             clickSound = new homesounds(musicPath);
             clickSound.PlayOnce();
         }
+        private void errorSound()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\no-bet.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
 
+        private void depoSound()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\deposit.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+
+        private void withSound()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\withdraw.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
         private void homenav()
         {
             string musicPath = @"C:\BSIT 1\C#\blackjack\audio\homenav.wav";
@@ -442,12 +461,14 @@ namespace FinalBlackJack
 
             if (string.IsNullOrWhiteSpace(newUser) || string.IsNullOrWhiteSpace(newPass) || string.IsNullOrWhiteSpace(newEmail))
             {
+                errorSound();
                 MessageBox.Show("Please make sure to fill in Username, Password, and Email.");
                 return;
             }
 
             if (AccountData.usernames.Contains(newUser))
             {
+                errorSound();
                 MessageBox.Show("That username is already taken.");
                 usernameLog.Text = "";
                 return;
@@ -455,6 +476,7 @@ namespace FinalBlackJack
 
             if (newPass.Length < 8)
             {
+                errorSound();
                 MessageBox.Show("Your password must be at least 8 characters.");
                 passwordLog.Text = "";
                 confPasswordLog.Text = "";
@@ -465,6 +487,7 @@ namespace FinalBlackJack
             {
                 if (age < 18)
                 {
+                    errorSound();
                     MessageBox.Show("Below 18 years old is prohibited.");
                     ageLog.Text = "";
                     return;
@@ -472,6 +495,7 @@ namespace FinalBlackJack
             }
             else
             {
+                errorSound();
                 MessageBox.Show("Please enter a valid number.");
                 ageLog.Text = "";
                 return;
@@ -479,6 +503,7 @@ namespace FinalBlackJack
 
             if (passwordLog.Text != confPasswordLog.Text)
             {
+                errorSound();
                 MessageBox.Show("Password confirmation is incorrect.");
                 passwordLog.Text = "";
                 confPasswordLog.Text = "";
@@ -487,6 +512,7 @@ namespace FinalBlackJack
 
             if (AccountData.emails.Contains(newEmail))
             {
+                errorSound();
                 MessageBox.Show("That email is already registered.");
                 emailLog.Text = "";
                 return;
@@ -494,12 +520,14 @@ namespace FinalBlackJack
 
             if (string.IsNullOrWhiteSpace(verifCode))
             {
+                errorSound();
                 MessageBox.Show("Please request a verification code to process your account.");
                 return;
             }
 
             if (verifLog.Text != verifCode)
             {
+                errorSound();
                 MessageBox.Show("Invalid Verification Code.");
                 verifLog.Text = "";
                 return;
@@ -561,19 +589,23 @@ namespace FinalBlackJack
 
         private void walletButton_Click(object sender, EventArgs e)
         {
+
             widthdrawXdepo.Hide();
             confirmPanel.Hide();
             historyPanel.Hide();
 
+            homenav();
             walletPanel.Visible = !walletPanel.Visible;
             if (walletPanel.Visible)
             {
+                
                 walletPanel.BringToFront();
             }
         }
 
         private void depositButton_Click(object sender, EventArgs e)
         {
+            clicking();
             walletChoice = "deposit";
             walletPassword.Clear();
             walletAmount.Clear();
@@ -582,6 +614,7 @@ namespace FinalBlackJack
 
         private void widthdrawButton_Click(object sender, EventArgs e)
         {
+            clicking();
             walletChoice = "withdraw";
             walletPassword.Clear();
             walletAmount.Clear();
@@ -590,6 +623,7 @@ namespace FinalBlackJack
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            clicking();
             confirmPanel.Show();
         }
 
@@ -605,6 +639,7 @@ namespace FinalBlackJack
 
         private void walletPanel_Paint(object sender, PaintEventArgs e)
         {
+
         }
 
         private void label11_Click(object sender, EventArgs e)
@@ -633,6 +668,7 @@ namespace FinalBlackJack
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            clicking();
             walletPanel.Hide();
         }
 
@@ -679,8 +715,10 @@ namespace FinalBlackJack
         private void walletConfirmPassword_Click(object sender, EventArgs e)
         {
             int amount;
+            clicking();
             if (!int.TryParse(walletAmount.Text, out amount))
             {
+                errorSound();
                 MessageBox.Show("Please enter a valid number for the amount.");
                 walletAmount.Clear();
                 return;
@@ -688,6 +726,7 @@ namespace FinalBlackJack
 
             if (amount <= 0)
             {
+                errorSound();
                 MessageBox.Show("Amount must be greater than zero.");
                 walletAmount.Clear();
                 return;
@@ -695,6 +734,7 @@ namespace FinalBlackJack
 
             if ((walletChoice == "withdraw") && (AccountData.accountsBalance[AccountData.currentAccount] < amount))
             {
+                errorSound();
                 MessageBox.Show("You have insufficient balance to make the withdrawal.");
                 walletAmount.Clear();
                 return;
@@ -710,15 +750,18 @@ namespace FinalBlackJack
 
                 if (walletChoice == "deposit")
                 {
+                    depoSound();
                     makeDeposit();
                 }
                 else
                 {
+                    withSound();
                     makeWithdrawal();
                 }
             }
             else
             {
+                errorSound();
                 MessageBox.Show("Incorrect password. Please try again.");
                 walletPassword.Clear();
                 return;
@@ -874,12 +917,14 @@ namespace FinalBlackJack
         {
             if (string.IsNullOrWhiteSpace(forgotUsername.Text) || string.IsNullOrWhiteSpace(forgotCode.Text))
             {
+                errorSound();
                 MessageBox.Show("Please fill in all requirements.");
                 return;
             }
 
             if (!AccountData.usernames.Contains(forgotUsername.Text))
             {
+                errorSound();
                 MessageBox.Show("No matching account was found.");
                 forgotUsername.Clear();
                 forgotCode.Clear();
@@ -888,6 +933,7 @@ namespace FinalBlackJack
 
             if (isForgotCodeSent == false)
             {
+                errorSound();
                 MessageBox.Show("Please request for Password Reset code.");
                 forgotCode.Clear();
                 return;
@@ -895,6 +941,7 @@ namespace FinalBlackJack
 
             if (forgotCode.Text != forgotPasswordCode)
             {
+                errorSound();
                 MessageBox.Show("Incorrect verification code. Please try again.");
                 forgotCode.Clear();
                 return;
@@ -946,6 +993,7 @@ namespace FinalBlackJack
         private void historyBtn_Click(object sender, EventArgs e)
         {
             updateHistory();
+            homenav();
 
             // If historyPanel is not visible yet (we're about to show it)
             if (!historyPanel.Visible)

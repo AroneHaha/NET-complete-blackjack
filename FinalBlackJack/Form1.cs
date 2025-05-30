@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.VisualBasic.ApplicationServices;
+using static FinalBlackJack.Program;
 
 
 namespace FinalBlackJack
@@ -17,6 +18,7 @@ namespace FinalBlackJack
 
     public partial class StartForm : Form
     {
+
         public StartForm()
         {
             InitializeComponent();
@@ -49,16 +51,19 @@ namespace FinalBlackJack
             await Task.Delay(1000);
 
             loadingPanel.Visible = false;
+
             if (backgroundMusic == null)
             {
                 string musicPath = @"C:\BSIT 1\C#\blackjack\audio\bgmusic.wav";
-                backgroundMusic = new backgroundmusic(musicPath);
-                backgroundMusic.PlayLoop();
+                AudioManager.BackgroundMusic = new backgroundmusic(musicPath);
+                AudioManager.BackgroundMusic.PlayLoop();
+
+                backgroundMusic = AudioManager.BackgroundMusic;  // keep local reference if needed
             }
 
             form1Panel.Visible = true;
-
         }
+
 
         private void playNowButton_Click(object sender, EventArgs e)
         {
@@ -89,7 +94,7 @@ namespace FinalBlackJack
 
         private void StartForm_Load(object sender, EventArgs e)
         {
-
+            label2.Focus();
         }
 
         private void form1Panel_Paint(object sender, PaintEventArgs e)
@@ -108,10 +113,15 @@ namespace FinalBlackJack
 
         private void declineButton_Click(object sender, EventArgs e)
         {
-            Application.Exit(); 
+            Application.Exit();
         }
 
         private void timer1_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tittleText_Click(object sender, EventArgs e)
         {
 
         }

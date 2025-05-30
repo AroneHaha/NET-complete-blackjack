@@ -48,6 +48,7 @@
             label8 = new Label();
             label9 = new Label();
             label10 = new Label();
+            panel4 = new Panel();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)adsPictureBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
@@ -216,9 +217,9 @@
             // pictureBox4
             // 
             pictureBox4.Image = (Image)resources.GetObject("pictureBox4.Image");
-            pictureBox4.Location = new Point(404, 151);
+            pictureBox4.Location = new Point(404, 135);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(342, 441);
+            pictureBox4.Size = new Size(342, 436);
             pictureBox4.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox4.TabIndex = 3;
             pictureBox4.TabStop = false;
@@ -228,7 +229,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13F);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(39, 459);
+            label6.Location = new Point(40, 449);
             label6.Name = "label6";
             label6.Size = new Size(352, 100);
             label6.TabIndex = 8;
@@ -239,7 +240,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Haettenschweiler", 39.75F);
             label7.ForeColor = Color.Red;
-            label7.Location = new Point(21, 380);
+            label7.Location = new Point(32, 380);
             label7.Name = "label7";
             label7.Size = new Size(346, 54);
             label7.TabIndex = 7;
@@ -251,7 +252,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13F);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(50, 230);
+            label8.Location = new Point(37, 230);
             label8.Name = "label8";
             label8.Size = new Size(317, 100);
             label8.TabIndex = 6;
@@ -275,12 +276,19 @@
             label10.AutoSize = true;
             label10.Font = new Font("Haettenschweiler", 39.75F, FontStyle.Regular, GraphicsUnit.Point, 0);
             label10.ForeColor = Color.Red;
-            label10.Location = new Point(30, 163);
+            label10.Location = new Point(32, 163);
             label10.Name = "label10";
             label10.Size = new Size(262, 54);
             label10.TabIndex = 5;
             label10.Text = "Play with Flow\r\n";
             label10.TextAlign = ContentAlignment.BottomCenter;
+            // 
+            // panel4
+            // 
+            panel4.Location = new Point(372, 1888);
+            panel4.Name = "panel4";
+            panel4.Size = new Size(200, 58);
+            panel4.TabIndex = 12;
             // 
             // logPassword
             // 
@@ -288,6 +296,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
             BackColor = Color.DarkSeaGreen;
+            Controls.Add(panel4);
             Controls.Add(panel3);
             Controls.Add(panel1);
             Controls.Add(form3Button);
@@ -330,5 +339,6 @@
         private Label label8;
         private Label label9;
         private Label label10;
+        private Panel panel4;
     }
 }

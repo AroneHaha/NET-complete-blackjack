@@ -202,7 +202,7 @@
             button2.Name = "button2";
             button2.Size = new Size(123, 40);
             button2.TabIndex = 10;
-            button2.Text = "Save";
+            button2.Text = "Next";
             button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click;
             // 
@@ -396,7 +396,7 @@
             fogotPassowrdButton.FlatAppearance.BorderSize = 0;
             fogotPassowrdButton.FlatStyle = FlatStyle.Flat;
             fogotPassowrdButton.ForeColor = Color.Red;
-            fogotPassowrdButton.Location = new Point(187, 466);
+            fogotPassowrdButton.Location = new Point(187, 467);
             fogotPassowrdButton.Name = "fogotPassowrdButton";
             fogotPassowrdButton.Size = new Size(132, 28);
             fogotPassowrdButton.TabIndex = 10;
@@ -433,7 +433,7 @@
             // 
             // loginButton
             // 
-            loginButton.BackColor = Color.DarkOrange;
+            loginButton.BackColor = Color.DarkGreen;
             loginButton.Font = new Font("Segoe UI", 11F);
             loginButton.ForeColor = Color.White;
             loginButton.Location = new Point(195, 395);
@@ -470,22 +470,22 @@
             // label10
             // 
             label10.AutoSize = true;
-            label10.Font = new Font("Corbel", 14F);
+            label10.Font = new Font("Segoe UI", 13F);
             label10.ForeColor = Color.Black;
             label10.Location = new Point(90, 270);
             label10.Name = "label10";
-            label10.Size = new Size(103, 23);
+            label10.Size = new Size(105, 25);
             label10.TabIndex = 3;
             label10.Text = "Username : ";
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Font = new Font("Corbel", 14F);
+            label4.Font = new Font("Segoe UI", 13F);
             label4.ForeColor = Color.Black;
             label4.Location = new Point(91, 323);
             label4.Name = "label4";
-            label4.Size = new Size(99, 23);
+            label4.Size = new Size(101, 25);
             label4.TabIndex = 2;
             label4.Text = "Password : ";
             // 
@@ -513,7 +513,7 @@
             // 
             // userLogin
             // 
-            userLogin.Location = new Point(192, 270);
+            userLogin.Location = new Point(197, 274);
             userLogin.Name = "userLogin";
             userLogin.Size = new Size(210, 23);
             userLogin.TabIndex = 1;
@@ -521,7 +521,7 @@
             // 
             // passwordLogin
             // 
-            passwordLogin.Location = new Point(193, 323);
+            passwordLogin.Location = new Point(197, 327);
             passwordLogin.Name = "passwordLogin";
             passwordLogin.Size = new Size(210, 23);
             passwordLogin.TabIndex = 0;
@@ -620,7 +620,7 @@
             closeHistory.BackColor = Color.Red;
             closeHistory.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
             closeHistory.ForeColor = Color.Transparent;
-            closeHistory.Location = new Point(152, 258);
+            closeHistory.Location = new Point(152, 262);
             closeHistory.Name = "closeHistory";
             closeHistory.Size = new Size(94, 37);
             closeHistory.TabIndex = 1;
@@ -630,6 +630,7 @@
             // 
             // historyBtn
             // 
+            historyBtn.Cursor = Cursors.Hand;
             historyBtn.Image = (Image)resources.GetObject("historyBtn.Image");
             historyBtn.Location = new Point(421, 23);
             historyBtn.Name = "historyBtn";
@@ -841,7 +842,7 @@
             panel5.Controls.Add(matchesTxt);
             panel5.Controls.Add(winrateTxt);
             panel5.Controls.Add(bustTxt);
-            panel5.Location = new Point(6, 8);
+            panel5.Location = new Point(6, 10);
             panel5.Name = "panel5";
             panel5.Size = new Size(200, 541);
             panel5.TabIndex = 7;
@@ -862,7 +863,7 @@
             walletButton.BackColor = Color.MediumBlue;
             walletButton.Font = new Font("Haettenschweiler", 17F);
             walletButton.ForeColor = SystemColors.ButtonFace;
-            walletButton.Location = new Point(21, 331);
+            walletButton.Location = new Point(17, 474);
             walletButton.Name = "walletButton";
             walletButton.Size = new Size(160, 55);
             walletButton.TabIndex = 0;
@@ -1130,7 +1131,7 @@
             tittleNavBar.AutoSize = true;
             tittleNavBar.Font = new Font("Haettenschweiler", 28.25F);
             tittleNavBar.ForeColor = Color.Black;
-            tittleNavBar.Location = new Point(75, 15);
+            tittleNavBar.Location = new Point(75, 16);
             tittleNavBar.Name = "tittleNavBar";
             tittleNavBar.Size = new Size(233, 40);
             tittleNavBar.TabIndex = 2;
@@ -1206,7 +1207,7 @@
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 7F);
-            label25.Location = new Point(362, 228);
+            label25.Location = new Point(369, 228);
             label25.Name = "label25";
             label25.Size = new Size(107, 12);
             label25.TabIndex = 20;
@@ -1216,7 +1217,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 7F);
-            label16.Location = new Point(197, 324);
+            label16.Location = new Point(198, 328);
             label16.Name = "label16";
             label16.Size = new Size(135, 12);
             label16.TabIndex = 19;
@@ -1237,14 +1238,14 @@
             // 
             // ageLog
             // 
-            ageLog.Location = new Point(119, 319);
+            ageLog.Location = new Point(117, 322);
             ageLog.Name = "ageLog";
             ageLog.Size = new Size(73, 23);
             ageLog.TabIndex = 17;
             // 
             // verifLog
             // 
-            verifLog.Location = new Point(216, 414);
+            verifLog.Location = new Point(221, 418);
             verifLog.Name = "verifLog";
             verifLog.Size = new Size(147, 23);
             verifLog.TabIndex = 15;
@@ -1252,13 +1253,13 @@
             // 
             // verifBtn
             // 
-            verifBtn.BackColor = Color.FromArgb(255, 136, 0);
+            verifBtn.BackColor = Color.DarkOrange;
             verifBtn.Cursor = Cursors.Hand;
-            verifBtn.Font = new Font("Segoe UI", 10F);
+            verifBtn.Font = new Font("Segoe UI", 9F);
             verifBtn.ForeColor = Color.White;
-            verifBtn.Location = new Point(368, 412);
+            verifBtn.Location = new Point(373, 418);
             verifBtn.Name = "verifBtn";
-            verifBtn.Size = new Size(68, 26);
+            verifBtn.Size = new Size(68, 24);
             verifBtn.TabIndex = 14;
             verifBtn.Text = "Send Verification Code";
             verifBtn.UseVisualStyleBackColor = false;
@@ -1266,7 +1267,7 @@
             // 
             // emailLog
             // 
-            emailLog.Location = new Point(193, 369);
+            emailLog.Location = new Point(198, 372);
             emailLog.Name = "emailLog";
             emailLog.Size = new Size(170, 23);
             emailLog.TabIndex = 13;
@@ -1274,41 +1275,41 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Font = new Font("Corbel", 14F);
+            label9.Font = new Font("Segoe UI", 13F);
             label9.ForeColor = Color.Black;
             label9.Location = new Point(62, 369);
             label9.Name = "label9";
-            label9.Size = new Size(132, 23);
+            label9.Size = new Size(138, 25);
             label9.TabIndex = 12;
             label9.Text = "Email Address : ";
             // 
             // label8
             // 
             label8.AutoSize = true;
-            label8.Font = new Font("Corbel", 14F);
+            label8.Font = new Font("Segoe UI", 13F);
             label8.ForeColor = Color.Black;
             label8.Location = new Point(62, 319);
             label8.Name = "label8";
-            label8.Size = new Size(50, 23);
+            label8.Size = new Size(53, 25);
             label8.TabIndex = 11;
             label8.Text = "Age :";
             // 
             // confPasswordLog
             // 
-            confPasswordLog.Location = new Point(228, 270);
+            confPasswordLog.Location = new Point(228, 274);
             confPasswordLog.Name = "confPasswordLog";
-            confPasswordLog.Size = new Size(166, 23);
+            confPasswordLog.Size = new Size(175, 23);
             confPasswordLog.TabIndex = 10;
             confPasswordLog.UseSystemPasswordChar = true;
             // 
             // label7
             // 
             label7.AutoSize = true;
-            label7.Font = new Font("Corbel", 14F);
+            label7.Font = new Font("Segoe UI", 13F);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(62, 270);
+            label7.Location = new Point(62, 271);
             label7.Name = "label7";
-            label7.Size = new Size(166, 23);
+            label7.Size = new Size(170, 25);
             label7.TabIndex = 9;
             label7.Text = "Confirm Password : ";
             // 
@@ -1341,48 +1342,48 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Font = new Font("Corbel", 14F);
+            label5.Font = new Font("Segoe UI", 13F);
             label5.ForeColor = Color.Black;
             label5.Location = new Point(62, 170);
             label5.Name = "label5";
-            label5.Size = new Size(103, 23);
+            label5.Size = new Size(105, 25);
             label5.TabIndex = 3;
             label5.Text = "Username : ";
             // 
             // label6
             // 
             label6.AutoSize = true;
-            label6.Font = new Font("Corbel", 14F);
+            label6.Font = new Font("Segoe UI", 13F);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(62, 220);
+            label6.Location = new Point(66, 220);
             label6.Name = "label6";
-            label6.Size = new Size(99, 23);
+            label6.Size = new Size(101, 25);
             label6.TabIndex = 2;
             label6.Text = "Password : ";
             // 
             // usernameLog
             // 
-            usernameLog.Location = new Point(171, 170);
+            usernameLog.Location = new Point(166, 174);
             usernameLog.Name = "usernameLog";
-            usernameLog.Size = new Size(185, 23);
+            usernameLog.Size = new Size(197, 23);
             usernameLog.TabIndex = 1;
             // 
             // passwordLog
             // 
-            passwordLog.Location = new Point(171, 223);
+            passwordLog.Location = new Point(169, 222);
             passwordLog.Name = "passwordLog";
-            passwordLog.Size = new Size(185, 23);
+            passwordLog.Size = new Size(194, 23);
             passwordLog.TabIndex = 0;
             passwordLog.UseSystemPasswordChar = true;
             // 
             // verificationText
             // 
             verificationText.AutoSize = true;
-            verificationText.Font = new Font("Corbel", 14F);
+            verificationText.Font = new Font("Segoe UI", 13F);
             verificationText.ForeColor = Color.Black;
-            verificationText.Location = new Point(62, 414);
+            verificationText.Location = new Point(62, 416);
             verificationText.Name = "verificationText";
-            verificationText.Size = new Size(150, 23);
+            verificationText.Size = new Size(155, 25);
             verificationText.TabIndex = 16;
             verificationText.Text = "Verification Code :";
             // 

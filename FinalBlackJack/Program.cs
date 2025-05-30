@@ -14,5 +14,9 @@ namespace FinalBlackJack
             ApplicationConfiguration.Initialize();
             Application.Run(new StartForm());
         }
+        public static class AudioManager
+        {
+            public static backgroundmusic BackgroundMusic { get; set; }
+        }
     }
 }

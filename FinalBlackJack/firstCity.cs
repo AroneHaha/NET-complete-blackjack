@@ -194,7 +194,7 @@ namespace FinalBlackJack
         private void checkGameWinner()
         {
 
-            if (buyinBalance == 0 || buyinBalance < minBet)
+            if (buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
@@ -621,7 +621,7 @@ namespace FinalBlackJack
         public int playerTotal = 0;
         public int botTotal = 0;
         public int latestBet = 0;
-        public int minBet = 1;
+        public int minBet = 50;
 
         public int playerBalance = 0;
         public int dealerBalance = 0;

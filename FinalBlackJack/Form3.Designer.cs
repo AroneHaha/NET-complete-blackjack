@@ -92,6 +92,7 @@
             TopTextCity3.TabIndex = 12;
             TopTextCity3.Text = "Cobact Club of Doom";
             TopTextCity3.TextAlign = ContentAlignment.TopCenter;
+            TopTextCity3.Click += TopTextCity3_Click;
             // 
             // TopTextCity2
             // 
@@ -109,9 +110,10 @@
             // cityPanel
             // 
             cityPanel.BackColor = SystemColors.ControlLightLight;
-            cityPanel.Location = new Point(599, 367);
+            cityPanel.Dock = DockStyle.Fill;
+            cityPanel.Location = new Point(0, 0);
             cityPanel.Name = "cityPanel";
-            cityPanel.Size = new Size(385, 269);
+            cityPanel.Size = new Size(984, 636);
             cityPanel.TabIndex = 5;
             cityPanel.Paint += cityPanel_Paint;
             // 
@@ -288,7 +290,7 @@
             // 
             left.BackColor = Color.Transparent;
             left.Image = (Image)resources.GetObject("left.Image");
-            left.Location = new Point(385, 520);
+            left.Location = new Point(375, 520);
             left.Name = "left";
             left.Size = new Size(66, 55);
             left.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -302,7 +304,7 @@
             // 
             right.BackColor = Color.Transparent;
             right.Image = (Image)resources.GetObject("right.Image");
-            right.Location = new Point(527, 520);
+            right.Location = new Point(537, 520);
             right.Name = "right";
             right.Size = new Size(66, 55);
             right.SizeMode = PictureBoxSizeMode.StretchImage;

@@ -300,6 +300,7 @@ namespace FinalBlackJack
         private void button1_Click_1(object sender, EventArgs e)
         {
             tableChoice = "";
+            buyinAmount.Clear();
             transactionPanel.Hide();
         }
 
@@ -307,6 +308,7 @@ namespace FinalBlackJack
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            buyinAmount.Clear();
             centerIndex = (centerIndex - 1 + cities.Count) % cities.Count;
             UpdateCarouselDisplay();
             transactionPanel.Hide();
@@ -314,6 +316,7 @@ namespace FinalBlackJack
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            buyinAmount.Clear();
             centerIndex = (centerIndex + 1) % cities.Count;
             UpdateCarouselDisplay();
             transactionPanel.Hide();
@@ -340,5 +343,10 @@ namespace FinalBlackJack
         }
 
         private void topTextCity_Click(object sender, EventArgs e) { }
+
+        private void TopTextCity3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
