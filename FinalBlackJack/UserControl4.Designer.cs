@@ -61,6 +61,8 @@
             // form3Button
             // 
             form3Button.BackColor = Color.OrangeRed;
+            form3Button.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
+            form3Button.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             form3Button.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             form3Button.ForeColor = Color.WhiteSmoke;
             form3Button.Location = new Point(402, 489);

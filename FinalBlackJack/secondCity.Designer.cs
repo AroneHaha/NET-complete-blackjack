@@ -196,24 +196,26 @@
             // 
             // yesButton
             // 
+            yesButton.BackColor = Color.Red;
             yesButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            yesButton.Location = new Point(164, 139);
+            yesButton.Location = new Point(168, 134);
             yesButton.Name = "yesButton";
-            yesButton.Size = new Size(87, 28);
+            yesButton.Size = new Size(92, 32);
             yesButton.TabIndex = 2;
             yesButton.Text = "Concede";
-            yesButton.UseVisualStyleBackColor = true;
+            yesButton.UseVisualStyleBackColor = false;
             yesButton.Click += yesButton_Click;
             // 
             // CancelButton
             // 
+            CancelButton.BackColor = Color.Gainsboro;
             CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            CancelButton.Location = new Point(71, 139);
+            CancelButton.Location = new Point(67, 135);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(87, 28);
+            CancelButton.Size = new Size(92, 31);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
-            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.UseVisualStyleBackColor = false;
             CancelButton.Click += CancelButton_Click;
             // 
             // dealerDialogue

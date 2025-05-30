@@ -568,9 +568,9 @@
             historyPanel.Controls.Add(transacAct);
             historyPanel.Controls.Add(label23);
             historyPanel.Controls.Add(closeHistory);
-            historyPanel.Location = new Point(50, 105);
+            historyPanel.Location = new Point(48, 116);
             historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(396, 311);
+            historyPanel.Size = new Size(396, 314);
             historyPanel.TabIndex = 7;
             historyPanel.Visible = false;
             // 
@@ -609,7 +609,7 @@
             label23.AutoSize = true;
             label23.Font = new Font("Haettenschweiler", 35F);
             label23.ForeColor = Color.Black;
-            label23.Location = new Point(37, 31);
+            label23.Location = new Point(37, 35);
             label23.Name = "label23";
             label23.Size = new Size(333, 50);
             label23.TabIndex = 7;
@@ -617,12 +617,15 @@
             // 
             // closeHistory
             // 
-            closeHistory.Location = new Point(155, 269);
+            closeHistory.BackColor = Color.Red;
+            closeHistory.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
+            closeHistory.ForeColor = Color.Transparent;
+            closeHistory.Location = new Point(152, 258);
             closeHistory.Name = "closeHistory";
-            closeHistory.Size = new Size(75, 23);
+            closeHistory.Size = new Size(94, 37);
             closeHistory.TabIndex = 1;
-            closeHistory.Text = "EXIT ";
-            closeHistory.UseVisualStyleBackColor = true;
+            closeHistory.Text = "Exit";
+            closeHistory.UseVisualStyleBackColor = false;
             closeHistory.Click += closeHistory_Click;
             // 
             // historyBtn
@@ -658,7 +661,7 @@
             widthdrawXdepo.Controls.Add(asdasd);
             widthdrawXdepo.Controls.Add(label14);
             widthdrawXdepo.Controls.Add(walletAmount);
-            widthdrawXdepo.Location = new Point(52, 207);
+            widthdrawXdepo.Location = new Point(49, 207);
             widthdrawXdepo.Name = "widthdrawXdepo";
             widthdrawXdepo.Size = new Size(394, 311);
             widthdrawXdepo.TabIndex = 4;
@@ -1400,6 +1403,7 @@
             Name = "mainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Black Jack Deluxe";
+            Load += mainMenuForm_Load;
             forgotPassPanel.ResumeLayout(false);
             forgotPassPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)forgotBack).EndInit();

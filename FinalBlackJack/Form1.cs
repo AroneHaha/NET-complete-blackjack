@@ -39,10 +39,10 @@ namespace FinalBlackJack
             loadingBar.Style = ProgressBarStyle.Marquee;
             loadingBar.MarqueeAnimationSpeed = 40;
 
-            loadingText2.Text = "Loading assets...";
+            loadingText2.Text = "Loading assets";
             await Task.Delay(2000);
 
-            loadingText2.Text = "Almost there ...";
+            loadingText2.Text = "Almost there...";
             await Task.Delay(1000);
 
             loadingText2.Text = "Get Ready!";

@@ -7,8 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Windows.Forms.DataFormats;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace FinalBlackJack
 {
@@ -87,7 +85,6 @@ namespace FinalBlackJack
                 }
                 else if ((i + 1) % cities.Count == centerIndex)
                 {
-
                     picBox.Size = new Size(sideWidth, sideHeight);
                     picBox.Location = new Point(centerX - sideWidth - spacing, (formHeight - sideHeight) / 2);
                     picBox.SendToBack();
@@ -95,22 +92,37 @@ namespace FinalBlackJack
                 }
                 else
                 {
-
                     picBox.Size = new Size(sideWidth, sideHeight);
                     picBox.Location = new Point(centerX + centerWidth + spacing, (formHeight - sideHeight) / 2);
                     picBox.SendToBack();
                     picBox.BorderStyle = BorderStyle.None;
                 }
-
             }
+
             if (cityBackgrounds.TryGetValue(cities[centerIndex].Name, out Image bgImage))
             {
                 cityChooserPanel.BackgroundImage = bgImage;
                 cityChooserPanel.BackgroundImageLayout = ImageLayout.Stretch;
             }
 
-            topTextCity.Text = cities[centerIndex].Name;
+            // Hide all city labels first
+            topTextCity.Visible = false;
+            TopTextCity2.Visible = false;
+            TopTextCity3.Visible = false;
 
+            // Show the correct city label
+            switch (cities[centerIndex].Name)
+            {
+                case "Sahara Grand Pavilion Resort":
+                    topTextCity.Visible = true;
+                    break;
+                case "Obi Wan Castle In Shangrila":
+                    TopTextCity2.Visible = true;
+                    break;
+                case "Cobact Club of Doom":
+                    TopTextCity3.Visible = true;
+                    break;
+            }
         }
 
         private void LoadView(UserControl control)
@@ -126,10 +138,7 @@ namespace FinalBlackJack
             UpdateCarouselDisplay();
         }
 
-        private void cityChooserPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        private void cityChooserPanel_Paint(object sender, PaintEventArgs e) { }
 
         private void rightButton_Click(object sender, EventArgs e)
         {
@@ -144,6 +153,7 @@ namespace FinalBlackJack
             UpdateCarouselDisplay();
             transactionPanel.Hide();
         }
+
         private async Task ShowLoadingAnimation()
         {
             loadingAnimation.Dock = DockStyle.Fill;
@@ -162,6 +172,7 @@ namespace FinalBlackJack
             transactionPanel.Visible = true;
             transactionPanel.BringToFront();
         }
+
         private async void manilaPicBox_Click(object sender, EventArgs e)
         {
             tableChoice = "green";
@@ -170,7 +181,6 @@ namespace FinalBlackJack
             {
                 selectedCity = "Sahara Grand Pavilion Resort";
                 showTransactionPanel();
-
             }
         }
 
@@ -193,18 +203,14 @@ namespace FinalBlackJack
             {
                 selectedCity = "Cobact Club of Doom";
                 showTransactionPanel();
-
-
             }
         }
 
-        private void cityPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        private void cityPanel_Paint(object sender, PaintEventArgs e) { }
 
         private void extMaingameButton_Click(object sender, EventArgs e)
         {
+            menuForm.UpdateStatsAfterGame();
             menuForm.showMainMenuPanel();
             menuForm.Show();
             this.Close();
@@ -215,10 +221,8 @@ namespace FinalBlackJack
             transactionPanel.Hide();
         }
 
-        private async void confirmButton_Click(object sender, EventArgs e)
-        {
+        private async void confirmButton_Click(object sender, EventArgs e) { }
 
-        }
         private bool buyinExceptions(int min, int max)
         {
             if (string.IsNullOrWhiteSpace(buyinAmount.Text))
@@ -241,7 +245,6 @@ namespace FinalBlackJack
                 MessageBox.Show($"Buy-in amount must be between {min} and {max}.");
                 return false;
             }
-
             return true;
         }
 
@@ -253,10 +256,8 @@ namespace FinalBlackJack
             }
         }
 
-
         private async void depositButton_Click(object sender, EventArgs e)
         {
-
             switch (selectedCity)
             {
                 case "Sahara Grand Pavilion Resort":
@@ -294,10 +295,7 @@ namespace FinalBlackJack
             transactionPanel.Hide();
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
+        private void button1_Click(object sender, EventArgs e) { }
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -305,10 +303,7 @@ namespace FinalBlackJack
             transactionPanel.Hide();
         }
 
-        private void buyinAmount_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+        private void buyinAmount_TextChanged(object sender, EventArgs e) { }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
@@ -343,5 +338,7 @@ namespace FinalBlackJack
         {
             right.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\right.png");
         }
+
+        private void topTextCity_Click(object sender, EventArgs e) { }
     }
 }

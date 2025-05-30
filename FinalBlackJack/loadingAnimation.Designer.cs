@@ -30,9 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(loadingAnimation));
             cityLoadingPanel = new Panel();
-            label2 = new Label();
-            label1 = new Label();
             hourGlassPic = new PictureBox();
+            label1 = new Label();
             cityLoadingPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)hourGlassPic).BeginInit();
             SuspendLayout();
@@ -40,9 +39,8 @@
             // cityLoadingPanel
             // 
             cityLoadingPanel.BackColor = Color.Black;
-            cityLoadingPanel.Controls.Add(label2);
-            cityLoadingPanel.Controls.Add(label1);
             cityLoadingPanel.Controls.Add(hourGlassPic);
+            cityLoadingPanel.Controls.Add(label1);
             cityLoadingPanel.Dock = DockStyle.Fill;
             cityLoadingPanel.Location = new Point(0, 0);
             cityLoadingPanel.Name = "cityLoadingPanel";
@@ -50,38 +48,27 @@
             cityLoadingPanel.TabIndex = 0;
             cityLoadingPanel.Paint += cityLoadingPanel_Paint;
             // 
-            // label2
+            // hourGlassPic
             // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 70F);
-            label2.ForeColor = SystemColors.ButtonFace;
-            label2.Location = new Point(67, 190);
-            label2.Name = "label2";
-            label2.Size = new Size(911, 125);
-            label2.TabIndex = 2;
-            label2.Text = "IKAW NA MAG ADD ";
+            hourGlassPic.Image = (Image)resources.GetObject("hourGlassPic.Image");
+            hourGlassPic.Location = new Point(878, 526);
+            hourGlassPic.Name = "hourGlassPic";
+            hourGlassPic.Size = new Size(67, 62);
+            hourGlassPic.SizeMode = PictureBoxSizeMode.StretchImage;
+            hourGlassPic.TabIndex = 0;
+            hourGlassPic.TabStop = false;
+            hourGlassPic.Click += hourGlassPic_Click;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 40F);
-            label1.ForeColor = Color.DarkOrange;
-            label1.Location = new Point(321, 502);
+            label1.Font = new Font("Segoe UI", 15F);
+            label1.ForeColor = Color.White;
+            label1.Location = new Point(871, 584);
             label1.Name = "label1";
-            label1.Size = new Size(300, 72);
+            label1.Size = new Size(83, 28);
             label1.TabIndex = 1;
-            label1.Text = "Please Wait";
-            // 
-            // hourGlassPic
-            // 
-            hourGlassPic.Image = (Image)resources.GetObject("hourGlassPic.Image");
-            hourGlassPic.Location = new Point(711, 408);
-            hourGlassPic.Name = "hourGlassPic";
-            hourGlassPic.Size = new Size(187, 201);
-            hourGlassPic.SizeMode = PictureBoxSizeMode.CenterImage;
-            hourGlassPic.TabIndex = 0;
-            hourGlassPic.TabStop = false;
-            hourGlassPic.Click += hourGlassPic_Click;
+            label1.Text = "Loading";
             // 
             // loadingAnimation
             // 
@@ -99,8 +86,7 @@
         #endregion
 
         private Panel cityLoadingPanel;
-        private Label label2;
-        private Label label1;
         private PictureBox hourGlassPic;
+        private Label label1;
     }
 }

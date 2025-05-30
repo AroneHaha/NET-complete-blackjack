@@ -260,32 +260,34 @@
             // 
             // yesButton
             // 
+            yesButton.BackColor = Color.LightCoral;
             yesButton.FlatAppearance.BorderColor = Color.Black;
             yesButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
             yesButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             yesButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             yesButton.ForeColor = Color.Black;
-            yesButton.Location = new Point(167, 137);
+            yesButton.Location = new Point(167, 131);
             yesButton.Name = "yesButton";
-            yesButton.Size = new Size(75, 26);
+            yesButton.Size = new Size(85, 32);
             yesButton.TabIndex = 2;
             yesButton.Text = "Concede";
-            yesButton.UseVisualStyleBackColor = true;
+            yesButton.UseVisualStyleBackColor = false;
             yesButton.Click += yesButton_Click;
             // 
             // CancelButton
             // 
+            CancelButton.BackColor = Color.Silver;
             CancelButton.FlatAppearance.BorderColor = Color.Black;
             CancelButton.FlatAppearance.MouseDownBackColor = Color.FromArgb(224, 224, 224);
             CancelButton.FlatAppearance.MouseOverBackColor = Color.FromArgb(224, 224, 224);
             CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
             CancelButton.ForeColor = Color.Black;
-            CancelButton.Location = new Point(81, 137);
+            CancelButton.Location = new Point(76, 131);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(75, 26);
+            CancelButton.Size = new Size(85, 32);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
-            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.UseVisualStyleBackColor = false;
             CancelButton.Click += CancelButton_Click;
             // 
             // returnAllBet

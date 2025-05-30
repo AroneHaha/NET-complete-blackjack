@@ -22,21 +22,22 @@ namespace FinalBlackJack
 
     internal class AccountData
     {
-        public static List<string> usernames = new List<string> { "123", "a" };
-        public static List<string> passwords = new List<string> { "123", "a" };
-        public static List<string> emails = new List<string> { "aronefbs@gmail.com", "a@gmail.com" };
-        public static List<int> accountsBalance = new List<int> { 5000000, 6969 };
-        public static List<int> totalWins = new List<int> { 50, 26 };
-        public static List<int> totalLosses = new List<int> { 25, 56 };
-        public static List<int> bustCount = new List<int> { 81, 96 };
-        public static List<int> totalWinnings = new List<int> { 15993, 321334 };
+        public static List<string> usernames = new List<string> { "test", "Marjorie", "123" };
+        public static List<string> passwords = new List<string> { "test123", "Marjorie", "123" };
+        public static List<string> emails = new List<string> { "test@gmail.com", "Marj@gmail.com", "aronefbs@gmail.com" };
+        public static List<int> accountsBalance = new List<int> { 0, 420, 5000 };
+        public static List<int> totalWins = new List<int> { 0, 100 , 100};
+        public static List<int> totalLosses = new List<int> { 0, 32 , 50};
+        public static List<int> bustCount = new List<int> { 25, 96 , 100};
+        public static List<int> totalWinnings = new List<int> { 0, 0 , 999999};
         public static int currentAccount = 0;
 
         // Store a list of transactions for each account
         public static List<List<Transaction>> transactions = new List<List<Transaction>>
         {
-            new List<Transaction> { new Transaction("Deposit", "1", "0") },
-            new List<Transaction> { new Transaction("Withdrawal", "2", "0") }
+            new List<Transaction> { new Transaction("No Activity yet", "0", "0") }, //year-date-day hour:mins:second
+            new List<Transaction> { new Transaction("Withdrawal", "2025-06-31", "100") },
+            new List<Transaction> { new Transaction("Deposit", "2025-06-27", "999999") },
         };
     }
 }

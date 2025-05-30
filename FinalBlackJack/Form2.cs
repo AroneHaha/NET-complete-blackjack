@@ -36,6 +36,7 @@ namespace FinalBlackJack
 
             RefreshAccountData();
 
+            this.Shown += mainMenuForm_Shown;
             mainDisplayPanel.Dock = DockStyle.Fill;
             mainDisplayPanel.Show();
             mainDisplayPanel.BringToFront();
@@ -49,7 +50,18 @@ namespace FinalBlackJack
             walletPanel.Hide();
 
             mainDisplayPanel.Controls.Clear();
+
         }
+
+        private void mainMenuForm_Shown(object sender, EventArgs e)
+        {
+            // Only update stats if a user is logged in
+            if (AccountData.currentAccount >= 0 && AccountData.currentAccount < AccountData.usernames.Count)
+            {
+                UpdateStatsAfterGame();
+            }
+        }
+
 
         public void makeDeposit()
         {
@@ -60,8 +72,8 @@ namespace FinalBlackJack
                 MessageBox.Show("Transaction process is done, please check your account balance update.");
                 AccountData.accountsBalance[AccountData.currentAccount] += amountToAdd;
                 accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
-                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
-                homeBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+                walletBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
                 resetWalletInfo();
             }
             catch (FormatException)
@@ -79,8 +91,8 @@ namespace FinalBlackJack
                 MessageBox.Show("Transaction process is done, please check your account balance update.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= amountToAdd;
                 accountBalanceHolder = AccountData.accountsBalance[AccountData.currentAccount];
-                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
-                homeBalance.Text = "Balance : Php" + accountBalanceHolder.ToString();
+                walletBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : PHP" + accountBalanceHolder.ToString();
                 resetWalletInfo();
             }
             catch (FormatException)
@@ -101,6 +113,15 @@ namespace FinalBlackJack
 
         public void RefreshAccountData()
         {
+            if (AccountData.currentAccount < 0 || AccountData.currentAccount >= AccountData.usernames.Count)
+            {
+                accountWinrate = 0.0;
+                accountTotalMatches = 0;
+                accountBustCount = 0;
+                accountWinnings = 0;
+                return;
+            }
+
             accountIndex = AccountData.currentAccount;
             usernameHolder = AccountData.usernames[accountIndex];
             passwordHolder = AccountData.passwords[accountIndex];
@@ -115,23 +136,20 @@ namespace FinalBlackJack
             accountBustCount = AccountData.bustCount[accountIndex];
             accountWinnings = AccountData.totalWinnings[accountIndex];
 
-            if (totalGames > 0)
-                accountWinrate = Math.Round((double)wins / totalGames * 100, 2);
-            else
-                accountWinrate = 0.0;
+            accountWinrate = totalGames > 0 ? Math.Round((double)wins / totalGames * 100, 2) : 0.0;
         }
 
         // New method to update stats and UI after a game
         public void UpdateStatsAfterGame()
         {
-            
+
             RefreshAccountData();
             homeUsername.Text = "User : " + usernameHolder;
-            homeBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+            homeBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
             matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
             bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
-            totalWinningsTxt.Text = "Winnings : Php " + accountWinnings.ToString();
-            walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+            totalWinningsTxt.Text = "Winnings : PHP " + accountWinnings.ToString();
+            walletBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
             winrateTxt.Text = "Winrate : " + accountWinrate.ToString("F2") + "%";
             updateHistory();
         }
@@ -165,13 +183,13 @@ namespace FinalBlackJack
                 Transaction latestTransaction = AccountData.transactions[AccountData.currentAccount].Last();
                 transacAct.Text = "Activity : " + latestTransaction.Activity;
                 TransacTime.Text = "Time and Date : " + latestTransaction.Time;
-                TransacAmount.Text = "Amount : Php " + latestTransaction.Amount;
+                TransacAmount.Text = "Amount : PHP " + latestTransaction.Amount;
             }
             else
             {
                 transacAct.Text = "Activity : None";
                 TransacTime.Text = "Time and Date : None";
-                TransacAmount.Text = "Amount : Php 0";
+                TransacAmount.Text = "Amount : PHP 0";
             }
         }
 
@@ -183,7 +201,7 @@ namespace FinalBlackJack
         private void loginButton_Click(object sender, EventArgs e)
         {
             homeUsername.Text = "Account: " + AccountData.usernames[AccountData.currentAccount];
-            homeBalance.Text = "Balance: Php " + AccountData.accountsBalance[AccountData.currentAccount].ToString("C2");
+            homeBalance.Text = "Balance: PHP " + AccountData.accountsBalance[AccountData.currentAccount].ToString("C2");
             string user = userLogin.Text.Trim();
             string pass = passwordLogin.Text;
 
@@ -209,11 +227,11 @@ namespace FinalBlackJack
                 MessageBox.Show("Login successful!");
 
                 homeUsername.Text = "User : " + usernameHolder;
-                homeBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+                homeBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
                 matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
                 bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
-                totalWinningsTxt.Text = "Winnings : Php " + accountWinnings.ToString();
-                walletBalance.Text = "Balance : Php " + accountBalanceHolder.ToString();
+                totalWinningsTxt.Text = "Winnings : PHP " + accountWinnings.ToString();
+                walletBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
                 winrateTxt.Text = "Winrate : " + accountWinrate.ToString("F2") + "%";
 
                 updateHistory();
@@ -921,12 +939,34 @@ namespace FinalBlackJack
 
         private void sideMenuPanel_Paint(object sender, PaintEventArgs e)
         {
+
         }
 
+        private bool wasWithdrawVisible = false;
         private void historyBtn_Click(object sender, EventArgs e)
         {
             updateHistory();
-            historyPanel.Visible = !historyPanel.Visible;
+
+            // If historyPanel is not visible yet (we're about to show it)
+            if (!historyPanel.Visible)
+            {
+                // Save current state of withdraw panel and hide it
+                wasWithdrawVisible = widthdrawXdepo.Visible;
+                widthdrawXdepo.Hide();
+                historyPanel.Visible = true;
+            }
+            else
+            {
+                // We're hiding historyPanel now
+                historyPanel.Visible = false;
+
+                // Restore withdraw panel visibility if it was previously open
+                if (wasWithdrawVisible)
+                {
+                    widthdrawXdepo.Show();
+                }
+            }
+
             historyPanel.BringToFront();
         }
 
@@ -938,6 +978,15 @@ namespace FinalBlackJack
         private void historyBtn_MouseLeave(object sender, EventArgs e)
         {
             historyBtn.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\history.png");
+        }
+
+        private void mainMenuForm_Load(object sender, EventArgs e)
+        {
+            // Example with validation:
+            if (AccountData.currentAccount >= 0 && AccountData.currentAccount < AccountData.usernames.Count)
+            {
+                UpdateStatsAfterGame();
+            }
         }
     }
 }

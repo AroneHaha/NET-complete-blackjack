@@ -26,7 +26,7 @@ namespace FinalBlackJack
             Stop(); 
 
             audioFile = new AudioFileReader(filePath);
-            audioFile.Volume = 0.0f;
+            audioFile.Volume = 0.1f;
             outputDevice = new WaveOutEvent();
             outputDevice.Init(audioFile);
             outputDevice.Play();

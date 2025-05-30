@@ -329,7 +329,7 @@ namespace FinalBlackJack
         private void matched()
         {
             roundLoserSound();
-            MessageBox.Show("Draw matched, returning cards.");
+            MessageBox.Show("Draw match, returning current bets.");
             roundOver = true;
             buyinBalance += currentBet;
             resetRound();
@@ -339,7 +339,7 @@ namespace FinalBlackJack
         private void matchedDouble()
         {
             roundLoserSound();
-            MessageBox.Show("Draw matched, returning cards.");
+            MessageBox.Show("Draw match, returning current bets.");
             roundOver = true;
             buyinBalance += currentBet;
             resetRound();
@@ -350,9 +350,6 @@ namespace FinalBlackJack
         {
             if (playerTotal == botTotal)
             {
-                roundLoserSound();
-                MessageBox.Show("Draw match!");
-                r_totalWinnings.Text = "Winnings : " + ingameWinnings.ToString();
                 matched();
             }
             else if ((playerTotal - 21) < (botTotal - 21))
@@ -378,9 +375,7 @@ namespace FinalBlackJack
         {
             if (playerTotal == botTotal)
             {
-                roundLoserSound();
-                MessageBox.Show("Draw match!, returning cards.");
-                buyinBalance += currentBet;
+
                 matchedDouble();
 
             }
@@ -1254,7 +1249,38 @@ namespace FinalBlackJack
 
                 playerReveal++;
                 dealerReveal++;
+                checkBlackJack();
                 displayValues();
+            }
+        }
+
+        private void checkBlackJack()
+        {
+            bool playerBlackjack = (playerReveal == 2 && playerTotal == 21);
+            bool dealerBlackjack = (dealerReveal == 2 && botTotal == 21);
+
+            if (playerBlackjack || dealerBlackjack)
+            {
+                rDealer2.Image = botHiddenCards[0];
+
+                if (playerBlackjack && dealerBlackjack)
+                {
+                    MessageBox.Show("Both got Blackjack! It's a tie.");
+                    buyinBalance += currentBet;
+                }
+                else if (playerBlackjack)
+                {
+                    MessageBox.Show("Blackjack! You win 1.5x your bet!");
+                    int winAmount = (int)((currentBet * 2) * 1.5); // ----- MULTIPLIER PAG INSTA BLACKJACK SA SIMULA
+                    buyinBalance += winAmount;
+                    ingameWinnings += winAmount;
+                    AccountData.totalWins[AccountData.currentAccount]++;
+                }
+                else if (dealerBlackjack)
+                {
+                    MessageBox.Show("Dealer got Blackjack. You lose.");
+                }
+
             }
         }
 
@@ -1350,6 +1376,14 @@ namespace FinalBlackJack
 
         private void returnBet_Click(object sender, EventArgs e)
         {
+            if (currentBet == 0)
+            {
+                startRound.BackColor = Color.DimGray;
+                startRound.Enabled = false;
+                MessageBox.Show("No active bet at the moment.");
+                return;
+            }
+
             buyinBalance += latestBet;
             currentBet -= latestBet;
             rBet.Text = "Round Bet : " + currentBet.ToString();
@@ -1358,6 +1392,8 @@ namespace FinalBlackJack
 
         private void returnAllBet_Click(object sender, EventArgs e)
         {
+            startRound.BackColor = Color.DimGray;
+            startRound.Enabled = false;
             buyinBalance += currentBet;
             currentBet = 0;
             rBet.Text = "Round Bet : 0";
@@ -1371,6 +1407,12 @@ namespace FinalBlackJack
 
         private void backButton_Click(object sender, EventArgs e)
         {
+            if (startRound.Enabled == true)
+            {
+                MessageBox.Show("You can't surrender while the round is in progress.");
+                return;
+            }
+
             surrenderPanel.Visible = !surrenderPanel.Visible;
 
         }
@@ -1382,6 +1424,7 @@ namespace FinalBlackJack
 
         private void yesButton_Click(object sender, EventArgs e)
         {
+            AccountData.accountsBalance[AccountData.currentAccount] -= buyinBalance;
             if (this.ParentForm is mainGameForm mainForm)
             {
                 mainForm.ReturnToCarousel();

@@ -193,13 +193,13 @@ namespace FinalBlackJack
 
         private void checkGameWinner()
         {
-            
+
             if (buyinBalance == 0 || buyinBalance < minBet)
             {
                 MessageBox.Show("You have no more balance left! Game Over.");
                 AccountData.accountsBalance[AccountData.currentAccount] -= (buyinHolder.buyIn[0] - buyinBalance);
-                AccountData.totalLosses[AccountData.currentAccount]++;
-                
+                AccountData.totalLosses[AccountData.currentAccount] += 1;
+
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -211,7 +211,7 @@ namespace FinalBlackJack
                 MessageBox.Show("Dealer have no more balance left! You won!.");
                 AccountData.accountsBalance[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
                 AccountData.totalWinnings[AccountData.currentAccount] += (buyinHolder.buyIn[0] - dealerBalance);
-                AccountData.totalWins[AccountData.currentAccount]++;
+                AccountData.totalWins[AccountData.currentAccount] += 1;
                 if (this.ParentForm is mainGameForm mainForm)
                 {
                     mainForm.ReturnToCarousel();
@@ -329,7 +329,7 @@ namespace FinalBlackJack
         private void matched()
         {
             roundLoserSound();
-            MessageBox.Show("Draw match, returning cards.");
+            MessageBox.Show("Draw match, returning current bets.");
             roundOver = true;
             buyinBalance += currentBet;
             resetRound();
@@ -339,7 +339,7 @@ namespace FinalBlackJack
         private void matchedDouble()
         {
             roundLoserSound();
-            MessageBox.Show("Draw match, returning cards.");
+            MessageBox.Show("Draw match, returning current bets.");
             roundOver = true;
             buyinBalance += currentBet;
             resetRound();
@@ -379,9 +379,6 @@ namespace FinalBlackJack
         {
             if (playerTotal == botTotal)
             {
-                roundLoserSound();
-                MessageBox.Show("Draw match, returning cards.");
-                buyinBalance += currentBet;
                 matchedDouble();
 
             }
@@ -667,7 +664,7 @@ namespace FinalBlackJack
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            
+
         }
 
         private void hitBtn_Click(object sender, EventArgs e)
@@ -762,7 +759,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -874,7 +871,7 @@ namespace FinalBlackJack
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 if (dealerReveal == 2)
                 {
@@ -989,6 +986,9 @@ namespace FinalBlackJack
             resetRound();
         }
 
+
+
+
         private void startRound_Click(object sender, EventArgs e)
         {
             if (currentBet == 0)
@@ -1003,15 +1003,11 @@ namespace FinalBlackJack
             drawCardsSound();
             actionsEnabled();
 
-            // Make the moving PictureBoxes visible (if not already)
             playerDraw1.Visible = true;
             playerDraw2.Visible = true;
-
             dealerDraw1.Visible = true;
             dealerDraw2.Visible = true;
 
-
-            // Start moving
             initialDraw.Enabled = true;
 
             botValue.Visible = false;
@@ -1023,7 +1019,6 @@ namespace FinalBlackJack
             roundStarted = true;
 
             startGameDialogue();
-
 
             while (playerReveal != 2 && dealerReveal != 2)
             {
@@ -1042,7 +1037,6 @@ namespace FinalBlackJack
                     rPlayer1.Image = playerCardImg;
                     botTotal += GetCardValue(botCardPath);
                     playerTotal += GetCardValue(playerCardPath);
-
                 }
                 else if (playerReveal == 1)
                 {
@@ -1052,14 +1046,46 @@ namespace FinalBlackJack
                     botHiddenCards[0] = bot2;
                     playerTotal += GetCardValue(playerCardPath);
                     botTotal += GetCardValue(botCardPath);
-
                 }
 
                 playerReveal++;
                 dealerReveal++;
+                checkBlackJack();
                 displayValues();
             }
+
         }
+
+        private void checkBlackJack()
+        {
+            bool playerBlackjack = (playerReveal == 2 && playerTotal == 21);
+            bool dealerBlackjack = (dealerReveal == 2 && botTotal == 21);
+
+            if (playerBlackjack || dealerBlackjack)
+            {
+                rDealer2.Image = botHiddenCards[0];
+
+                if (playerBlackjack && dealerBlackjack)
+                {
+                    MessageBox.Show("Both got Blackjack! It's a tie.");
+                    buyinBalance += currentBet;
+                }
+                else if (playerBlackjack)
+                {
+                    MessageBox.Show("Blackjack! You win 1.5x your bet!");
+                    int winAmount = (int)((currentBet * 2) * 1.5); // ----- MULTIPLIER PAG INSTA BLACKJACK SA SIMULA
+                    buyinBalance += winAmount;
+                    ingameWinnings += winAmount;
+                    AccountData.totalWins[AccountData.currentAccount]++;
+                }
+                else if (dealerBlackjack)
+                {
+                    MessageBox.Show("Dealer got Blackjack. You lose.");
+                }
+
+            }
+        }
+
 
         private void rPlayer1_Click(object sender, EventArgs e)
         {
@@ -1207,9 +1233,10 @@ namespace FinalBlackJack
 
         private void returnBet_Click(object sender, EventArgs e)
         {
-
             if (currentBet == 0)
             {
+                startRound.BackColor = Color.DimGray;
+                startRound.Enabled = false;
                 MessageBox.Show("No active bet at the moment.");
                 return;
             }
@@ -1222,6 +1249,10 @@ namespace FinalBlackJack
 
         private void returnAllBet_Click(object sender, EventArgs e)
         {
+            startRound.BackColor = Color.DimGray;
+            startRound.Enabled = false;
+            startRound.BackColor = Color.DimGray;
+            startRound.Enabled = false;
             buyinBalance += currentBet;
             currentBet = 0;
             rBet.Text = "Round Bet : 0";
@@ -1528,11 +1559,25 @@ namespace FinalBlackJack
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+
+            // Toggle button states
+            hitBtn.Enabled = true;
+            standBtn.Enabled = true;
+            doubleBtn.Enabled = true;
+            startRound.Enabled = true;
+
+            rChip50.Enabled = true;
+            rChip100.Enabled = true;
+            rChip250.Enabled = true;
+            rChip500.Enabled = true;
+            rChip1k.Enabled = true;
+            rChip2p5k.Enabled = true;
             surrenderPanel.Hide();
         }
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            AccountData.accountsBalance[AccountData.currentAccount] -= buyinBalance;
             if (this.ParentForm is mainGameForm mainForm)
             {
                 mainForm.ReturnToCarousel();
@@ -1639,6 +1684,20 @@ namespace FinalBlackJack
         private void rChip50_MouseLeave(object sender, EventArgs e)
         {
             rChip50.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 1\50Chip.png");
+        }
+
+        private bool surrenderOn = false;
+        private bool btnState = true;
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+            if(startRound.Enabled == true)
+            {
+                MessageBox.Show("You can't surrender while the round is in progress.");
+                return;
+            }
+
+            surrenderPanel.Visible = !surrenderPanel.Visible;
         }
     }
 }

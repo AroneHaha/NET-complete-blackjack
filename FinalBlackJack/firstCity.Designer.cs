@@ -31,6 +31,7 @@
             components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(firstCity));
             panel1 = new Panel();
+            button1 = new Button();
             surrenderPanel = new Panel();
             label12 = new Label();
             button2 = new Button();
@@ -49,7 +50,6 @@
             playerValue = new Label();
             botValue = new Label();
             currentRound = new Label();
-            backButton = new Button();
             rChip2p5k = new PictureBox();
             rChip1k = new PictureBox();
             rChip500 = new PictureBox();
@@ -114,6 +114,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(surrenderPanel);
             panel1.Controls.Add(returnAllBet);
             panel1.Controls.Add(returnBet);
@@ -129,7 +130,6 @@
             panel1.Controls.Add(playerValue);
             panel1.Controls.Add(botValue);
             panel1.Controls.Add(currentRound);
-            panel1.Controls.Add(backButton);
             panel1.Controls.Add(rChip2p5k);
             panel1.Controls.Add(rChip1k);
             panel1.Controls.Add(rChip500);
@@ -159,13 +159,25 @@
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Red;
+            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.Location = new Point(16, 50);
+            button1.Name = "button1";
+            button1.Size = new Size(97, 34);
+            button1.TabIndex = 41;
+            button1.Text = "Leave";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // surrenderPanel
             // 
             surrenderPanel.BackColor = Color.DarkGreen;
             surrenderPanel.Controls.Add(label12);
             surrenderPanel.Controls.Add(button2);
             surrenderPanel.Controls.Add(CancelButton);
-            surrenderPanel.Location = new Point(321, 209);
+            surrenderPanel.Location = new Point(356, 217);
             surrenderPanel.Name = "surrenderPanel";
             surrenderPanel.Size = new Size(328, 195);
             surrenderPanel.TabIndex = 40;
@@ -176,7 +188,7 @@
             label12.AutoSize = true;
             label12.Font = new Font("Haettenschweiler", 45F);
             label12.ForeColor = Color.WhiteSmoke;
-            label12.Location = new Point(46, 50);
+            label12.Location = new Point(46, 40);
             label12.Name = "label12";
             label12.Size = new Size(239, 62);
             label12.TabIndex = 6;
@@ -184,24 +196,26 @@
             // 
             // button2
             // 
+            button2.BackColor = Color.Red;
             button2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            button2.Location = new Point(165, 131);
+            button2.Location = new Point(170, 129);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(93, 34);
             button2.TabIndex = 2;
             button2.Text = "Concede";
-            button2.UseVisualStyleBackColor = true;
+            button2.UseVisualStyleBackColor = false;
             button2.Click += button2_Click_1;
             // 
             // CancelButton
             // 
+            CancelButton.BackColor = Color.LightGray;
             CancelButton.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            CancelButton.Location = new Point(86, 131);
+            CancelButton.Location = new Point(67, 129);
             CancelButton.Name = "CancelButton";
-            CancelButton.Size = new Size(75, 23);
+            CancelButton.Size = new Size(93, 34);
             CancelButton.TabIndex = 1;
             CancelButton.Text = "Cancel";
-            CancelButton.UseVisualStyleBackColor = true;
+            CancelButton.UseVisualStyleBackColor = false;
             CancelButton.Click += CancelButton_Click;
             // 
             // returnAllBet
@@ -359,16 +373,6 @@
             currentRound.Size = new Size(90, 27);
             currentRound.TabIndex = 25;
             currentRound.Text = "Round : ";
-            // 
-            // backButton
-            // 
-            backButton.Location = new Point(17, 52);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(75, 23);
-            backButton.TabIndex = 24;
-            backButton.Text = " ";
-            backButton.UseVisualStyleBackColor = true;
-            backButton.Click += backButton_Click_1;
             // 
             // rChip2p5k
             // 
@@ -748,7 +752,6 @@
         private Label playerValue;
         private Label botValue;
         private Label currentRound;
-        private Button backButton;
         private PictureBox rChip2p5k;
         private PictureBox rChip1k;
         private PictureBox rChip500;
@@ -783,5 +786,6 @@
         private Button button2;
         private Button CancelButton;
         private Label label12;
+        private Button button1;
     }
 }
