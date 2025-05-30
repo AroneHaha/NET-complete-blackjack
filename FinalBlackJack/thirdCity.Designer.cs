@@ -250,11 +250,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.Font = new Font("Haettenschweiler", 40F);
             label12.ForeColor = Color.WhiteSmoke;
-            label12.Location = new Point(47, 42);
+            label12.Location = new Point(58, 38);
             label12.Name = "label12";
-            label12.Size = new Size(239, 62);
+            label12.Size = new Size(216, 56);
             label12.TabIndex = 4;
             label12.Text = "Surrender?";
             // 
@@ -451,6 +451,7 @@
             // 
             backButton.BackColor = Color.Red;
             backButton.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            backButton.ForeColor = SystemColors.ButtonHighlight;
             backButton.Location = new Point(8, 45);
             backButton.Name = "backButton";
             backButton.Size = new Size(97, 34);

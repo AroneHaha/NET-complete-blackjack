@@ -77,14 +77,14 @@
             playNowButton.BackColor = Color.Transparent;
             playNowButton.Cursor = Cursors.Hand;
             playNowButton.FlatAppearance.BorderSize = 0;
-            playNowButton.FlatAppearance.MouseDownBackColor = Color.PaleGreen;
-            playNowButton.FlatAppearance.MouseOverBackColor = Color.PaleGreen;
+            playNowButton.FlatAppearance.MouseDownBackColor = Color.Green;
+            playNowButton.FlatAppearance.MouseOverBackColor = Color.Green;
             playNowButton.FlatStyle = FlatStyle.Flat;
             playNowButton.Font = new Font("Haettenschweiler", 35F);
             playNowButton.ForeColor = Color.White;
-            playNowButton.Location = new Point(97, 282);
+            playNowButton.Location = new Point(97, 280);
             playNowButton.Name = "playNowButton";
-            playNowButton.Size = new Size(215, 51);
+            playNowButton.Size = new Size(215, 68);
             playNowButton.TabIndex = 1;
             playNowButton.Text = "PLAY NOW";
             playNowButton.UseVisualStyleBackColor = false;
@@ -101,7 +101,7 @@
             exitButton.FlatStyle = FlatStyle.Flat;
             exitButton.Font = new Font("Haettenschweiler", 20.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
             exitButton.ForeColor = SystemColors.ControlLight;
-            exitButton.Location = new Point(153, 354);
+            exitButton.Location = new Point(150, 354);
             exitButton.Name = "exitButton";
             exitButton.Size = new Size(108, 35);
             exitButton.TabIndex = 2;
@@ -133,7 +133,6 @@
             loadingText2.Size = new Size(115, 23);
             loadingText2.TabIndex = 2;
             loadingText2.Text = "Loading Assets...";
-            loadingText2.Click += loadingText2_Click;
             // 
             // loadingBar
             // 
@@ -141,7 +140,6 @@
             loadingBar.Name = "loadingBar";
             loadingBar.Size = new Size(476, 23);
             loadingBar.TabIndex = 1;
-            loadingBar.Click += loadingBar_Click;
             // 
             // form1Panel
             // 
@@ -157,7 +155,6 @@
             form1Panel.Name = "form1Panel";
             form1Panel.Size = new Size(984, 636);
             form1Panel.TabIndex = 4;
-            form1Panel.Paint += form1Panel_Paint;
             // 
             // termsPanel
             // 
@@ -231,7 +228,7 @@
             label10.AutoSize = true;
             label10.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             label10.ForeColor = Color.Black;
-            label10.Location = new Point(137, 774);
+            label10.Location = new Point(144, 774);
             label10.Name = "label10";
             label10.Size = new Size(85, 28);
             label10.TabIndex = 8;
@@ -254,7 +251,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(77, 577);
+            label8.Location = new Point(80, 577);
             label8.Name = "label8";
             label8.Size = new Size(217, 28);
             label8.TabIndex = 6;
@@ -277,7 +274,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(104, 398);
+            label6.Location = new Point(106, 398);
             label6.Name = "label6";
             label6.Size = new Size(171, 28);
             label6.TabIndex = 4;
@@ -300,7 +297,7 @@
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             label4.ForeColor = Color.Black;
-            label4.Location = new Point(128, 269);
+            label4.Location = new Point(135, 269);
             label4.Name = "label4";
             label4.Size = new Size(106, 28);
             label4.TabIndex = 2;
@@ -323,7 +320,7 @@
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15F, FontStyle.Bold);
             label1.ForeColor = Color.Black;
-            label1.Location = new Point(78, 157);
+            label1.Location = new Point(85, 157);
             label1.Name = "label1";
             label1.Size = new Size(209, 28);
             label1.TabIndex = 0;
@@ -348,7 +345,7 @@
             declineButton.Location = new Point(71, 452);
             declineButton.Name = "declineButton";
             declineButton.Size = new Size(158, 39);
-            declineButton.TabIndex = 0;
+            declineButton.TabIndex = 1;
             declineButton.Text = "Decline";
             declineButton.UseVisualStyleBackColor = false;
             declineButton.Click += declineButton_Click;

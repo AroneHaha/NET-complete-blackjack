@@ -224,6 +224,7 @@ namespace FinalBlackJack
             }
         }
 
+
         private void balanceWinUpdate()
         {
             ingameWinnings += currentBet;
@@ -665,6 +666,14 @@ namespace FinalBlackJack
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private homesounds clickSound;
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
         }
 
         private void hitBtn_Click(object sender, EventArgs e)
@@ -1559,7 +1568,7 @@ namespace FinalBlackJack
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
-
+            clicking();
             // Toggle button states
             hitBtn.Enabled = true;
             standBtn.Enabled = true;
@@ -1577,6 +1586,7 @@ namespace FinalBlackJack
 
         private void button2_Click_1(object sender, EventArgs e)
         {
+            clicking();
             AccountData.accountsBalance[AccountData.currentAccount] -= buyinBalance;
             if (this.ParentForm is mainGameForm mainForm)
             {
@@ -1690,8 +1700,8 @@ namespace FinalBlackJack
         private bool btnState = true;
         private void button1_Click(object sender, EventArgs e)
         {
-
-            if(startRound.Enabled == true)
+            clicking();
+            if (startRound.Enabled == true)
             {
                 MessageBox.Show("You can't surrender while the round is in progress.");
                 return;

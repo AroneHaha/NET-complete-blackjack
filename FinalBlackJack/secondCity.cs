@@ -1407,23 +1407,18 @@ namespace FinalBlackJack
 
         private void backButton_Click(object sender, EventArgs e)
         {
-            if (startRound.Enabled == true)
-            {
-                MessageBox.Show("You can't surrender while the round is in progress.");
-                return;
-            }
-
-            surrenderPanel.Visible = !surrenderPanel.Visible;
 
         }
 
         private void CancelButton_Click(object sender, EventArgs e)
         {
+            clicking();
             surrenderPanel.Hide();
         }
 
         private void yesButton_Click(object sender, EventArgs e)
         {
+            clicking();
             AccountData.accountsBalance[AccountData.currentAccount] -= buyinBalance;
             if (this.ParentForm is mainGameForm mainForm)
             {
@@ -1489,6 +1484,26 @@ namespace FinalBlackJack
         private void rChip30k_MouseLeave(object sender, EventArgs e)
         {
             r25m.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\chips\TABLE 3\25m.png");
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            clicking();
+            if (startRound.Enabled == true)
+            {
+                MessageBox.Show("You can't surrender while the round is in progress.");
+                return;
+            }
+
+            surrenderPanel.Visible = !surrenderPanel.Visible;
+        }
+
+        private homesounds clickSound;
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
         }
     }
 }

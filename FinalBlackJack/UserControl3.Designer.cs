@@ -49,8 +49,8 @@
             // confirmButton
             // 
             confirmButton.BackColor = Color.LimeGreen;
-            confirmButton.Font = new Font("Corbel", 14F);
-            confirmButton.ForeColor = Color.Black;
+            confirmButton.Font = new Font("Segoe UI", 12F);
+            confirmButton.ForeColor = Color.Transparent;
             confirmButton.Location = new Point(419, 235);
             confirmButton.Name = "confirmButton";
             confirmButton.Size = new Size(116, 48);
@@ -62,8 +62,8 @@
             // cancelButton
             // 
             cancelButton.BackColor = Color.Red;
-            cancelButton.Font = new Font("Corbel", 14F);
-            cancelButton.ForeColor = Color.Black;
+            cancelButton.Font = new Font("Segoe UI", 12F);
+            cancelButton.ForeColor = Color.Transparent;
             cancelButton.Location = new Point(304, 235);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(109, 48);
@@ -82,6 +82,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(838, 456);
             panel1.TabIndex = 4;
+            panel1.Paint += panel1_Paint;
             // 
             // thirdmainMenu
             // 

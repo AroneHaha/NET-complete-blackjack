@@ -59,42 +59,43 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Haettenschweiler", 40F);
-            label1.Location = new Point(291, 40);
+            label1.Font = new Font("Haettenschweiler", 45F);
+            label1.Location = new Point(284, 30);
             label1.Name = "label1";
-            label1.Size = new Size(277, 56);
+            label1.Size = new Size(306, 62);
             label1.TabIndex = 0;
             label1.Text = "GAME SETTINGS";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Haettenschweiler", 21F);
-            label2.Location = new Point(307, 133);
+            label2.Font = new Font("Haettenschweiler", 23F);
+            label2.Location = new Point(295, 116);
             label2.Name = "label2";
-            label2.Size = new Size(254, 29);
+            label2.Size = new Size(282, 33);
             label2.TabIndex = 1;
             label2.Text = "Change Account Information";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Font = new Font("Haettenschweiler", 21F);
-            label3.Location = new Point(313, 327);
+            label3.Font = new Font("Haettenschweiler", 23F);
+            label3.Location = new Point(305, 314);
             label3.Name = "label3";
-            label3.Size = new Size(227, 29);
+            label3.Size = new Size(253, 33);
             label3.TabIndex = 2;
             label3.Text = "Background Music (BGM)";
             // 
             // soundSaveBtn
             // 
-            soundSaveBtn.BackColor = Color.Green;
-            soundSaveBtn.Font = new Font("Corbel", 15F);
-            soundSaveBtn.Location = new Point(367, 418);
+            soundSaveBtn.BackColor = Color.DarkGreen;
+            soundSaveBtn.Font = new Font("Segoe UI", 12F);
+            soundSaveBtn.ForeColor = SystemColors.ControlLightLight;
+            soundSaveBtn.Location = new Point(372, 414);
             soundSaveBtn.Name = "soundSaveBtn";
-            soundSaveBtn.Size = new Size(119, 39);
+            soundSaveBtn.Size = new Size(109, 39);
             soundSaveBtn.TabIndex = 3;
-            soundSaveBtn.Text = "Save Changes";
+            soundSaveBtn.Text = "Save";
             soundSaveBtn.UseVisualStyleBackColor = false;
             soundSaveBtn.Click += saveButton_Click;
             // 
@@ -117,6 +118,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(851, 488);
             panel1.TabIndex = 5;
+            panel1.Paint += panel1_Paint_1;
             // 
             // changeInfo
             // 
@@ -133,9 +135,9 @@
             changeInfo.Controls.Add(codeButton);
             changeInfo.Controls.Add(cancelButton);
             changeInfo.Controls.Add(saveBtn);
-            changeInfo.Location = new Point(125, 40);
+            changeInfo.Location = new Point(124, 30);
             changeInfo.Name = "changeInfo";
-            changeInfo.Size = new Size(622, 417);
+            changeInfo.Size = new Size(622, 172);
             changeInfo.TabIndex = 8;
             // 
             // label7
@@ -171,7 +173,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Haettenschweiler", 45F);
-            label5.Location = new Point(50, 30);
+            label5.Location = new Point(48, 30);
             label5.Name = "label5";
             label5.Size = new Size(541, 62);
             label5.TabIndex = 8;
@@ -263,7 +265,8 @@
             // 
             changePasswordButton.BackColor = Color.Red;
             changePasswordButton.Font = new Font("Microsoft Sans Serif", 10F);
-            changePasswordButton.Location = new Point(537, 223);
+            changePasswordButton.ForeColor = SystemColors.ControlLightLight;
+            changePasswordButton.Location = new Point(528, 208);
             changePasswordButton.Name = "changePasswordButton";
             changePasswordButton.Size = new Size(91, 32);
             changePasswordButton.TabIndex = 10;
@@ -275,7 +278,7 @@
             // 
             settingsPassword.AutoSize = true;
             settingsPassword.Font = new Font("Segoe UI", 14.25F);
-            settingsPassword.Location = new Point(278, 228);
+            settingsPassword.Location = new Point(269, 213);
             settingsPassword.Name = "settingsPassword";
             settingsPassword.Size = new Size(233, 25);
             settingsPassword.TabIndex = 7;
@@ -285,7 +288,7 @@
             // 
             settingsUsername.AutoSize = true;
             settingsUsername.Font = new Font("Segoe UI", 14.25F);
-            settingsUsername.Location = new Point(279, 183);
+            settingsUsername.Location = new Point(270, 168);
             settingsUsername.Name = "settingsUsername";
             settingsUsername.Size = new Size(106, 25);
             settingsUsername.TabIndex = 6;
@@ -296,7 +299,7 @@
             musicOn.AutoSize = true;
             musicOn.Checked = true;
             musicOn.Font = new Font("Segoe UI", 14.25F);
-            musicOn.Location = new Point(431, 367);
+            musicOn.Location = new Point(431, 359);
             musicOn.Name = "musicOn";
             musicOn.Size = new Size(87, 29);
             musicOn.TabIndex = 5;
@@ -308,7 +311,7 @@
             // 
             musicOff.AutoSize = true;
             musicOff.Font = new Font("Segoe UI", 14.25F);
-            musicOff.Location = new Point(333, 367);
+            musicOff.Location = new Point(333, 359);
             musicOff.Name = "musicOff";
             musicOff.Size = new Size(92, 29);
             musicOff.TabIndex = 4;
@@ -319,7 +322,7 @@
             // 
             settingsEmail.AutoSize = true;
             settingsEmail.Font = new Font("Segoe UI", 14.25F);
-            settingsEmail.Location = new Point(279, 272);
+            settingsEmail.Location = new Point(270, 257);
             settingsEmail.Name = "settingsEmail";
             settingsEmail.Size = new Size(72, 25);
             settingsEmail.TabIndex = 12;

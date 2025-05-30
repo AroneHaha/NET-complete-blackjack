@@ -14,7 +14,7 @@ namespace FinalBlackJack
 {
     public partial class secondMainMenu : UserControl
     {
-
+        private homesounds clickSound;
         public secondMainMenu()
         {
             InitializeComponent();
@@ -29,6 +29,7 @@ namespace FinalBlackJack
 
         private void saveButton_Click(object sender, EventArgs e)
         {
+            clicking();
             if (musicOff.Checked)
             {
                 AudioManager.BackgroundMusic?.Pause();
@@ -37,6 +38,19 @@ namespace FinalBlackJack
             {
                 AudioManager.BackgroundMusic?.Resume();
             }
+        }
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+
+        private void homenav()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\homenav.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -61,17 +75,20 @@ namespace FinalBlackJack
 
         private void changePasswordButton_Click(object sender, EventArgs e)
         {
+            clicking();
             changeInfo.Show();
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
         {
+            clicking();
             changeInfo.Hide();
         }
 
         private bool isVerifSent = false;
         private void saveBtn_Click(object sender, EventArgs e)
         {
+            clicking();
             if (changeOldPass.Text != AccountData.passwords[AccountData.currentAccount])
             {
                 MessageBox.Show("Your input doesn't match your current password.");
@@ -96,11 +113,12 @@ namespace FinalBlackJack
                 return;
             }
 
-            if(changeVerif.Text != verifCode)
+            if (changeVerif.Text != verifCode)
             {
                 MessageBox.Show("Incorrect verification code. Please try again.");
                 return;
             }
+
 
             AccountData.passwords[AccountData.currentAccount] = changeNewPass.Text;
             MessageBox.Show("Your password has been successfully changed.");
@@ -120,6 +138,7 @@ namespace FinalBlackJack
         string verifCode = "";
         private void codeButton_Click(object sender, EventArgs e)
         {
+            homenav();
             Random otp = new Random();
 
             try
@@ -149,6 +168,11 @@ namespace FinalBlackJack
         }
 
         private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint_1(object sender, PaintEventArgs e)
         {
 
         }

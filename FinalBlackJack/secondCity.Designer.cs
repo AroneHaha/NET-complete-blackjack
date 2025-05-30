@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(hongkongPanel));
             exitButton = new Button();
             panel1 = new Panel();
+            button1 = new Button();
             surrenderPanel = new Panel();
             label12 = new Label();
             yesButton = new Button();
@@ -50,7 +51,6 @@
             playerValue = new Label();
             botValue = new Label();
             currentRound = new Label();
-            backButton = new Button();
             r25m = new PictureBox();
             r10m = new PictureBox();
             r5m = new PictureBox();
@@ -125,6 +125,7 @@
             panel1.BackColor = Color.Transparent;
             panel1.BackgroundImage = (Image)resources.GetObject("panel1.BackgroundImage");
             panel1.BackgroundImageLayout = ImageLayout.Stretch;
+            panel1.Controls.Add(button1);
             panel1.Controls.Add(surrenderPanel);
             panel1.Controls.Add(dealerDialogue);
             panel1.Controls.Add(returnAllBet);
@@ -140,7 +141,6 @@
             panel1.Controls.Add(playerValue);
             panel1.Controls.Add(botValue);
             panel1.Controls.Add(currentRound);
-            panel1.Controls.Add(backButton);
             panel1.Controls.Add(r25m);
             panel1.Controls.Add(r10m);
             panel1.Controls.Add(r5m);
@@ -170,6 +170,19 @@
             panel1.TabIndex = 9;
             panel1.Paint += panel1_Paint;
             // 
+            // button1
+            // 
+            button1.BackColor = Color.Red;
+            button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ControlLightLight;
+            button1.Location = new Point(4, 64);
+            button1.Name = "button1";
+            button1.Size = new Size(97, 34);
+            button1.TabIndex = 42;
+            button1.Text = "Leave";
+            button1.UseVisualStyleBackColor = false;
+            button1.Click += button1_Click;
+            // 
             // surrenderPanel
             // 
             surrenderPanel.BackColor = Color.DodgerBlue;
@@ -186,11 +199,11 @@
             // 
             label12.AutoSize = true;
             label12.FlatStyle = FlatStyle.Popup;
-            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.Font = new Font("Haettenschweiler", 40F);
             label12.ForeColor = Color.WhiteSmoke;
-            label12.Location = new Point(46, 44);
+            label12.Location = new Point(56, 40);
             label12.Name = "label12";
-            label12.Size = new Size(239, 62);
+            label12.Size = new Size(216, 56);
             label12.TabIndex = 5;
             label12.Text = "Surrender?";
             // 
@@ -373,16 +386,6 @@
             currentRound.Size = new Size(90, 27);
             currentRound.TabIndex = 25;
             currentRound.Text = "Round : ";
-            // 
-            // backButton
-            // 
-            backButton.Location = new Point(14, 67);
-            backButton.Name = "backButton";
-            backButton.Size = new Size(75, 23);
-            backButton.TabIndex = 24;
-            backButton.Text = "Surrender";
-            backButton.UseVisualStyleBackColor = true;
-            backButton.Click += backButton_Click;
             // 
             // r25m
             // 
@@ -766,7 +769,6 @@
         private Label playerValue;
         private Label botValue;
         private Label currentRound;
-        private Button backButton;
         private PictureBox r25m;
         private PictureBox r10m;
         private PictureBox r5m;
@@ -803,5 +805,6 @@
         private Button yesButton;
         private Button CancelButton;
         private Label label12;
+        private Button button1;
     }
 }

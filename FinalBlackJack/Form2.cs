@@ -27,6 +27,7 @@ namespace FinalBlackJack
 
         public string walletChoice = "";
         public string historyAct = "";
+        public int targetAccIndex = 0;
 
         private homesounds clickSound;
 
@@ -111,7 +112,7 @@ namespace FinalBlackJack
             confirmPanel.Hide();
         }
 
-        public void RefreshAccountData()
+        public void RefreshAccountData() // ----------------------- UPDATE ACCOUNT EVERY LOG -------------------------------------------------
         {
             if (AccountData.currentAccount < 0 || AccountData.currentAccount >= AccountData.usernames.Count)
             {
@@ -128,6 +129,7 @@ namespace FinalBlackJack
             emailHolder = AccountData.emails[accountIndex];
             accountBalanceHolder = AccountData.accountsBalance[accountIndex];
 
+
             int wins = AccountData.totalWins[accountIndex];
             int losses = AccountData.totalLosses[accountIndex];
             int totalGames = wins + losses;
@@ -136,16 +138,20 @@ namespace FinalBlackJack
             accountBustCount = AccountData.bustCount[accountIndex];
             accountWinnings = AccountData.totalWinnings[accountIndex];
 
+
             accountWinrate = totalGames > 0 ? Math.Round((double)wins / totalGames * 100, 2) : 0.0;
         }
 
-        // New method to update stats and UI after a game
-        public void UpdateStatsAfterGame()
+        public void UpdateStatsAfterGame() // --------------------------------------- UPDATE STATS -------------------------------------------------------
         {
 
             RefreshAccountData();
             homeUsername.Text = "User : " + usernameHolder;
             homeBalance.Text = "Balance : PHP " + accountBalanceHolder.ToString();
+            userTxt.Text = "User : " + usernameHolder;
+            balanceTxt.Text = "Balance : PHP " + accountBalanceHolder.ToString();
+            winsTxt.Text = "Wins : " + AccountData.totalWins[AccountData.currentAccount].ToString();
+            lossesTxt.Text = "Losses : " + AccountData.totalLosses[AccountData.currentAccount].ToString();
             matchesTxt.Text = "Matches : " + accountTotalMatches.ToString();
             bustTxt.Text = "Bust Count : " + accountBustCount.ToString();
             totalWinningsTxt.Text = "Winnings : PHP " + accountWinnings.ToString();
@@ -349,54 +355,6 @@ namespace FinalBlackJack
             profilePanel.Hide();
         }
 
-        private void userNameLoginTextbox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void passwordLoginTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void rememberCheckBox_CheckedChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void usernameRegisTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void passwordRegisTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void confirmPasswordTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void ageNumber_ValueChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void emailTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void verificationTextBox_TextChanged(object sender, EventArgs e)
-        {
-        }
-
-        private void verificationButton_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void firstmainMenuPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void mainMenuPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         string verifCode = "";
         private void profileButton_Click(object sender, EventArgs e)
         {
@@ -598,7 +556,7 @@ namespace FinalBlackJack
             walletPanel.Visible = !walletPanel.Visible;
             if (walletPanel.Visible)
             {
-                
+
                 walletPanel.BringToFront();
             }
         }
@@ -623,47 +581,38 @@ namespace FinalBlackJack
 
         private void confirmButton_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrWhiteSpace(walletAmount.Text))
+            {
+                MessageBox.Show("Please enter an amount.");
+                return;
+            }
+
+            if (!decimal.TryParse(walletAmount.Text, out decimal amount))
+            {
+                MessageBox.Show("Wallet amount must be a valid number.");
+                walletAmount.Clear();
+                return;
+            }
+
+            if (amount < 0)
+            {
+                MessageBox.Show("Amount cannot be negative.");
+                walletAmount.Clear();
+                return;
+            }
             clicking();
             confirmPanel.Show();
         }
 
         private void closeButton_Click(object sender, EventArgs e)
         {
+            homenav();
             widthdrawXdepo.Hide();
         }
 
         private void closeBtn_Click(object sender, EventArgs e)
         {
             walletPanel.Hide();
-        }
-
-        private void walletPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void lossTxt_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void navBarPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void homeUsername_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void matchesTxt_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void secondmainMenuPanel_Paint(object sender, PaintEventArgs e)
-        {
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)
@@ -706,10 +655,6 @@ namespace FinalBlackJack
         private void navBar_MouseLeave(object sender, EventArgs e)
         {
             navBar.Image = Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\bar real.png");
-        }
-
-        private void walletAmount_TextChanged(object sender, EventArgs e)
-        {
         }
 
         private void walletConfirmPassword_Click(object sender, EventArgs e)
@@ -768,14 +713,6 @@ namespace FinalBlackJack
             }
         }
 
-        private void label2_Click(object sender, EventArgs e)
-        {
-        }
-
-        private void loginPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
         private void historyButton_Click(object sender, EventArgs e)
         {
             historyPanel.Visible = !historyPanel.Visible;
@@ -783,6 +720,7 @@ namespace FinalBlackJack
 
         private void closeHistory_Click(object sender, EventArgs e)
         {
+            clicking();
             historyPanel.Hide();
         }
 
@@ -827,14 +765,6 @@ namespace FinalBlackJack
             Application.Exit();
         }
 
-        private void changePassPanel_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label21_Click(object sender, EventArgs e)
-        {
-        }
-
         private void saveBtn_Click(object sender, EventArgs e)
         {
             if (changeConfPw.Text != changePw.Text)
@@ -854,7 +784,7 @@ namespace FinalBlackJack
             }
 
             MessageBox.Show("Your account has been successfully retrieved.");
-            AccountData.passwords[AccountData.currentAccount] = changePw.Text;
+            AccountData.passwords[targetAccIndex] = changePw.Text;
 
             changePw.Clear();
             changeConfPw.Clear();
@@ -863,6 +793,7 @@ namespace FinalBlackJack
             changePassPanel.Visible = false;
             loginPanel.Visible = true;
             sidePic.Visible = true;
+            targetAccIndex = -1;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -890,6 +821,7 @@ namespace FinalBlackJack
             Random otp = new Random();
             try
             {
+                targetAccIndex = AccountData.usernames.IndexOf(forgotUsername.Text);
                 forgotPasswordCode = otp.Next(100000, 1000000).ToString(); // 6-digit OTP
                 string verifLink = "markaronedc@gmail.com"; // NEED PALITAN NG NEW GMAIL
                 string pass = "xogd neyn kdez ovts"; // GMAIL KEYPASS FOR VERIF --- markaronedc@gmail.com keypass    
@@ -897,9 +829,9 @@ namespace FinalBlackJack
                 SmtpClient sc = new SmtpClient("smtp.gmail.com");
 
                 mm.From = new MailAddress(verifLink);
-                mm.To.Add(AccountData.emails[AccountData.currentAccount]);
+                mm.To.Add(AccountData.emails[targetAccIndex]);
                 mm.Subject = "BlackJack Deluxe: Lost Account Password";
-                mm.Body = "Hi " + AccountData.usernames[AccountData.currentAccount] + ",\r\n\r\nIt seems like you're having a trouble with logging in your account and requested for Account Recovery.\r\nTo proceed with resolving the issue, please use the One-Time Password (OTP) below to complete the process:\r\n\r\n🔐 OTP Code: " + forgotPasswordCode;
+                mm.Body = "Hi " + AccountData.usernames[targetAccIndex] + ",\r\n\r\nIt seems like you're having a trouble with logging in your account and requested for Account Recovery.\r\nTo proceed with resolving the issue, please use the One-Time Password (OTP) below to complete the process:\r\n\r\n🔐 OTP Code: " + forgotPasswordCode;
 
                 sc.Port = 587;
                 sc.Credentials = new System.Net.NetworkCredential(verifLink, pass);
@@ -914,6 +846,7 @@ namespace FinalBlackJack
                 MessageBox.Show(ex.Message);
             }
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {

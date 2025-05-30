@@ -163,6 +163,7 @@
             // 
             button1.BackColor = Color.Red;
             button1.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            button1.ForeColor = SystemColors.ControlLightLight;
             button1.Location = new Point(16, 50);
             button1.Name = "button1";
             button1.Size = new Size(97, 34);
@@ -177,7 +178,7 @@
             surrenderPanel.Controls.Add(label12);
             surrenderPanel.Controls.Add(button2);
             surrenderPanel.Controls.Add(CancelButton);
-            surrenderPanel.Location = new Point(356, 217);
+            surrenderPanel.Location = new Point(324, 215);
             surrenderPanel.Name = "surrenderPanel";
             surrenderPanel.Size = new Size(328, 195);
             surrenderPanel.TabIndex = 40;
@@ -186,11 +187,11 @@
             // label12
             // 
             label12.AutoSize = true;
-            label12.Font = new Font("Haettenschweiler", 45F);
+            label12.Font = new Font("Haettenschweiler", 40F);
             label12.ForeColor = Color.WhiteSmoke;
-            label12.Location = new Point(46, 40);
+            label12.Location = new Point(57, 37);
             label12.Name = "label12";
-            label12.Size = new Size(239, 62);
+            label12.Size = new Size(216, 56);
             label12.TabIndex = 6;
             label12.Text = "Surrender?";
             // 
@@ -379,7 +380,7 @@
             rChip2p5k.BackColor = Color.Transparent;
             rChip2p5k.Cursor = Cursors.Hand;
             rChip2p5k.Image = (Image)resources.GetObject("rChip2p5k.Image");
-            rChip2p5k.Location = new Point(106, 383);
+            rChip2p5k.Location = new Point(125, 383);
             rChip2p5k.Name = "rChip2p5k";
             rChip2p5k.Size = new Size(63, 60);
             rChip2p5k.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -394,7 +395,7 @@
             rChip1k.BackColor = Color.Transparent;
             rChip1k.Cursor = Cursors.Hand;
             rChip1k.Image = (Image)resources.GetObject("rChip1k.Image");
-            rChip1k.Location = new Point(181, 408);
+            rChip1k.Location = new Point(194, 408);
             rChip1k.Name = "rChip1k";
             rChip1k.Size = new Size(63, 60);
             rChip1k.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -409,7 +410,7 @@
             rChip500.BackColor = Color.Transparent;
             rChip500.Cursor = Cursors.Hand;
             rChip500.Image = (Image)resources.GetObject("rChip500.Image");
-            rChip500.Location = new Point(256, 411);
+            rChip500.Location = new Point(264, 411);
             rChip500.Name = "rChip500";
             rChip500.Size = new Size(63, 60);
             rChip500.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -424,7 +425,7 @@
             rChip250.BackColor = Color.Transparent;
             rChip250.Cursor = Cursors.Hand;
             rChip250.Image = (Image)resources.GetObject("rChip250.Image");
-            rChip250.Location = new Point(106, 452);
+            rChip250.Location = new Point(125, 452);
             rChip250.Name = "rChip250";
             rChip250.Size = new Size(63, 60);
             rChip250.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -439,7 +440,7 @@
             rChip50.BackColor = Color.Transparent;
             rChip50.Cursor = Cursors.Hand;
             rChip50.Image = (Image)resources.GetObject("rChip50.Image");
-            rChip50.Location = new Point(256, 480);
+            rChip50.Location = new Point(264, 480);
             rChip50.Name = "rChip50";
             rChip50.Size = new Size(63, 60);
             rChip50.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -455,7 +456,7 @@
             rChip100.BackColor = Color.Transparent;
             rChip100.Cursor = Cursors.Hand;
             rChip100.Image = (Image)resources.GetObject("rChip100.Image");
-            rChip100.Location = new Point(181, 479);
+            rChip100.Location = new Point(194, 479);
             rChip100.Name = "rChip100";
             rChip100.Size = new Size(63, 60);
             rChip100.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -506,7 +507,7 @@
             startRound.FlatAppearance.BorderSize = 0;
             startRound.Font = new Font("Corbel", 12F, FontStyle.Bold);
             startRound.ForeColor = SystemColors.ButtonHighlight;
-            startRound.Location = new Point(411, 585);
+            startRound.Location = new Point(411, 588);
             startRound.Name = "startRound";
             startRound.Size = new Size(147, 43);
             startRound.TabIndex = 14;

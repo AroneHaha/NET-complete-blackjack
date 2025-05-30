@@ -67,7 +67,6 @@
             TransacTime = new Label();
             transacAct = new Label();
             label23 = new Label();
-            closeHistory = new Button();
             historyBtn = new PictureBox();
             walletBackBtn = new PictureBox();
             widthdrawXdepo = new Panel();
@@ -87,6 +86,10 @@
             profilePanel = new Panel();
             winningsTxt = new Label();
             panel5 = new Panel();
+            lossesTxt = new Label();
+            winsTxt = new Label();
+            balanceTxt = new Label();
+            userTxt = new Label();
             totalWinningsTxt = new Label();
             walletButton = new Button();
             label11 = new Label();
@@ -176,7 +179,7 @@
             forgotPassPanel.Controls.Add(label18);
             forgotPassPanel.Location = new Point(276, 124);
             forgotPassPanel.Name = "forgotPassPanel";
-            forgotPassPanel.Size = new Size(456, 390);
+            forgotPassPanel.Size = new Size(456, 367);
             forgotPassPanel.TabIndex = 12;
             forgotPassPanel.Visible = false;
             forgotPassPanel.Paint += forgotPassPanel_Paint;
@@ -200,7 +203,7 @@
             button2.BackColor = Color.ForestGreen;
             button2.Font = new Font("Segoe UI", 12F);
             button2.ForeColor = Color.White;
-            button2.Location = new Point(170, 328);
+            button2.Location = new Point(170, 301);
             button2.Name = "button2";
             button2.Size = new Size(123, 40);
             button2.TabIndex = 10;
@@ -293,8 +296,7 @@
             changePassPanel.Size = new Size(474, 367);
             changePassPanel.TabIndex = 7;
             changePassPanel.Visible = false;
-            changePassPanel.Paint += changePassPanel_Paint;
-            // 
+
             // cancelButton
             // 
             cancelButton.BackColor = Color.Red;
@@ -330,7 +332,7 @@
             label21.Size = new Size(145, 20);
             label21.TabIndex = 7;
             label21.Text = "Confirm Password :";
-            label21.Click += label21_Click;
+
             // 
             // label20
             // 
@@ -388,9 +390,8 @@
             loginPanel.ForeColor = Color.Black;
             loginPanel.Location = new Point(0, 0);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(497, 635);
+            loginPanel.Size = new Size(507, 635);
             loginPanel.TabIndex = 0;
-            loginPanel.Paint += loginPanel_Paint;
             // 
             // fogotPassowrdButton
             // 
@@ -398,7 +399,7 @@
             fogotPassowrdButton.FlatAppearance.BorderSize = 0;
             fogotPassowrdButton.FlatStyle = FlatStyle.Flat;
             fogotPassowrdButton.ForeColor = Color.Red;
-            fogotPassowrdButton.Location = new Point(187, 467);
+            fogotPassowrdButton.Location = new Point(187, 596);
             fogotPassowrdButton.Name = "fogotPassowrdButton";
             fogotPassowrdButton.Size = new Size(132, 28);
             fogotPassowrdButton.TabIndex = 10;
@@ -413,9 +414,9 @@
             switchToSignup.FlatStyle = FlatStyle.Flat;
             switchToSignup.Font = new Font("Microsoft Sans Serif", 9F);
             switchToSignup.ForeColor = Color.Red;
-            switchToSignup.Location = new Point(290, 444);
+            switchToSignup.Location = new Point(282, 576);
             switchToSignup.Name = "switchToSignup";
-            switchToSignup.Size = new Size(86, 21);
+            switchToSignup.Size = new Size(70, 21);
             switchToSignup.TabIndex = 9;
             switchToSignup.Text = "Click here";
             switchToSignup.UseVisualStyleBackColor = false;
@@ -426,7 +427,7 @@
             registerText.AutoSize = true;
             registerText.Font = new Font("Microsoft Sans Serif", 9F);
             registerText.ForeColor = Color.Black;
-            registerText.Location = new Point(142, 448);
+            registerText.Location = new Point(133, 580);
             registerText.Name = "registerText";
             registerText.Size = new Size(156, 15);
             registerText.TabIndex = 8;
@@ -456,7 +457,6 @@
             label2.Size = new Size(115, 50);
             label2.TabIndex = 5;
             label2.Text = "Sign in";
-            label2.Click += label2_Click;
             // 
             // label1
             // 
@@ -519,7 +519,6 @@
             userLogin.Name = "userLogin";
             userLogin.Size = new Size(210, 23);
             userLogin.TabIndex = 1;
-            userLogin.TextChanged += userNameLoginTextbox_TextChanged;
             // 
             // passwordLogin
             // 
@@ -528,7 +527,6 @@
             passwordLogin.Size = new Size(210, 23);
             passwordLogin.TabIndex = 0;
             passwordLogin.UseSystemPasswordChar = true;
-            passwordLogin.TextChanged += passwordLoginTextBox_TextChanged;
             // 
             // mainMenuPanel
             // 
@@ -543,7 +541,7 @@
             mainMenuPanel.Name = "mainMenuPanel";
             mainMenuPanel.Size = new Size(984, 636);
             mainMenuPanel.TabIndex = 9;
-            mainMenuPanel.Paint += mainMenuPanel_Paint;
+
             // 
             // walletPanel
             // 
@@ -560,7 +558,6 @@
             walletPanel.Name = "walletPanel";
             walletPanel.Size = new Size(490, 543);
             walletPanel.TabIndex = 5;
-            walletPanel.Paint += walletPanel_Paint;
             // 
             // historyPanel
             // 
@@ -569,10 +566,9 @@
             historyPanel.Controls.Add(TransacTime);
             historyPanel.Controls.Add(transacAct);
             historyPanel.Controls.Add(label23);
-            historyPanel.Controls.Add(closeHistory);
             historyPanel.Location = new Point(48, 116);
             historyPanel.Name = "historyPanel";
-            historyPanel.Size = new Size(396, 314);
+            historyPanel.Size = new Size(396, 262);
             historyPanel.TabIndex = 7;
             historyPanel.Visible = false;
             // 
@@ -580,7 +576,7 @@
             // 
             TransacAmount.AutoSize = true;
             TransacAmount.Font = new Font("Segoe UI", 14F);
-            TransacAmount.Location = new Point(45, 193);
+            TransacAmount.Location = new Point(45, 190);
             TransacAmount.Name = "TransacAmount";
             TransacAmount.Size = new Size(88, 25);
             TransacAmount.TabIndex = 10;
@@ -590,7 +586,7 @@
             // 
             TransacTime.AutoSize = true;
             TransacTime.Font = new Font("Segoe UI", 14F);
-            TransacTime.Location = new Point(43, 155);
+            TransacTime.Location = new Point(43, 152);
             TransacTime.Name = "TransacTime";
             TransacTime.Size = new Size(143, 25);
             TransacTime.TabIndex = 9;
@@ -600,7 +596,7 @@
             // 
             transacAct.AutoSize = true;
             transacAct.Font = new Font("Segoe UI", 14F);
-            transacAct.Location = new Point(45, 116);
+            transacAct.Location = new Point(45, 113);
             transacAct.Name = "transacAct";
             transacAct.Size = new Size(82, 25);
             transacAct.TabIndex = 8;
@@ -611,30 +607,17 @@
             label23.AutoSize = true;
             label23.Font = new Font("Haettenschweiler", 35F);
             label23.ForeColor = Color.Black;
-            label23.Location = new Point(37, 35);
+            label23.Location = new Point(36, 28);
             label23.Name = "label23";
             label23.Size = new Size(333, 50);
             label23.TabIndex = 7;
             label23.Text = "Previous Transaction";
             // 
-            // closeHistory
-            // 
-            closeHistory.BackColor = Color.Red;
-            closeHistory.Font = new Font("Segoe UI Semibold", 11F, FontStyle.Bold);
-            closeHistory.ForeColor = Color.Transparent;
-            closeHistory.Location = new Point(152, 262);
-            closeHistory.Name = "closeHistory";
-            closeHistory.Size = new Size(94, 37);
-            closeHistory.TabIndex = 1;
-            closeHistory.Text = "Exit";
-            closeHistory.UseVisualStyleBackColor = false;
-            closeHistory.Click += closeHistory_Click;
-            // 
             // historyBtn
             // 
             historyBtn.Cursor = Cursors.Hand;
             historyBtn.Image = (Image)resources.GetObject("historyBtn.Image");
-            historyBtn.Location = new Point(421, 23);
+            historyBtn.Location = new Point(401, 46);
             historyBtn.Name = "historyBtn";
             historyBtn.Size = new Size(42, 37);
             historyBtn.SizeMode = PictureBoxSizeMode.StretchImage;
@@ -764,7 +747,6 @@
             walletAmount.Size = new Size(183, 23);
             walletAmount.TabIndex = 0;
             walletAmount.TextAlign = HorizontalAlignment.Center;
-            walletAmount.TextChanged += walletAmount_TextChanged;
             // 
             // depositButton
             // 
@@ -838,23 +820,71 @@
             // panel5
             // 
             panel5.BackColor = Color.DarkSeaGreen;
+            panel5.Controls.Add(lossesTxt);
+            panel5.Controls.Add(winsTxt);
+            panel5.Controls.Add(balanceTxt);
+            panel5.Controls.Add(userTxt);
             panel5.Controls.Add(totalWinningsTxt);
             panel5.Controls.Add(walletButton);
             panel5.Controls.Add(label11);
             panel5.Controls.Add(matchesTxt);
             panel5.Controls.Add(winrateTxt);
             panel5.Controls.Add(bustTxt);
-            panel5.Location = new Point(6, 10);
+            panel5.Location = new Point(6, 8);
             panel5.Name = "panel5";
-            panel5.Size = new Size(200, 541);
+            panel5.Size = new Size(200, 543);
             panel5.TabIndex = 7;
             panel5.Paint += panel5_Paint;
+            // 
+            // lossesTxt
+            // 
+            lossesTxt.AutoSize = true;
+            lossesTxt.FlatStyle = FlatStyle.System;
+            lossesTxt.Font = new Font("Segoe UI", 11F);
+            lossesTxt.Location = new Point(15, 207);
+            lossesTxt.Name = "lossesTxt";
+            lossesTxt.Size = new Size(62, 20);
+            lossesTxt.TabIndex = 9;
+            lossesTxt.Text = "Losses : ";
+            // 
+            // winsTxt
+            // 
+            winsTxt.AutoSize = true;
+            winsTxt.FlatStyle = FlatStyle.System;
+            winsTxt.Font = new Font("Segoe UI", 11F);
+            winsTxt.Location = new Point(15, 162);
+            winsTxt.Name = "winsTxt";
+            winsTxt.Size = new Size(52, 20);
+            winsTxt.TabIndex = 8;
+            winsTxt.Text = "Wins : ";
+            // 
+            // balanceTxt
+            // 
+            balanceTxt.AutoSize = true;
+            balanceTxt.FlatStyle = FlatStyle.System;
+            balanceTxt.Font = new Font("Segoe UI", 11F);
+            balanceTxt.Location = new Point(14, 120);
+            balanceTxt.Name = "balanceTxt";
+            balanceTxt.Size = new Size(72, 20);
+            balanceTxt.TabIndex = 7;
+            balanceTxt.Text = "Balance : ";
+            // 
+            // userTxt
+            // 
+            userTxt.AutoSize = true;
+            userTxt.FlatStyle = FlatStyle.System;
+            userTxt.Font = new Font("Segoe UI", 11F);
+            userTxt.Location = new Point(15, 79);
+            userTxt.Name = "userTxt";
+            userTxt.Size = new Size(45, 20);
+            userTxt.TabIndex = 6;
+            userTxt.Text = "User :";
             // 
             // totalWinningsTxt
             // 
             totalWinningsTxt.AutoSize = true;
             totalWinningsTxt.Font = new Font("Segoe UI", 11F);
-            totalWinningsTxt.Location = new Point(11, 220);
+            totalWinningsTxt.Location = new Point(12, 384);
             totalWinningsTxt.Name = "totalWinningsTxt";
             totalWinningsTxt.Size = new Size(114, 20);
             totalWinningsTxt.TabIndex = 5;
@@ -862,10 +892,10 @@
             // 
             // walletButton
             // 
-            walletButton.BackColor = Color.MediumBlue;
+            walletButton.BackColor = Color.RoyalBlue;
             walletButton.Font = new Font("Haettenschweiler", 17F);
             walletButton.ForeColor = SystemColors.ButtonFace;
-            walletButton.Location = new Point(17, 474);
+            walletButton.Location = new Point(19, 446);
             walletButton.Name = "walletButton";
             walletButton.Size = new Size(160, 55);
             walletButton.TabIndex = 0;
@@ -888,34 +918,34 @@
             matchesTxt.AutoSize = true;
             matchesTxt.FlatStyle = FlatStyle.System;
             matchesTxt.Font = new Font("Segoe UI", 11F);
-            matchesTxt.Location = new Point(15, 87);
+            matchesTxt.Location = new Point(15, 251);
             matchesTxt.Name = "matchesTxt";
             matchesTxt.Size = new Size(108, 20);
             matchesTxt.TabIndex = 4;
             matchesTxt.Text = "Total Matches :";
-            matchesTxt.Click += matchesTxt_Click;
+
             // 
             // winrateTxt
             // 
             winrateTxt.AutoSize = true;
             winrateTxt.Font = new Font("Segoe UI", 11F);
-            winrateTxt.Location = new Point(11, 128);
+            winrateTxt.Location = new Point(11, 295);
             winrateTxt.Name = "winrateTxt";
             winrateTxt.Size = new Size(68, 20);
             winrateTxt.TabIndex = 1;
             winrateTxt.Text = "Winrate :";
-            winrateTxt.Click += label11_Click;
+
             // 
             // bustTxt
             // 
             bustTxt.AutoSize = true;
             bustTxt.Font = new Font("Segoe UI", 11F);
-            bustTxt.Location = new Point(11, 175);
+            bustTxt.Location = new Point(11, 340);
             bustTxt.Name = "bustTxt";
             bustTxt.Size = new Size(87, 20);
             bustTxt.TabIndex = 2;
             bustTxt.Text = "Bust Count :";
-            bustTxt.Click += lossTxt_Click;
+
             // 
             // sideMenuPanel
             // 
@@ -1087,7 +1117,7 @@
             navBarPanel.Name = "navBarPanel";
             navBarPanel.Size = new Size(984, 75);
             navBarPanel.TabIndex = 0;
-            navBarPanel.Paint += navBarPanel_Paint;
+
             // 
             // userBox
             // 
@@ -1126,7 +1156,7 @@
             secondmainMenuPanel.Name = "secondmainMenuPanel";
             secondmainMenuPanel.Size = new Size(984, 548);
             secondmainMenuPanel.TabIndex = 3;
-            secondmainMenuPanel.Paint += secondmainMenuPanel_Paint;
+
             // 
             // tittleNavBar
             // 
@@ -1149,7 +1179,7 @@
             homeUsername.Size = new Size(39, 17);
             homeUsername.TabIndex = 1;
             homeUsername.Text = "User : ";
-            homeUsername.Click += homeUsername_Click;
+
             // 
             // homeBalance
             // 
@@ -1202,14 +1232,14 @@
             signupPanel.ForeColor = Color.Black;
             signupPanel.Location = new Point(0, 0);
             signupPanel.Name = "signupPanel";
-            signupPanel.Size = new Size(497, 636);
+            signupPanel.Size = new Size(507, 636);
             signupPanel.TabIndex = 11;
             // 
             // label25
             // 
             label25.AutoSize = true;
             label25.Font = new Font("Segoe UI", 7F);
-            label25.Location = new Point(369, 228);
+            label25.Location = new Point(363, 245);
             label25.Name = "label25";
             label25.Size = new Size(107, 12);
             label25.TabIndex = 20;
@@ -1219,7 +1249,7 @@
             // 
             label16.AutoSize = true;
             label16.Font = new Font("Segoe UI", 7F);
-            label16.Location = new Point(198, 328);
+            label16.Location = new Point(192, 345);
             label16.Name = "label16";
             label16.Size = new Size(135, 12);
             label16.TabIndex = 19;
@@ -1230,7 +1260,7 @@
             backButton.BackColor = Color.Red;
             backButton.Font = new Font("Segoe UI", 10F);
             backButton.ForeColor = Color.White;
-            backButton.Location = new Point(198, 538);
+            backButton.Location = new Point(201, 561);
             backButton.Name = "backButton";
             backButton.Size = new Size(88, 34);
             backButton.TabIndex = 18;
@@ -1240,14 +1270,14 @@
             // 
             // ageLog
             // 
-            ageLog.Location = new Point(117, 322);
+            ageLog.Location = new Point(111, 339);
             ageLog.Name = "ageLog";
             ageLog.Size = new Size(73, 23);
             ageLog.TabIndex = 17;
             // 
             // verifLog
             // 
-            verifLog.Location = new Point(221, 418);
+            verifLog.Location = new Point(215, 435);
             verifLog.Name = "verifLog";
             verifLog.Size = new Size(147, 23);
             verifLog.TabIndex = 15;
@@ -1259,7 +1289,7 @@
             verifBtn.Cursor = Cursors.Hand;
             verifBtn.Font = new Font("Segoe UI", 9F);
             verifBtn.ForeColor = Color.White;
-            verifBtn.Location = new Point(373, 418);
+            verifBtn.Location = new Point(367, 435);
             verifBtn.Name = "verifBtn";
             verifBtn.Size = new Size(68, 24);
             verifBtn.TabIndex = 14;
@@ -1269,7 +1299,7 @@
             // 
             // emailLog
             // 
-            emailLog.Location = new Point(198, 372);
+            emailLog.Location = new Point(192, 389);
             emailLog.Name = "emailLog";
             emailLog.Size = new Size(170, 23);
             emailLog.TabIndex = 13;
@@ -1279,7 +1309,7 @@
             label9.AutoSize = true;
             label9.Font = new Font("Segoe UI", 13F);
             label9.ForeColor = Color.Black;
-            label9.Location = new Point(62, 369);
+            label9.Location = new Point(56, 386);
             label9.Name = "label9";
             label9.Size = new Size(138, 25);
             label9.TabIndex = 12;
@@ -1290,7 +1320,7 @@
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 13F);
             label8.ForeColor = Color.Black;
-            label8.Location = new Point(62, 319);
+            label8.Location = new Point(56, 336);
             label8.Name = "label8";
             label8.Size = new Size(53, 25);
             label8.TabIndex = 11;
@@ -1298,7 +1328,7 @@
             // 
             // confPasswordLog
             // 
-            confPasswordLog.Location = new Point(228, 274);
+            confPasswordLog.Location = new Point(229, 291);
             confPasswordLog.Name = "confPasswordLog";
             confPasswordLog.Size = new Size(175, 23);
             confPasswordLog.TabIndex = 10;
@@ -1309,7 +1339,7 @@
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI", 13F);
             label7.ForeColor = Color.Black;
-            label7.Location = new Point(62, 271);
+            label7.Location = new Point(56, 288);
             label7.Name = "label7";
             label7.Size = new Size(170, 25);
             label7.TabIndex = 9;
@@ -1321,9 +1351,9 @@
             createAccountBtn.Cursor = Cursors.Hand;
             createAccountBtn.Font = new Font("Segoe UI", 10F);
             createAccountBtn.ForeColor = Color.White;
-            createAccountBtn.Location = new Point(176, 486);
+            createAccountBtn.Location = new Point(174, 508);
             createAccountBtn.Name = "createAccountBtn";
-            createAccountBtn.Size = new Size(137, 43);
+            createAccountBtn.Size = new Size(137, 44);
             createAccountBtn.TabIndex = 7;
             createAccountBtn.Text = "Create Account";
             createAccountBtn.UseVisualStyleBackColor = false;
@@ -1346,7 +1376,7 @@
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 13F);
             label5.ForeColor = Color.Black;
-            label5.Location = new Point(62, 170);
+            label5.Location = new Point(56, 187);
             label5.Name = "label5";
             label5.Size = new Size(105, 25);
             label5.TabIndex = 3;
@@ -1357,7 +1387,7 @@
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 13F);
             label6.ForeColor = Color.Black;
-            label6.Location = new Point(66, 220);
+            label6.Location = new Point(57, 237);
             label6.Name = "label6";
             label6.Size = new Size(101, 25);
             label6.TabIndex = 2;
@@ -1365,14 +1395,14 @@
             // 
             // usernameLog
             // 
-            usernameLog.Location = new Point(166, 174);
+            usernameLog.Location = new Point(160, 191);
             usernameLog.Name = "usernameLog";
             usernameLog.Size = new Size(197, 23);
             usernameLog.TabIndex = 1;
             // 
             // passwordLog
             // 
-            passwordLog.Location = new Point(169, 222);
+            passwordLog.Location = new Point(163, 239);
             passwordLog.Name = "passwordLog";
             passwordLog.Size = new Size(194, 23);
             passwordLog.TabIndex = 0;
@@ -1383,7 +1413,7 @@
             verificationText.AutoSize = true;
             verificationText.Font = new Font("Segoe UI", 13F);
             verificationText.ForeColor = Color.Black;
-            verificationText.Location = new Point(62, 416);
+            verificationText.Location = new Point(56, 433);
             verificationText.Name = "verificationText";
             verificationText.Size = new Size(155, 25);
             verificationText.TabIndex = 16;
@@ -1393,9 +1423,9 @@
             // 
             sidePic.BackgroundImage = (Image)resources.GetObject("sidePic.BackgroundImage");
             sidePic.BackgroundImageLayout = ImageLayout.Stretch;
-            sidePic.Location = new Point(498, 0);
+            sidePic.Location = new Point(499, 0);
             sidePic.Name = "sidePic";
-            sidePic.Size = new Size(490, 635);
+            sidePic.Size = new Size(489, 635);
             sidePic.SizeMode = PictureBoxSizeMode.Zoom;
             sidePic.TabIndex = 13;
             sidePic.TabStop = false;
@@ -1541,7 +1571,6 @@
         private Label label13;
         private Label label16;
         private Panel historyPanel;
-        private Button closeHistory;
         private Button fogotPassowrdButton;
         private Panel forgotPassPanel;
         private TextBox forgotCode;
@@ -1568,5 +1597,9 @@
         private Label transacAct;
         private Label TransacAmount;
         private PictureBox sidePic;
+        private Label lossesTxt;
+        private Label winsTxt;
+        private Label balanceTxt;
+        private Label userTxt;
     }
 }

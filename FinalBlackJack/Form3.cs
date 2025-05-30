@@ -12,6 +12,7 @@ namespace FinalBlackJack
 {
     public partial class mainGameForm : Form
     {
+        private homesounds clickSound;
         private List<(string Name, PictureBox PictureBox)> cities;
         private Dictionary<string, Image> cityBackgrounds;
         private loadingAnimation loadingAnimation = new loadingAnimation();
@@ -36,6 +37,38 @@ namespace FinalBlackJack
             cityPanel.Hide();
             menuForm = menu;
             transactionPanel.Hide();
+        }
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+        private void homenav()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\homenav.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+        private void door()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\door.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+
+        private void error()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\no-bet.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
+
+        private void arrows()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\choosemap.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
         }
 
         private void mainGameForm_Load(object sender, EventArgs e)
@@ -175,6 +208,7 @@ namespace FinalBlackJack
 
         private async void manilaPicBox_Click(object sender, EventArgs e)
         {
+            homenav();
             tableChoice = "green";
             buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Sahara Grand Pavilion Resort")
@@ -186,6 +220,7 @@ namespace FinalBlackJack
 
         private async void singaporePicBox_Click(object sender, EventArgs e)
         {
+            homenav();
             tableChoice = "blue";
             buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Obi Wan Castle In Shangrila")
@@ -197,6 +232,7 @@ namespace FinalBlackJack
 
         private async void hongkongPicBox_Click(object sender, EventArgs e)
         {
+            homenav();
             tableChoice = "red";
             buyinTotalBalance.Text = AccountData.accountsBalance[AccountData.currentAccount].ToString();
             if (cities[centerIndex].Name == "Cobact Club of Doom")
@@ -210,6 +246,7 @@ namespace FinalBlackJack
 
         private void extMaingameButton_Click(object sender, EventArgs e)
         {
+            homenav();
             menuForm.UpdateStatsAfterGame();
             menuForm.showMainMenuPanel();
             menuForm.Show();
@@ -227,21 +264,25 @@ namespace FinalBlackJack
         {
             if (string.IsNullOrWhiteSpace(buyinAmount.Text))
             {
+                error();
                 MessageBox.Show("Please enter a buy-in amount.");
                 return false;
             }
             if (!int.TryParse(buyinAmount.Text, out int buyin) || buyin <= 0)
             {
+                error();
                 MessageBox.Show("Please enter a valid positive integer for the buy-in amount.");
                 return false;
             }
             if (buyin > AccountData.accountsBalance[AccountData.currentAccount])
             {
+                error();
                 MessageBox.Show("Insufficient balance for the buy-in amount.");
                 return false;
             }
             if (buyin < min || buyin > max)
             {
+                error();
                 MessageBox.Show($"Buy-in amount must be between {min} and {max}.");
                 return false;
             }
@@ -262,6 +303,7 @@ namespace FinalBlackJack
             {
                 case "Sahara Grand Pavilion Resort":
                     if (!buyinExceptions(greenMin, greenMax)) return;
+                    door();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -271,6 +313,7 @@ namespace FinalBlackJack
 
                 case "Obi Wan Castle In Shangrila":
                     if (!buyinExceptions(blueMin, blueMax)) return;
+                    door();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -280,6 +323,7 @@ namespace FinalBlackJack
 
                 case "Cobact Club of Doom":
                     if (!buyinExceptions(redMin, redMax)) return;
+                    door();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -299,6 +343,7 @@ namespace FinalBlackJack
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            clicking();
             tableChoice = "";
             buyinAmount.Clear();
             transactionPanel.Hide();
@@ -308,6 +353,7 @@ namespace FinalBlackJack
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
+            arrows();
             buyinAmount.Clear();
             centerIndex = (centerIndex - 1 + cities.Count) % cities.Count;
             UpdateCarouselDisplay();
@@ -316,6 +362,7 @@ namespace FinalBlackJack
 
         private void pictureBox2_Click(object sender, EventArgs e)
         {
+            arrows();
             buyinAmount.Clear();
             centerIndex = (centerIndex + 1) % cities.Count;
             UpdateCarouselDisplay();
@@ -345,6 +392,11 @@ namespace FinalBlackJack
         private void topTextCity_Click(object sender, EventArgs e) { }
 
         private void TopTextCity3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TopTextCity2_Click(object sender, EventArgs e)
         {
 
         }

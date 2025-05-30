@@ -15,13 +15,20 @@ using static FinalBlackJack.Program;
 namespace FinalBlackJack
 {
 
-
     public partial class StartForm : Form
     {
+        private homesounds clickSound;
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
+        }
 
         public StartForm()
         {
             InitializeComponent();
+            loadingText2.Focus();
             termsTextPanel.AutoScroll = true;
             playNowButton.Enabled = false;
 
@@ -56,6 +63,7 @@ namespace FinalBlackJack
             {
                 string musicPath = @"C:\BSIT 1\C#\blackjack\audio\bgmusic.wav";
                 AudioManager.BackgroundMusic = new backgroundmusic(musicPath);
+                playNowButton.Focus();
                 AudioManager.BackgroundMusic.PlayLoop();
 
                 backgroundMusic = AudioManager.BackgroundMusic;  // keep local reference if needed
@@ -67,6 +75,7 @@ namespace FinalBlackJack
 
         private void playNowButton_Click(object sender, EventArgs e)
         {
+            clicking();
             mainMenuForm mainMenu = new mainMenuForm();
             mainMenu.Show();
             this.Hide();
@@ -77,29 +86,9 @@ namespace FinalBlackJack
             Application.Exit();
         }
 
-        private void loadingPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void loadingBar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void loadingText2_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void StartForm_Load(object sender, EventArgs e)
         {
             label2.Focus();
-        }
-
-        private void form1Panel_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void acceptButton_Click(object sender, EventArgs e)
@@ -108,7 +97,6 @@ namespace FinalBlackJack
             playNowButton.Visible = true;
             exitButton.Visible = true;
             termsPanel.Visible = false;
-
         }
 
         private void declineButton_Click(object sender, EventArgs e)
@@ -118,10 +106,15 @@ namespace FinalBlackJack
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            clicking();
         }
 
         private void tittleText_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loadingPanel_Paint(object sender, PaintEventArgs e)
         {
 
         }

@@ -106,6 +106,7 @@
             TopTextCity2.TabIndex = 11;
             TopTextCity2.Text = "Obi Wan Castle In Shangrila";
             TopTextCity2.TextAlign = ContentAlignment.TopCenter;
+            TopTextCity2.Click += TopTextCity2_Click;
             // 
             // cityPanel
             // 

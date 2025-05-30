@@ -12,6 +12,7 @@ namespace FinalBlackJack
 {
     public partial class logPassword : UserControl
     {
+        private homesounds clickSound;
         private List<Image> imahes = new List<Image>();
         private int currentImageIndex = 0;
         private System.Windows.Forms.Timer imageTimer = new System.Windows.Forms.Timer();
@@ -46,6 +47,7 @@ namespace FinalBlackJack
         {
 
             mainMenuForm parentMenuForm = this.FindForm() as mainMenuForm;
+            clicking();
 
             if (parentMenuForm != null)
             {
@@ -58,6 +60,13 @@ namespace FinalBlackJack
                 MessageBox.Show("Parent form not found.");
             }
 
+        }
+
+        private void clicking()
+        {
+            string musicPath = @"C:\BSIT 1\C#\blackjack\audio\clicks.wav";
+            clickSound = new homesounds(musicPath);
+            clickSound.PlayOnce();
         }
 
         private void homeUserOption_Load(object sender, EventArgs e)
