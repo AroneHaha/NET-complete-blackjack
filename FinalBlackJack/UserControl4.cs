@@ -19,11 +19,13 @@ namespace FinalBlackJack
         public logPassword()
         {
             InitializeComponent();
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheMainAds1.png"));
             imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds1.jpg"));
             imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds2.jpg"));
             imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAds3.jpg"));
             imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imahesAds4.jpg"));
             imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imahesAds5.jpg"));
+            imahes.Add(Image.FromFile(@"C:\BSIT 1\C#\blackjack\images\imaheAdsEaster.png"));
 
 
             adsPictureBox.Image = imahes[0];

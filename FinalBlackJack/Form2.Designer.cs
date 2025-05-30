@@ -134,6 +134,7 @@
             usernameLog = new TextBox();
             passwordLog = new TextBox();
             verificationText = new Label();
+            sidePic = new PictureBox();
             forgotPassPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)forgotBack).BeginInit();
             changePassPanel.SuspendLayout();
@@ -158,6 +159,7 @@
             ((System.ComponentModel.ISupportInitialize)userBox).BeginInit();
             ((System.ComponentModel.ISupportInitialize)navBar).BeginInit();
             signupPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)sidePic).BeginInit();
             SuspendLayout();
             // 
             // forgotPassPanel
@@ -288,7 +290,7 @@
             changePassPanel.Enabled = false;
             changePassPanel.Location = new Point(276, 124);
             changePassPanel.Name = "changePassPanel";
-            changePassPanel.Size = new Size(456, 390);
+            changePassPanel.Size = new Size(474, 367);
             changePassPanel.TabIndex = 7;
             changePassPanel.Visible = false;
             changePassPanel.Paint += changePassPanel_Paint;
@@ -386,7 +388,7 @@
             loginPanel.ForeColor = Color.Black;
             loginPanel.Location = new Point(0, 0);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(497, 636);
+            loginPanel.Size = new Size(497, 635);
             loginPanel.TabIndex = 0;
             loginPanel.Paint += loginPanel_Paint;
             // 
@@ -1387,6 +1389,17 @@
             verificationText.TabIndex = 16;
             verificationText.Text = "Verification Code :";
             // 
+            // sidePic
+            // 
+            sidePic.BackgroundImage = (Image)resources.GetObject("sidePic.BackgroundImage");
+            sidePic.BackgroundImageLayout = ImageLayout.Stretch;
+            sidePic.Location = new Point(498, 0);
+            sidePic.Name = "sidePic";
+            sidePic.Size = new Size(490, 635);
+            sidePic.SizeMode = PictureBoxSizeMode.Zoom;
+            sidePic.TabIndex = 13;
+            sidePic.TabStop = false;
+            // 
             // mainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -1397,6 +1410,7 @@
             Controls.Add(mainMenuPanel);
             Controls.Add(signupPanel);
             Controls.Add(loginPanel);
+            Controls.Add(sidePic);
             Controls.Add(forgotPassPanel);
             Controls.Add(changePassPanel);
             FormBorderStyle = FormBorderStyle.FixedSingle;
@@ -1440,6 +1454,7 @@
             ((System.ComponentModel.ISupportInitialize)navBar).EndInit();
             signupPanel.ResumeLayout(false);
             signupPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)sidePic).EndInit();
             ResumeLayout(false);
         }
 
@@ -1552,5 +1567,6 @@
         private Label TransacTime;
         private Label transacAct;
         private Label TransacAmount;
+        private PictureBox sidePic;
     }
 }

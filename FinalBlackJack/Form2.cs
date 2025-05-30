@@ -794,6 +794,7 @@ namespace FinalBlackJack
             forgotPassPanel.Visible = true;
             loginPanel.Visible = false;
             signupPanel.Visible = false;
+            sidePic.Visible = false;
         }
 
         private void exitForgotPassButton_Click(object sender, EventArgs e)
@@ -861,6 +862,7 @@ namespace FinalBlackJack
             forgotPassPanel.Visible = false;
             changePassPanel.Visible = false;
             loginPanel.Visible = true;
+            sidePic.Visible = true;
         }
 
         private void cancelButton_Click(object sender, EventArgs e)
@@ -959,6 +961,7 @@ namespace FinalBlackJack
 
         private void pictureBox1_Click_1(object sender, EventArgs e)
         {
+            sidePic.Visible = true;
             isForgotCodeSent = false;
             forgotCode.Clear();
             forgotUsername.Clear();
