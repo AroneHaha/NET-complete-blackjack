@@ -304,6 +304,7 @@ namespace FinalBlackJack
                 case "Sahara Grand Pavilion Resort":
                     if (!buyinExceptions(greenMin, greenMax)) return;
                     door();
+                    buyinAmount.Clear();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -314,6 +315,7 @@ namespace FinalBlackJack
                 case "Obi Wan Castle In Shangrila":
                     if (!buyinExceptions(blueMin, blueMax)) return;
                     door();
+                    buyinAmount.Clear();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -324,6 +326,7 @@ namespace FinalBlackJack
                 case "Cobact Club of Doom":
                     if (!buyinExceptions(redMin, redMax)) return;
                     door();
+                    buyinAmount.Clear();
                     buyinHold();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
@@ -344,6 +347,7 @@ namespace FinalBlackJack
         private void button1_Click_1(object sender, EventArgs e)
         {
             clicking();
+            buyinAmount.Clear();
             tableChoice = "";
             buyinAmount.Clear();
             transactionPanel.Hide();

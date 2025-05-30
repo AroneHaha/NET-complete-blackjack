@@ -137,7 +137,7 @@
             changeInfo.Controls.Add(saveBtn);
             changeInfo.Location = new Point(124, 30);
             changeInfo.Name = "changeInfo";
-            changeInfo.Size = new Size(622, 172);
+            changeInfo.Size = new Size(622, 423);
             changeInfo.TabIndex = 8;
             // 
             // label7
