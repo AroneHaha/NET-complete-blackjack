@@ -394,7 +394,7 @@ namespace FinalBlackJack
                 mm.From = new MailAddress(verifLink);
                 mm.To.Add(emailLog.Text);
                 mm.Subject = "BlackJack Deluxe Account Code Verification";
-                mm.Body = "Account Verification Code: " + verifCode;
+                mm.Body = "Hi Player,\r\n\r\nThank you for creating an account with BlackJack Deluxe!\r\n\r\nTo complete your registration, please enter the verification code below:\r\n\r\n🔐 Your Verification Code: " + verifCode;
                 sc.Port = 587;
                 sc.Credentials = new System.Net.NetworkCredential(verifLink, pass);
                 sc.EnableSsl = true;
