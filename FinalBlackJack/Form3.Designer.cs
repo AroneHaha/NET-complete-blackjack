@@ -111,9 +111,10 @@
             // cityPanel
             // 
             cityPanel.BackColor = SystemColors.ControlLightLight;
-            cityPanel.Location = new Point(716, 41);
+            cityPanel.Dock = DockStyle.Fill;
+            cityPanel.Location = new Point(0, 0);
             cityPanel.Name = "cityPanel";
-            cityPanel.Size = new Size(268, 595);
+            cityPanel.Size = new Size(984, 636);
             cityPanel.TabIndex = 5;
             cityPanel.Paint += cityPanel_Paint;
             // 

@@ -296,7 +296,7 @@
             changePassPanel.Size = new Size(474, 367);
             changePassPanel.TabIndex = 7;
             changePassPanel.Visible = false;
-
+            // 
             // cancelButton
             // 
             cancelButton.BackColor = Color.Red;
@@ -332,7 +332,6 @@
             label21.Size = new Size(145, 20);
             label21.TabIndex = 7;
             label21.Text = "Confirm Password :";
-
             // 
             // label20
             // 
@@ -390,7 +389,7 @@
             loginPanel.ForeColor = Color.Black;
             loginPanel.Location = new Point(0, 0);
             loginPanel.Name = "loginPanel";
-            loginPanel.Size = new Size(507, 635);
+            loginPanel.Size = new Size(504, 635);
             loginPanel.TabIndex = 0;
             // 
             // fogotPassowrdButton
@@ -541,7 +540,6 @@
             mainMenuPanel.Name = "mainMenuPanel";
             mainMenuPanel.Size = new Size(984, 636);
             mainMenuPanel.TabIndex = 9;
-
             // 
             // walletPanel
             // 
@@ -923,7 +921,6 @@
             matchesTxt.Size = new Size(108, 20);
             matchesTxt.TabIndex = 4;
             matchesTxt.Text = "Total Matches :";
-
             // 
             // winrateTxt
             // 
@@ -934,7 +931,6 @@
             winrateTxt.Size = new Size(68, 20);
             winrateTxt.TabIndex = 1;
             winrateTxt.Text = "Winrate :";
-
             // 
             // bustTxt
             // 
@@ -945,7 +941,6 @@
             bustTxt.Size = new Size(87, 20);
             bustTxt.TabIndex = 2;
             bustTxt.Text = "Bust Count :";
-
             // 
             // sideMenuPanel
             // 
@@ -1117,7 +1112,6 @@
             navBarPanel.Name = "navBarPanel";
             navBarPanel.Size = new Size(984, 75);
             navBarPanel.TabIndex = 0;
-
             // 
             // userBox
             // 
@@ -1156,7 +1150,6 @@
             secondmainMenuPanel.Name = "secondmainMenuPanel";
             secondmainMenuPanel.Size = new Size(984, 548);
             secondmainMenuPanel.TabIndex = 3;
-
             // 
             // tittleNavBar
             // 
@@ -1179,7 +1172,6 @@
             homeUsername.Size = new Size(39, 17);
             homeUsername.TabIndex = 1;
             homeUsername.Text = "User : ";
-
             // 
             // homeBalance
             // 

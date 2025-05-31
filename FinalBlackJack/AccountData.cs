@@ -29,7 +29,7 @@ namespace FinalBlackJack
         public static List<int> totalWins = new List<int> { 0, 100 , 100};
         public static List<int> totalLosses = new List<int> { 0, 32 , 50};
         public static List<int> bustCount = new List<int> { 25, 96 , 100};
-        public static List<int> totalWinnings = new List<int> { 0, 0 , 999999};
+        public static List<int> totalWinnings = new List<int> { 0, 1000 , 999999};
         public static int currentAccount = 0;
 
         // Store a list of transactions for each account

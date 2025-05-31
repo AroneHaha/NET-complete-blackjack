@@ -247,6 +247,7 @@ namespace FinalBlackJack
                 mainMenuPanel.Show();
                 mainDisplayPanel.Show();
                 navBarPanel.Show();
+                sidePic.SendToBack();
                 LoadView(new logPassword());
             }
             else
@@ -800,6 +801,9 @@ namespace FinalBlackJack
         {
             loginPanel.Show();
             forgotPassPanel.Visible = false;
+            changePassPanel.Visible =false;
+            sidePic.Visible = true;
+            sidePic.BringToFront();
         }
 
         private void sendCodeButton_Click(object sender, EventArgs e)

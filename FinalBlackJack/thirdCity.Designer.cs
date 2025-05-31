@@ -597,6 +597,7 @@
             startRound.TabIndex = 14;
             startRound.Text = "Start Round";
             startRound.UseVisualStyleBackColor = false;
+            startRound.Click += startRound_Click_1;
             // 
             // rBet
             // 

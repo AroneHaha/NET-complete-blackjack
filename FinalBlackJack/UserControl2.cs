@@ -119,7 +119,6 @@ namespace FinalBlackJack
                 return;
             }
 
-
             AccountData.passwords[AccountData.currentAccount] = changeNewPass.Text;
             MessageBox.Show("Your password has been successfully changed.");
 

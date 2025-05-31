@@ -241,6 +241,7 @@
             // 
             cancelButton.BackColor = Color.Red;
             cancelButton.Font = new Font("Segoe UI", 12F);
+            cancelButton.ForeColor = Color.White;
             cancelButton.Location = new Point(188, 362);
             cancelButton.Name = "cancelButton";
             cancelButton.Size = new Size(123, 40);
@@ -253,6 +254,7 @@
             // 
             saveBtn.BackColor = Color.ForestGreen;
             saveBtn.Font = new Font("Segoe UI", 12F);
+            saveBtn.ForeColor = Color.White;
             saveBtn.Location = new Point(320, 362);
             saveBtn.Name = "saveBtn";
             saveBtn.Size = new Size(123, 40);

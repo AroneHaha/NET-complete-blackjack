@@ -992,112 +992,11 @@ namespace FinalBlackJack
         string dealerCard1Name, dealerCard2Name;
         private void startRound_Click(object sender, EventArgs e)
         {
-            if (currentBet == 0)
-            {
-                errorSound();
-                MessageBox.Show("You must place a bet first!");
-                return;
-            }
-
-            returnBet.Visible = false;
-            returnAllBet.Visible = false;
-            drawCardsSound();
-            actionsEnabled();
-
-            playerDraw1.Visible = true;
-            playerDraw2.Visible = true;
-
-            dealerDraw1.Visible = true;
-            dealerDraw2.Visible = true;
-
-            initialDraw.Enabled = true;
-
-            botValue.Visible = false;
-            isDrawn = true;
-            startRound.Visible = false;
-            dealerDialogue.Visible = true;
-            actionLog.Visible = true;
-            currentRound.Visible = false;
-            roundStarted = true;
-
-            startGameDialogue();
-
-
-            while (playerReveal != 2 && dealerReveal != 2)
-            {
-                int botIndex = botRandom.Next(rCards.Count);
-                string botCardPath = rCards[botIndex];
-                Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
-
-                int playerIndex = playerRandom.Next(rCards.Count);
-                string playerCardPath = rCards[playerIndex];
-                Image playerCardImg = Image.FromFile(playerCardPath);
-
-                if (playerReveal == 0)
-                {
-                    rDealer1.Image = botCardImg;
-                    rPlayer1.Image = playerCardImg;
-                    botTotal += GetCardValue(botCardPath);
-                    playerTotal += GetCardValue(playerCardPath);
-
-                }
-                else if (playerReveal == 1)
-                {
-                    rDealer2.Image = folded;
-                    rPlayer2.Image = playerCardImg;
-                    bot2 = botCardImg;
-                    botHiddenCards[0] = bot2;
-                    playerTotal += GetCardValue(playerCardPath);
-                    botTotal += GetCardValue(botCardPath);
-
-                }
-
-                playerReveal++;
-                dealerReveal++;
-
-                displayValues();
-
-            }
-            checkBlackJack();
+            
         }
 
-        private bool IsBlackjackPair(string card1, string card2)
-        {
-            string[] faceCards = { "jack", "queen", "king" };
-
-            return (card1.StartsWith("ace") && faceCards.Any(f => card2.StartsWith(f))) ||
-                   (card2.StartsWith("ace") && faceCards.Any(f => card1.StartsWith(f)));
-        }
-        private void checkBlackJack()
-        {
-            rDealer2.Image = botHiddenCards[0];
-
-            bool playerBlackjack = IsBlackjackPair(playerCard1Name, playerCard2Name);
-            bool dealerBlackjack = IsBlackjackPair(dealerCard1Name, dealerCard2Name);
-
-            if (playerBlackjack || dealerBlackjack)
-            {
-                if (playerBlackjack && dealerBlackjack)
-                {
-                    MessageBox.Show("Both got Blackjack! It's a tie.");
-                    buyinBalance += currentBet;
-                }
-                else if (playerBlackjack)
-                {
-                    MessageBox.Show("Blackjack! You win 1.5x your bet!");
-                    int winAmount = (int)(currentBet * 1.5) + currentBet;
-                    buyinBalance += winAmount;
-                    ingameWinnings += winAmount;
-                    AccountData.totalWins[AccountData.currentAccount]++;
-                }
-                else if (dealerBlackjack)
-                {
-                    MessageBox.Show("Dealer got Blackjack. You lose.");
-                    dealerBlackJack();
-                }
-            }
-        }
+       
+    
 
         private void rPlayer1_Click(object sender, EventArgs e)
         {
@@ -1505,7 +1404,7 @@ namespace FinalBlackJack
 
         private void returnBet_Click(object sender, EventArgs e)
         {
-            
+
             if (currentBet == 0)
             {
                 startRound.BackColor = Color.DimGray;
@@ -1567,6 +1466,118 @@ namespace FinalBlackJack
 
         private void playerDraw4_Click(object sender, EventArgs e)
         {
+        }
+
+        private void startRound_Click_1(object sender, EventArgs e)
+        {
+            if (currentBet == 0)
+            {
+                errorSound();
+                MessageBox.Show("You must place a bet first!");
+                return;
+            }
+
+            returnBet.Visible = false;
+            returnAllBet.Visible = false;
+            drawCardsSound();
+            actionsEnabled();
+
+            playerDraw1.Visible = true;
+            playerDraw2.Visible = true;
+            dealerDraw1.Visible = true;
+            dealerDraw2.Visible = true;
+
+            initialDraw.Enabled = true;
+
+            botValue.Visible = false;
+            isDrawn = true;
+            startRound.Visible = false;
+            dealerDialogue.Visible = true;
+            actionLog.Visible = true;
+            currentRound.Visible = false;
+            roundStarted = true;
+
+            startGameDialogue();
+
+            while (playerReveal != 2 && dealerReveal != 2)
+            {
+                int botIndex = botRandom.Next(rCards.Count);
+                string botCardPath = rCards[botIndex];
+                Image botCardImg = Image.FromFile(botCardPath);
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\red_backing.png");
+
+                int playerIndex = playerRandom.Next(rCards.Count);
+                string playerCardPath = rCards[playerIndex];
+                Image playerCardImg = Image.FromFile(playerCardPath);
+
+                if (playerReveal == 0)
+                {
+                    rDealer1.Image = botCardImg;
+                    rPlayer1.Image = playerCardImg;
+                    botTotal += GetCardValue(botCardPath);
+                    playerTotal += GetCardValue(playerCardPath);
+                    dealerCard1Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower();
+                    playerCard1Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); 
+                }
+                else if (playerReveal == 1)
+                {
+                    rDealer2.Image = folded;
+                    rPlayer2.Image = playerCardImg;
+                    bot2 = botCardImg;
+                    botHiddenCards[0] = bot2;
+                    playerTotal += GetCardValue(playerCardPath);
+                    botTotal += GetCardValue(botCardPath);
+                    dealerCard2Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower();
+                    playerCard2Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); 
+                }
+
+                playerReveal++;
+                dealerReveal++;
+                displayValues();
+            }
+            checkBlackJack();
+        }
+
+        private bool IsBlackjackPair(string card1, string card2)
+        {
+            if (string.IsNullOrEmpty(card1) || string.IsNullOrEmpty(card2))
+            {
+                return false; // PREVENT NULL PARA DI MAGERROR
+            }
+
+            string[] faceCards = { "jack", "queen", "king" };
+
+            return (card1.StartsWith("ace") && faceCards.Any(f => card2.StartsWith(f))) ||
+                   (card2.StartsWith("ace") && faceCards.Any(f => card1.StartsWith(f)));
+        }
+        private void checkBlackJack()
+        {
+
+            bool playerBlackjack = IsBlackjackPair(playerCard1Name, playerCard2Name);
+            bool dealerBlackjack = IsBlackjackPair(dealerCard1Name, dealerCard2Name);
+
+            if (playerBlackjack || dealerBlackjack)
+            {
+                rDealer2.Image = botHiddenCards[0];
+                if (playerBlackjack && dealerBlackjack)
+                {
+                    MessageBox.Show("Both got Blackjack! It's a tie.");
+                    buyinBalance += currentBet;
+                }
+                else if (playerBlackjack)
+                {
+                    MessageBox.Show("Blackjack! You win 1.5x your bet!");
+                    int winAmount = (int)(currentBet * 1.5) + currentBet;
+                    buyinBalance += winAmount;
+                    ingameWinnings += winAmount;
+                    AccountData.totalWins[AccountData.currentAccount]++;
+                }
+                else if (dealerBlackjack)
+                {
+                    MessageBox.Show("Dealer got Blackjack. You lose.");
+                    dealerBlackJack();
+                }
+            }
         }
     }
 }

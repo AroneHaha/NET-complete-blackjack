@@ -304,8 +304,9 @@ namespace FinalBlackJack
                 case "Sahara Grand Pavilion Resort":
                     if (!buyinExceptions(greenMin, greenMax)) return;
                     door();
-                    buyinAmount.Clear();
+                    
                     buyinHold();
+                    buyinAmount.Clear();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();
@@ -315,8 +316,9 @@ namespace FinalBlackJack
                 case "Obi Wan Castle In Shangrila":
                     if (!buyinExceptions(blueMin, blueMax)) return;
                     door();
-                    buyinAmount.Clear();
+                    
                     buyinHold();
+                    buyinAmount.Clear();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();
@@ -326,8 +328,9 @@ namespace FinalBlackJack
                 case "Cobact Club of Doom":
                     if (!buyinExceptions(redMin, redMax)) return;
                     door();
-                    buyinAmount.Clear();
+                    
                     buyinHold();
+                    buyinAmount.Clear();
                     await ShowLoadingAnimation();
                     cityPanel.Show();
                     cityPanel.BringToFront();

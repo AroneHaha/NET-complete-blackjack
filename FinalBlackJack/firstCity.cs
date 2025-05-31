@@ -780,12 +780,12 @@ namespace FinalBlackJack
                 }
                 else if (dealerReveal == 3)
                 {
-                    // Don't start animation here yet. Wait until animation3 is done.
+                    
                     dealerDraw4.Visible = true;
                     rDealer4.Image = folded;
                     bot4 = botCardImg;
                     botHiddenCards[2] = bot4;
-                    shouldRunDCard4 = true; // <-- this flag triggers animation4 later
+                    shouldRunDCard4 = true; 
                 }
 
                 botTotal += GetCardValue(botCardPath);
@@ -1016,7 +1016,6 @@ namespace FinalBlackJack
 
             playerDraw1.Visible = true;
             playerDraw2.Visible = true;
-
             dealerDraw1.Visible = true;
             dealerDraw2.Visible = true;
 
@@ -1032,13 +1031,12 @@ namespace FinalBlackJack
 
             startGameDialogue();
 
-
             while (playerReveal != 2 && dealerReveal != 2)
             {
                 int botIndex = botRandom.Next(rCards.Count);
                 string botCardPath = rCards[botIndex];
                 Image botCardImg = Image.FromFile(botCardPath);
-                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\blue_backing.png");
+                Image folded = Image.FromFile(@"C:\BSIT 1\C#\blackjack\cards\green_backing.png");
 
                 int playerIndex = playerRandom.Next(rCards.Count);
                 string playerCardPath = rCards[playerIndex];
@@ -1050,7 +1048,8 @@ namespace FinalBlackJack
                     rPlayer1.Image = playerCardImg;
                     botTotal += GetCardValue(botCardPath);
                     playerTotal += GetCardValue(playerCardPath);
-
+                    dealerCard1Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
+                    playerCard1Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
                 }
                 else if (playerReveal == 1)
                 {
@@ -1060,20 +1059,24 @@ namespace FinalBlackJack
                     botHiddenCards[0] = bot2;
                     playerTotal += GetCardValue(playerCardPath);
                     botTotal += GetCardValue(botCardPath);
-
+                    dealerCard2Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
+                    playerCard2Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
                 }
 
                 playerReveal++;
                 dealerReveal++;
-
                 displayValues();
-
             }
             checkBlackJack();
         }
 
         private bool IsBlackjackPair(string card1, string card2)
         {
+            if (string.IsNullOrEmpty(card1) || string.IsNullOrEmpty(card2))
+            {
+                return false; // PREVENT NULL PARA DI MAGERROR
+            }
+
             string[] faceCards = { "jack", "queen", "king" };
 
             return (card1.StartsWith("ace") && faceCards.Any(f => card2.StartsWith(f))) ||
@@ -1081,13 +1084,14 @@ namespace FinalBlackJack
         }
         private void checkBlackJack()
         {
-            rDealer2.Image = botHiddenCards[0];
+
 
             bool playerBlackjack = IsBlackjackPair(playerCard1Name, playerCard2Name);
             bool dealerBlackjack = IsBlackjackPair(dealerCard1Name, dealerCard2Name);
 
             if (playerBlackjack || dealerBlackjack)
             {
+                rDealer2.Image = botHiddenCards[0];
                 if (playerBlackjack && dealerBlackjack)
                 {
                     MessageBox.Show("Both got Blackjack! It's a tie.");

@@ -1199,7 +1199,6 @@ namespace FinalBlackJack
 
             playerDraw1.Visible = true;
             playerDraw2.Visible = true;
-
             dealerDraw1.Visible = true;
             dealerDraw2.Visible = true;
 
@@ -1214,7 +1213,6 @@ namespace FinalBlackJack
             roundStarted = true;
 
             startGameDialogue();
-
 
             while (playerReveal != 2 && dealerReveal != 2)
             {
@@ -1233,7 +1231,8 @@ namespace FinalBlackJack
                     rPlayer1.Image = playerCardImg;
                     botTotal += GetCardValue(botCardPath);
                     playerTotal += GetCardValue(playerCardPath);
-
+                    dealerCard1Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
+                    playerCard1Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
                 }
                 else if (playerReveal == 1)
                 {
@@ -1243,20 +1242,24 @@ namespace FinalBlackJack
                     botHiddenCards[0] = bot2;
                     playerTotal += GetCardValue(playerCardPath);
                     botTotal += GetCardValue(botCardPath);
-
+                    dealerCard2Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
+                    playerCard2Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
                 }
 
                 playerReveal++;
                 dealerReveal++;
-                
                 displayValues();
-                
             }
             checkBlackJack();
         }
 
         private bool IsBlackjackPair(string card1, string card2)
         {
+            if (string.IsNullOrEmpty(card1) || string.IsNullOrEmpty(card2))
+            {
+                return false; // PREVENT NULL PARA DI MAGERROR
+            }
+
             string[] faceCards = { "jack", "queen", "king" };
 
             return (card1.StartsWith("ace") && faceCards.Any(f => card2.StartsWith(f))) ||
