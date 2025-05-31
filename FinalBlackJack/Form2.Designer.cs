@@ -540,6 +540,7 @@
             mainMenuPanel.Name = "mainMenuPanel";
             mainMenuPanel.Size = new Size(984, 636);
             mainMenuPanel.TabIndex = 9;
+            mainMenuPanel.Paint += mainMenuPanel_Paint;
             // 
             // walletPanel
             // 

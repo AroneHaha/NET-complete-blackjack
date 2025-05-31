@@ -1048,8 +1048,8 @@ namespace FinalBlackJack
                     rPlayer1.Image = playerCardImg;
                     botTotal += GetCardValue(botCardPath);
                     playerTotal += GetCardValue(playerCardPath);
-                    dealerCard1Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
-                    playerCard1Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
+                    dealerCard1Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); 
+                    playerCard1Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); 
                 }
                 else if (playerReveal == 1)
                 {
@@ -1059,8 +1059,8 @@ namespace FinalBlackJack
                     botHiddenCards[0] = bot2;
                     playerTotal += GetCardValue(playerCardPath);
                     botTotal += GetCardValue(botCardPath);
-                    dealerCard2Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); // Assign dealer card name
-                    playerCard2Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); // Assign player card name
+                    dealerCard2Name = Path.GetFileNameWithoutExtension(botCardPath).ToLower(); 
+                    playerCard2Name = Path.GetFileNameWithoutExtension(playerCardPath).ToLower(); 
                 }
 
                 playerReveal++;

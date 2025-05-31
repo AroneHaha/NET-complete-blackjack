@@ -371,6 +371,7 @@ namespace FinalBlackJack
             return;
         }
 
+        // LAGING MAY DOUBLE SA DULO YUNG PARA SA DOUBLE
         private void checkNearestDouble()
         {
             if (playerTotal == botTotal)
@@ -707,11 +708,11 @@ namespace FinalBlackJack
 
                     dCardAnimation3.Stop();
 
-                    // Start the second animation ONLY if needed
+                    // ------------------------------ Start the second animation ONLY if needed
                     if (shouldRunDCard4)
                     {
                         dCardAnimation4.Start();
-                        shouldRunDCard4 = false; // Reset the flag
+                        shouldRunDCard4 = false; 
                     }
                 }
             }
@@ -882,19 +883,19 @@ namespace FinalBlackJack
                 if (dealerReveal == 2)
                 {
                     dealerDraw3.Visible = true;
-                    dCardAnimation3.Start(); // Start first animation
+                    dCardAnimation3.Start(); 
                     rDealer3.Image = folded;
                     bot3 = botCardImg;
                     botHiddenCards[1] = bot3;
                 }
                 else if (dealerReveal == 3)
                 {
-                    // Don't start animation here yet. Wait until animation3 is done.
+                    // --------------------- WAIT MATAPOS YUNG UNA
                     dealerDraw4.Visible = true;
                     rDealer4.Image = folded;
                     bot4 = botCardImg;
                     botHiddenCards[2] = bot4;
-                    shouldRunDCard4 = true; // <-- this flag triggers animation4 later
+                    shouldRunDCard4 = true; 
                 }
 
                 botTotal += GetCardValue(botCardPath);

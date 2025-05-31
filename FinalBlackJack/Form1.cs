@@ -66,7 +66,7 @@ namespace FinalBlackJack
                 playNowButton.Focus();
                 AudioManager.BackgroundMusic.PlayLoop();
 
-                backgroundMusic = AudioManager.BackgroundMusic;  // keep local reference if needed
+                backgroundMusic = AudioManager.BackgroundMusic;  
             }
 
             form1Panel.Visible = true;

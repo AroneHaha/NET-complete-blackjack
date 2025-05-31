@@ -801,7 +801,7 @@ namespace FinalBlackJack
         {
             loginPanel.Show();
             forgotPassPanel.Visible = false;
-            changePassPanel.Visible =false;
+            changePassPanel.Visible = false;
             sidePic.Visible = true;
             sidePic.BringToFront();
         }
@@ -975,6 +975,11 @@ namespace FinalBlackJack
             {
                 UpdateStatsAfterGame();
             }
+        }
+
+        private void mainMenuPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
