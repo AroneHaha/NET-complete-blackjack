@@ -6,7 +6,7 @@
 
 ## 📌 Key Features
 
-- ✅ **User Authentication System**
+- **User Authentication System**
   - Functional **Sign In / Sign Up / Sign Out** process
   - No external database used — data handled via **ArrayLists**
   - Form validation: users must provide all required fields to register
